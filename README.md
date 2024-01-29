@@ -5,7 +5,7 @@
 yyoonjju(PL), kty0910, azure0321, 0shai0, raincross7, notrowing
 
 ### 프로젝트 소개
-KepcoA Sprint III 3조 / 태양광 발전량 예측 하여 수익성 예측을 제공하는 모델 웹 서비스
+KepcoA Sprint III 3조 / 태양광 발전량 예측과 그에 따른 수익성을 예측하여 제공하는 모델 웹 서비스
 
 ### 주요 기능 
 1. 태양광 발전량의 예측 및 시각화
