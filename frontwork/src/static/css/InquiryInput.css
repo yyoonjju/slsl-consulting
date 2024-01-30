@@ -1,0 +1,73 @@
+.InquiryInput{
+    width: 800px;
+    margin: 0 auto;
+}
+#InquirySection{
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EEF3F6;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+#InquiryForm{
+   
+    height: 600px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.subjectTitle{
+   margin: 10px 0;
+}
+
+#InquiryForm>div>input, #InquiryForm>div>select, #InquiryForm>div>textarea{
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+#InquiryForm>div>input:focus,#InquiryForm>div>select:focus,
+#InquiryForm>div>textarea{
+    outline: none;
+}
+
+#InputModel, #InputName, #InputEmail, #InputNumber{
+    width: 100%;
+    height: 20px;
+}
+
+#InputAddress{
+    width: 100%;
+    height: 30px;
+}
+
+#InputAsk{
+    width: 100%;
+    height: 70px;
+    resize: none;
+
+}
+
+#inquiry_BtnBox{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#inquiry_Btn{
+    width: 200px;
+    height: 40px;
+    
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #0B74E2;
+}
+
+#inquiry_Btn:hover{
+    background-color: #0b6acf;
+}
