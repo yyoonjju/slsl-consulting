@@ -27,7 +27,7 @@ const ValueInput = () => {
                     <tr id='selectPanel_Box'>
                         <td>패널 선택</td>
                         <td>
-                            <select name = "selectPanel" id = "selectPanel">
+                            <select name = "selectPanel" id = "selectPanel" required>
                                 <option value="fromKorea">국산</option>
                                 <option value="fromChina">중국산</option>
                             </select>
@@ -38,7 +38,7 @@ const ValueInput = () => {
                     <tr id='inputArea_Box'>
                         <td>면적</td>
                         <td>
-                            <input pattern="[0-9]+"  id = "inputArea"/> 
+                            <input pattern="[0-9]+"  id = "inputArea" required/> 
                         </td>
                         <td> <span>(단위)</span></td>
                     
@@ -56,7 +56,7 @@ const ValueInput = () => {
                             endDate={endDate}
                             dateFormat="yyyy/MM/dd"
                             placeholderText='시작일자'
-                            />
+                            required/>
                         </td>
                         <td> <span>&nbsp;&nbsp;&nbsp;~</span></td>
                         <td>
@@ -69,7 +69,7 @@ const ValueInput = () => {
                                 minDate={startDate}
                                 dateFormat="yyyy/MM/dd"
                                 placeholderText='종료일자'
-                            />
+                                required/>
                         </td>
                     </tr>
                    
