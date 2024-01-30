@@ -28,8 +28,13 @@
     scale: 0.8;
   }
 
+  .explain2, .explain3 {
+    display: none;
+  }
+
   p {
     overflow: hidden;
+    margin-bottom: 80px;
   }
 
   span {
@@ -37,6 +42,20 @@
     font-size: 40px;
     font-weight: 600;
     opacity: 0;
+  }
+
+  /* 메인 화면 2번째 CSS */
+
+  .fontShow1, .fontShow2, .fontShow3 {
+    width: 80px;
+    height: 30px;
+    background: black;
+    text-decoration: none;
+    opacity: 0;
+  }
+
+  a:active, a:hover, a:checked, a:visited {
+    color: white;
   }
 
   /* 스크롤 시 이름이 추가되는 클래스 CSS */
@@ -50,11 +69,11 @@
     scale: 1;
   }
 
-  .fontUp1.active {
+  .fontUp1.active, .fontUp3.active, .fontUp5.active {
     animation: show_txt .4s .5s ease-in-out forwards;
   }
 
-  .fontUp2.active {
+  .fontUp2.active, .fontUp4.active, .fontUp6.active {
     animation: show_txt .7s .8s ease-in-out forwards;
   }
 
@@ -65,6 +84,20 @@
     }
     100% {
       transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .fontShow1.active, .fontShow2.active, .fontShow3.active {
+    animation: fadeIn 1.2s ease-in-out 1.4s forwards;    
+  }
+
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
       opacity: 1;
     }
   }
@@ -93,6 +126,7 @@
     height: 10px;
     left: 41%;
     top: 41%;
+    background: rgba(255, 255, 255, 0.6);
   }
 
   .pg-pips ul li:hover a {
@@ -103,11 +137,11 @@
   }
   
   .pg-pips ul li:hover a.active,.pg-pips ul li a.active {
-    width: 30px;
-    height: 30px;
-    left: 24%;
-    top: 24%;
-    background: rgb(255,255,255,0.3);
+    width: 24px;
+    height: 24px;
+    left: 34%;
+    top: 34%;
+    background: white;
   }
 
   
