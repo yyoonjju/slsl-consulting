@@ -1,0 +1,114 @@
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 메인 화면 CSS */
+  
+  .container {
+    background: black;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .scaleChage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: blue;
+    scale: 0.8;
+  }
+
+  p {
+    overflow: hidden;
+  }
+
+  span {
+    display: block;
+    font-size: 40px;
+    font-weight: 600;
+    opacity: 0;
+  }
+
+  /* 스크롤 시 이름이 추가되는 클래스 CSS */
+
+  .scaleChage.load {
+    scale: 1;
+  }
+
+  .scaleChage.active {
+    transition: all 0.8s;
+    scale: 1;
+  }
+
+  .fontUp1.active {
+    animation: show_txt .4s .5s ease-in-out forwards;
+  }
+
+  .fontUp2.active {
+    animation: show_txt .7s .8s ease-in-out forwards;
+  }
+
+  @keyframes show_txt {
+    0%{
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* 왼쪽의 점 요소들 (섹션 이동 기능) */
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pg-vertical .pg-pips {
+    left: 20px;
+  }
+
+  .pg-pips ul li {
+    margin-bottom: 30px;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;    
+  }
+
+  .pg-pips ul li a {
+    width: 10px;
+    height: 10px;
+    left: 41%;
+    top: 41%;
+  }
+
+  .pg-pips ul li:hover a {
+    width: 10px;
+    height: 10px;
+    left: 51%;
+    top: 51%;
+  }
+  
+  .pg-pips ul li:hover a.active,.pg-pips ul li a.active {
+    width: 30px;
+    height: 30px;
+    left: 24%;
+    top: 24%;
+    background: rgb(255,255,255,0.3);
+  }
+
+  
+  
