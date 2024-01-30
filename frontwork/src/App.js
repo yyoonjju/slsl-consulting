@@ -1,9 +1,9 @@
+import  ValueInput from "./components/ValueInput";
 
-import  MapSelect from "./components/MapSelect";
 function App() {
   return (
     <div>
-      <MapSelect/>
+      <ValueInput/>
     </div>
   );
 }
