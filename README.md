@@ -34,7 +34,8 @@ KepcoA Sprint III 3조 / 태양광 발전량 예측과 그에 따른 수익성�
 <img src="https://img.shields.io/badge/tensorflow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white">
 <img src="https://img.shields.io/badge/keras-D00000?style=for-the-badge&logo=keras&logoColor=white">
 
-🌐**테스트 및 데이터베이스**
+🌐**데이터베이스**
 <img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white">
 
-
+✍️ **버전 관리**
+<img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
