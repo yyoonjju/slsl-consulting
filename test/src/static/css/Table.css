@@ -1,0 +1,13 @@
+.table {
+    width: 70%;
+}
+.table th {
+    text-align: center;
+    background-color: lightgray;
+}
+.table td {
+    text-align: center;
+}
+.table td:first-child {
+    background-color: aquamarine;
+}
