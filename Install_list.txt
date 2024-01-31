@@ -1,0 +1,11 @@
+npm install dayjs
+npm install moment --save
+npm install react-bootstrap bootstrap
+npm install recharts
+npm install axios
+npm install @mui/x-date-pickers
+
+===============================
+
+인스톨 후에도 resolve 오류 발생 시 오류 그대로 복사해서 구글링 하면 npm install ~~ 하라고 고수분들이 올려놓은거
+그대로 인스톨 진행하면 됨
