@@ -1,6 +1,7 @@
 #MapsvgDiv{
-    width: 1000px;
-    height: 1000px;
+    width: max-content;
+    height: max-content;
+    /* background-color: lightgray; */
 }
 
 #Mapsvg > path{
@@ -11,7 +12,10 @@
     outline: none;
     fill: gainsboro;
 }
-
+#busan {
+    stroke: red;
+    fill: blue;
+}
 /* #busan{
 
 }

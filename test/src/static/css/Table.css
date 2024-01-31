@@ -1,5 +1,5 @@
 .table {
-    width: 70%;
+    width: fit-content;
 }
 .table th {
     text-align: center;
@@ -8,6 +8,9 @@
 .table td {
     text-align: center;
 }
-.table td:first-child {
+.td-test {
     background-color: aquamarine;
+}
+.test {
+    display: flex;
 }
