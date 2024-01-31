@@ -12,25 +12,56 @@ function Tb({data}) {
             "loc_total": 0
         }
     ];
+
     return (
         <Table striped bordered hover className="table">
-        <thead>
-          <tr>
-            <th>시간</th>
-            <th>발전량(Mw)</th>
-            <th>누적발전량(Mw)</th>
-          </tr>
-        </thead>
-        <tbody>
-            {(data === null ? blankData : data).map((row, index) => (
-                <tr key={index}>
-                    <td>{row.time}</td>
-                    <td>{row.loc_power}</td>
-                    <td>{row.loc_total}</td>
-                </tr>
-            ))}
-        </tbody>
-      </Table>
+            <div className="test">
+                <div>
+                    <thead>
+                        <tr>
+                            <th>날짜</th>
+                            <th colspan="2">firstDate</th>
+                        </tr>
+                        <tr>
+                            <th>시간</th>
+                            <th>발전량(Mw)</th>
+                            <th>누적발전량(Mw)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {((data === null || data === undefined) ? blankData : data.slice(0,24)).map((row, index) => (
+                            <tr key={index}>
+                                <td className="td-test">{row.time}</td>
+                                <td>{row.loc_power}</td>
+                                <td>{row.loc_total}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </div>
+
+                <div>
+                    <thead>
+                        <tr>
+                            <th colspan="2">secondDate</th>
+                        </tr>
+                        <tr>
+                            <th>발전량(Mw)</th>
+                            <th>누적발전량(Mw)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {((data === null || data === undefined) ? blankData : data.slice(24,48)).map((row, index) => (
+                            <tr key={index}>
+                                <td>{row.loc_power}</td>
+                                <td>{row.loc_total}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </div>
+            </div>
+        </Table>
     );
 }
 export default Tb;
