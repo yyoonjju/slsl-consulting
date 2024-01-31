@@ -5,21 +5,27 @@
 
 #Mapsvg > path{
     stroke: white;
-    fill: #3E588B;
+    /* fill: #3E588B; */
 }
-#Mapsvg > path:hover{
+/* #Mapsvg > path:hover{
+    outline: none;
+    fill: gainsboro;
+} */
+
+#Mapsvg > path:active{
     outline: none;
     fill: gainsboro;
 }
+#busan:active
+{
 
-/* #busan{
 
 }
 #daegu{
-
+   
 }
 #daejeon{
-
+   
 }
 #gangwon{
 
@@ -63,4 +69,4 @@
 }
 #ulsan{
 
-} */
+}
