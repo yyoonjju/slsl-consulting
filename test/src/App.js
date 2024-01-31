@@ -12,8 +12,10 @@ function App() {
     console.log(dt);
   };
   return (
-    <div className="flx">
-      <MapSelect onDataUpdate={handleData}/>
+    <div>
+      <div>
+        <MapSelect onDataUpdate={handleData}/>
+      </div>
       <div>
         <Map data={selectData}/>
         <Table data={selectData}/>
