@@ -28,7 +28,7 @@
     scale: 0.8;
   }
 
-  .explain2, .explain3 {
+  .carousel-indicators button {
     display: none;
   }
 
@@ -112,6 +112,7 @@
 
   .pg-vertical .pg-pips {
     left: 20px;
+    width: 100px;
   }
 
   .pg-pips ul li {
@@ -126,7 +127,7 @@
     height: 10px;
     left: 41%;
     top: 41%;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.4);
   }
 
   .pg-pips ul li:hover a {
@@ -137,10 +138,10 @@
   }
   
   .pg-pips ul li:hover a.active,.pg-pips ul li a.active {
-    width: 24px;
-    height: 24px;
-    left: 34%;
-    top: 34%;
+    width: 20px;
+    height: 20px;
+    left: 41%;
+    top: 41%;
     background: white;
   }
 
