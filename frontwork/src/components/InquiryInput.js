@@ -69,7 +69,7 @@ const InquiryInput = () => {
             return;
         }
     
-        // 저장된 상태 출력 (실제로 서버에 전송하거나 다른 로직으로 대체)
+        // 저장된 상태 콘솔 출력 
         console.log('Form Data:',InputData);
 
         // EmailJS로 이메일 전송
