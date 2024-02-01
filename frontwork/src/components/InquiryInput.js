@@ -34,14 +34,15 @@ const InquiryInput = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-
         //이름에 특수문자 포함 못하게 
         const regex1 = /^[a-zA-Z가-힣]*$/;
         const isNameValid = regex1.test(InputData.inputName);
 
-        const regex2 = /^[a-zA-Z]*$/;
+        //이메일 아이디 : 알파벳과 숫자만 가능
+        const regex2 = /^[a-zA-Z0-9]+$/;
         const isEmailValid = regex2.test(InputData.emailId);
         
+        //이메일 도메인: 알파벳과 특수문자 . 만 가능 
         const regex3 = /^[a-zA-Z.]*$/;
         const isDomainValid = regex3.test(InputData.emailDomain);
 
