@@ -130,7 +130,6 @@ const ValueInput = () => {
                         <td colSpan="4">
                             <button id="right_inputBtn">계산하기</button>
                         </td>
-                        
                     </tr>
                 </table>
 
