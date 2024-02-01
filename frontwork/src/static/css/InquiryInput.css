@@ -1,67 +1,114 @@
-.InquiryInput{
+.inquiryInput{
     width: 800px;
     margin: 0 auto;
 }
-#InquirySection{
+
+.red_span{
+    color: red;
+    padding-left: 5px;
+}
+
+#inquirySection{
+    display: flex;
+    flex-direction: column;
+}
+#inquiryForm{
+    display: flex;
+    /* border: solid 2px blue; */
+}
+#inquiryForm>table{
     height: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 100%;
     background-color: #EEF3F6;
-    border-radius: 10px;
-    padding: 10px 0;
-}
-
-#InquiryForm{
+    padding: 20px;
+    border-radius: 20px;
+    /* border: solid 2px black; */
    
-    height: 600px; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-}
-.subjectTitle{
-   margin: 10px 0;
 }
 
-#InquiryForm>div>input, #InquiryForm>div>select, #InquiryForm>div>textarea{
-    border: none;
+#inquiryForm>table>tr>td{
+    /* 테이블 사이즈 보기 위한 border */
+    /* border: solid 2px black; */
     padding: 0;
+    
+}
+
+#inquiryForm>table>tr>td:nth-child(1){
+    /* padding-right: 15px; */
+    font-weight: bold;
+}
+
+#inquiryForm>table>tr>td>select, #inquiryForm>table>tr>td>select>option, #inquiryForm>table>tr>td>textarea{
+    border: none;
+    padding: 0px 5px 0 5px;
     margin: 0;
+
 }
 
-#InquiryForm>div>input:focus,#InquiryForm>div>select:focus,
-#InquiryForm>div>textarea{
+#inquiryForm>table>tr>td>input{
+    border: none;
+    padding: 0px 5px 0 5px;
+    margin: 0;
+    text-align: center;
+}
+
+#inquiryForm>table>tr>td>input:focus{
     outline: none;
+    text-align: center;
 }
 
-#InputModel, #InputName, #InputEmail, #InputNumber{
-    width: 100%;
-    height: 20px;
+#inquiryForm>table>tr>td>select:focus,
+#inquiryForm>table>tr>td>textarea:focus{
+    outline: none;
+    
 }
 
-#InputAddress{
-    width: 100%;
+#inquiryForm>table>tr>td>input::placeholder{
+    text-align: center;
+    font-style: italic;
+}
+#inputModel{
+    width: 300px;
     height: 30px;
 }
 
-#InputAsk{
-    width: 100%;
-    height: 70px;
-    resize: none;
-
+#inputName{
+    width: 160px;
+    height: 30px;
 }
 
-#inquiry_BtnBox{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+#emailId, #emailDomain{
+    width: 160px;
+    height: 30px;
+}
+#selectDomain{
+    width: 150px;
+    height: 30px;
+}
+
+#inputNumber1, #inputNumber2, #inputNumber3{
+    width: 120px;
+    height: 30px;
+}
+
+#inputAsk{
+    width: 750px;
+    height: 100%;
+    resize: none;
+}
+
+#localAddress{
+    width: 170px;
+    height: 30px;
+}
+
+#inputCheck{
+    padding-left: 20px;
 }
 
 #inquiry_Btn{
-    width: 200px;
-    height: 40px;
-    
+    width: 100%;
+    height: 100%;
     border: none;
     color: white;
     border-radius: 5px;

@@ -80,8 +80,8 @@ const ValueInput = () => {
                         <td>
                             <select name = "selectPanel" id = "selectPanel" required>
                                 <option value=""disabled selected hidden>패널을 선택하세요.</option>
-                                <option value="fromKorea">국산</option>
-                                <option value="fromChina">중국산</option>
+                                <option value="fromKorea">국산 PEAKDVQ XL G11.7(570Wp)</option>
+                                <option value="fromUSA">미국산 AmeriSolar AS-qm120-HC(580Wp)</option>
                             </select>
                         </td>
                     </tr>
