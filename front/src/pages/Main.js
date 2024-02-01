@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import pageable from "pageable";
-import dataSlider from "./DataSlider";
 import BtnSlider from "./BtnSlider";
 import '../css/Slider.css';
 
@@ -30,7 +29,7 @@ function Main() {
 
             // 스크롤하면 붙여졌던 클래스 이름을 없애는 코드
     
-            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontUp3, .fontUp4, .fontUp5, .fontUp6, .fontShow1, .fontShow2, .fontShow3").forEach((element) => {
+            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontShow1").forEach((element) => {
                 element.classList.remove("active");
                 element.classList.remove("load");
             });
@@ -42,13 +41,8 @@ function Main() {
                 const scaleChageElement = targetSection.querySelector(".scaleChage");
                 const fontUp1 = targetSection.querySelector(".fontUp1");
                 const fontUp2 = targetSection.querySelector(".fontUp2");
-                const fontUp3 = targetSection.querySelector(".fontUp3");
-                const fontUp4 = targetSection.querySelector(".fontUp4");
-                const fontUp5 = targetSection.querySelector(".fontUp5");
-                const fontUp6 = targetSection.querySelector(".fontUp6");
                 const fontShow1 = targetSection.querySelector(".fontShow1");
-                const fontShow2 = targetSection.querySelector(".fontShow2");
-                const fontShow3 = targetSection.querySelector(".fontShow3");
+
 
                 if (scaleChageElement) {
                     scaleChageElement.classList.add("active");
@@ -61,33 +55,9 @@ function Main() {
                 if (fontUp2) {
                     fontUp2.classList.add("active");
                 }
-
-                if (fontUp3) {
-                    fontUp3.classList.add("active");
-                }
-
-                if (fontUp4) {
-                    fontUp4.classList.add("active");
-                }
-
-                if (fontUp5) {
-                    fontUp5.classList.add("active");
-                }
-
-                if (fontUp6) {
-                    fontUp6.classList.add("active");
-                }
     
                 if (fontShow1) {
                     fontShow1.classList.add("active");
-                }
-
-                if (fontShow2) {
-                    fontShow2.classList.add("active");
-                }
-
-                if (fontShow3) {
-                    fontShow3.classList.add("active");
                 }
             }
         };
@@ -130,14 +100,13 @@ function Main() {
     
 
 
-    const [slideIndex, setSlideIndex] = useState(1);
+    const [slideIndex, setSlideIndex] = useState(0);
 
     // 버튼 클릭 시 뒤의 사진들로 이동하는 코드
 
     const nextSlide = () => {
-        console.log("oh my god")
 
-        setSlideIndex(slideIndex === dataSlider.length - 1 ? 0 : slideIndex + 1);
+        setSlideIndex(slideIndex === 3 - 1 ? 0 : slideIndex + 1);
 
     }
 
@@ -145,16 +114,16 @@ function Main() {
 
     const prevSlide = () => {
 
-        console.log("oh shit")
-
-        setSlideIndex(slideIndex === 0 ? dataSlider.length - 1 : slideIndex - 1);
+        setSlideIndex(slideIndex === 0 ? 3 - 1 : slideIndex - 1);
 
     }
+
+    // 8초마다 다음 사진을 보이게 하기 위한 코드
 
     useEffect(()=>{
         const interval = setInterval(()=>{
             nextSlide();        
-        }, 3000);
+        }, 8000);
         return () => clearInterval(interval);
     });
 
@@ -176,26 +145,20 @@ function Main() {
 
             <section data-anchor="Page 2" className="pg-page" id="page-2">
                 <div className="scaleChage"> 
-                {/* <p>
-                        <span className="fontUp1">태양광 발전량</span>
-                    </p>
-                    <p>
-                        <span className="fontUp2">태양광 수익률</span>
-                    </p>
-                    <a href="/introduce" className="fontShow1">제품 소개</a>  */}
-                    <div className="containerSlider">                              
-                        {dataSlider.map((obj, index) => {
-                            return (
-                                <div
-                                key={obj.id} 
-                                className= {slideIndex === index + 1 ?"slide active-anim" : "slide"}
-                                >
-                                    <img
-                                    src={process.env.PUBLIC_URL + `/images/Slider${slideIndex + 1}.jpg`}
-                                    />                                   
-                                </div>
-                            )
-                        })} 
+                    <div className="containerSlider">                    
+                        <img
+                        src={process.env.PUBLIC_URL + `/images/Slider${slideIndex+1}.jpg`}
+                        className="slideImg"
+                        />
+                        <div className={`slideFont${slideIndex+1}`}>                  
+                            <p>
+                                <span className="fontUp1">태양광 발전량</span>
+                            </p>
+                            <p>
+                                <span className="fontUp2">태양광 수익률</span>
+                            </p>
+                            <a href="/product" className="fontShow1">제품 소개</a>
+                        </div>
                         <BtnSlider moveSlide={nextSlide} direction={"next"}/> 
                         <BtnSlider moveSlide={prevSlide} direction={"prev"}/>                                                      
                     </div>

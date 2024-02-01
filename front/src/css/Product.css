@@ -1,0 +1,83 @@
+    
+    .QnA, .QnAPhoto, .faq {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .QnA {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .QnAPhoto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 600px;
+    }
+
+    .QnAPhotoBox {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0;
+    }
+
+    .faq {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 600px;
+    }
+
+    .faqText {
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        width: 600px;
+    }
+
+    .text {
+        display: flex;
+        align-items: center;
+    }
+
+    .QnAImg {
+        background: url('../../public/images/QnA.png');
+        background-size: cover;
+        background-position: center;
+        width: 240px;
+        height: 490px;
+    }
+
+    .FaqQ {
+        font-size: 40px;
+    }
+
+    strong {
+        font-size: 22px;
+    }
+
+    /* 로드 시 요소가 올라오는 애니매이션 코드 */
+
+    .QnAPhotoBox.active {
+        animation: show_FnQ 1s .4s ease-in-out forwards;
+    }
+
+    .faqText.active {
+        animation: show_FnQ 1s 1s ease-in-out forwards;
+    }
+
+    @keyframes show_FnQ {
+        0%{
+          transform: translateY(20%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
