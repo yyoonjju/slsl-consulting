@@ -5,7 +5,8 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import MapsvgPath from './MapsvgPath';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import Header from '../components/Header.js';
+import Footer from '../components/Footer.js';
 
 const ValueInput = () => {
     const [startDate, setStartDate] = useState(null);
@@ -38,14 +39,17 @@ const ValueInput = () => {
     };
 
     return (
-        <div class = "ValueInput">
+        <article className= "ValueInputPages">
+            <Header/>
+
+            <div className= "ValueInput">
             
             <section>
                 <MapsvgPath selectedLocation={selectedLocation} onClick={ClickPath}/>
                 
             </section>
             
-             <section id = "inputSection">
+            <section id = "inputSection">
                 <form id = "inputForm">
                     <table id = "inputFormTable">
 
@@ -143,11 +147,12 @@ const ValueInput = () => {
                         </tr>
                     </table>
                 </form>
-                
-
             </section>
-            
         </div>
+
+            <Footer/>
+        </article>
+
     );
 };
 

@@ -1,7 +1,9 @@
+
+
 .ValueInput{
     display: flex;
     flex-direction: row;
-    align-items: centers;
+    align-items: center;
     margin: 0 auto;
     /* 위치를 보기 위한 백그라운드 색상 */
     background-color: #EEF3F6;
