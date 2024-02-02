@@ -1,21 +1,31 @@
 .ValueInput{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    
+    align-items: centers;
+    margin: 0 auto;
+    /* 위치를 보기 위한 백그라운드 색상*/
+    background-color: #EEF3F6;
+    width: 1000px;
+    height: 500px;
+    border-radius: 25px;
+    padding: 20px;
 }
 
-#right_input{
+#inputSection{
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    
     align-items: center;
-    width: 500px;
-
 }
 
-#right_input>table>tr>td:nth-child(1){
+#inputFormTable>tr>td{
+    /* border: solid 1px black; */
+}
+
+#inputFormTable{
+    height: 400px;
+    width: 100%;
+    padding: 20px;
+}
+#inputFormTable>tr>td:nth-child(1){
     padding-right: 20px;
 }
 #right_input>table{
@@ -23,35 +33,43 @@
 }
 
 
-
-/* 지역선택 */
-#selectLocation{
-
+#inputFormTable>tr>td>select, #inputFormTable>tr>td>select>option, #inputFormTable>tr>td>textarea{
+    border: solid 1px lightgray;
+    padding: 0px 5px 0 5px;
+    margin: 0;
+    width: 150px;
+    height: 30px;
 }
 
-
-/* 패널선택 */
-#selectPanel_Box{
-
+#inputFormTable>tr>td>input{
+    border: solid 1px lightgray;
+    padding: 0px 5px 0 5px;
+    margin: 0;
+    text-align: center;
+    width: 150px;
+    height: 30px;
 }
 
-/* 면적입력 */
-#inputArea_Box{
-
+.react-datepicker-ignore-onclickoutside,.react-datepicker-wrapper, 
+.react-datepicker__input-container,.react-datepicker__input-container>input{
+    border: solid 1px lightgray;
+    width: 150px;
+    height: 30px;
+    text-align: center;
 }
 
-#inputArea{
-
+#inputFormTable>tr>td>select:focus, #inputFormTable>tr>td>select>option:focus, 
+#inputFormTable>tr>td>textarea:focus{
+    outline: none;
 }
 
-/* 기간선택 */
-#inputDate_Box {
-    
+#inputFormTable>tr>td>input:focus{
+    outline: none;
 }
 
-/* 폼의 공통 css 부분 */
-#selectLocal, #selectPanel{
-    width: 100%;
+.react-datepicker-ignore-onclickoutside:focus,.react-datepicker-wrapper:focus, 
+.react-datepicker__input-container:focus,.react-datepicker__input-container>input:foucs{
+    outline: none;
 }
 
 /* 입력버튼 */
@@ -67,3 +85,5 @@
 #right_inputBtn:hover{
     background-color: #0b6acf;
 }
+
+/* #selectPanel, #selectLocal, #inputArea,  */
