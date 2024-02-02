@@ -3,12 +3,13 @@
     flex-direction: row;
     align-items: centers;
     margin: 0 auto;
-    /* 위치를 보기 위한 백그라운드 색상*/
-    background-color: #EEF3F6;
+    /* 위치를 보기 위한 백그라운드 색상
+    background-color: #EEF3F6; */
     width: 1000px;
     height: 500px;
     border-radius: 25px;
     padding: 20px;
+    justify-content: space-around;
 }
 
 #inputSection{
@@ -25,19 +26,21 @@
     width: 100%;
     padding: 20px;
 }
+
 #inputFormTable>tr>td:nth-child(1){
     padding-right: 20px;
+    font-weight: bold;
 }
+
 #right_input>table{
     
 }
-
 
 #inputFormTable>tr>td>select, #inputFormTable>tr>td>select>option, #inputFormTable>tr>td>textarea{
     border: solid 1px lightgray;
     padding: 0px 5px 0 5px;
     margin: 0;
-    width: 150px;
+    width: 160px;
     height: 30px;
 }
 
@@ -74,8 +77,8 @@
 
 /* 입력버튼 */
 #right_inputBtn{
-    width: 300px;
-    height: 30px;
+    width: 250px;
+    height: 40px;
     border: none;
     color: white;
     border-radius: 5px;

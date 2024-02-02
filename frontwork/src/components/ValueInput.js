@@ -95,7 +95,7 @@ const ValueInput = () => {
                                         id = "inputArea" 
                                         required
                                         placeholder='단위를 입력하세요'/> 
-                                <span>&nbsp;(단위)</span>
+                                <span>&nbsp;&nbsp;(단위)</span>
                             </td>
                 
                         
@@ -118,7 +118,7 @@ const ValueInput = () => {
                                 
                             </td>
                             <td>
-                                <span>&nbsp;~&nbsp;</span>
+                                <span>&nbsp;~&nbsp;&nbsp;</span>
                             </td>
                             <td>
                                 <DatePicker
