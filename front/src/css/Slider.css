@@ -27,14 +27,6 @@
         overflow: hidden;
     }
 
-    .slideFont1,.slideFont2, .slideFont3 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-
     .btn-slide {
         width: 80px;
         height: 50px;
@@ -61,23 +53,23 @@
 
     .prev {
         top: 50%;
-        left: 440px;
+        left: 300px;
         transform: translateY(-60%);
     }
 
     .next {
         top: 50%;
-        right: 440px;
+        right: 300px;
         transform: translateY(-60%);
     }
 
 
     @media (max-width: 1000px) {
         .prev {
-            left: 180px;
+            left: 100px;
         }
         
         .next {
-            right: 180px;
+            right: 100px;
         }
     }

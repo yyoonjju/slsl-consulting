@@ -1,83 +1,66 @@
-    
-    .QnA, .QnAPhoto, .faq {
-        width: 100%;
-        height: 100vh;
-    }
+.productdetail{display:flex;
+    height:100vh;}
 
-    .QnA {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.introduceproduct{
+font-size:2rem;
+color:rgb(26,51,92);
+margin-top:20vh;
+font-weight:bold;
+width:20vw;
+margin-left:12vw;
+margin-bottom:2vh;
+display:flex;
+flex-direction: column;
+}
 
-    .QnAPhoto {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 600px;
-    }
+.koreaproduct{
+background-color: #EEF3F6;
+color:rgb(26,51,92);
+font-weight:500;
+width:30vw;
+height:75vh;
+margin-left:12vw;
+padding:2vw;
+border-radius: 1vw;
+font-size:large;
+}
 
-    .QnAPhotoBox {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        opacity: 0;
-    }
+.koreaproductname{
+font-size:1.7rem;
+margin-bottom:2vh;
+font-weight: bold;
+}
 
-    .faq {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        width: 600px;
-    }
+.usaproduct{
+background-color: #EEF3F6;
+color:rgb(26,51,92);
+font-weight: 500;
+width:30vw;
+height:75vh;
+margin-left: 7vw;
+padding:2vw;
+border-radius: 1vw;
+font-size:large;
+}
 
-    .faqText {
-        display: flex;
-        flex-direction: column;
-        opacity: 0;
-        width: 600px;
-    }
+.koreaproductimg{
+    margin-bottom:10.3vh;
+    width: 30vw;
 
-    .text {
-        display: flex;
-        align-items: center;
-    }
+}
 
-    .QnAImg {
-        background: url('../../public/images/QnA.png');
-        background-size: cover;
-        background-position: center;
-        width: 240px;
-        height: 490px;
-    }
+.usaproductimg{
+    margin-bottom:3vh;
+    width:30vw;
 
-    .FaqQ {
-        font-size: 40px;
-    }
+}
 
-    strong {
-        font-size: 22px;
-    }
+.usaproductname{
+font-size:1.7rem;
+margin-bottom:2vh;
+font-weight: bold;
+}
 
-    /* 로드 시 요소가 올라오는 애니매이션 코드 */
-
-    .QnAPhotoBox.active {
-        animation: show_FnQ 1s .4s ease-in-out forwards;
-    }
-
-    .faqText.active {
-        animation: show_FnQ 1s 1s ease-in-out forwards;
-    }
-
-    @keyframes show_FnQ {
-        0%{
-          transform: translateY(20%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
+.productDetail {
+font-size:1.3rem;
+font-weight: bold;}

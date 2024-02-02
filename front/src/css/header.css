@@ -1,345 +1,51 @@
-    #header{
-        width: 100%;
-        height: 80px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 99999;
-    }
+  .header{
+    width: 100%;
+    height:10%;
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index:50;
+  }
+
+  /* MainHeader 랑 같은 부분입니다. 수정할때 확인 요망 */
+  .menuicon{
+    right:3vw;
+    padding-top:2vh;
+    position:absolute;
+  }
+
+  .menuboard{
+    background-color: rgb(26,51,92);
+    color:white;
+    width:14vw;
+    height:60vh;
+    line-height:300%;
+    padding:2vw;
+    font-size:large;
+    position:fixed;
+    font-weight: bold;
+    right:0;
+  }
+  
+  .btn{
+    color:white;
+    font-size: 1.5rem;
+    background-color:rgb(26,51,92);
+    margin-top: 5vh;
+    border:none;
+    text-align: left;
+    cursor: pointer;
+  }
+  .logo{
+    width:8vw;
+    height:11vh;
+    padding-top:3vh;
+    position:absolute;
+    margin-left:3vw;
+    cursor: pointer;
+  }
+
+  svg {
+    cursor: pointer;
+  }
 
-    .m_header{
-        display: none;
-    }
-
-    .header_center{
-        width: 95%;
-        min-width: 1200px;
-        height: 100%;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .header_center>a{
-        width: 183px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all .5s;
-    }
-
-    .header_center>a img{
-        width: 100%;
-    }
-
-    .menu_lang{
-        display: flex;
-        align-items: center;
-    }
-
-    .lang{
-        margin-right: 35px;
-    }
-
-    .lang ul{
-        display: flex;
-    }
-
-    .lang ul li{
-        font-size: 16px;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.5);
-        cursor: pointer;
-    }
-
-    .lang ul li.on{
-        color: #fff;
-    }
-
-    .lang.on ul li{
-        color: rgba(255, 255, 255, 0.5) !important;
-    }
-
-    .lang.on ul li.on{
-        color: #fff !important;
-    }
-
-    .lang ul li:first-child{
-        margin-right: 15px;
-    }
-
-    .menu_icon{
-        width: 35px;
-        height: 23px;
-        position: relative;
-        cursor: pointer;
-    }
-
-    .menu_icon span{
-        height: 2px;
-        background-color: #fff;
-        position: absolute;
-    }
-
-    .menu_icon span:first-child{
-        width: 35px;
-        top: 0;
-        left: 0;
-        transition: top .3s, transform .3s;
-    }
-
-    .menu_icon span:nth-child(2){
-        width: 25px;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        transition: width .3s, opacity .5s;
-    }
-
-    .menu_icon:hover span:nth-child(2){
-        width: 35px;
-    }
-
-    .menu_icon span:last-child{
-        width: 35px;
-        bottom: 0;
-        left: 0;
-        transition: bottom .3s, transform .3s;
-    }
-
-    .menu_icon.on span{
-        background-color: #959595 !important;
-    }
-
-    .menu_icon.on span:first-child{
-        top: 10.5px;
-        transform: rotate(45deg);
-    }
-
-    .menu_icon.on span:nth-child(2){
-        opacity: 0;
-    }
-
-    .menu_icon.on span:last-child{
-        bottom: 10.5px;
-        transform: rotate(-45deg);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* mobile */
-    @media screen and (max-width: 767px){
-
-        #header{
-            height: 50px;
-        }
-
-        .pc_header{
-            display: none;
-        }
-
-        .m_header{
-            display: block;
-        }
-
-        .header_center{
-            width: 90%;
-            min-width: 90%;
-        }
-
-        .header_center>a{
-            width: 100px;
-        }
-
-        .menu_lang{
-            display: flex;
-            align-items: center;
-        }
-        
-        .lang{
-            margin-right: 20px;
-        }
-        
-        .lang ul{
-            display: flex;
-        }
-        
-        .lang ul li{
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .lang ul li.on{
-            color: #fff;
-        }
-        
-        .lang ul li:first-child{
-            margin-right: 10px;
-        }
-
-        .menu_icon{
-            width: 25px;
-            height: 18px;
-            cursor: inherit;
-        }
-
-        .menu_icon span:first-child{
-            width: 25px;
-        }
-
-        .menu_icon span:nth-child(2){
-            width: 15px;
-        }
-
-        .menu_icon:hover span:nth-child(2){
-            width: 15px;
-        }
-
-        .menu_icon span:last-child{
-            width: 25px;
-        }
-
-        .menu_icon.on span:first-child{
-            top: 8px;
-        }
-
-        .menu_icon.on span:last-child{
-            bottom: 8px;
-        }
-
-    }
-    /* // mobile */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /* tablet */
-    @media screen and (min-width: 768px) and (max-width: 1024px){
-
-        #header{
-            height: 50px;
-        }
-
-        .m_header{
-            display: none;
-        }
-
-        .header_center{
-            width: 95%;
-            min-width: 95%;
-        }
-
-        .header_center>a{
-            width: 100px;
-        }
-
-        .menu_lang{
-            display: flex;
-            align-items: center;
-        }
-        
-        .lang{
-            margin-right: 20px;
-        }
-        
-        .lang ul{
-            display: flex;
-        }
-        
-        .lang ul li{
-            font-size: 14px;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .lang ul li.on{
-            color: #fff;
-        }
-        
-        .lang ul li:first-child{
-            margin-right: 10px;
-        }
-
-        .menu_icon{
-            width: 25px;
-            height: 18px;
-            cursor: inherit;
-        }
-
-        .menu_icon span:first-child{
-            width: 25px;
-        }
-
-        .menu_icon span:nth-child(2){
-            width: 15px;
-        }
-
-        .menu_icon:hover span:nth-child(2){
-            width: 15px;
-        }
-
-        .menu_icon span:last-child{
-            width: 25px;
-        }
-
-        .menu_icon.on span:first-child{
-            top: 8px;
-        }
-
-        .menu_icon.on span:last-child{
-            bottom: 8px;
-        }
-
-    }
-    /* // tablet */

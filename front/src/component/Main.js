@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import pageable from "pageable";
-import dataSlider from "./DataSlider";
 import BtnSlider from "./BtnSlider";
+import SolarInfo from './SolarInfo';
 import '../css/Slider.css';
-
-
 
 function Main() {
 
@@ -30,9 +28,9 @@ function Main() {
 
             // 스크롤하면 붙여졌던 클래스 이름을 없애는 코드
     
-            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontUp3, .fontUp4, .fontUp5, .fontUp6, .fontShow1, .fontShow2, .fontShow3").forEach((element) => {
-                element.classList.remove("active");
-                element.classList.remove("load");
+            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontShow1").forEach((e) => {
+                e.classList.remove("active");
+                e.classList.remove("load");
             });
 
 
@@ -42,13 +40,8 @@ function Main() {
                 const scaleChageElement = targetSection.querySelector(".scaleChage");
                 const fontUp1 = targetSection.querySelector(".fontUp1");
                 const fontUp2 = targetSection.querySelector(".fontUp2");
-                const fontUp3 = targetSection.querySelector(".fontUp3");
-                const fontUp4 = targetSection.querySelector(".fontUp4");
-                const fontUp5 = targetSection.querySelector(".fontUp5");
-                const fontUp6 = targetSection.querySelector(".fontUp6");
                 const fontShow1 = targetSection.querySelector(".fontShow1");
-                const fontShow2 = targetSection.querySelector(".fontShow2");
-                const fontShow3 = targetSection.querySelector(".fontShow3");
+
 
                 if (scaleChageElement) {
                     scaleChageElement.classList.add("active");
@@ -61,33 +54,9 @@ function Main() {
                 if (fontUp2) {
                     fontUp2.classList.add("active");
                 }
-
-                if (fontUp3) {
-                    fontUp3.classList.add("active");
-                }
-
-                if (fontUp4) {
-                    fontUp4.classList.add("active");
-                }
-
-                if (fontUp5) {
-                    fontUp5.classList.add("active");
-                }
-
-                if (fontUp6) {
-                    fontUp6.classList.add("active");
-                }
     
                 if (fontShow1) {
                     fontShow1.classList.add("active");
-                }
-
-                if (fontShow2) {
-                    fontShow2.classList.add("active");
-                }
-
-                if (fontShow3) {
-                    fontShow3.classList.add("active");
                 }
             }
         };
@@ -130,14 +99,13 @@ function Main() {
     
 
 
-    const [slideIndex, setSlideIndex] = useState(1);
+    const [slideIndex, setSlideIndex] = useState(0);
 
     // 버튼 클릭 시 뒤의 사진들로 이동하는 코드
 
     const nextSlide = () => {
-        console.log("oh my god")
 
-        setSlideIndex(slideIndex === dataSlider.length - 1 ? 0 : slideIndex + 1);
+        setSlideIndex(slideIndex === 3 - 1 ? 0 : slideIndex + 1);
 
     }
 
@@ -145,57 +113,63 @@ function Main() {
 
     const prevSlide = () => {
 
-        console.log("oh shit")
-
-        setSlideIndex(slideIndex === 0 ? dataSlider.length - 1 : slideIndex - 1);
+        setSlideIndex(slideIndex === 0 ? 3 - 1 : slideIndex - 1);
 
     }
 
-    useEffect(()=>{
-        const interval = setInterval(()=>{
-            nextSlide();        
-        }, 3000);
-        return () => clearInterval(interval);
-    });
+    // 8초마다 다음 사진을 보이게 하기 위한 코드
+
+    // useEffect(()=>{
+    //     const interval = setInterval(()=>{
+    //         nextSlide();        
+    //     }, 8000);
+    //     return () => clearInterval(interval);
+    // });
+
+    const solarInfoProps = {
+        fontUp1: "태양광 모듈",
+        fontUp2: "제품을 소개합니다",
+        Route: "FAQ",
+        Button: "제품 소개",
+      };
+    
+      
+      if (slideIndex === 1) {
+        solarInfoProps.fontUp1 = "날짜와 시간, 지역을 선택하면";
+        solarInfoProps.fontUp2 = "발전량을 예측해드립니다";
+        solarInfoProps.Route = "MapSelect";
+        solarInfoProps.Button = "발전량 조회";
+      } else if (slideIndex === 2) {
+        solarInfoProps.fontUp1 = "흑자전환 기간과";
+        solarInfoProps.fontUp2 = "투자 비용을 예측해드립니다";
+        solarInfoProps.Route = "ValueInput";
+        solarInfoProps.Button = "예측 조회";
+      }
+
+      function askbtnclick(e){
+        window.location.href="/ask"
+      }
 
 
     return (
         <div className="container" id="container">
             <section data-anchor="Page 1" className="pg-page pg-active" id="page-1">
                 <div className="scaleChage">
-                    <div className="explain">
-                        <p>
-                        <span className="fontUp1">태양광 발전량</span>
-                        </p>
-                        <p>
-                        <span className="fontUp2">태양광 수익률</span>
-                        </p>
-                    </div>
+                    <video muted autoPlay loop className="mainvideo">
+                        <source src="./images/slslvideo.mp4" type="video/mp4" />
+                    </video>
+                    <SolarInfo fontUp1="태양광 모듈 선택시," fontUp2="발전수익과 설치비용 예측" />
                 </div>
             </section>
 
             <section data-anchor="Page 2" className="pg-page" id="page-2">
                 <div className="scaleChage"> 
-                {/* <p>
-                        <span className="fontUp1">태양광 발전량</span>
-                    </p>
-                    <p>
-                        <span className="fontUp2">태양광 수익률</span>
-                    </p>
-                    <a href="/introduce" className="fontShow1">제품 소개</a>  */}
-                    <div className="containerSlider">                              
-                        {dataSlider.map((obj, index) => {
-                            return (
-                                <div
-                                key={obj.id} 
-                                className= {slideIndex === index + 1 ?"slide active-anim" : "slide"}
-                                >
-                                    <img
-                                    src={process.env.PUBLIC_URL + `/images/Slider${slideIndex + 1}.jpg`}
-                                    />                                   
-                                </div>
-                            )
-                        })} 
+                    <div className="containerSlider">                    
+                        <img
+                        src={process.env.PUBLIC_URL + `/images/Slider${slideIndex+1}.jpg`}
+                        className="slideImg"
+                        />
+                        <SolarInfo {...solarInfoProps} />
                         <BtnSlider moveSlide={nextSlide} direction={"next"}/> 
                         <BtnSlider moveSlide={prevSlide} direction={"prev"}/>                                                      
                     </div>
@@ -204,14 +178,10 @@ function Main() {
 
             <section data-anchor="Page 3" className="pg-page" id="page-3">
                 <div className="scaleChage">
-                    <div className="explain">
-                        <p>
-                        <span className="fontUp1">태양광 발전량</span>
-                        </p>
-                        <p>
-                        <span className="fontUp2">태양광 수익률</span>
-                        </p>
-                    </div>
+                <video muted autoPlay loop className="sub2video">
+                    <source src="./images/askvideo.mp4" type="video/mp4" />
+                </video>
+                    <SolarInfo fontUp1="CONTACT US." fontUp2="SLSL과 함께하세요" Route= "InquiryInput" Button="문의하기"/>
                 </div>
             </section>
         </div>
