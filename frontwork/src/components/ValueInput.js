@@ -99,7 +99,7 @@ const ValueInput = () => {
                                         id = "inputArea" 
                                         required
                                         placeholder='단위를 입력하세요'/> 
-                                <span>&nbsp;&nbsp;(단위)</span>
+                                <span>&nbsp;&nbsp;(m²)</span>
                             </td>
                 
                         
@@ -115,7 +115,7 @@ const ValueInput = () => {
                                 selectsStart
                                 startDate={startDate}
                                 endDate={endDate}
-                                dateFormat="yyyy/MM/dd"
+                                dateFormat="yyyyMMdd"
                                 placeholderText='시작일자'
                                 required/ 
                                 >
@@ -132,7 +132,7 @@ const ValueInput = () => {
                                     startDate={startDate}
                                     endDate={endDate}
                                     minDate={startDate}
-                                    dateFormat="yyyy/MM/dd"
+                                    dateFormat="yyyyMMdd"
                                     placeholderText='종료일자'
                                     required/>
                             </td>
