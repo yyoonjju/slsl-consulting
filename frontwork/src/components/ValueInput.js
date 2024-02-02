@@ -35,11 +35,11 @@ const ValueInput = () => {
         if(locationId==='Mapsvg'){
             setSelectedLocation("");
         }
-    }
+    };
 
     return (
         <div class = "ValueInput">
-        
+            
             <section>
                 <MapsvgPath selectedLocation={selectedLocation} onClick={ClickPath}/>
                 
@@ -148,6 +148,7 @@ const ValueInput = () => {
             </section>
             
         </div>
-    )
-}
+    );
+};
+
 export default ValueInput;
