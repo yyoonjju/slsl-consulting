@@ -1,0 +1,175 @@
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 메인 화면 CSS */
+
+  .slideImg {
+    opacity: 0.8;
+  }
+
+  .mainvideo, .sub2video {
+    opacity: 0.8;
+  }
+  
+  .container {
+    background: black;
+  }
+
+  .pg-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .scaleChage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    scale: 0.8;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .explain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .carousel-indicators button {
+    display: none;
+  }
+
+  p {
+    overflow: hidden;
+  }
+
+  .fontUp1, .fontUp2 {
+    display: block;
+    font-size: 40px;
+    font-weight: 600;
+    color: rgb(26, 51, 92);
+    opacity: 0;
+  }
+
+  /* 메인 화면 2번째 CSS */
+
+  .fontShow1, .fontShow2, .fontShow3 {
+    width: 80px;
+    height: 30px;
+    background: black;
+    text-decoration: none;
+    opacity: 0;
+  }
+
+  a, a:active, a:hover, a:checked, a:visited {
+    /* color: rgb(26, 51, 92); */
+    background-color:rgb(26,51,92);
+    font-size: 28px;
+    font-weight:bold;
+    color:white;
+    /* padding: 4px 10px 4px 10px; */
+    border-radius: 10px;
+  }
+
+  /* 스크롤 시 이름이 추가되는 클래스 CSS */
+
+  .scaleChage.load {
+    scale: 1;
+  }
+
+  .scaleChage.active {
+    transition: all 0.8s;
+    scale: 1;
+  }
+
+  .fontUp1.active {
+    animation: show_txt .4s .5s ease-in-out forwards;
+  }
+
+  .fontUp2.active{
+    animation: show_txt .7s .8s ease-in-out forwards;
+    padding-bottom: 20px;
+  }
+
+  @keyframes show_txt {
+    0%{
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .fontShow1.active, .fontShow2.active, .fontShow3.active {
+    animation: fadeIn 1.2s ease-in-out 1.4s forwards;    
+  }
+
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* 왼쪽의 점 요소들 (섹션 이동 기능) */
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pg-vertical .pg-pips {
+    left: 20px;
+    width: 100px;
+  }
+
+  .pg-pips ul li {
+    margin-bottom: 30px;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;    
+  }
+
+  .pg-pips ul li a {
+    width: 10px;
+    height: 10px;
+    left: 41%;
+    top: 41%;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .pg-pips ul li:hover a {
+    width: 10px;
+    height: 10px;
+    left: 51%;
+    top: 51%;
+  }
+  
+  .pg-pips ul li:hover a.active,.pg-pips ul li a.active {
+    width: 20px;
+    height: 20px;
+    left: 41%;
+    top: 41%;
+    background: white;
+  }
+  

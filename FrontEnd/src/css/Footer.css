@@ -1,0 +1,14 @@
+
+  .footer {
+    background-color: rgb(26, 51, 92);
+    color: white;
+    text-align: center;
+    line-height: 150%;
+    font-size: medium;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:20vh;
+    position: absolute;
+  }

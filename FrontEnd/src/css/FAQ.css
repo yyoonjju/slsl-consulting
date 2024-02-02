@@ -1,0 +1,109 @@
+    
+    .QnAPhoto, .faq {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .QnA {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 130vh;
+    }
+
+    .QnAPhoto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 600px;
+    }
+
+    .QnAPhotoBox {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0;
+    }
+
+    .faq {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 600px;
+    }
+
+    .faqText {
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        width: 600px;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 40px;
+    }
+
+    .questionList {
+        display: flex;
+        align-items: center;
+    }
+
+    .answerList {
+        display: flex;
+        align-items: center;
+    }
+
+    .QnAImg {
+        background: url('../../public/images/QnA.png');
+        background-size: cover;
+        background-position: center;
+        width: 240px;
+        height: 490px;
+    }
+
+    .faqQ {
+        font-size: 42px;
+        width: 50px;
+    }
+
+    .faqQuestion {
+        padding-top: 10px;
+        font-size: 22px;
+    }
+
+    .faqAnswer {
+        height: 40px;
+        padding: 20px 0 0 20px;
+        font-size: 16px;
+    }
+
+    /* 로드 시 요소가 올라오는 애니매이션 코드 */
+
+    .QnAPhotoBox.active {
+        animation: show_FnQ 1s .4s ease-in-out forwards;
+    }
+
+    .faqText.active {
+        animation: show_FnQ 1s 1s ease-in-out forwards;
+    }
+
+    @keyframes show_FnQ {
+        0%{
+          transform: translateY(20%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .QnAPhoto {
+            display: none;
+        }
+    }
