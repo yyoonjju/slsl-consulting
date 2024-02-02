@@ -1,70 +1,18 @@
-# Getting Started with Create React App
+# FrontEnd
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 각 컴포넌트의 용도 
+1. Main : 메인 페이지
+2. Header : 헤더
+3. Footer : 푸터
+4. Product : 제품정보 페이지
+5. MapSelct : 발전량 예측 정보 페이지
+6. ValueInput : 수익계산 페이지
+7. FAQ : 자주 묻는 질문 페이지
+8. InquiryInput : 문의하기 페이지 
+9. SolarInfo : 메인 페이지에서 사용되는 내용 목록에 대한 JSX 구조를 정의하는 컴포넌트 (Main의 자식 컴포넌트)
+10. BtnSlider : 메인 페이지에서 사용되는 버튼에 대한 JSX 구조를 정의하는 컴포넌트 (Main의 자식 컴포넌트)
+11. Chart : 설정한 지역의 일일 발전량 누적 발전량을 차트 그래프로 표시한 컴포넌트 (MapSelct 자식 컴포넌트)
+12. Table : 설정한 지역의 일일 발전량, 누적 발전량을 테이블로 표시한 컴포넌트 (MapSelct 자식 컴포넌트)
+13. MapsvgPath : 한반도 지도 svg가 있는 컴포넌트 (ValueInput 자식 컴포넌트)
+14. FaqList : FAQ 페이지에서 사용되는 FAQ 내용 목록을 나타내는 컴포넌트 (FAQ 자식 컴포넌트)
+15. FaqItem : FaqList에서 만들어진 각각의 FAQ 내용에 대한 JSX 구조를 정의하는 컴포넌트 (FAQ, FaqList 자식 컴포넌트)
