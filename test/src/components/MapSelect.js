@@ -1,46 +1,94 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Moment from 'moment';
 import '../static/css/MapSelect.css';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
+import Chart from './Chart.js';
+import Table from './Table.js';
 
-function MapSelect({onDataUpdate}) {
-    const location = useRef('korea');
-    const firstDate = useRef(Moment(new Date()).format("YYYY-MM-DD"));
-    const secondDate = useRef(Moment(new Date()).add(1,"days").format("YYYY-MM-DD"));
+function MapSelect() {
+    const [toolLocation, setToolLocation] = useState('korea');
+    const [location, setLocation] = useState('korea');
+    const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
+    const [secondDate, setSecondDate] = useState(Moment(new Date()).add(1,"days").format("YYYY-MM-DD"));
+    const [toolData, setToolData] = useState(null);
+    const [data, setData] = useState(null);
+    const [dt, setDt] = useState(0);
+    const [tm, setTm] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         Result();
-    },[]);
+    },[location,firstDate,secondDate]);
 
     const Result = async() => {
-        console.log(firstDate);
-        console.log(secondDate);
-        const res = await axios.get(`http://10.10.21.64:8080/api/${location.current}`, {
+        const res = await axios.get(`http://10.10.21.64:8080/api/${location}`, {
             params: {
-                firstDate: firstDate.current,
-                secondDate: secondDate.current
+                firstDate: firstDate,
+                secondDate: secondDate
             }
         });
-        onDataUpdate(res.data);
+        setData(res.data);
     };
 
-    const ClickPath = async(e) => {
+    const ToolResult = async() => {
+        const res = await axios.get(`http://10.10.21.64:8080/api/${toolLocation}`, {
+            params: {
+                firstDate: firstDate,
+                secondDate: secondDate
+            }
+        });
+        setToolData(res.data);
+    };
+
+    const ClickPath = (e) => {
         if (e.target.id === "Mapsvg") {
             console.log("retry");
         }
         else {
             try {
                 // //선택 지역의 id
-                location.current = e.target.id;
-                Result();
+                setLocation(e.target.id);
             }
             catch {
                 console.log("retry");
             }
         }
+    };
+
+    const Tip = () => {
+        return toolData === null ? <Tooltip id="tooltip" content="retry"/> : <Tooltip id={`tooltip-${toolLocation}`} isOpen={isOpen}>
+            {toolData[dt].date}&nbsp;&nbsp;{toolData[tm].time}시<br/>
+            발전량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{toolData[tm].loc_power}<br/>
+            누적발전량&nbsp;&nbsp;&nbsp;{toolData[tm].loc_total}
+        </Tooltip>;
+    };
+
+    const ClickTime = (e) => {
+        if (e.target.id === "1") {
+            setDt(0);
+            setTm(e.target.outerText);
+        }
+        else {
+            setDt(24);
+            setTm(e.target.outerText);
+        }
+    };
+
+    const FirstTime = () => {
+        return (data === null || data === undefined ? [{time: 0}] : data.slice(0,24)).map((row, index) => (
+            <span key={index} id="1" className="tm" onClick={ClickTime}>{row.time}</span>
+        ));
+    };
+
+    const SecondTime = () => {
+        return (data === null || data === undefined ? [{time: 0}] : data.slice(24,48)).map((row, index) => (
+            <span key={index} id="2" className="tm" onClick={ClickTime}>{row.time}</span>
+        ));
     };
 
     // Mapsvg 함수
@@ -52,6 +100,7 @@ function MapSelect({onDataUpdate}) {
                     id="busan"
                     name="Busan"
                     d="m 362.20429,382.50884 0.04,0.76 3.97,0 1.34,1.34 0,0 1,1.68 -0.17,1.51 -0.9,0.32 -0.6,0.77 -0.37,1.02 0.26,1.67 -0.73,2.34 -0.87,-0.06 -0.1,0.93 -0.89,0.13 0.58,0.55 1.02,-0.35 0.31,1.63 -1.42,3.04 -0.63,-0.03 -0.34,-0.48 -0.6,1.41 0.79,1.38 -0.08,0.48 -0.45,0 -0.03,1.25 -0.5,0.26 -0.31,-0.45 -0.53,0.74 -1,0.13 -0.58,2.21 -0.76,0.16 -0.37,0.54 -1.65,-0.61 -0.6,0.1 -0.68,0.83 -1.65,-1.09 0.11,0.8 -1.63,0.22 -0.23,0.54 0.29,0.86 -0.66,0.67 1.02,0.16 0.52,1.5 -0.13,2.62 -1.18,-0.64 -0.71,0 -0.29,0.51 -0.92,-0.19 -0.1,-1.02 -0.21,0.64 -1.94,-0.26 0.21,-1.98 -0.71,-0.45 -0.58,0.8 -1.21,0.51 -0.31,0.57 0.24,0.38 -1.63,1.73 -0.21,1.79 -0.81,0.1 0.68,1.44 -0.71,1.15 -0.92,-2.04 -0.18,-1.53 -1.08,0.19 0.92,3.86 -0.34,0.54 -0.6,-0.13 -0.16,-1.47 -0.97,-0.35 -0.29,0.67 0.63,0.16 -0.13,0.83 -1.16,-0.13 0.69,0.93 -0.45,0 -0.73,0.83 0.1,-1.76 -0.73,-0.38 -0.81,-3.32 0.55,-3.03 -0.58,-0.06 -0.34,1.73 -1.15,0.77 -0.13,-1.18 0.47,-1.6 -0.42,-0.1 -0.68,2.01 -1.26,0.74 -0.03,0.86 -1.65,0 0.5,-3.8 0.53,-0.73 -1.05,-0.38 -0.97,4.92 -1.5,-0.51 -2.94,0 -1.5,-1.63 -0.24,0.7 -1.55,0.16 -1.15,1.31 -0.52,-0.06 -0.24,-0.83 0.76,-1.05 0.87,0.16 0.21,-0.64 -1.26,0.19 0.32,-2.32 0,0 0.2,-0.47 2.43,-1 4.3,-1.15 0.43,-5.01 2.29,-0.29 3.87,-2.43 4.15,-0.14 1.43,-1.57 0.86,-2 0.79,-0.2 0.98,-1.16 3.95,-2.48 1.84,0.32 1.03,-1.34 0.86,-2.72 1.72,-2.58 4.87,-0.57 0.57,-1.86 2.95,-2.71 0,0 0.24,0.27 z m -14.5,30.88 1.86,1.6 -0.29,1.63 1.94,1.63 -0.5,1.09 -0.89,0 -0.47,-1.18 -0.63,0.26 -0.5,-0.48 -0.08,-0.8 -1.31,-0.42 -1.81,-1.88 0.03,-0.48 0.81,-0.51 1.84,-0.46 z"
+                    // data-tooltip-id="tooltip"
                 />
                 <path
                     id="daegu"
@@ -72,6 +121,15 @@ function MapSelect({onDataUpdate}) {
                     id="gwangju"
                     name="Gwangju"
                     d="m 151.37429,399.96884 -1.95,-2.34 -1.82,-0.87 -2.44,-0.09 -2.44,0.96 -2,1.04 -2.01,2.09 -1.48,0.09 -2.09,-0.7 -1.48,-1.39 -0.61,-2.18 -2.18,-0.08 -2.09,5.31 -2.35,-0.09 -1.74,2.09 -1.13,4.79 0.43,4.09 7.23,1.05 1.83,2.26 1.92,3.84 3.74,0 3.4,-2.01 3.83,0 1.48,-1.04 3.14,0.61 3.39,-2.35 1.4,-1.83 0.78,-1.66 0.09,-2.61 0.87,-1.83 0,-1.39 -2.09,-0.96 -2.61,-0.26"
+                    data-tooltip-id="tooltip-gwangju"
+                    onMouseEnter={() => {
+                        setToolLocation("gwangju");
+                        ToolResult();
+                        setIsOpen(true);
+                    }}
+                    onMouseLeave={() => {
+                        setIsOpen(false);
+                    }}
                 />
                 <path
                     id="gyeonggi"
@@ -112,6 +170,15 @@ function MapSelect({onDataUpdate}) {
                     id="seoul"
                     name="Seoul"
                     d="m 133.25429,127.63884 0.58,0.33 0,0 3.8,3.83 -0.1,1.78 0.55,0.52 0.32,3.1 0.57,0.53 0.56,-0.1 2.41,-1.25 2.57,5.7 0.53,0.13 1.81,-0.73 1.21,0.5 2.39,-0.1 4.17,-2.31 3.08,-0.29 0,1.71 0.68,1.22 3.65,-2.08 2.99,-0.26 1.68,-1.58 -0.45,-0.56 0.43,-0.59 0.63,0.16 0.63,-0.46 1.28,-1.72 0,-0.59 -1.18,-0.49 0.4,-2.51 0.99,-0.99 1.76,-0.62 0.45,-0.53 -0.66,-2.41 -0.79,-1.15 -1.15,0.82 -2.47,0.6 -1.18,0.76 -1.18,0.16 -0.37,-0.59 -0.03,-1.19 1.45,-4.16 -1.11,-1.71 -0.07,-1.85 -0.9,-1.16 -0.1,-4.52 -0.92,-1.09 -1.18,-0.2 -2.63,0.33 -2.33,-0.53 -0.92,0.99 -1.26,0.53 -0.56,0.53 0.03,1.19 -1.1,1.06 -0.08,3 -1.1,0.79 -5.15,0.4 -0.84,1.05 -0.16,3.11 -0.63,0.36 -3.62,1.61 -2.42,-1.15 -1.39,-1.72 -1.26,-0.32 -1.02,2.47 -1.16,0.99 z"
+                    data-tooltip-id="tooltip-seoul"
+                    onMouseEnter={() => {
+                        setToolLocation("seoul");
+                        ToolResult();
+                        setIsOpen(true);
+                    }}
+                    onMouseLeave={() => {
+                        setIsOpen(false);
+                    }}
                 />
                 <path
                     id="south-chungcheong"
@@ -135,25 +202,44 @@ function MapSelect({onDataUpdate}) {
                 />
             </svg>
     );
+
     return (
         <div id ="MapsvgDiv">
             <div>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker selected={firstDate} format="YYYY-MM-DD" onChange={(date) => {
-                        firstDate.current = Moment(date.$d).format("YYYY-MM-DD");
-                        Result();
-                    }}/>
+                    <DatePicker
+                        selected={firstDate}
+                        format="YYYY-MM-DD"
+                        onChange={(date) => {
+                            setFirstDate(Moment(date.$d).format("YYYY-MM-DD"));
+                        }}
+                    />
                     <DatePicker selected={secondDate} format="YYYY-MM-DD" onChange={(date) => {
-                        secondDate.current = Moment(date.$d).format("YYYY-MM-DD");
-                        Result();
+                        setSecondDate(Moment(date.$d).format("YYYY-MM-DD"));
                     }}/>
                 </LocalizationProvider>
+            </div>
+
+            <div>
+                <div>
+                    <FirstTime/>
+                </div>
+
+                <div>
+                    <SecondTime/>
+                </div>
             </div>
             
             <div>
                 <MapsvgPath/>
+                <Tip/>
+            </div>
+
+            <div>
+                <Chart data={data}/>
+                <Table data={data}/>
             </div>
         </div>
-    )
+    );
 }
 export default MapSelect;
