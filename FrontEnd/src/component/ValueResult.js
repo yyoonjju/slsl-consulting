@@ -13,11 +13,17 @@ const ValueResult = () => {
 
     // formData를 이용하여 결과를 표시
     return (
-        <div>
-            <h2>ValueResult Page</h2>
-            <p>Received Form Data:</p>
-            <pre>{JSON.stringify(formData, null, 2)}</pre>
-        </div>
+        <article className='ValueResultPages'>
+            <div id = "ValueResultTitle">
+                <h1>발전수익 계산</h1>
+            </div>
+            <section className='ValueResult'>
+                <h2>ValueResult Page</h2>
+                <p>Received Form Data:</p>
+                <pre>{JSON.stringify(formData, null, 2)}</pre>
+            </section>
+
+        </article>
     );
 };
 

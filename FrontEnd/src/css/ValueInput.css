@@ -3,8 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
+#ValueInputTitle{
+    display: flex;
+    width: 1000px;
+    margin-bottom: 20px;
+}
 
 .ValueInput{
     display: flex;

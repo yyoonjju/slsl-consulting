@@ -70,14 +70,16 @@ const ValueInput = () => {
     const ClickSubmit = (e) =>{
         e.preventDefault();
         console.log('submit ValueData', ValueData);
-        // window.location.href="/ValueResult"
 
-           // ValueResult 컴포넌트로 폼 데이터를 전달
+        // ValueResult 컴포넌트로 폼 데이터를 전달
           navigate('/ValueResult',{state:{formData:ValueData}});
     };
 
     return (
         <article className= "ValueInputPages">
+            <div id = "ValueInputTitle">
+                <h1>발전수익 계산</h1>
+            </div>
 
             <div className= "ValueInput">
             
