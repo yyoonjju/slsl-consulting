@@ -36,7 +36,14 @@
     text-align: left;
     cursor: pointer;
   }
-  
+  .logo{
+    width:100px;
+    height:11vh;
+    padding-top:3vh;
+    position:absolute;
+    margin-left:10px;
+  }
+
   .logo {
     width: 100px;
     height: 68px;

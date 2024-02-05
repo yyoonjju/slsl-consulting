@@ -26,10 +26,10 @@ function Chart({data}) {
       {/* 첫 번째 날짜에 대한 차트 그래프 생성 */}
       <div>
         <ComposedChart
-          width={700}
-          height={500}
+          width={800}
+          height={400}
           // 첫 번째 날짜만 잘라서 표시
-          data={data === null ? blankData : data.slice(0,24)}
+          data={data === null ? blankData : data}
           margin={{
             top: 20,
             right: 20,
@@ -50,7 +50,7 @@ function Chart({data}) {
       </div>
 
       {/* 두 번째 날짜에 대한 차트 그래프 생성 */}
-      <div>
+      {/* <div>
           <ComposedChart
           width={700}
           height={500}
@@ -73,7 +73,7 @@ function Chart({data}) {
           <Bar yAxisId="right" dataKey="loc_total" barSize={20} fill="#413ea0" />
           <Line yAxisId="left" type="monotone" dataKey="loc_power" stroke="#ff7300" />
         </ComposedChart>
-      </div>
+      </div> */}
     </div>
   );
 }
