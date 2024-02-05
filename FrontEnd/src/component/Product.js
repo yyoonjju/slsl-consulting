@@ -23,7 +23,7 @@ const Product= ()=>{
                 <p><span className="productDetail">가격</span> : 39만 7650원</p>
             </div>
         </div>
-    </div>    
+    </div>
     )
 }
 
