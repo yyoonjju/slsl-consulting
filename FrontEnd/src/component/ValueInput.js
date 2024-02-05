@@ -13,14 +13,26 @@ const ValueInput = () => {
 
     const handleStartDateChange = (date) => {
       setStartDate(date);
+      setValueData((prevData) => ({
+        ...prevData,
+        startDate:date,
+    }));
     };
   
     const handleEndDateChange = (date) => {
       setEndDate(date);
+      setValueData((prevData) => ({
+        ...prevData,
+        endDate:date,
+    }));
     };
 
     const handleLocationChange = (e) =>{
         setSelectedLocation(e.target.value);
+        setValueData((prevData) => ({
+            ...prevData,
+            selectLocal:e.target.value,
+        }));
     };
 
     const ClickPath = (locationId)=>{
@@ -34,6 +46,30 @@ const ValueInput = () => {
         }
     };
 
+    const [ValueData, setValueData] = useState({
+        selectLocal:'',
+        selectPanel:'',
+        inputArea:'',
+        startDate:'',
+        endDate:'',
+    });
+
+    //입력값 변경 (날짜,)
+    const ClickChange = (e) => {
+        console.log(e.target);
+
+        setValueData((prevData) => ({
+            ...prevData,
+            [e.target.name] : e.target.value,
+        }));
+    };
+
+    // 폼 제출 핸들러
+    const ClickSubmit = (e) =>{
+        e.preventDefault();
+        console.log('submit ValueData', ValueData);
+    };
+
     return (
         <article className= "ValueInputPages">
 
@@ -41,17 +77,23 @@ const ValueInput = () => {
             
             <section>
                 <MapsvgPath selectedLocation={selectedLocation} onClick={ClickPath}/>
-                
             </section>
             
             <section id = "inputSection">
-                <form id = "inputForm">
+                <form id = "inputForm" onSubmit={ClickSubmit}>
                     <table id = "inputFormTable">
 
                         <tr id = "selectLocation">
                             <td>지역 선택</td>
                             <td>
-                                <select onChange={handleLocationChange} name = "selectLocal" id = "selectLocal" required>
+                                <select onChange={handleLocationChange} 
+                                        name = "selectLocal" 
+                                        id = "selectLocal" 
+                                        required
+                                        onChangeRaw={(e)=>{
+                                            handleLocationChange(e);
+                                            ClickChange(e);
+                                        }}>
                                     <option value=""disabled selected hidden>지역을 선택하세요.</option>
                                     <option value="seoul" selected={selectedLocation === 'seoul'}>서울특별시</option>
                                     <option value="daejeon" selected={selectedLocation === 'daejeon'}>대전광역시</option>
@@ -78,7 +120,7 @@ const ValueInput = () => {
                         <tr id='selectPanel_Box'>
                             <td>모듈 선택</td>
                             <td colSpan="3">
-                                <select name = "selectPanel" id = "selectPanel" required>
+                                <select name = "selectPanel" id = "selectPanel" required onChange={ClickChange}>
                                     <option value=""disabled selected hidden>모듈을 선택하세요.</option>
                                     <option value="fromKorea">국산 PEAKDVQ XL G11.7(570Wp)</option>
                                     <option value="fromUSA">미국산 AmeriSolar AS-qm120-HC(580Wp)</option>
@@ -91,9 +133,11 @@ const ValueInput = () => {
                             <td>면적(m²)</td>
                             <td colSpan="2">
                                 <input  pattern="[0-9]+"  
-                                        id = "inputArea" 
+                                        id = "inputArea"
+                                        name = "inputArea"
                                         required
-                                        placeholder='단위를 입력하세요'/> 
+                                        placeholder='단위를 입력하세요'
+                                        onChange={ClickChange}/> 
                             </td>            
                         </tr>
            
@@ -110,6 +154,7 @@ const ValueInput = () => {
                                 dateFormat="yyyyMMdd"
                                 placeholderText='시작일자'
                                 required
+                                name = 'startDate'
                                 />
                                 
                             </td>
@@ -126,14 +171,16 @@ const ValueInput = () => {
                                     minDate={startDate}
                                     dateFormat="yyyyMMdd"
                                     placeholderText='종료일자'
-                                    required/>
+                                    required
+                                    name = 'endDate'
+                                    />
                             </td>
                         </tr>
                  
                         <tr >
                             <td></td><td></td>
                             <td colSpan="2">
-                                <button id="right_inputBtn">계산하기</button>
+                                <button id="right_inputBtn" type='submit'>계산하기</button>
                             </td>
                             
                         </tr>
