@@ -36,6 +36,7 @@ const ValueInput = () => {
         }));
     };
 
+    // 지도에서 지역 눌렀을때
     const ClickPath = (locationId)=>{
         // setInputLocation(locationId);
         console.log(locationId);
@@ -103,10 +104,7 @@ const ValueInput = () => {
                                         name = "selectLocal" 
                                         id = "selectLocal" 
                                         required
-                                        onChangeRaw={(e)=>{
-                                            handleLocationChange(e);
-                                            ClickChange(e);
-                                        }}>
+                                       >
                                     <option value=""disabled selected hidden>지역을 선택하세요.</option>
                                     <option value="seoul" selected={selectedLocation === 'seoul'}>서울특별시</option>
                                     <option value="daejeon" selected={selectedLocation === 'daejeon'}>대전광역시</option>
