@@ -1,9 +1,17 @@
 .ValueResultPages { 
-    height:100vh;
+    height:150vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.ValueResultTable{
+    width: 500px;
+}
+
+.ValueResultTable>tr>td{
+    border: solid 1px black;
 }
 
 #ValueResultTitle{
@@ -17,8 +25,15 @@
     flex-direction: column;
     background-color: #EEF3F6;
     width: 1000px;
-    height: 450px;
+    height: 1000px;
     border-radius: 25px;
     padding: 20px;
     justify-content: space-around;
+}
+
+.ResultCostTable{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

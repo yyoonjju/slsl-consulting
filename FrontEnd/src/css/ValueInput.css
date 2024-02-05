@@ -49,8 +49,8 @@
     border: solid 1px lightgray;
     padding: 0px 5px 0 5px;
     margin: 0;
-    width: 160px;
-    height: 30px;
+   
+    height: 40px;
 }
 
 #inputFormTable>tr>td>input{
@@ -96,6 +96,14 @@
 
 #right_inputBtn:hover{
     background-color: #0b6acf;
+}
+
+#selectLocal{
+    width: 160px;
+}
+
+#selectPanel{
+    width: 500px;
 }
 
 /* #selectPanel, #selectLocal, #inputArea,  */
