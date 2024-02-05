@@ -1,14 +1,16 @@
 
   .footer {
-    background-color: rgb(26, 51, 92);
-    color: white;
-    text-align: center;
+    background-color: #EEF3F6;
+    color: rgb(26,51,92);
+    /* text-align: center; */
     line-height: 150%;
-    font-size: medium;
+    font-size: larger;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height:20vh;
     position: absolute;
+    line-height: 200%;
+    font-weight: bold;
   }

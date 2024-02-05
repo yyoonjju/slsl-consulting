@@ -59,30 +59,40 @@
 
   .fontUp1, .fontUp2 {
     display: block;
-    font-size: 40px;
+    font-size: 44px;
     font-weight: 600;
-    color: rgb(26, 51, 92);
+    color: white;
     opacity: 0;
   }
+
+  .fontUp3 {
+    display: block;
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+    opacity: 0;
+  }
+  
 
   /* 메인 화면 2번째 CSS */
 
-  .fontShow1, .fontShow2, .fontShow3 {
-    width: 80px;
-    height: 30px;
-    background: black;
-    text-decoration: none;
-    opacity: 0;
-  }
 
-  a, a:active, a:hover, a:checked, a:visited {
-    /* color: rgb(26, 51, 92); */
-    background-color:rgb(26,51,92);
+  a, a:active, a:hover, a:checked, a:visited { 
+    color: rgb(26, 51, 92);
+    /* background-color:white; */
     font-size: 28px;
     font-weight:bold;
-    color:white;
+    border-radius: 5px;
+  }
+
+  .fontShow1, .fontShow2, .fontShow3 {
+    /* width: 120px;
+    height: 50px; */
+    background: rgb(26,51,92);
+    color:white !important;
+    text-decoration: none;
     /* padding: 4px 10px 4px 10px; */
-    border-radius: 10px;
+    opacity: 0;
   }
 
   /* 스크롤 시 이름이 추가되는 클래스 CSS */
@@ -100,9 +110,12 @@
     animation: show_txt .4s .5s ease-in-out forwards;
   }
 
-  .fontUp2.active{
+  .fontUp2.active {
     animation: show_txt .7s .8s ease-in-out forwards;
-    padding-bottom: 20px;
+  }
+
+  .fontUp3.active {
+    animation: show_txt .4s .5s ease-in-out forwards;
   }
 
   @keyframes show_txt {
@@ -117,10 +130,9 @@
   }
 
   .fontShow1.active, .fontShow2.active, .fontShow3.active {
-    animation: fadeIn 1.2s ease-in-out 1.4s forwards;    
+    animation: fadeIn 1.2s ease-in-out 1.4s forwards; 
   }
 
-  
   @keyframes fadeIn {
     0% {
       opacity: 0;
