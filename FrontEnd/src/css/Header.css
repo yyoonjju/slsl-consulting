@@ -37,11 +37,11 @@
     cursor: pointer;
   }
   .logo{
-    width:8vw;
+    width:100px;
     height:11vh;
     padding-top:3vh;
     position:absolute;
-    margin-left:3vw;
+    margin-left:10px;
     cursor: pointer;
   }
 

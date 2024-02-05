@@ -28,6 +28,7 @@ function MapSelect() {
     // ClickPath로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
         Result();
+        console.log(data);
     },[location,firstDate,secondDate]);
 
     // Server에서 지역에 따른 Data를 가져와서 변수 data에 저장 후
@@ -110,7 +111,7 @@ function MapSelect() {
     const MapsvgPath = () =>(
         // viewBox를 조정하면 지도가 각 부분으로 짤립니다.
         // 지도 전체 사이즈는 MapsvgDiv 에서 조절하면 됩니다.
-            <svg xmlns="south-korea.svg" viewBox="0 0 524 631" id ="Mapsvg" onClick={ClickPath}>
+            <svg xmlns="south-korea.svg" viewBox="0 0 524 631" id ="Mapsvg" className="MapSlc" onClick={ClickPath}>
                 <path
                     id="busan"
                     name="Busan"
@@ -223,54 +224,82 @@ function MapSelect() {
 
     return (
         <div className="mapSelect">
-            <div id ="MapsvgDiv">
+            <div className="dashBoard">
+                {/* 시간 */}
                 <div>
-                    {/* 캘린더 */}
                     <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            {/* 첫 번째 캘린더 */}
-                            <DatePicker
-                                selected={firstDate}
-                                format="YYYY-MM-DD"
-                                onChange={(date) => {
-                                    setFirstDate(Moment(date.$d).format("YYYY-MM-DD"));
-                                }}
-                            />
-                            {/* 두 번째 캘린더 */}
-                            <DatePicker selected={secondDate} format="YYYY-MM-DD" onChange={(date) => {
-                                setSecondDate(Moment(date.$d).format("YYYY-MM-DD"));
-                            }}/>
-                        </LocalizationProvider>
+                        {/* 첫 번째 시간 */}
+                        {/* <FirstTime/> */}
                     </div>
 
-                    {/* 시간 */}
                     <div>
-                        <div>
-                            {/* 첫 번째 시간 */}
-                            <FirstTime/>
-                        </div>
-
-                        <div>
-                            {/* 두 번째 시간 */}
-                            <SecondTime/>
-                        </div>
+                        {/* 두 번째 시간 */}
+                        {/* <SecondTime/> */}
                     </div>
+                </div>
 
-                    {/* 지도와 툴팁 */}
-                    <div>
+                {/* 지도와 툴팁 */}
+                <div className="leftBox">
+                    <div className="leftContainer">
+                        {/* 캘린더 */}
+                        <table className="calendar">
+                            <tr>
+                                <th>시작 날 날짜</th>
+                                <td>
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        {/* 첫 번째 캘린더 */}
+                                        <DatePicker
+                                            selected={firstDate}
+                                            format="YYYY-MM-DD"
+                                            onChange={(date) => {
+                                                setFirstDate(Moment(date.$d).format("YYYY-MM-DD"));
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                </td>
+                                <th>끝나는 날 날짜</th>
+                                <td>
+                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                        {/* 두 번째 캘린더 */}
+                                        <DatePicker
+                                            selected={secondDate}
+                                            format="YYYY-MM-DD"
+                                            onChange={(date) => {
+                                                setSecondDate(Moment(date.$d).format("YYYY-MM-DD"));
+                                            }}
+                                        />
+                                    </LocalizationProvider>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>시작 날 시간</th>
+                                <td>text</td>
+                                <th>끝나는 날 시간</th>
+                                <td>text</td>
+                            </tr>
+                        </table>
                         <MapsvgPath/>
                         <Tip/>
+                    </div>
+                    
+                    <div className="rightContainer">
+                        <div>
+                            <Chart data={data}/>
+                        </div>
+
+                        <div>
+                            <Table data={data}/>
+                        </div>
                     </div>
                 </div>
             </div>
 
             {/* 차트그래프와 테이블 */}
-            <div className="flx">
-                <div>
-                    <Chart data={data}/>
-                </div>
-                <Table data={data}/>
-            </div>
+            {/* <div className="flx">
+                
+                
+            </div> */}
         </div>
     );
 }

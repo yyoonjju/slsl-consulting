@@ -1,21 +1,26 @@
+ 
     .table {
         width: max-content;
         height: fit-content;
         line-height: 1.5;
     }
+    
     .table th {
         text-align: center;
-        background-color: lightgray;
+        background-color: rgba(26,51,92,0.4);
         padding: 7px 12px;
 
     }
+
     .table td {
         text-align: center;
         padding: 7px 12px;
     }
+
     .td-test {
-        background-color: aquamarine;
+        background-color: rgba(26,51,92,0.2);
     }
+
     .test {
         display: flex;
     }

@@ -34,7 +34,7 @@ function Tb({data}) {
 
                     <tbody>
                         {/* 첫 번째 날짜에 대한 데이터만 표시 */}
-                        {((data === null || data === undefined) ? blankData : data.slice(0,24)).map((row, index) => (
+                        {((data === null || data === undefined) ? blankData : data.slice(0,5)).map((row, index) => (
                             <tr key={index}>
                                 <td className="td-test">{row.time}</td>
                                 <td>{row.loc_power}</td>
@@ -57,7 +57,7 @@ function Tb({data}) {
 
                     <tbody>
                         {/* 두 번째 날짜에 대한 데이터만 표시 */}
-                        {((data === null || data === undefined) ? blankData : data.slice(24,48)).map((row, index) => (
+                        {((data === null || data === undefined) ? blankData : data.slice(24,29)).map((row, index) => (
                             <tr key={index}>
                                 <td>{row.loc_power}</td>
                                 <td>{row.loc_total}</td>
