@@ -1,0 +1,16 @@
+.table {
+    width: max-content;
+}
+.table th {
+    text-align: center;
+    background-color: lightgray;
+}
+.table td {
+    text-align: center;
+}
+.td-test {
+    background-color: aquamarine;
+}
+.test {
+    display: flex;
+}

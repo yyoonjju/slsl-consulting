@@ -1,0 +1,66 @@
+.productdetail{display:flex;
+    height:100vh;}
+
+.introduceproduct{
+font-size:2rem;
+color:rgb(26,51,92);
+margin-top:20vh;
+font-weight:bold;
+width:20vw;
+margin-left:12vw;
+margin-bottom:2vh;
+display:flex;
+flex-direction: column;
+}
+
+.koreaproduct{
+background-color: #EEF3F6;
+color:rgb(26,51,92);
+font-weight:500;
+width:30vw;
+height:75vh;
+margin-left:12vw;
+padding:2vw;
+border-radius: 1vw;
+font-size:large;
+}
+
+.koreaproductname{
+font-size:1.7rem;
+margin-bottom:2vh;
+font-weight: bold;
+}
+
+.usaproduct{
+background-color: #EEF3F6;
+color:rgb(26,51,92);
+font-weight: 500;
+width:30vw;
+height:75vh;
+margin-left: 7vw;
+padding:2vw;
+border-radius: 1vw;
+font-size:large;
+}
+
+.koreaproductimg{
+    margin-bottom:10.3vh;
+    width: 30vw;
+
+}
+
+.usaproductimg{
+    margin-bottom:3vh;
+    width:30vw;
+
+}
+
+.usaproductname{
+font-size:1.7rem;
+margin-bottom:2vh;
+font-weight: bold;
+}
+
+.productDetail {
+font-size:1.3rem;
+font-weight: bold;}
