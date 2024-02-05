@@ -91,7 +91,7 @@ const ValueResult = () => {
         totalMw = 132.46;
     }
 
-    // 패널 선택 세부명
+    // 패널 선택 세부명, 그에따른 필요면적, 가격
     if(selectPanel ==="fromKorea"){
         PanelLabel = '국산 PEAKDVQ XL G11.7(570Wp)';
         PanelSize = 67.81;

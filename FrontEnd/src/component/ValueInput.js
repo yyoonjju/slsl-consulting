@@ -71,6 +71,27 @@ const ValueInput = () => {
         }));
     };
 
+    // selectPanel 값에 따라 면적의 최소값을 반환하는 함수
+    const getMinArea = (value) => {
+        const panelInfo = {
+            fromKorea: 68,
+            fromUSA: 88,
+    };
+    
+        return panelInfo[ValueData.selectPanel] || 0;
+    };
+  
+    // 면적 입력란이 포커스를 잃었을 때 유효성 검사 수행
+    const handleAreaBlur = (e) => {
+    // 면적이 숫자이고, 최소값을 검증
+        if (e.target.name === 'inputArea') {
+        const minArea = getMinArea(e.target.value);
+        if (!/^\d+$/.test(e.target.value) || parseInt(e.target.value) < minArea) {
+            alert(`면적은 ${minArea}보다 큰 숫자여야 합니다.`);
+        }
+        }
+    };
+
     const navigate =  useNavigate();
     // 폼 제출 핸들러
     const ClickSubmit = (e) =>{
@@ -127,18 +148,6 @@ const ValueInput = () => {
                             </td>
                         </tr>
                     
-                        <tr id='inputArea_Box'>
-                            <td>면적(m²)</td>
-                            <td colSpan="2">
-                                <input  pattern="[0-9]+"  
-                                        id = "inputArea"
-                                        name = "inputArea"
-                                        required
-                                        placeholder='단위를 입력하세요'
-                                        onChange={ClickChange}/> 
-                            </td>            
-                        </tr>
-
                         <tr id='selectPanel_Box'>
                             <td>모듈 선택</td>
                             <td colSpan="3">
@@ -149,7 +158,19 @@ const ValueInput = () => {
                                 </select>
                             </td>
                         </tr>
-           
+
+                        <tr id='inputArea_Box'>
+                            <td>면적(m²)</td>
+                            <td colSpan="2">
+                                <input  pattern="[0-9]+"  
+                                        id = "inputArea"
+                                        name = "inputArea"
+                                        required
+                                        placeholder='단위를 입력하세요'
+                                        onChange={ClickChange}
+                                        onBlur={handleAreaBlur} /> 
+                            </td>            
+                        </tr>
 
                         <tr id = "inputDate_Box">
                             <td>기간</td>
