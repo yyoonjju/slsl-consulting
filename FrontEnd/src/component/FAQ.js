@@ -26,6 +26,7 @@ function FAQ() {
             </div>
             <div className="faq">
                 <div className={`faqText ${faqUP ? 'active' : ''}`}>
+                    {/* FaqItem, FaqList에서 받은 값을 아래 코드에 구현 */}
                     <FaqList/>
                 </div>
             </div>

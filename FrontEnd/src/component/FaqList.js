@@ -1,7 +1,10 @@
 import React from 'react';
 import FaqItem from './FaqItem';
 
+  // FaqItem의 JSX 구조에 값을 집어넣는 js 코드
+
 const FaqList = () => {
+
   const faqs = [
     {
       question: (<>정부 보조금을 받으면<br/>사업비가 얼마나 축소되나요?</>),
