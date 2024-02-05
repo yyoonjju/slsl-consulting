@@ -1,8 +1,19 @@
-.chart {
-    font-family: sans-serif;
-    text-align: center;
-    margin: 100px auto;
+  .chart1, .chart2 {
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+  .chart1 {
+     margin-bottom: 50px;
   }
-.chart-container {
-  display: flex;
-}
+    
+  .chart-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flx {
+    display: flex;
+    width: 1400px;
+    justify-content: space-around;
+  }

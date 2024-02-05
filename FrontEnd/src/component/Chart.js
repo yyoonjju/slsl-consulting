@@ -12,6 +12,7 @@ import {
 } from "recharts";
 
 function Chart({data}) {
+  // Data를 가져오는 속도가 느릴 경우를 대비해서 빈 데이터 생성
   const blankData = [
     {
       time: 0,
@@ -22,10 +23,12 @@ function Chart({data}) {
 
   return (
     <div className="chart-container">
+      {/* 첫 번째 날짜에 대한 차트 그래프 생성 */}
       <div>
         <ComposedChart
           width={700}
-          height={400}
+          height={500}
+          // 첫 번째 날짜만 잘라서 표시
           data={data === null ? blankData : data.slice(0,24)}
           margin={{
             top: 20,
@@ -33,7 +36,7 @@ function Chart({data}) {
             bottom: 20,
             left: 20
           }}
-          className="chart"
+          className="chart1"
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis dataKey="time" />
@@ -46,10 +49,12 @@ function Chart({data}) {
         </ComposedChart>
       </div>
 
+      {/* 두 번째 날짜에 대한 차트 그래프 생성 */}
       <div>
           <ComposedChart
           width={700}
-          height={400}
+          height={500}
+          // 두 번째 날짜만 잘라서 표시
           data={data === null ? blankData : data.slice(24,48)}
           margin={{
             top: 20,
@@ -57,7 +62,7 @@ function Chart({data}) {
             bottom: 20,
             left: 20
           }}
-          className="chart"
+          className="chart2"
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis dataKey="time" />
