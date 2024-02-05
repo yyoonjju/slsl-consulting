@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import pageable from "pageable";
 import BtnSlider from "./BtnSlider";
 import SolarInfo from './SolarInfo';
+import Footer from './Footer.js';
 import '../css/Slider.css';
 
 function Main() {
@@ -28,7 +29,7 @@ function Main() {
 
             // 스크롤하면 붙여졌던 클래스 이름을 없애는 코드
     
-            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontShow1").forEach((e) => {
+            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontUp3, .fontShow1").forEach((e) => {
                 e.classList.remove("active");
                 e.classList.remove("load");
             });
@@ -40,6 +41,7 @@ function Main() {
                 const scaleChageElement = targetSection.querySelector(".scaleChage");
                 const fontUp1 = targetSection.querySelector(".fontUp1");
                 const fontUp2 = targetSection.querySelector(".fontUp2");
+                const fontUp3 = targetSection.querySelector(".fontUp3");
                 const fontShow1 = targetSection.querySelector(".fontShow1");
 
 
@@ -49,6 +51,10 @@ function Main() {
     
                 if (fontUp1) {
                     fontUp1.classList.add("active");
+                }
+
+                if (fontUp3) {
+                    fontUp3.classList.add("active");
                 }
     
                 if (fontUp2) {
@@ -193,8 +199,11 @@ function Main() {
                     <source src="./images/askvideo.mp4" type="video/mp4" />
                 </video>
                     {/* SolarInfo.js에 아래 코드의 JSX가 있습니다 */}
-                    <SolarInfo fontUp1="CONTACT US." fontUp2="SLSL과 함께하세요" Route= "InquiryInput" Button="문의하기"/>
+                    <SolarInfo fontUp3="CONTRACT US." fontUp2="SLSL과 함께하세요" Route= "InquiryInput" Button="문의하기"/>
                 </div>
+            </section>
+            <section data-anchor="Page 4" className="pg-page footer" id="page-4" style={{height:"100px"}}>
+                <Footer/>
             </section>
         </div>
     );
