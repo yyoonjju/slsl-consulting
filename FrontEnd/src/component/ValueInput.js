@@ -42,11 +42,16 @@ const ValueInput = () => {
         
         // 지도에서 누른 위치 
         setSelectedLocation(locationId);
+        setValueData((prevData) => ({
+            ...prevData,
+            selectLocal:locationId,
+        }));
         if(locationId==='Mapsvg'){
             setSelectedLocation("");
         }
     };
 
+    // 폼데이터로 Result에 넘길 값 
     const [ValueData, setValueData] = useState({
         selectLocal:'',
         selectPanel:'',
@@ -55,7 +60,7 @@ const ValueInput = () => {
         endDate:'',
     });
 
-    //입력값 변경 (날짜,)
+    //입력값 변경 (날짜, 지역은 따로 받음)
     const ClickChange = (e) => {
         console.log(e.target);
 
