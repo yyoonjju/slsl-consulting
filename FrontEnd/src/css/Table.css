@@ -1,16 +1,21 @@
-.table {
-    width: max-content;
-}
-.table th {
-    text-align: center;
-    background-color: lightgray;
-}
-.table td {
-    text-align: center;
-}
-.td-test {
-    background-color: aquamarine;
-}
-.test {
-    display: flex;
-}
+    .table {
+        width: max-content;
+        height: fit-content;
+        line-height: 1.5;
+    }
+    .table th {
+        text-align: center;
+        background-color: lightgray;
+        padding: 7px 12px;
+
+    }
+    .table td {
+        text-align: center;
+        padding: 7px 12px;
+    }
+    .td-test {
+        background-color: aquamarine;
+    }
+    .test {
+        display: flex;
+    }

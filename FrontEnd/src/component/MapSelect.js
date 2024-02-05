@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Moment from 'moment';
-import '../css/MapsvgPath.css';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -9,22 +8,30 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import Chart from './Chart.js';
 import Table from './Table.js';
+import MapsvgPath from './MapsvgPath';
 
 function MapSelect() {
-    const [toolLocation, setToolLocation] = useState('korea');
+    // Data에 관련된 변수 설정
     const [location, setLocation] = useState('korea');
+    const [data, setData] = useState(null);
+    // Tooltip에 관련된 변수 설정
+    const [toolLocation, setToolLocation] = useState('korea');
+    const [toolData, setToolData] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
+    // 날짜(DatePicker)에 관련된 변수 설정
     const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
     const [secondDate, setSecondDate] = useState(Moment(new Date()).add(1,"days").format("YYYY-MM-DD"));
-    const [toolData, setToolData] = useState(null);
-    const [data, setData] = useState(null);
+    // 시간에 관련된 변수 설정
     const [dt, setDt] = useState(0);
     const [tm, setTm] = useState(0);
-    const [isOpen, setIsOpen] = useState(false);
 
+    // ClickPath로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
         Result();
     },[location,firstDate,secondDate]);
 
+    // Server에서 지역에 따른 Data를 가져와서 변수 data에 저장 후
+    // Chart.js와 Table.js에 뿌려줌
     const Result = async() => {
         const res = await axios.get(`http://10.10.21.64:8080/api/${location}`, {
             params: {
@@ -35,6 +42,7 @@ function MapSelect() {
         setData(res.data);
     };
 
+    // 지역별로 Tooltip을 띄워주기 위해서 ToolData를 따로 가져옴
     const ToolResult = async() => {
         const res = await axios.get(`http://10.10.21.64:8080/api/${toolLocation}`, {
             params: {
@@ -45,6 +53,7 @@ function MapSelect() {
         setToolData(res.data);
     };
 
+    // 지역을 클릭하면 변수 location에 지역명 저장
     const ClickPath = (e) => {
         if (e.target.id === "Mapsvg") {
             console.log("retry");
@@ -60,6 +69,7 @@ function MapSelect() {
         }
     };
 
+    // ToolData를 가져와서 지도의 지역에 마우스를 가져다 놓으면 Tooltip 표시
     const Tip = () => {
         return toolData === null ? <Tooltip id="tooltip" content="retry"/> : <Tooltip id={`tooltip-${toolLocation}`} isOpen={isOpen}>
             {toolData[dt].date}&nbsp;&nbsp;{toolData[tm].time}시<br/>
@@ -68,23 +78,28 @@ function MapSelect() {
             </Tooltip>;
     };
 
+    // 시간을 클릭하면 변수 dt, tm에 시간 저장
     const ClickTime = (e) => {
+        // 첫 번째 날짜
         if (e.target.id === "1") {
             setDt(0);
             setTm(e.target.outerText);
         }
+        // 두 번째 날짜
         else {
             setDt(24);
             setTm(e.target.outerText);
         }
     };
 
+    // 첫 번째 날짜의 시간
     const FirstTime = () => {
         return (data === null || data === undefined ? [{time: 0}] : data.slice(0,24)).map((row, index) => (
             <span key={index} id="1" className="tm" onClick={ClickTime}>{row.time}</span>
         ));
     };
 
+    // 두 번째 날짜의 시간
     const SecondTime = () => {
         return (data === null || data === undefined ? [{time: 0}] : data.slice(24,48)).map((row, index) => (
             <span key={index} id="2" className="tm" onClick={ClickTime}>{row.time}</span>
@@ -122,11 +137,14 @@ function MapSelect() {
                     name="Gwangju"
                     d="m 151.37429,399.96884 -1.95,-2.34 -1.82,-0.87 -2.44,-0.09 -2.44,0.96 -2,1.04 -2.01,2.09 -1.48,0.09 -2.09,-0.7 -1.48,-1.39 -0.61,-2.18 -2.18,-0.08 -2.09,5.31 -2.35,-0.09 -1.74,2.09 -1.13,4.79 0.43,4.09 7.23,1.05 1.83,2.26 1.92,3.84 3.74,0 3.4,-2.01 3.83,0 1.48,-1.04 3.14,0.61 3.39,-2.35 1.4,-1.83 0.78,-1.66 0.09,-2.61 0.87,-1.83 0,-1.39 -2.09,-0.96 -2.61,-0.26"
                     data-tooltip-id="tooltip-gwangju"
+                    // 지역에 마우스를 올리면 데이터를 가져오기 위한 변수 toolLocation에 지역명 저장 후
+                    // Tooltip을 띄우기 위해서 변수 isOpen을 false에서 true로 변경
                     onMouseEnter={() => {
                         setToolLocation("gwangju");
                         ToolResult();
                         setIsOpen(true);
                     }}
+                    // 지역에서 마우스를 떼면 Tooltip을 사라지게 하기 위해서 변수 isOpen을 true에서 false로 변경
                     onMouseLeave={() => {
                         setIsOpen(false);
                     }}
@@ -204,39 +222,53 @@ function MapSelect() {
     );
 
     return (
-        <div id ="MapsvgDiv">
-            <div>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                        selected={firstDate}
-                        format="YYYY-MM-DD"
-                        onChange={(date) => {
-                            setFirstDate(Moment(date.$d).format("YYYY-MM-DD"));
-                        }}
-                    />
-                    <DatePicker selected={secondDate} format="YYYY-MM-DD" onChange={(date) => {
-                        setSecondDate(Moment(date.$d).format("YYYY-MM-DD"));
-                    }}/>
-                </LocalizationProvider>
-            </div>
-
-            <div>
+        <div className="mapSelect">
+            <div id ="MapsvgDiv">
                 <div>
-                    <FirstTime/>
-                </div>
+                    {/* 캘린더 */}
+                    <div>
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            {/* 첫 번째 캘린더 */}
+                            <DatePicker
+                                selected={firstDate}
+                                format="YYYY-MM-DD"
+                                onChange={(date) => {
+                                    setFirstDate(Moment(date.$d).format("YYYY-MM-DD"));
+                                }}
+                            />
+                            {/* 두 번째 캘린더 */}
+                            <DatePicker selected={secondDate} format="YYYY-MM-DD" onChange={(date) => {
+                                setSecondDate(Moment(date.$d).format("YYYY-MM-DD"));
+                            }}/>
+                        </LocalizationProvider>
+                    </div>
 
+                    {/* 시간 */}
+                    <div>
+                        <div>
+                            {/* 첫 번째 시간 */}
+                            <FirstTime/>
+                        </div>
+
+                        <div>
+                            {/* 두 번째 시간 */}
+                            <SecondTime/>
+                        </div>
+                    </div>
+
+                    {/* 지도와 툴팁 */}
+                    <div>
+                        <MapsvgPath/>
+                        <Tip/>
+                    </div>
+                </div>
+            </div>
+
+            {/* 차트그래프와 테이블 */}
+            <div className="flx">
                 <div>
-                    <SecondTime/>
+                    <Chart data={data}/>
                 </div>
-            </div>
-            
-            <div>
-                <MapsvgPath/>
-                <Tip/>
-            </div>
-
-            <div>
-                <Chart data={data}/>
                 <Table data={data}/>
             </div>
         </div>

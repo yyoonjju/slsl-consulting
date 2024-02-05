@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import Table from 'react-bootstrap/Table';
 import '../css/Table.css';
-// bootstrap의 고유 css인데 막 특별한 기능은 없으니까 쓸거면 쓰고
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Tb({data}) {
+    // Data를 가져오는 속도가 느릴 경우를 대비해서 빈 데이터 생성
     const blankData = [
         {
             "time": 0,
@@ -34,6 +33,7 @@ function Tb({data}) {
                     </thead>
 
                     <tbody>
+                        {/* 첫 번째 날짜에 대한 데이터만 표시 */}
                         {((data === null || data === undefined) ? blankData : data.slice(0,24)).map((row, index) => (
                             <tr key={index}>
                                 <td className="td-test">{row.time}</td>
@@ -56,6 +56,7 @@ function Tb({data}) {
                     </thead>
 
                     <tbody>
+                        {/* 두 번째 날짜에 대한 데이터만 표시 */}
                         {((data === null || data === undefined) ? blankData : data.slice(24,48)).map((row, index) => (
                             <tr key={index}>
                                 <td>{row.loc_power}</td>

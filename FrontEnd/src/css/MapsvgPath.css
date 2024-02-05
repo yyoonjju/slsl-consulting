@@ -1,9 +1,12 @@
-#MapsvgDiv{
-    width: 350px;
-    height: 200vh;
-    /* margin-top: 200px; */
-}
 
+<<<<<<< HEAD
+    .mapSelect {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+=======
 #Mapsvg > path{
     stroke: white;
     /* fill: #3E588B; */
@@ -12,75 +15,90 @@
     outline: none;
     fill: gainsboro;
 }
+>>>>>>> a3be649fb7e25fcb3eff1bb5c4f6a02ac1b93003
 
-#Mapsvg > path:active{
-    outline: none;
-    fill: gainsboro;
-}
-.tm {
-    cursor: pointer;
-    margin: 0px 5px;
-}
-.table {
-    border-collapse: collapse;
-}
-th{
-    border: 2px solid #EEF3F6; 
-}
-td {
-    border: 2px solid #EEF3F6; 
-}
-/* #busan:active
-{
+    #MapsvgDiv{
+        width: 350px;
+        height: 700px;
+        /* margin-top: 200px; */
+    }
+
+    #Mapsvg > path{
+        stroke: white;
+    }
+    #Mapsvg > path:hover{
+        outline: none;
+        fill: gainsboro;
+    }
+
+    #Mapsvg > path:active{
+        outline: none;
+        fill: gainsboro;
+    }
+    .tm {
+        cursor: pointer;
+        margin: 0px 5px;
+    }
+    .table {
+        border-collapse: collapse;
+    }
+    th{
+        border: 2px solid #EEF3F6;
+    }
+    td {
+        border: 2px solid #EEF3F6;
+    }
+    /* #busan:active
+    {
 
 
-}
-#daegu{
-   
-}
-#daejeon{
-   
-}
-#gangwon{
+    }
+    #daegu{
+    
+    }
+    #daejeon{
+    
+    }
+    #gangwon{
 
-}
-#gwangju{
+    }
+    #gwangju{
 
-}
+    }
 
-#gyeonggi{
+    #gyeonggi{
 
-}
-#incheon{
+    }
+    #incheon{
 
-}
-#jeju{
+    }
+    #jeju{
 
-}
-#north-chungcheong{
+    }
+    #north-chungcheong{
 
-}
-#north-gyeongsang{
+    }
+    #north-gyeongsang{
 
-}
-#north-jeolla{
+    }
+    #north-jeolla{
 
-}
-#sejong{
+    }
+    #sejong{
 
-}
-#seoul{
+    }
+    #seoul{
 
-}
-#south-chungcheong{
+    }
+    #south-chungcheong{
 
-}
-#south-gyeongsang{
+    }
+    #south-gyeongsang{
 
-}
-#south-jeolla{
+    }
+    #south-jeolla{
 
-}
-#ulsan{
+    }
+    #ulsan{
 
-} */
+    } */
