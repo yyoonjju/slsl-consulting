@@ -6,7 +6,7 @@
 
 #Mapsvg > path{
     stroke: white;
-    fill: #3E588B;
+    /* fill: #3E588B; */
 }
 #Mapsvg > path:hover{
     outline: none;

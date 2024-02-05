@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import MapsvgPath from './MapsvgPath';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate } from 'react-router-dom';
 
 const ValueInput = () => {
     const [startDate, setStartDate] = useState(null);
@@ -64,10 +65,15 @@ const ValueInput = () => {
         }));
     };
 
+    const navigate =  useNavigate();
     // 폼 제출 핸들러
     const ClickSubmit = (e) =>{
         e.preventDefault();
         console.log('submit ValueData', ValueData);
+        // window.location.href="/ValueResult"
+
+           // ValueResult 컴포넌트로 폼 데이터를 전달
+          navigate('/ValueResult',{state:{formData:ValueData}});
     };
 
     return (

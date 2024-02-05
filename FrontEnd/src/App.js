@@ -11,6 +11,7 @@ import Product from "./component/Product";
 import InquiryInput from "./component/InquiryInput";
 import ValueInput from "./component/ValueInput";
 import MapSelect from "./component/MapSelect";
+import ValueResult from './component/ValueResult.js';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/MapSelect" element={<MapSelect/>}/>
         <Route path='/InquiryInput' element={<InquiryInput/>}/>
         <Route path="/ValueInput" element={<ValueInput/>}/>
+        <Route path='/ValueResult' element={<ValueResult/>}/>
       </Routes>
       <Footer/>
     </div>
