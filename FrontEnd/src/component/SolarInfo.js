@@ -1,10 +1,13 @@
 import React from 'react';
 
-const SolarInfo = ({ fontUp1, fontUp2, Route, Button }) => {
+const SolarInfo = ({ fontUp1, fontUp2, fontUp3,Route, Button }) => {
   return (
     <div className="explain">
       <p>
         <span className="fontUp1">{fontUp1}</span>
+      </p>
+      <p>
+        <span className="fontUp3">{fontUp3}</span>
       </p>
       <p>
         <span className="fontUp2">{fontUp2}</span>
