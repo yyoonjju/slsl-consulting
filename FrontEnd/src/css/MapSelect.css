@@ -55,10 +55,20 @@
         pointer-events: all;
     }
 
-#koreaSvg > path:hover {
-    outline: none;
-    fill: gainsboro;
-}
+    #koreaSvg > path:hover {
+        outline: none;
+        fill: gainsboro;
+    }
+
+    #koreaSvg > path:active {
+        outline: none;
+        fill: #F6CAC9;
+    }
+
+    #koreaSvg > path.clicked {
+        outline: none;
+        fill: #F6CAC9;
+    }
 
     .dashBoard {
         border: 2px solid black;
