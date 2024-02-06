@@ -1,111 +1,106 @@
-.leftContainer {
-    border-right: 2px solid black;
-}
+    .leftContainer {
+        border-right: 2px solid black;
+    }
 
-.rightContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin: 25px 0px;
-}
+    .rightContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 25px 0px;
+    }
 
-.MuiFormControl-root.MuiTextField-root.css-z3c6am-MuiFormControl-root-MuiTextField-root {
-    width: 168px;
-}
+    .MuiFormControl-root.MuiTextField-root.css-z3c6am-MuiFormControl-root-MuiTextField-root {
+        width: 168px;
+    }
 
-.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-    border: none;
-}
+    .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+        border: none;
+    }
 
-.calendar {
-    width: max-content;
-    border-bottom: 2px solid black;
-}
+    .calendar {
+        width: max-content;
+        border-bottom: 2px solid black;
+    }
 
-.calendar th {
-    padding: 10px 20px;
-}
+    .calendar th {
+        padding: 10px 20px;
+    }
 
-.leftBox {
-    display: flex;
-    justify-content: center;
-}
+    .leftBox {
+        display: flex;
+        justify-content: center;
+    }
 
-.mapSelect {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+    .mapSelect {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
-.MapSlc {
-    width: 100%;
-    height: 650px;
-    margin: 50px 0px;
-    /* border: 3px solid black; */
-}
+    .MapSlc {
+        width: 100%;
+        height: 650px;
+        margin: 50px 0px;
+        /* border: 3px solid black; */
+    }
 
-#koreaSvg {
-    pointer-events: none;
-    stroke: white;
-}
+    #koreaSvg {
+        pointer-events: none;
+        stroke: white;
+    }
 
-#koreaSvg > path {
-    pointer-events: all;
-}
+    #koreaSvg > path {
+        pointer-events: all;
+    }
 
 #koreaSvg > path:hover {
     outline: none;
     fill: gainsboro;
 }
 
-#koreaSvg > path:active {
-    outline: none;
-    fill: #F6CAC9;
-}
+    .dashBoard {
+        border: 2px solid black;
+        margin-bottom: 50px;
+    }
 
-.dashBoard {
-    border: 2px solid black;
-    margin-bottom: 50px;
-}
+    .tm {
+        cursor: pointer;
+        margin: 0px 5px;
+    }
 
-.tm {
-    cursor: pointer;
-    margin: 0px 5px;
-}
+    .table {
+        border-collapse: collapse;
+    }
 
-.table {
-    border-collapse: collapse;
-}
+    th{
+        border: 2px solid #EEF3F6;
+    }
 
-th{
-    border: 2px solid #EEF3F6;
-}
+    td {
+        border: 2px solid #EEF3F6;
+    }
 
-td {
-    border: 2px solid #EEF3F6;
-}
+    .timeContainer {
+        width: 100%;
+        height: 35px;
+        border: none;
+        text-align: center;
+    }
 
-.timeContainer {
-    width: 100%;
-    height: 35px;
-    border: none;
-    text-align: center;
-}
+    .mapSelectTitle {
+        margin-top: 100px;
+        margin-bottom: 30px;
+        font-size: 40px;
+    }
 
-.mapSelectTitle {
-    margin-top: 100px;
-    margin-bottom: 30px;
-    font-size: 40px;
-}
-
-.dataTimeTitle {
-    display: flex;
-    justify-content: center;
-    font-size: 10px;
-    margin: 0px 40px;
-}
-.dataTimeTitle h1 {
-    margin: 0px auto;
-}
+    .dataTimeTitle {
+        display: flex;
+        justify-content: center;
+        font-size: 10px;
+        margin: 0px 40px;
+    }
+    .dataTimeTitle h1 {
+        margin: 0px auto;
+    }
