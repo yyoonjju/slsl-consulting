@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ValueChart from './ValueChart';
 import axios from 'axios';
-
 import Moment from 'moment';
 
 const ValueResult = () => {
@@ -31,11 +30,11 @@ const ValueResult = () => {
     const [firstDate, setFirstDate] = useState(Moment(formData.startDate).format("YYYY-MM-DD"));
     const [secondDate, setSecondDate] = useState(Moment(formData.endDate).format("YYYY-MM-DD"));
 
-    let LocalLabel;
-    let PanelLabel;
-    let totalMw;
-    let PanelSize;
-    let cost;
+    let LocalLabel; //지역선택 세부명칭
+    let PanelLabel; //패널선택 세부명칭
+    let totalMw;    // 설비용량 
+    let PanelSize;  // 패널 사이즈 
+    let PanelCost;  // 패널 개당 가격
 
     //지역선택 세부명, , 설비 용량
     if(selectLocal === "seoul"){
@@ -95,11 +94,11 @@ const ValueResult = () => {
     if(selectPanel ==="fromKorea"){
         PanelLabel = '국산 PEAKDVQ XL G11.7(570Wp)';
         PanelSize = 67.81;
-        cost = 5274840;
+        PanelCost = 5274840;
     } else if(selectPanel==="fromUSA"){
         PanelLabel = '미국산 AmeriSolar AS-qm120-HC(580Wp)';
         PanelSize = 87.527;
-        cost = 5964750;
+        PanelCost = 5964750;
     }
 
     // url 통해서 null 값으로 접속 못하게 처리 
@@ -118,31 +117,33 @@ const ValueResult = () => {
                     secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
                   }
                 });
+                
                 console.log(firstDate);
                 console.log(secondDate);
-                // console.log(res.data);
+
                 setChartData(res.data);
+
               } catch (error) {
-                console.error('Error fetching chart data:', error);
+                    console.error('Error fetching chart data:', error);
               }
-            // setChartData(res.data);
+           
         };
         setFirstDate(Moment(formData.startDate).format("YYYY-MM-DD"));
         setSecondDate(Moment(formData.endDate).format("YYYY-MM-DD"));
         fetchData();
    },[formData, nav]);
 
-   //초기 투자 비용 
-   const amount = Math.floor(inputArea/PanelSize);
-   const InitaialCost = Math.floor(inputArea/PanelSize)*cost;
-
+    //초기 투자 비용 
+    const amount = Math.floor(inputArea/PanelSize);
+    const InitaialCost = Math.floor(inputArea/PanelSize)*PanelCost;
 
     // 숫자 포맷팅 함수
     const formatNumber = (number) => {
-    return new Intl.NumberFormat('ko-KR').format(number);
+        return new Intl.NumberFormat('ko-KR').format(number);
     };
 
-   console.log(chartData);
+    console.log(chartData);
+
     // formData를 이용하여 결과를 표시
     return (
         <article className='ValueResultPages'>
@@ -157,19 +158,20 @@ const ValueResult = () => {
                         <td>설치예정지역 :</td>
                         <td> {LocalLabel}</td>
                     </tr>
+
                     <tr>
                         <td>선택한 패널 :</td>
                         <td> {PanelLabel}</td>
                     </tr>
+
                     <tr>
                         <td>설치 장소 면적 :</td>
                         <td> {inputArea}</td>
                     </tr>
+
                     <tr>
                         <td>기간 : </td>
                         <td> {firstDate} ~ {secondDate} </td>
-                      
-
                     </tr>
                 </table>
 
