@@ -16,3 +16,11 @@
     display: flex;
     width: 1400px;
   }
+
+  .recharts-cartesian-grid-vertical line {
+    stroke: none;
+  }
+
+  .recharts-cartesian-grid-vertical line:nth-child(17) {
+    stroke: black;
+  }
