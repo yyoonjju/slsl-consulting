@@ -60,6 +60,11 @@
     fill: gainsboro;
 }
 
+#koreaSvg > path:active {
+    outline: none;
+    fill: #F6CAC9;
+}
+
 .dashBoard {
     border: 2px solid black;
     margin-bottom: 50px;

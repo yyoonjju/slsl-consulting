@@ -95,18 +95,18 @@ function MapSelect() {
 
     // 첫 번째 날짜의 시간
     const FirstTime = () => {
-        return <select onClick={ClickTime} className="timeContainer">
+        return <select onChange={ClickTime} value={dt === 0 ? tm : 0} id="1" className="timeContainer">
                     {timeList.map((time, index) => (
-                        <option key={index} id="1" value={time} className="tm">{time}</option>
+                        <option key={index} value={time} className="tm">{time}</option>
                     ))}
                </select>
     };
 
     // 두 번째 날짜의 시간
     const SecondTime = () => {
-        return <select onClick={ClickTime} className="timeContainer">
+        return <select onChange={ClickTime} value={dt === 24 ? tm : 0} id="2" className="timeContainer">
                     {timeList.map((time, index) => (
-                        <option key={index} id="2" value={time} className="tm">{time}</option>
+                        <option key={index} value={time} className="tm">{time}</option>
                     ))}
                </select>
     };
