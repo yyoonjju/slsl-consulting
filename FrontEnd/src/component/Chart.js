@@ -21,6 +21,8 @@ function Chart({data}) {
     }
   ];
 
+  const formatYAxis = (tickItem) => tickItem.toLocaleString();
+
   return (
     <div className="chart-container">
       {/* 첫 번째 날짜에 대한 차트 그래프 생성 */}
@@ -38,9 +40,9 @@ function Chart({data}) {
           className="chart1"
         >
           <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey="time" />
-          <YAxis yAxisId="left" label={{value: "발전량(Mw)", offset: 10, angle: 0, position: "top", fontSize: "10px"}}/>
-          <YAxis yAxisId="right" label={{value: "누적발전량(Mw)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} orientation="right"/>
+          <XAxis dataKey="time" interval={1}/>
+          <YAxis yAxisId="left" label={{value: "발전량(Mw)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis}/>
+          <YAxis yAxisId="right" label={{value: "누적발전량(Mw)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis} orientation="right"/>
           <Tooltip />
           <Legend />
           <Bar yAxisId="right" dataKey="loc_total" barSize={20} fill="#413ea0" />
