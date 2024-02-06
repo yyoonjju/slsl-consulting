@@ -6,18 +6,12 @@
     flex-direction: column;
 }
 
-.ValueResultTable{
-    width: 500px;
-}
 
-.ValueResultTable>tr>td{
-    border: solid 1px black;
-}
 
 #ValueResultTitle{
     display: flex;
     width: 1000px;
-    margin-bottom: 20px;
+    margin: 50px 0px 30px 0;
 }
 
 .ValueResult{
@@ -28,12 +22,57 @@
     height: 1000px;
     border-radius: 25px;
     padding: 20px;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ValueResultTable{
+    width: 800px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .ResultCostTable{
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 800px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ValueResultTable>tr>td,.ResultCostTable>tr>td {
+    /* border: solid 1px black; */
+}
+
+.ResultCostTable>tr>td:nth-child(1),.ResultCostTable>tr>td:nth-child(3){
+   width: 180px;
+   text-align:justify;
+}
+
+.ValueResultTable>tr>td:nth-child(2){
+    padding-right: 10px;
+}
+.ResultCostTable>tr>td:nth-child(2){
+    padding-right: 5px;
+}
+
+
+.fontLine {
+    width:150px;
+    background: linear-gradient(to top, #bfdeffe1 50%, transparent 50%);
+}
+.fontColor{
+    color: blue;
+}
+#btnClickInput{
+    width: 250px;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #0B74E2;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#btnClickInput:hover{
+    background-color: #0b6acf;
 }

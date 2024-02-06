@@ -144,6 +144,9 @@ const ValueResult = () => {
 
     console.log(chartData);
 
+    const btnClick = ()=>{
+        window.location.href="/ValueInput"
+    }
     // formData를 이용하여 결과를 표시
     return (
         <article className='ValueResultPages'>
@@ -153,37 +156,47 @@ const ValueResult = () => {
 
             <section className='ValueResult'>
 
-                <table className='ValueResultTable'>
-                    <tr>
-                        <td>설치예정지역 :</td>
-                        <td> {LocalLabel}</td>
-                    </tr>
+                <div>
+                    <ValueChart data = {chartData}/>
+                </div>
 
+               
+                <table className='ValueResultTable'>
+                <h3 className='fontLine'>입력하신값</h3>
+                <br/>
                     <tr>
-                        <td>선택한 패널 :</td>
+                        <td>설치 예정 지역 :</td>
+                        <td> {LocalLabel}</td>
+                        <td>선택 하신 패널 :</td>
                         <td> {PanelLabel}</td>
                     </tr>
 
                     <tr>
                         <td>설치 장소 면적 :</td>
                         <td> {inputArea}</td>
+                        <td>설치 예상 기간 : </td>
+                        <td> {firstDate} ~ {secondDate} </td>
+                    </tr>
+
+                </table>
+
+                <table className='ResultCostTable'>
+                    <h3 className='fontLine'>예상 결과</h3><br/>
+                    <tr>
+                        <td>예상 판매 금액 :</td>
+                        <td>(원)</td>
                     </tr>
 
                     <tr>
-                        <td>기간 : </td>
-                        <td> {firstDate} ~ {secondDate} </td>
+                        <td>설치 가능 패널 개수 : </td>
+                        <td> <span className='fontColor'>{amount}</span>  (개)</td>
+                        <td>초기 투자 비용 :</td>
+                        <td><span className='fontColor'>{formatNumber(InitaialCost)} </span> (원)</td>
                     </tr>
                 </table>
-
-                <div>
-                    <ValueChart data = {chartData}/>
-                </div>
-
-                <div className='ResultCostTable'>
-                    <div><h3>예상 판매금액 :  (원)</h3></div>
-                    <div><h3>설치 가능 패널 개수 : {amount}(개)</h3></div>
-                    <div><h3>초기 투자비용 : {formatNumber(InitaialCost)}(원)</h3></div>
-                </div>
+                       
+                {/* 다시계산하기 말고 다른걸로 바꿔도 됩니다. */}
+                <button onClick={btnClick} id='btnClickInput'>다시 계산하기</button>
 
             </section>
         </article>
