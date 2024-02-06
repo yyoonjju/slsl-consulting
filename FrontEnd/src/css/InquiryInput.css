@@ -134,8 +134,10 @@
     border-radius: 5px;
     background-color: #0B74E2;
     font-size: 20px;
+    margin-top: 20px;
 }
 
 #inquiry_Btn:hover{
     background-color: #0b6acf;
 }
+
