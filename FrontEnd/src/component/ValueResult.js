@@ -173,7 +173,7 @@ const ValueResult = () => {
 
                     <tr>
                         <td>설치 장소 면적 :</td>
-                        <td> {inputArea}</td>
+                        <td> {inputArea}&nbsp;(m²)</td>
                         <td>설치 예상 기간 : </td>
                         <td> {firstDate} ~ {secondDate} </td>
                     </tr>
@@ -189,9 +189,9 @@ const ValueResult = () => {
 
                     <tr>
                         <td>설치 가능 패널 개수 : </td>
-                        <td> <span className='fontColor'>{amount}</span>  (개)</td>
+                        <td> <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
                         <td>초기 투자 비용 :</td>
-                        <td><span className='fontColor'>{formatNumber(InitaialCost)} </span> (원)</td>
+                        <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
                     </tr>
                 </table>
                        

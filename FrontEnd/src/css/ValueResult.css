@@ -6,8 +6,6 @@
     flex-direction: column;
 }
 
-
-
 #ValueResultTitle{
     display: flex;
     width: 1000px;
@@ -50,18 +48,20 @@
 .ValueResultTable>tr>td:nth-child(2){
     padding-right: 10px;
 }
+
 .ResultCostTable>tr>td:nth-child(2){
     padding-right: 5px;
 }
-
 
 .fontLine {
     width:150px;
     background: linear-gradient(to top, #bfdeffe1 50%, transparent 50%);
 }
+
 .fontColor{
     color: blue;
 }
+
 #btnClickInput{
     width: 250px;
     height: 40px;
