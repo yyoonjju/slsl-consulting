@@ -46,6 +46,20 @@
     /* border: 3px solid black; */
 }
 
+#koreaSvg {
+    pointer-events: none;
+    stroke: white;
+}
+
+#koreaSvg > path {
+    pointer-events: all;
+}
+
+#koreaSvg > path:hover {
+    outline: none;
+    fill: gainsboro;
+}
+
 .dashBoard {
     border: 2px solid black;
     margin-bottom: 50px;
