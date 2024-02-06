@@ -8,7 +8,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
 import Chart from './Chart.js';
 import Table from './Table.js';
-import MapsvgPath from './MapsvgPath';
+import '../css/MapSelect.css'
 
 function MapSelect() {
     // Data에 관련된 변수 설정
@@ -22,6 +22,7 @@ function MapSelect() {
     const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
     const [secondDate, setSecondDate] = useState(Moment(new Date()).add(1,"days").format("YYYY-MM-DD"));
     // 시간에 관련된 변수 설정
+    const timeList = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     const [dt, setDt] = useState(0);
     const [tm, setTm] = useState(0);
 
@@ -84,27 +85,31 @@ function MapSelect() {
         // 첫 번째 날짜
         if (e.target.id === "1") {
             setDt(0);
-            setTm(e.target.outerText);
+            setTm(e.target.value);
         }
         // 두 번째 날짜
         else {
             setDt(24);
-            setTm(e.target.outerText);
+            setTm(e.target.value);
         }
     };
 
     // 첫 번째 날짜의 시간
     const FirstTime = () => {
-        return (data === null || data === undefined ? [{time: 0}] : data.slice(0,24)).map((row, index) => (
-            <span key={index} id="1" className="tm" onClick={ClickTime}>{row.time}</span>
-        ));
+        return <select onClick={ClickTime} className="timeContainer">
+                    {timeList.map((time, index) => (
+                        <option key={index} id="1" value={time} className="tm">{time}</option>
+                    ))}
+               </select>
     };
 
     // 두 번째 날짜의 시간
     const SecondTime = () => {
-        return (data === null || data === undefined ? [{time: 0}] : data.slice(24,48)).map((row, index) => (
-            <span key={index} id="2" className="tm" onClick={ClickTime}>{row.time}</span>
-        ));
+        return <select onClick={ClickTime} className="timeContainer">
+                    {timeList.map((time, index) => (
+                        <option key={index} id="2" value={time} className="tm">{time}</option>
+                    ))}
+               </select>
     };
 
     // Mapsvg 함수
@@ -224,23 +229,13 @@ function MapSelect() {
 
     return (
         <div className="mapSelect">
+            <h1 className="mapSelectTitle">testtext</h1>
+
             <div className="dashBoard">
-                {/* 시간 */}
-                <div>
-                    <div>
-                        {/* 첫 번째 시간 */}
-                        {/* <FirstTime/> */}
-                    </div>
-
-                    <div>
-                        {/* 두 번째 시간 */}
-                        {/* <SecondTime/> */}
-                    </div>
-                </div>
-
                 {/* 지도와 툴팁 */}
                 <div className="leftBox">
                     <div className="leftContainer">
+
                         {/* 캘린더 */}
                         <table className="calendar">
                             <tr>
@@ -272,34 +267,41 @@ function MapSelect() {
                                 </td>
                             </tr>
 
+                            {/* 시간 */}
                             <tr>
+                                {/* 첫 번째 시간 */}
                                 <th>시작 날 시간</th>
-                                <td>text</td>
+                                <td><FirstTime/></td>
+
+                                {/* 두 번째 시간 */}
                                 <th>끝나는 날 시간</th>
-                                <td>text</td>
+                                <td><SecondTime/></td>
                             </tr>
                         </table>
+
+                        {/* 지도 */}
                         <MapsvgPath/>
+                        {/* 툴팁 */}
                         <Tip/>
                     </div>
                     
+                    {/* 데이터 */}
                     <div className="rightContainer">
+
+                        {/* 캘린더 */}
                         <div>
+                            <div className="dataTimeTitle">
+                                <h1>{firstDate}</h1>
+                                <h1>{secondDate}</h1>
+                            </div>
                             <Chart data={data}/>
                         </div>
 
-                        <div>
-                            <Table data={data}/>
-                        </div>
+                        {/* 테이블 */}
+                        <div><Table data={data}/></div>
                     </div>
                 </div>
             </div>
-
-            {/* 차트그래프와 테이블 */}
-            {/* <div className="flx">
-                
-                
-            </div> */}
         </div>
     );
 }

@@ -31,10 +31,9 @@ function Chart({data}) {
           // 첫 번째 날짜만 잘라서 표시
           data={data === null ? blankData : data}
           margin={{
-            top: 20,
-            right: 20,
-            bottom: 20,
-            left: 20
+            top: 30,
+            left: 5,
+            right: 5
           }}
           className="chart1"
         >
