@@ -174,6 +174,11 @@ function Main() {
                     </video>
                     {/* SolarInfo.js에 아래 코드의 JSX가 있습니다 */}
                     <SolarInfo fontUp1="태양광 모듈 선택시," fontUp2="발전수익과 설치비용 예측" />
+                    <div className="scroll-downs">
+                        <div className="mousey">
+                            <div className="scroller"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -189,6 +194,11 @@ function Main() {
                         {/* BtnSlider.js에 아래 코드의 JSX가 있습니다 */}
                         <BtnSlider moveSlide={nextSlide} direction={"next"}/> 
                         <BtnSlider moveSlide={prevSlide} direction={"prev"}/>                                             
+                    </div>
+                    <div className="scroll-downs">
+                        <div className="mousey">
+                            <div className="scroller"></div>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -103,6 +103,8 @@ const InquiryInput = () => {
 
   return (
     <article className="InquiryInputPages">
+
+        <div className='inquiryBox'>
       
         <div className="inquiryTitle">
             <h1>문의 등록</h1>
@@ -249,17 +251,17 @@ const InquiryInput = () => {
 
                 </table>
 
-                <div>
+                <div >
                         개인정보 수집 및 이용 동의(필수)
                         <span className="red_span">&nbsp;*&nbsp;&nbsp;</span>
                         <input type='checkbox' id = "inputCheck"  onChange={handleChange} checked={InputData.inputCheck}/>
                 </div>
                 
                 <button id="inquiry_Btn" type='submit'>제출</button>
-
             </form>
 
         </section>
+        </div>
             
      
     </article>
