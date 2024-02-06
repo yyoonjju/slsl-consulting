@@ -79,20 +79,56 @@
 
   a, a:active, a:hover, a:checked, a:visited { 
     color: rgb(26, 51, 92);
-    /* background-color:white; */
     font-size: 28px;
     font-weight:bold;
     border-radius: 5px;
   }
 
-  .fontShow1, .fontShow2, .fontShow3 {
-    /* width: 120px;
-    height: 50px; */
+  .fontShow1 {
     background: rgb(26,51,92);
     color:white !important;
     text-decoration: none;
     /* padding: 4px 10px 4px 10px; */
     opacity: 0;
+    position: relative;
+    top: 30px;
+  }
+
+  /* 스크롤 하라고 하는 마우스 애니매이션 */
+
+  .scroll-downs {
+    position: absolute;
+    bottom: 100px;
+    margin: auto;
+    width :34px;
+    height: 55px;
+  }
+
+  .mousey {
+    width: 3px;
+    padding: 10px 15px;
+    height: 35px;
+    border: 3px solid #fff;
+    border-radius: 25px;
+    opacity: 0.75;
+    box-sizing: content-box;
+  }
+
+  .scroller {
+    width: 4px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #fff;
+    animation-name: scroll;
+    animation-duration: 2.2s;
+    animation-timing-function: cubic-bezier(.15,.41,.69,.94);
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes scroll {
+    0% { opacity: 0; }
+    10% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(15px); opacity: 0;}
   }
 
   /* 스크롤 시 이름이 추가되는 클래스 CSS */
