@@ -1,15 +1,19 @@
 .InquiryInputPages {
     height: 120vh;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+  
 }
 
 .inquiryInput{
     width: 800px;
     margin: 0 auto;
 }
-
+.inquiryTitle{
+    margin: 40px 0 30px 0;
+}
 .red_span{
     color: red;
     padding-left: 5px;
@@ -18,6 +22,7 @@
 #inquirySection{
     display: flex;
     flex-direction: column;
+    
 }
 #inquiryForm{
     display: flex;
@@ -43,12 +48,14 @@
 #inquiryForm>table>tr>td:nth-child(1){
     /* padding-right: 15px; */
     font-weight: bold;
+    font-size: 18px;
 }
 
 #inquiryForm>table>tr>td>select, #inquiryForm>table>tr>td>select>option, #inquiryForm>table>tr>td>textarea{
     border: none;
     padding: 0px 5px 0 5px;
     margin: 0;
+    font-size: 15px;
 
 }
 
@@ -57,17 +64,19 @@
     padding: 0px 5px 0 5px;
     margin: 0;
     text-align: center;
+    font-size: 15px;
 }
 
 #inquiryForm>table>tr>td>input:focus{
     outline: none;
     text-align: center;
+
 }
 
 #inquiryForm>table>tr>td>select:focus,
 #inquiryForm>table>tr>td>textarea:focus{
     outline: none;
-    
+   
 }
 
 #inquiryForm>table>tr>td>input::placeholder{
@@ -114,12 +123,13 @@
 }
 
 #inquiry_Btn{
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 80%;
     border: none;
     color: white;
     border-radius: 5px;
     background-color: #0B74E2;
+    font-size: 20px;
 }
 
 #inquiry_Btn:hover{
