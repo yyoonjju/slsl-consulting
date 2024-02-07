@@ -58,7 +58,7 @@ const Header = ()=>{
     };
 
     useEffect(() => {
-        const visible = currentPath === '/Product' || currentPath === '/MapSelect' || currentPath === '/ValueInput' || currentPath === '/FAQ' || currentPath === '/InquiryInput';
+        const visible = currentPath === '/Product' || currentPath === '/MapSelect' || currentPath === '/ValueInput' || currentPath === '/FAQ' || currentPath === '/InquiryInput' || currentPath === '/ValueResult';
         setIsOpen(visible);
     }, [window.location.pathname])
 

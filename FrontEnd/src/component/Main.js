@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import pageable from "pageable";
 import BtnSlider from "./BtnSlider";
 import SolarInfo from './SolarInfo';
-import Footer from './Footer.js';
 import '../css/Slider.css';
 
 function Main() {
@@ -26,6 +25,13 @@ function Main() {
         const handleHashChange = () => {
             const hash = window.location.hash.substring(1);
             const targetSection = document.getElementById(hash);
+
+            // Main에 들어갔을 시 링크에서 # 뒤에 있는 문장이 page-1일 경우
+            // 무조건 fontShow1 뒤에 있던 클래스 이름 active를 지우는 코드
+
+            // if (hash === "page-1") {
+            //     document.querySelector(".fontShow1").classList.remove("active");
+            // }
 
             // 스크롤하면 붙여졌던 클래스 이름을 없애는 코드
     
@@ -63,7 +69,12 @@ function Main() {
     
                 if (fontShow1) {
                     fontShow1.classList.add("active");
+                    if (hash === "page-1") {
+                        document.querySelector(".fontShow1").classList.remove("active");
+                    }
                 }
+
+                
             }
         };
 
@@ -133,7 +144,7 @@ function Main() {
     useEffect(()=>{
         const interval = setInterval(()=>{
             nextSlide();        
-        }, 8000);
+        }, 6000);
         return () => clearInterval(interval);
     });
     
@@ -206,7 +217,7 @@ function Main() {
             <section data-anchor="Page 3" className="pg-page" id="page-3">
                 <div className="scaleChage">
                 <video muted autoPlay loop className="sub2video">
-                    <source src="./images/askvideo.mp4" type="video/mp4" />
+                    <source src="./images/askvideo.mp4" type="video/mp4"/>
                 </video>
                     {/* SolarInfo.js에 아래 코드의 JSX가 있습니다 */}
                     <SolarInfo fontUp3="CONTRACT US." fontUp2="SLSL과 함께하세요" Route= "InquiryInput" Button="문의하기"/>
