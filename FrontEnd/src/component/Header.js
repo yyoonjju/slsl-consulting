@@ -46,11 +46,11 @@ const Header = ()=>{
                 <img src="images/slsllogo.png" className="logo" onClick={logobtnclick}/>
                 
                 <div id="cursor" className="menuicon" onClick={handleMenuToggle} position="relative">
-                    <FaBars size={50} color="rgb(26,51,92)" position="absolute"/>
+                    <FaBars size={50} color="white" position="absolute"/>
                     {isMenuOpen && (<div className="menuboard">
                         <button className="btn" onClick={productbtnclick}>제품 소개 </button><br/>
                         <button className="btn" onClick = {predictInputClick}>발전량 예측 조회 </button><br/>
-                        <button className="btn" onClick = {valueInputClick}>태양광 발전수익 및<br/>설치비용 예측 </button><br/>
+                        <button className="btn" onClick = {valueInputClick}>태양광 발전수익 및<br/>모듈비용 예측 </button><br/>
                         <button className="btn" onClick={faqbtnclick}>FAQ </button> <br/>
                         <button className="btn" onClick={askbtnclick}>문의하기</button>
                     </div>)}
@@ -59,7 +59,7 @@ const Header = ()=>{
             <div className={`categoryBox ${isOpen ? 'active' : ''}`}>
                 <button className="category" onClick = {productbtnclick}>제품 소개 </button><br/>
                 <button className="category" onClick = {predictInputClick}>발전량 예측 조회 </button><br/>
-                <button className="category" onClick = {valueInputClick}>태양광 발전수익 및 설치비용 예측 </button><br/>
+                <button className="category" onClick = {valueInputClick}>태양광 발전수익 및 모듈비용 예측 </button><br/>
                 <button className="category" onClick = {faqbtnclick}>FAQ </button> <br/>
                 <button className="category" onClick = {askbtnclick}>문의하기</button>
         </div>     
