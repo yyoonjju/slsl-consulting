@@ -212,9 +212,6 @@ function Main() {
                     <SolarInfo fontUp3="CONTRACT US." fontUp2="SLSL과 함께하세요" Route= "InquiryInput" Button="문의하기"/>
                 </div>
             </section>
-            <section data-anchor="Page 4" className="pg-page footer" id="page-4" style={{height:"100px"}}>
-                <Footer/>
-            </section>
         </div>
     );
 }
