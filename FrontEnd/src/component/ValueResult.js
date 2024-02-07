@@ -185,6 +185,8 @@ const ValueResult = () => {
                     <tr>
                         <td>예상 판매 금액 :</td>
                         <td>(원)</td>
+                        <td>흑자 전환 시기 :</td>
+                        <td>{firstDate} (임시)</td>
                     </tr>
 
                     <tr>

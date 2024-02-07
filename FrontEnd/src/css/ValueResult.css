@@ -39,8 +39,13 @@
 .ValueResultTable>tr>td,.ResultCostTable>tr>td {
     /* border: solid 1px black; */
 }
+.ResultCostTable>tr>td:nth-child(1){
+    width: 200px;
+    text-align:justify;
+ }
 
-.ResultCostTable>tr>td:nth-child(1),.ResultCostTable>tr>td:nth-child(3){
+
+.ResultCostTable>tr>td:nth-child(3){
    width: 180px;
    text-align:justify;
 }

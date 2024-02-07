@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import MapsvgPath from './MapsvgPath';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
-
+import ValueInfo from './ValueInfo';
 const ValueInput = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -231,8 +231,11 @@ const ValueInput = () => {
                             </tr>
                         </table>
                     </form>
-                </section>
+
+                </section>       
             </div>
+            
+            <ValueInfo/>
         </article>
 
     );
