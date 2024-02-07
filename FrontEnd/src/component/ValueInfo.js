@@ -65,7 +65,7 @@ const ValueInfo=()=>{
                             <li>하나의 세트로 이해해주세요</li>
                         </ul>
 
-                        <button id ='arrayInfoBtn'onClick={()=>window.open("/Product")}>
+                        <button id ='arrayInfoBtn'onClick={()=>window.open("/product")}>
                             더 자세한 제품정보 보러가기
                         </button>
                     </div>
