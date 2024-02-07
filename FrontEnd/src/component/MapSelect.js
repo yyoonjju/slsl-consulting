@@ -13,10 +13,10 @@ import '../css/MapSelect.css'
 function MapSelect() {
     // Data에 관련된 변수 설정
     const [location, setLocation] = useState('korea');
-    const [data, setData] = useState(null);
+    const [data, setData] = useState('');
     // Tooltip에 관련된 변수 설정
     const [toolLocation, setToolLocation] = useState('korea');
-    const [toolData, setToolData] = useState(null);
+    const [toolData, setToolData] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     // 날짜(DatePicker)에 관련된 변수 설정
     const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
@@ -72,7 +72,7 @@ function MapSelect() {
 
     // ToolData를 가져와서 지도의 지역에 마우스를 가져다 놓으면 Tooltip 표시
     const Tip = () => {
-        return toolData === null ? <Tooltip id="tooltip" content="retry"/> : <Tooltip id={`tooltip-${toolLocation}`} isOpen={isOpen}>
+        return toolData.length !== 48 ? <Tooltip id="tooltip" content="retry"/> : <Tooltip id={`tooltip-${toolLocation}`} isOpen={isOpen}>
             {toolData[dt].date}&nbsp;&nbsp;{toolData[tm].time}시<br/>
             발전량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{toolData[tm].loc_power}<br/>
             누적발전량&nbsp;&nbsp;&nbsp;{toolData[tm].loc_total}
@@ -345,10 +345,6 @@ function MapSelect() {
 
                         {/* 캘린더 */}
                         <div>
-                            <div className="dataTimeTitle">
-                                <h1>{firstDate}</h1>
-                                <h1>{secondDate}</h1>
-                            </div>
                             <Chart data={data}/>
                         </div>
 

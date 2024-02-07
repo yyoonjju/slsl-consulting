@@ -1,10 +1,7 @@
-  .chart1, .chart2 {
-      font-family: sans-serif;
-      text-align: center;
-    }
-
-  .chart1 {
-     margin-bottom: 50px;
+  .chart {
+    font-family: sans-serif;
+    text-align: center;
+    margin-bottom: 50px;
   }
     
   .chart-container {
