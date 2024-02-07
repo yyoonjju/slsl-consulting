@@ -27,14 +27,49 @@ const ValueResult = () => {
     //종료일
     const endDate = formData && formData.endDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
     
-    const [firstDate, setFirstDate] = useState(Moment(formData.startDate).format("YYYY-MM-DD"));
-    const [secondDate, setSecondDate] = useState(Moment(formData.endDate).format("YYYY-MM-DD"));
+    // const [firstDate, setFirstDate] = useState(Moment(formData.startDate).format("YYYY-MM-DD"));
+    // const [secondDate, setSecondDate] = useState(Moment(formData.endDate).format("YYYY-MM-DD"));
+    const [firstDate, setFirstDate] = useState(null);
+    const [secondDate, setSecondDate] = useState(null);
 
     let LocalLabel; //지역선택 세부명칭
     let PanelLabel; //패널선택 세부명칭
     let totalMw;    // 설비용량 
     let PanelSize;  // 패널 사이즈 
     let PanelCost;  // 패널 개당 가격
+
+        // url 통해서 null 값으로 접속 못하게 처리 
+    useEffect(()=>{
+        if (!formData) {
+            // formData가 없을 때 처리
+            alert("입력페이지에서 수익계산을 위한 값들을 입력해주세요.")
+            nav("/ValueInput");
+        }else {
+            
+            // formData가 존재하고 startDate가 존재하는 경우에만 처리
+            if (formData.startDate) {
+                // formData.startDate와 formData.endDate를 Moment를 사용하여 변환하여 저장
+                setFirstDate(Moment(formData.startDate).format("YYYY-MM-DD"));
+                setSecondDate(Moment(formData.endDate).format("YYYY-MM-DD"));
+            }
+        }
+
+        const fetchData = async() => {
+            try {
+                const res = await axios.get(`http://10.10.21.64:8080/pay`, {
+                    params: {
+                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
+                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
+                    }
+                });
+                setChartData(res.data);
+            } 
+            catch (error) {
+                console.error('Error fetching chart data:', error);
+            }
+            };
+            fetchData();
+    },[formData, nav]);
 
     //지역선택 세부명, , 설비 용량
     if(selectLocal === "seoul"){
@@ -101,37 +136,7 @@ const ValueResult = () => {
         PanelCost = 5964750;
     }
 
-    // url 통해서 null 값으로 접속 못하게 처리 
-   useEffect(()=>{
-        if (!formData) {
-            // formData가 없을 때 처리
-            alert("입력페이지에서 수익계산을 위한 값들을 입력해주세요.")
-            nav("/ValueInput");
-        }
 
-        const fetchData = async() => {
-            try {
-                const res = await axios.get(`http://10.10.21.64:8080/pay`, {
-                  params: {
-                    firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
-                    secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
-                  }
-                });
-                
-                console.log(firstDate);
-                console.log(secondDate);
-
-                setChartData(res.data);
-
-              } catch (error) {
-                    console.error('Error fetching chart data:', error);
-              }
-           
-        };
-        setFirstDate(Moment(formData.startDate).format("YYYY-MM-DD"));
-        setSecondDate(Moment(formData.endDate).format("YYYY-MM-DD"));
-        fetchData();
-   },[formData, nav]);
 
     //초기 투자 비용 
     const amount = Math.floor(inputArea/PanelSize);
