@@ -13,9 +13,63 @@ function Tb({data}) {
         }
     ];
 
-    useEffect(() => {
-        
-    },[data]);
+    const FirstDate = () => {
+        try{
+            return data[0].date;
+        }
+        catch {
+            return Moment(new Date()).format("YYYY-MM-DD");
+        }
+    };
+
+    const FirstData = () => {
+        try {
+            return data.slice(0,24).map((row, index) => (
+                <tr key={index}>
+                    <td className="tdTime">{row.time}</td>
+                    <td className="tdData1">{row.loc_power}</td>
+                    <td className="tdData2">{row.loc_total}</td>
+                </tr>
+            ));
+        }
+        catch {
+            return blankData.map((row, index) => (
+                <tr key={index}>
+                    <td className="tdTime">{row.time}</td>
+                    <td className="tdData1">{row.loc_power}</td>
+                    <td className="tdData2">{row.loc_total}</td>
+                </tr>
+            ));
+        }
+    };
+
+    const SecondDate = () => {
+        try {
+            return data[24].date;
+        }
+        catch {
+            return Moment(new Date()).add(1,"days").format("YYYY-MM-DD");
+        }
+    };
+
+    const SecondData = () => {
+        try {
+            return data.slice(24,48).map((row, index) => (
+                <tr key={index}>
+                    <td className="tdData3">{row.loc_power}</td>
+                    <td className="tdData4">{row.loc_total}</td>
+                </tr>
+            ));
+        }
+        catch {
+            return blankData.map((row, index) => (
+                <tr key={index}>
+                    <td className="tdData3">{row.loc_power}</td>
+                    <td className="tdData4">{row.loc_total}</td>
+                </tr>
+            ));
+        }
+    };
 
     return (
         <Table striped bordered hover className="table">
@@ -24,9 +78,10 @@ function Tb({data}) {
                     <thead>
                         <tr>
                             <th>날짜</th>
-                            <th colspan="2">{data === null || data === undefined ? Moment(new Date()).format("YYYY-MM-DD") : data[0].date}</th>
-                            <th colspan="2">{data === null || data === undefined ? Moment(new Date()).add(1,"days").format("YYYY-MM-DD") : data[24].date}</th>
+                            <th colspan="2">{FirstDate()}</th>
+                            <th colspan="2">{SecondDate()}</th>
                         </tr>
+                        
                         <tr>
                             <th>시간</th>
                             <th>발전량(Mw)</th>
@@ -41,50 +96,15 @@ function Tb({data}) {
                     <tbody className="scrollableBody">
                         <div>
                             {/* 첫 번째 날짜에 대한 데이터만 표시 */}
-                            {((data === null || data === undefined) ? blankData : data.slice(0,24)).map((row, index) => (
-                                <tr key={index}>
-                                    <td className="tdTime">{row.time}</td>
-                                    <td className="tdData1">{row.loc_power}</td>
-                                    <td className="tdData2">{row.loc_total}</td>
-                                </tr>
-                            ))}
+                            {FirstData()}
                         </div>
                         
                         <div className="tableData">
                             {/* 두 번째 날짜에 대한 데이터만 표시 */}
-                            {((data === null || data === undefined) ? blankData : data.slice(24,48)).map((row, index) => (
-                                <tr key={index}>
-                                    <td className="tdData3">{row.loc_power}</td>
-                                    <td className="tdData4">{row.loc_total}</td>
-                                </tr>
-                            ))}
+                            {SecondData()}
                         </div>
                     </tbody>
                 </div>
-
-                {/* <div>
-                    <thead>
-                        <tr>
-                            <th colspan="2">{data === null || data === undefined ? Moment(new Date()).add(1,"days").format("YYYY-MM-DD") : data[24].date}</th>
-                        </tr>
-                        <tr>
-                            <th>발전량(Mw)</th>
-                            <th>누적발전량(Mw)</th>
-                        </tr>
-                    </thead> */}
-
-                    {/* <div className="tableData"> */}
-                        {/* <tbody> */}
-                            {/* 두 번째 날짜에 대한 데이터만 표시 */}
-                            {/* {((data === null || data === undefined) ? blankData : data.slice(24,48)).map((row, index) => (
-                                <tr key={index}>
-                                    <td className="tdData">{row.loc_power}</td>
-                                    <td className="tdData">{row.loc_total}</td>
-                                </tr>
-                            ))} */}
-                        {/* </tbody> */}
-                    {/* </div> */}
-                {/* </div> */}
             </div>
         </Table>
     );
