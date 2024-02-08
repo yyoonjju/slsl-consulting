@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import axios from 'axios';
 import Moment from 'moment';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -17,19 +17,27 @@ function MapSelect() {
     // Tooltip에 관련된 변수 설정
     const [toolLocation, setToolLocation] = useState('korea');
     const [toolData, setToolData] = useState('');
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     // 날짜(DatePicker)에 관련된 변수 설정
     const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
     const [secondDate, setSecondDate] = useState(Moment(new Date()).add(1,"days").format("YYYY-MM-DD"));
     // 시간에 관련된 변수 설정
-    const timeList = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23];
     const [dt, setDt] = useState(0);
     const [tm, setTm] = useState(0);
+    const timeList = [];
+
+    for (var i = 0; i < 24; i++) {
+        timeList.push(i);
+    };
 
     // ClickPath로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
+        // ToolData가 없거나 날짜가 바뀌면 toolData를 날짜에 맞게 다시 가져옴
+        if (toolData.length === 0 || toolData[0].date !== firstDate || toolData[24].date !== secondDate) {
+            ToolResult();
+        };
         Result();
-    },[location,firstDate,secondDate]);
+    },[location,firstDate,secondDate,toolData]);
 
     // Server에서 지역에 따른 Data를 가져와서 변수 data에 저장 후
     // Chart.js와 Table.js에 뿌려줌
@@ -45,7 +53,7 @@ function MapSelect() {
 
     // 지역별로 Tooltip을 띄워주기 위해서 ToolData를 따로 가져옴
     const ToolResult = async() => {
-        const res = await axios.get(`http://10.10.21.64:8080/api/${toolLocation}`, {
+        const res = await axios.get(`http://10.10.21.64:8080/api/kor`, {
             params: {
                 firstDate: firstDate,
                 secondDate: secondDate
@@ -70,15 +78,6 @@ function MapSelect() {
         }
     };
 
-    // ToolData를 가져와서 지도의 지역에 마우스를 가져다 놓으면 Tooltip 표시
-    const Tip = () => {
-        return toolData.length !== 48 ? <Tooltip id="tooltip" content="retry"/> : <Tooltip id={`tooltip-${toolLocation}`} isOpen={isOpen}>
-            {toolData[dt].date}&nbsp;&nbsp;{toolData[tm].time}시<br/>
-            발전량&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{toolData[tm].loc_power}<br/>
-            누적발전량&nbsp;&nbsp;&nbsp;{toolData[tm].loc_total}
-            </Tooltip>;
-    };
-
     // 시간을 클릭하면 변수 dt, tm에 시간 저장
     const ClickTime = (e) => {
         // 첫 번째 날짜
@@ -93,31 +92,12 @@ function MapSelect() {
         }
     };
 
-    // 첫 번째 날짜의 시간
-    const FirstTime = () => {
-        return <select onChange={ClickTime} value={dt === 0 ? tm : 0} id="1" className="timeContainer">
-                    {timeList.map((time, index) => (
-                        <option key={index} value={time} className="tm">{time}</option>
-                    ))}
-               </select>
-    };
-
-    // 두 번째 날짜의 시간
-    const SecondTime = () => {
-        return <select onChange={ClickTime} value={dt === 24 ? tm : 0} id="2" className="timeContainer">
-                    {timeList.map((time, index) => (
-                        <option key={index} value={time} className="tm">{time}</option>
-                    ))}
-               </select>
-    };
-
-
     const handlePathClick = (pathName) => {
         setLocation(pathName);
       };
 
     // Mapsvg 함수
-    const MapsvgPath = () =>(
+    const MapsvgPath = () => (
         // viewBox를 조정하면 지도가 각 부분으로 짤립니다.
         // 지도 전체 사이즈는 MapsvgDiv 에서 조절하면 됩니다.
             <svg xmlns="south-korea.svg" viewBox="0 0 524 631" id ="koreaSvg" className="MapSlc" onClick={ClickPath}>
@@ -160,19 +140,16 @@ function MapSelect() {
                     className={location === 'gwangju' ? 'clicked' : ''}
                     onClick={() => handlePathClick('gwangju')}
                     fill={location === 'gwangju'? '#F6CAC9' : '#91A7D0'}
+                    data-tooltip-id="tooltip"
+                    data-tooltip-content="gwangju"
+                    // ToolData가 존재하면 toolTip 내용 적용
+                    data-tooltip-html={toolData.length === 0 ? "Not Found Data" : `
+                        ${toolData[parseInt(dt)+96].date} ${toolData[parseInt(tm)+96].time}시<br/>
+                        누적발전량 : ${toolData[parseInt(tm)+96].loc_total}<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;발전량 : ${toolData[parseInt(tm)+96].loc_power}
+                    `}
                     d="m 151.37429,399.96884 -1.95,-2.34 -1.82,-0.87 -2.44,-0.09 -2.44,0.96 -2,1.04 -2.01,2.09 -1.48,0.09 -2.09,-0.7 -1.48,-1.39 -0.61,-2.18 -2.18,-0.08 -2.09,5.31 -2.35,-0.09 -1.74,2.09 -1.13,4.79 0.43,4.09 7.23,1.05 1.83,2.26 1.92,3.84 3.74,0 3.4,-2.01 3.83,0 1.48,-1.04 3.14,0.61 3.39,-2.35 1.4,-1.83 0.78,-1.66 0.09,-2.61 0.87,-1.83 0,-1.39 -2.09,-0.96 -2.61,-0.26"
-                    data-tooltip-id="tooltip-gwangju"
-                    // 지역에 마우스를 올리면 데이터를 가져오기 위한 변수 toolLocation에 지역명 저장 후
-                    // Tooltip을 띄우기 위해서 변수 isOpen을 false에서 true로 변경
-                    onMouseEnter={() => {
-                        setToolLocation("gwangju");
-                        ToolResult();
-                        setIsOpen(true);
-                    }}
-                    // 지역에서 마우스를 떼면 Tooltip을 사라지게 하기 위해서 변수 isOpen을 true에서 false로 변경
-                    onMouseLeave={() => {
-                        setIsOpen(false);
-                    }}
+                    
                 />
                 <path
                     id="gyeonggi"
@@ -236,16 +213,14 @@ function MapSelect() {
                     className={location === 'seoul' ? 'clicked' : ''}
                     onClick={() => handlePathClick('seoul')}
                     fill={location === 'seoul'? '#F6CAC9' : '#91A7D0'}
+                    data-tooltip-id="tooltip"
+                    data-tooltip-html={toolData.length === 0 ? "Not Found Data" : `
+                        ${toolData[parseInt(dt)+48].date} ${toolData[parseInt(tm)+48].time}시<br/>
+                        누적발전량 : ${toolData[parseInt(tm)+48].loc_total}<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;발전량 : ${toolData[parseInt(tm)+48].loc_power}
+                    `}
                     d="m 133.25429,127.63884 0.58,0.33 0,0 3.8,3.83 -0.1,1.78 0.55,0.52 0.32,3.1 0.57,0.53 0.56,-0.1 2.41,-1.25 2.57,5.7 0.53,0.13 1.81,-0.73 1.21,0.5 2.39,-0.1 4.17,-2.31 3.08,-0.29 0,1.71 0.68,1.22 3.65,-2.08 2.99,-0.26 1.68,-1.58 -0.45,-0.56 0.43,-0.59 0.63,0.16 0.63,-0.46 1.28,-1.72 0,-0.59 -1.18,-0.49 0.4,-2.51 0.99,-0.99 1.76,-0.62 0.45,-0.53 -0.66,-2.41 -0.79,-1.15 -1.15,0.82 -2.47,0.6 -1.18,0.76 -1.18,0.16 -0.37,-0.59 -0.03,-1.19 1.45,-4.16 -1.11,-1.71 -0.07,-1.85 -0.9,-1.16 -0.1,-4.52 -0.92,-1.09 -1.18,-0.2 -2.63,0.33 -2.33,-0.53 -0.92,0.99 -1.26,0.53 -0.56,0.53 0.03,1.19 -1.1,1.06 -0.08,3 -1.1,0.79 -5.15,0.4 -0.84,1.05 -0.16,3.11 -0.63,0.36 -3.62,1.61 -2.42,-1.15 -1.39,-1.72 -1.26,-0.32 -1.02,2.47 -1.16,0.99 z"
-                    data-tooltip-id="tooltip-seoul"
-                    onMouseEnter={() => {
-                        setToolLocation("seoul");
-                        ToolResult();
-                        setIsOpen(true);
-                    }}
-                    onMouseLeave={() => {
-                        setIsOpen(false);
-                    }}
+                    
                 />
                 <path
                     id="south-chungcheong"
@@ -326,18 +301,30 @@ function MapSelect() {
                             <tr>
                                 {/* 첫 번째 시간 */}
                                 <th>시작 날 시간</th>
-                                <td><FirstTime/></td>
+                                <td>
+                                    <select onChange={ClickTime} value={dt === 0 ? tm : 0} id="1" className="timeContainer">
+                                        {timeList.map((time, index) => (
+                                            <option key={index} value={time} className="tm">{time}</option>
+                                        ))}
+                                    </select>
+                                </td>
 
                                 {/* 두 번째 시간 */}
                                 <th>끝나는 날 시간</th>
-                                <td><SecondTime/></td>
+                                <td>
+                                    <select onChange={ClickTime} value={dt === 24 ? tm : 0} id="2" className="timeContainer">
+                                        {timeList.map((time, index) => (
+                                            <option key={index} value={time} className="tm">{time}</option>
+                                        ))}
+                                    </select>
+                                </td>
                             </tr>
                         </table>
 
                         {/* 지도 */}
                         <MapsvgPath/>
                         {/* 툴팁 */}
-                        <Tip/>
+                        <Tooltip id={`tooltip`}/>
                     </div>
                     
                     {/* 데이터 */}
@@ -349,7 +336,9 @@ function MapSelect() {
                         </div>
 
                         {/* 테이블 */}
-                        <div><Table data={data}/></div>
+                        <div>
+                            <Table data={data}/>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -47,13 +47,13 @@
     }
 
     #koreaSvg {
-        pointer-events: none;
+        /* pointer-events: none; */
         stroke: white;
     }
 
-    #koreaSvg > path {
+    /* #koreaSvg > path {
         pointer-events: all;
-    }
+    } */
 
     #koreaSvg > path:hover {
         outline: none;

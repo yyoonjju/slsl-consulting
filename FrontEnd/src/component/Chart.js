@@ -19,7 +19,7 @@ function Chart({data}) {
   for (var i = 0; i < 24; i++) {
     blankData.push(
       {
-        time: 0,
+        time: i,
         loc_power: 0,
         loc_total: 0
       }
@@ -28,33 +28,40 @@ function Chart({data}) {
 
   const FirstTitle = () => {
     try {
-      return data[0].date;
+      return data.slice(0,24).length === 0 ?
+        "Not Found Date" :
+        data[0].date;
     }
     catch {
-      return Moment(new Date()).format("YYYY-MM-DD");
+      console.log("Error: FirstTitle");
     }
   };
 
   const SecondTitle = () => {
     try {
-      return data[24].date;
+      return data.slice(24,48).length === 0 ?
+        "Not Found Date" :
+        data[24].date;
     }
     catch {
-      return Moment(new Date()).add(1,"days").format("YYYY-MM-DD");
+      console.log("Error: SecondTitle");
     }
   }
 
   const ChartData = () => {
     try {
-      if (data.length === 48) {
+      if (data.slice(0,48).length === 48) {
         return data;
       }
-      else if (data.length === 24) {
+      else if (data.slice(0,48).length === 24) {
         return data.concat(blankData);
+      }
+      else {
+        return blankData.concat(blankData);
       }
     }
     catch {
-      return blankData.concat(blankData);
+      console.log("Error: ChartData");
     }
   }
 
@@ -75,8 +82,8 @@ function Chart({data}) {
           }}
           className="chart"
         >
-          <text x="25%" y="5%" textAnchor="middle" fontSize="16" fill="#666">{FirstTitle()}</text>
-          <text x="75%" y="5%" textAnchor="middle" fontSize="16" fill="#666">{SecondTitle()}</text>
+          <text x="30%" y="3%" textAnchor="middle" fontSize="17" fontWeight="bold" fill="#666">{FirstTitle()}</text>
+          <text x="70%" y="3%" textAnchor="middle" fontSize="17"  fontWeight="bold"fill="#666">{SecondTitle()}</text>
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis dataKey="time" interval={1}/>
           <YAxis yAxisId="left" label={{value: "발전량(Mw)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis}/>
