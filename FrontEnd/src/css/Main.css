@@ -91,6 +91,7 @@
     padding: 15px;
     border-radius: 20px;
     font-size: 1rem;
+    display: none;
   }
 
   /* 스크롤 하라고 하는 마우스 애니매이션 */
@@ -164,7 +165,8 @@
     }
   }
 
-  .fontShow1.active, .fontShow2.active, .fontShow3.active {
+  .fontShow1.active {
+    display:inline-block;
     animation: fadeIn 1.2s ease-in-out 1.4s forwards; 
   }
 

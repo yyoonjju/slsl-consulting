@@ -1,6 +1,11 @@
 .howtoInput_head{
     width: 1000px;
     margin-top: 30px;
+    background-color:rgba(256,256,256,0.3);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding-left:20px;
+    padding-bottom:10px;
 }
 
 .howtoInput_title{
@@ -13,7 +18,7 @@
     font-weight: bold;
 }
 .howtoInput_title>div>span{
-    color: blue;
+    color: #607EAA;
 }
 .howtoInput_ol {
     list-style: none;
@@ -58,16 +63,21 @@
     justify-content: center;
     flex-direction: column;
     margin-top: 30px;
+    border-radius: 15px;
+    background-color:rgba(256,256,256,0.3);
+    backdrop-filter: blur(20px);
+    padding-bottom:10px;
+    padding-left:20px;
 }
 #arrayTitle{
     margin-bottom: 30px;
 }
 #arrayTitle>h2{
     width: 220px;
-    background: linear-gradient(to top, #bfdeffe1 50%, transparent 50%);
+    background: linear-gradient(to top, #607EAA 50%, transparent 50%);
 }
 #arrayTitle>h2>span{
-    color: blue;
+    color: #F9F5EB;
 }
 #arrayTitle>div{
     font-size: 20px;
@@ -98,14 +108,14 @@
     background-size: contain;
 }
 .arrayInfo > ul>li>span{
-    color: blue;
+    color: #EAE3D2;
     font-weight: bold;
 }
 
 #arrayInfoBtn{
     margin-top: 10px;
     border: none;
-    background-color: #bfdeffe1;
+    background-color: #EAE3D2;
     border-radius: 20px;
     padding: 5px;
     width: 100%;
@@ -114,6 +124,6 @@
 }
 
 #arrayInfoBtn:hover{
-    background-color: #96c9ffe1;
+    background-color: #EAE3D2;
     font-weight:600;
 }

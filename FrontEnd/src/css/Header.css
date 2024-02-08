@@ -29,10 +29,11 @@
   }
   
   .btn {
+    width: 220px;
     color:white;
     font-size: 1.5rem;
     background-color:rgb(26,51,92);
-    margin-top: 5vh;
+    margin-top: 48px;
     border:none;
     text-align: left;
     cursor: pointer;
@@ -80,21 +81,14 @@
   }
 
   .category {
-    font-size: 16px;
+    font-size: 1.2rem;
+    color:white;
+    font-weight:bold;
     margin: 26px 34px 30px 34px;
     padding: 10px;
     cursor: pointer;
-    background: white;
   }
 
-  .faBars2 {
+  .faBars.active {
     display: none;
-  }
-
-  .faBars1.active {
-    display: none;
-  }
-
-  .faBars2.active {
-    display: block;
   }

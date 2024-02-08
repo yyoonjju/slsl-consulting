@@ -1,14 +1,23 @@
-.productdetail{display:flex;
-    height:100vh;}
+.productdetail{
+    display:flex;
+    height:100vh;
+}
+
+body{
+    background-image: url('../../public/images/suncell.jpg');
+    background-repeat:no-repeat;
+    background-position: center;
+    height:100vh;    
+}
 
 .introduceproduct{
-font-size:2rem;
-color:rgb(26,51,92);
-margin-top:20vh;
+color:white;
+margin-top:120px;
 font-weight:bold;
+font-size: 1.5rem;
 width:20vw;
 margin-left:12vw;
-margin-bottom:2vh;
+margin-bottom:10px;
 display:flex;
 flex-direction: column;
 }
@@ -23,6 +32,8 @@ margin-left:12vw;
 padding:2vw;
 border-radius: 1vw;
 font-size:large;
+background-color:rgba(256,256,256,0.3);
+backdrop-filter: blur(20px);
 }
 
 .koreaproductname{
@@ -41,6 +52,8 @@ margin-left: 7vw;
 padding:2vw;
 border-radius: 1vw;
 font-size:large;
+background-color:rgba(256,256,256,0.3);
+backdrop-filter: blur(20px);
 }
 
 .koreaproductimg{
