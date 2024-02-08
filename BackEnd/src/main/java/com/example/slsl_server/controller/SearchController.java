@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.slsl_server.model.Gwangju;
+import com.example.slsl_server.model.Kor;
 import com.example.slsl_server.model.Korea;
 import com.example.slsl_server.model.Pay;
 import com.example.slsl_server.model.Seoul;
@@ -44,7 +45,7 @@ public class SearchController {
             List<Seoul> result = new ArrayList<>();
             result.addAll(first);
             result.addAll(second);
-        
+
             return result;
         }
         else if (location.equals("gwangju")) {
@@ -56,13 +57,31 @@ public class SearchController {
         
             return result;
         }
-        else {
+        else if (location.equals("korea")) {
             List<Korea> first = koreaRepository.findByDate(LocalDate.parse(firstDate));
             List<Korea> second = koreaRepository.findByDate(LocalDate.parse(secondDate));
             List<Korea> result = new ArrayList<>();
             result.addAll(first);
             result.addAll(second);
-        
+
+            return result;
+        }
+        else {
+            List<Korea> firstKorea = koreaRepository.findByDate(LocalDate.parse(firstDate));
+            List<Korea> secondKorea = koreaRepository.findByDate(LocalDate.parse(secondDate));
+            List<Seoul> firstSeoul = seoulRepository.findByDate(LocalDate.parse(firstDate));
+            List<Seoul> secondSeoul = seoulRepository.findByDate(LocalDate.parse(secondDate));
+            List<Gwangju> firstGwangju = gwangjuRepository.findByDate(LocalDate.parse(firstDate));
+            List<Gwangju> secondGwangju = gwangjuRepository.findByDate(LocalDate.parse(secondDate));
+
+            List<Kor> result = new ArrayList<>();
+            result.addAll(firstKorea);
+            result.addAll(secondKorea);
+            result.addAll(firstSeoul);
+            result.addAll(secondSeoul);
+            result.addAll(firstGwangju);
+            result.addAll(secondGwangju);
+
             return result;
         }
     };
