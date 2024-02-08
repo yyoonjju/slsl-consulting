@@ -16,15 +16,15 @@
     4-2. ValueInfo : 수익계산 이용하는 방법 정리
     4-3. MapsvgPath : 한반도 지도 svg가 있는 컴포넌트
 
-5.FAQ : 자주 묻는 질문
+5. FAQ : 자주 묻는 질문
     5-1. FaqList : FAQ 페이지에서 사용되는 FAQ 내용 목록을 나타내는 컴포넌트
     5-2. FaqItem : FaqList에서 만들어진 각각의 FAQ 내용에 대한 JSX 구조를 정의하는 컴포넌트
 
-6.InquiryInput : 문의하기
+6. InquiryInput : 문의하기
 
-7.Header : 헤더
+7. Header : 헤더
 
-8.Footer : 푸터
+8. Footer : 푸터
 
 
 
