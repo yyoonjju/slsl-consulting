@@ -26,13 +26,6 @@ function Main() {
             const hash = window.location.hash.substring(1);
             const targetSection = document.getElementById(hash);
 
-            // Main에 들어갔을 시 링크에서 # 뒤에 있는 문장이 page-1일 경우
-            // 무조건 fontShow1 뒤에 있던 클래스 이름 active를 지우는 코드
-
-            // if (hash === "page-1") {
-            //     document.querySelector(".fontShow1").classList.remove("active");
-            // }
-
             // 스크롤하면 붙여졌던 클래스 이름을 없애는 코드
     
             document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontUp3, .fontShow1").forEach((e) => {
@@ -68,6 +61,10 @@ function Main() {
                 }
     
                 if (fontShow1) {
+
+                    // Main에 들어갔을 시 링크에서 # 뒤에 있는 문장이 page-1일 경우
+                    // 무조건 fontShow1 뒤에 있던 클래스 이름 active를 지우는 코드
+                    
                     fontShow1.classList.add("active");
                     if (hash === "page-1") {
                         document.querySelector(".fontShow1").classList.remove("active");
@@ -151,13 +148,18 @@ function Main() {
 
     // solarInfo 페이지 안의 JSX 구조에 값을 넣는 코드
 
+    // slideIndex의 기본값이면 SolarInfo의 값은
+    // solarInfoProps임
+
     const solarInfoProps = {
         fontUp1: "태양광 모듈",
         fontUp2: "제품을 소개합니다",
-        Route: "FAQ",
+        Route: "Product",
         Button: "제품 소개",
       };
     
+    // 이미지 태그의 /images/Slider${slideIndex+1}.jpg 경로에서
+    // slideIndex가 바뀔 때마다 SolarInfo의 값이 바뀌게 하는 코드
       
       if (slideIndex === 1) {
         solarInfoProps.fontUp1 = "날짜와 시간, 지역을 선택하면";
