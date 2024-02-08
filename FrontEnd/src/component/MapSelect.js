@@ -259,7 +259,7 @@ function MapSelect() {
 
     return (
         <div className="mapSelect">
-            <h1 className="mapSelectTitle">testtext</h1>
+            <h1 className="mapSelectTitle">발전량 예측</h1>
 
             <div className="dashBoard">
                 {/* 지도와 툴팁 */}

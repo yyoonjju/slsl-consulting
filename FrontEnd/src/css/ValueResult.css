@@ -4,12 +4,17 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url('../../public/images/suncell.jpg');
+    background-repeat:no-repeat;
+    background-position: center; 
 }
 
 #ValueResultTitle{
     display: flex;
     width: 1000px;
-    margin: 50px 0px 30px 0;
+    margin-top:150px;
+    color:white;
+    margin-bottom:10px;
 }
 
 .ValueResult{
@@ -22,6 +27,9 @@
     padding: 20px;
     justify-content: space-evenly;
     align-items: center;
+    background-color:rgba(256,256,256,0.3);
+    backdrop-filter: blur(20px);
+    margin-bottom:70px;
 }
 
 .ValueResultTable{
@@ -39,8 +47,13 @@
 .ValueResultTable>tr>td,.ResultCostTable>tr>td {
     /* border: solid 1px black; */
 }
+.ResultCostTable>tr>td:nth-child(1){
+    width: 200px;
+    text-align:justify;
+ }
 
-.ResultCostTable>tr>td:nth-child(1),.ResultCostTable>tr>td:nth-child(3){
+
+.ResultCostTable>tr>td:nth-child(3){
    width: 180px;
    text-align:justify;
 }
@@ -68,11 +81,11 @@
     border: none;
     color: white;
     border-radius: 5px;
-    background-color: #0B74E2;
+    background-color: #607EAA;
     font-size: 20px;
     margin-top: 20px;
 }
 
 #btnClickInput:hover{
-    background-color: #0b6acf;
+    background-color: #607EAA;
 }

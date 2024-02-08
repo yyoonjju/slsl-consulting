@@ -1,23 +1,29 @@
 .ValueInputPages {
-    height:100vh;
+    height:230vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-image: url('../../public/images/suncell.jpg');
+    background-repeat:no-repeat;
+    background-position: center;    
+    background-size:230%;
 }
 
 #ValueInputTitle{
     display: flex;
     width: 1000px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top:70px;
+    color: white;
 }
 
 .ValueInput{
     display: flex;
     flex-direction: row;
     margin: 0 auto;
-    /* 위치를 보기 위한 백그라운드 색상 */
-    background-color: #EEF3F6;
+    background-color:rgba(256,256,256,0.3);
+    backdrop-filter: blur(20px);
     width: 1000px;
     height: 450px;
     border-radius: 25px;
@@ -95,12 +101,12 @@
     border: none;
     color: white;
     border-radius: 5px;
-    background-color: #0B74E2;
+    background-color: #607EAA;
     font-size: 20px;
 }
 
 #right_inputBtn:hover{
-    background-color: #0b6acf;
+    background-color: #607EAA;
 }
 
 #selectLocal{

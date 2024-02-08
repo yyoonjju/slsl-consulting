@@ -1,11 +1,11 @@
 
     .InquiryInputPages {
-        height: 100vh;
+        height: 120vh;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-top: 30px;
+        margin-top: 50px;
     }
 
     .inquiryInput{
@@ -16,7 +16,8 @@
     .inquiryTitle{
         display: flex;
         width: 1000px;
-        margin: 0 0 30px 6px;
+        color:white;
+        margin-bottom:10px;
     }
 
     .red_span{
@@ -35,7 +36,9 @@
         flex-direction: column;
         height: 600px;
         width: 826px;
-        background-color: #EEF3F6;
+        background-color:rgba(256,256,256,0.3);
+        backdrop-filter: blur(20px);
+        border-radius:15px;
         align-items: center;
         border-radius: 20px;
         justify-content: space-around;
@@ -144,10 +147,10 @@
         border: none;
         color: white;
         border-radius: 5px;
-        background-color: #0B74E2;
+        background-color: #607EAA;
         font-size: 20px;
     }
 
     #inquiry_Btn:hover{
-        background-color: #0b6acf;
+        background-color: #607EAA;
     }

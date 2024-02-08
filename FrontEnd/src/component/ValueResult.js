@@ -176,7 +176,7 @@ const ValueResult = () => {
                         <td> {inputArea}&nbsp;(m²)</td>
                         <td>설치 예상 기간 : </td>
                         <td> {firstDate} ~ {secondDate} </td>
-                    </tr>
+                    </tr><br/>
 
                 </table>
 
@@ -185,6 +185,8 @@ const ValueResult = () => {
                     <tr>
                         <td>예상 판매 금액 :</td>
                         <td>(원)</td>
+                        <td>흑자 전환 시기 :</td>
+                        <td>{firstDate} (임시)</td>
                     </tr>
 
                     <tr>

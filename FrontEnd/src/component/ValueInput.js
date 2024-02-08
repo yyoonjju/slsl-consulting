@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import MapsvgPath from './MapsvgPath';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
-
+import ValueInfo from './ValueInfo';
 const ValueInput = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -22,6 +22,7 @@ const ValueInput = () => {
     }));
     };
   
+    //종료 일자
     const handleEndDateChange = (date) => {
       setEndDate(date);
 
@@ -31,6 +32,7 @@ const ValueInput = () => {
     }));
     };
 
+    // input 태그에서 지역 선택했을때
     const handleLocationChange = (e) =>{
         setSelectedLocation(e.target.value);
 
@@ -231,8 +233,11 @@ const ValueInput = () => {
                             </tr>
                         </table>
                     </form>
-                </section>
+
+                </section>       
             </div>
+
+            <ValueInfo/>
         </article>
 
     );

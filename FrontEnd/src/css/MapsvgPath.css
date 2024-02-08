@@ -25,7 +25,12 @@
 
     #Mapsvg > path:active{
         outline: none;
-        fill: gainsboro;
+        fill: #F6CAC9;
+    }
+
+    #Mapsvg > path.clicked{
+        outline: none;
+        fill: #F6CAC9;
     }
     
     /* #busan:active
