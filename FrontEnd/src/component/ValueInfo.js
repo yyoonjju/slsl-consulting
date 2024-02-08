@@ -4,7 +4,7 @@ const ValueInfo=()=>{
     
     return(
         <article>
-        {/* 입력창 입력방법 설명 */}
+            {/* 입력창 입력방법 설명 */}
             <div className='howtoInput_head'>
                 <div className='howtoInput_title'>
                     <h2>태양광 에너지 발전수익 및 모듈 비용을 예측하는 방법</h2>
@@ -43,7 +43,7 @@ const ValueInfo=()=>{
                 </ol>
             </div>
 
-{/* 어레이 설명 */}
+            {/* 어레이 설명 */}
             <div className='arrayInfoFooter'>
                 <div id = "arrayTitle">
                     <h2>여기서 <span>'어레이'</span>란?</h2>
