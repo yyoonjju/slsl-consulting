@@ -14,7 +14,8 @@
 4. ValueInput : 수익계산<br> 
     4-1. ValueResult : 수익계산 결과  <br>
     4-2. ValueInfo : 수익계산 이용하는 방법 정리<br>
-    4-3. MapsvgPath : 한반도 지도 svg가 있는 컴포넌트<br>
+    4-3. ValueChart : 수익계산 결과 차트<br>
+    4-4. MapsvgPath : 한반도 지도 svg가 있는 컴포넌트<br>
 
 5. FAQ : 자주 묻는 질문<br>
     5-1. FaqList : FAQ 페이지에서 사용되는 FAQ 내용 목록을 나타내는 컴포넌트<br>

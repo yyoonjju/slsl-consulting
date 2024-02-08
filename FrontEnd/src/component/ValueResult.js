@@ -22,21 +22,51 @@ const ValueResult = () => {
     const inputArea = formData && formData.inputArea;
 
     //시작일
-    const startDate = formData && formData.startDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    
+    const [firstDate, setFirstDate] = useState(null);
+
     //종료일
-    const endDate = formData && formData.endDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    
-    const [firstDate, setFirstDate] = useState(Moment(formData.startDate).format("YYYY-MM-DD"));
-    const [secondDate, setSecondDate] = useState(Moment(formData.endDate).format("YYYY-MM-DD"));
+    const [secondDate, setSecondDate] = useState(null);
 
     let LocalLabel; //지역선택 세부명칭
     let PanelLabel; //패널선택 세부명칭
-    let totalMw;    // 설비용량 
-    let PanelSize;  // 패널 사이즈 
+    let totalMw;    // 설비용량
+    let PanelSize;  // 패널 사이즈
     let PanelCost;  // 패널 개당 가격
 
-    //지역선택 세부명, , 설비 용량
+     // url(/result 만을 입력해서 접속 못하게) null 값으로 접속 못하게 처리 
+    useEffect(()=>{
+        if (!formData) {
+            // formData가 없을 때 처리
+            alert("입력페이지에서 수익계산을 위한 값들을 입력해주세요.")
+            nav("/ValueInput");
+        }else {
+            
+            // formData가 존재하고 formData.startDate가 존재하는 경우에만 처리
+            if (formData.startDate) {
+                // formData.startDate와 formData.endDate를 Moment를 사용하여 변환하여 저장
+                setFirstDate(Moment(formData.startDate).format("YYYY-MM-DD"));
+                setSecondDate(Moment(formData.endDate).format("YYYY-MM-DD"));
+            }
+        }
+
+        const fetchData = async() => {
+            try {
+                const res = await axios.get(`http://10.10.21.64:8080/pay`, {
+                    params: {
+                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
+                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
+                    }
+                });
+                setChartData(res.data);
+            }
+            catch (error) {
+                console.error('Error fetching chart data:', error);
+            }
+        };
+        fetchData();
+    },[formData, nav]);
+
+    //지역선택 세부명, 설비 용량
     if(selectLocal === "seoul"){
         LocalLabel = '서울특별시';
         totalMw = 13.23;
@@ -90,7 +120,7 @@ const ValueResult = () => {
         totalMw = 132.46;
     }
 
-    // 패널 선택 세부명, 그에따른 필요면적, 가격
+    // 패널 선택 세부명, 그에 따른 필요면적, 가격
     if(selectPanel ==="fromKorea"){
         PanelLabel = '국산 PEAKDVQ XL G11.7(570Wp)';
         PanelSize = 67.81;
@@ -101,49 +131,20 @@ const ValueResult = () => {
         PanelCost = 5964750;
     }
 
-    // url 통해서 null 값으로 접속 못하게 처리 
-   useEffect(()=>{
-        if (!formData) {
-            // formData가 없을 때 처리
-            alert("입력페이지에서 수익계산을 위한 값들을 입력해주세요.")
-            nav("/ValueInput");
-        }
-
-        const fetchData = async() => {
-            try {
-                const res = await axios.get(`http://10.10.21.64:8080/pay`, {
-                  params: {
-                    firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
-                    secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
-                  }
-                });
-                
-                console.log(firstDate);
-                console.log(secondDate);
-
-                setChartData(res.data);
-
-              } catch (error) {
-                    console.error('Error fetching chart data:', error);
-              }
-           
-        };
-        setFirstDate(Moment(formData.startDate).format("YYYY-MM-DD"));
-        setSecondDate(Moment(formData.endDate).format("YYYY-MM-DD"));
-        fetchData();
-   },[formData, nav]);
-
-    //초기 투자 비용 
+    //설치 할 수 있는 어레이의 개수
     const amount = Math.floor(inputArea/PanelSize);
+
+     //초기 투자 비용 계산식
     const InitaialCost = Math.floor(inputArea/PanelSize)*PanelCost;
 
-    // 숫자 포맷팅 함수
+    // 숫자 포맷팅 (초기 투자비용 출력시 원 단위(,) 출력)
     const formatNumber = (number) => {
         return new Intl.NumberFormat('ko-KR').format(number);
     };
 
     console.log(chartData);
 
+    // ValueInput으로 돌아가서 다시 계산하기 
     const btnClick = ()=>{
         window.location.href="/ValueInput"
     }
@@ -176,28 +177,29 @@ const ValueResult = () => {
                         <td> {inputArea}&nbsp;(m²)</td>
                         <td>설치 예상 기간 : </td>
                         <td> {firstDate} ~ {secondDate} </td>
-                    </tr><br/>
+                    </tr>
 
                 </table>
 
                 <table className='ResultCostTable'>
                     <h3 className='fontLine'>예상 결과</h3><br/>
                     <tr>
+                        <td>설치 가능 개수 : </td>
+                        <td> 어레이 <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
+                        <td>초기 투자 비용 :</td>
+                        <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
+                    </tr>
+
+                    <tr>
                         <td>예상 판매 금액 :</td>
-                        <td>(원)</td>
+                        <td>{formatNumber(InitaialCost)}&nbsp;&nbsp;(원)(임시)</td>
                         <td>흑자 전환 시기 :</td>
                         <td>{firstDate} (임시)</td>
                     </tr>
 
-                    <tr>
-                        <td>설치 가능 어레이 개수 : </td>
-                        <td> <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
-                        <td>초기 투자 비용 :</td>
-                        <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
-                    </tr>
+
                 </table>
                        
-                {/* 다시계산하기 말고 다른걸로 바꿔도 됩니다. */}
                 <button onClick={btnClick} id='btnClickInput'>다시 계산하기</button>
 
             </section>
