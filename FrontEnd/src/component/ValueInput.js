@@ -22,6 +22,7 @@ const ValueInput = () => {
     }));
     };
   
+    //종료 일자
     const handleEndDateChange = (date) => {
       setEndDate(date);
 
@@ -31,6 +32,7 @@ const ValueInput = () => {
     }));
     };
 
+    // input 태그에서 지역 선택했을때
     const handleLocationChange = (e) =>{
         setSelectedLocation(e.target.value);
 
@@ -234,7 +236,7 @@ const ValueInput = () => {
 
                 </section>       
             </div>
-            
+
             <ValueInfo/>
         </article>
 

@@ -63,7 +63,7 @@ const ValueResult = () => {
                     }
                 });
                 setChartData(res.data);
-            } 
+            }
             catch (error) {
                 console.error('Error fetching chart data:', error);
             }

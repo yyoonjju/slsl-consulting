@@ -4,7 +4,7 @@ const ValueInfo=()=>{
     
     return(
         <article>
-{/* 입력창 입력방법 설명 */}
+        {/* 입력창 입력방법 설명 */}
             <div className='howtoInput_head'>
                 <div className='howtoInput_title'>
                     <h2>태양광 에너지 발전수익 및 모듈 비용을 예측하는 방법</h2>
