@@ -171,10 +171,6 @@ function Main() {
         solarInfoProps.Button = "예측 조회";
       }
 
-      function askbtnclick(e){
-        window.location.href="/ask"
-      }
-
 
     return (
         <div className="container" id="container">

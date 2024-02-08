@@ -4,7 +4,7 @@ import '../css/Product.css';
 const Product= ()=>{
     return(
     <div>
-        <p className="introduceproduct">제품 소개</p>
+        <h1 className="introduceproduct">제품 소개</h1>
         <div className="productdetail">
             <div className="koreaproduct">
                 <img src="images/koreacell.png" className="koreaproductimg"></img><br/>

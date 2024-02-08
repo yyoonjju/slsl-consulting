@@ -70,8 +70,7 @@ const Header = ()=>{
                 <img src="images/slsllogoHeader.png" className={`logo2 ${isOpen ? '' : 'active'}`} onClick={logobtnclick}/>
                 
                 <div id="cursor" className="menuicon" onClick={handleMenuToggle} position="relative">
-                    <FaBars size={50} color="rgb(26,51,92)" className={`faBars1 ${isOpen ? '' : 'active'}`}/>
-                    <FaBars size={50} color="white" className={`faBars2 ${isOpen ? '' : 'active'}`}/>
+                    <FaBars size={50} color="white" className={`faBars ${isOpen ? 'active' : ''}`}/>
                     {isMenuOpen && (<div className="menuboard">
                         <button className="btn" onClick = {productbtnclick}>제품 소개 </button><br/>
                         <button className="btn" onClick = {predictInputClick}>발전량 예측 조회 </button><br/>
