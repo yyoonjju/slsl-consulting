@@ -40,7 +40,7 @@
     /* border: solid 1px black; */
 }
 .ResultCostTable>tr>td:nth-child(1){
-    width: 200px;
+    width: 150px;
     text-align:justify;
  }
 
@@ -65,6 +65,7 @@
 
 .fontColor{
     color: blue;
+    font-size: larger;
 }
 
 #btnClickInput{
