@@ -59,14 +59,14 @@
     /* border: 3px solid black; */
 }
 
-#koreaSvg {
-    pointer-events: none;
-    stroke: white;
-}
+    #koreaSvg {
+        pointer-events: none;
+        stroke: white;
+    }
 
-#koreaSvg > path {
-    pointer-events: all;
-}
+    #koreaSvg > path {
+        pointer-events: all;
+    }
 
 #koreaSvg > path:hover {
     outline: none;

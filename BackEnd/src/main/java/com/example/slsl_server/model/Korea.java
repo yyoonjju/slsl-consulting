@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Korea {
+public class Korea implements Kor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
@@ -18,4 +18,9 @@ public class Korea {
     private int time;
     private double loc_power;
     private double loc_total;
+
+    @Override
+    public void displayInfo() {
+        System.err.println(date);
+    }
 }
