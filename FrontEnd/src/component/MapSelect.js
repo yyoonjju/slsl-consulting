@@ -259,6 +259,7 @@ function MapSelect() {
 
     return (
         <div className="mapSelect">
+            <div className='mapSeletIn'>
             <h1 className="mapSelectTitle">발전량 예측</h1>
 
             <div className="dashBoard">
@@ -340,6 +341,7 @@ function MapSelect() {
                             <Table data={data}/>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

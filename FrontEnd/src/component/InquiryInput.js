@@ -106,9 +106,7 @@ const InquiryInput = () => {
 
         <div className='inquiryBox'>
       
-        <div className="inquiryTitle">
-            <h1>문의 등록</h1>
-        </div>
+        <h1 className="inquiryTitle">문의 등록</h1>
                 
         <section id = "inquirySection">
             <form id = "inquiryForm"  onSubmit={handleSubmit}>

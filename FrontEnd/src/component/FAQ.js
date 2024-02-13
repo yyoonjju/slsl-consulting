@@ -13,6 +13,8 @@ function FAQ() {
 
     return(
         <div className='QnA'>
+            <div className='qnaIn'>
+                <h1 className='faqTitle'>FAQ</h1>
             <div className='qnabox'>
                 <div className='QnAPhoto'>
                     <div className={`QnAPhotoBox ${qnaUP ? 'active' : ''}`}>
@@ -31,6 +33,7 @@ function FAQ() {
                         <FaqList/>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     )
