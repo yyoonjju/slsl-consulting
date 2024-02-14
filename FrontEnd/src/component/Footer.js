@@ -9,7 +9,7 @@ const Footer = ()=>{
     return(
         <div className="footer">
             <section className="footerSection">
-                <div>Call. <span>062 940-3000</span></div>
+                <div>Call. <span>062&#41; 940-3000</span></div>
                 <div>Address. <span>광주 광산구 소촌로 152번길 37</span></div>
                 <div>Team. <span>KepcoA Sprint III 3조</span></div>
                 <div><span>yyoonjju(PL), kty0910, azure0321, 0shai0, raincross7, notrowing</span></div>
