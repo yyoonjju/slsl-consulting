@@ -127,18 +127,18 @@ const Header = () => {
             {/* 메인페이지 헤더 */}
             <section className={`headermain ${isOpen ? '' : 'active'}`}>
                 <img src="images/slsllogoHeader.png" className={`logo2 ${isOpen ? '' : 'active'}`} onClick={logobtnclick} alt="logo" />
+                
                 <div id="cursor" className="menuicon" onClick={handleMenuToggle} >
-
-                {/* FaBars는 햄버거 요소 JSX 코드임. isOpen이 true면 클래스 이름에 active 추가 */}
-                <FaBars size={50} color="white" className={`faBars ${isOpen ? 'active' : ''}`} />
-                {isMenuOpen && 
-                    (<div className="menuboard">
-                        <button className="btn" onClick={productbtnclick}>제품 소개 </button><br />
-                        <button className="btn" onClick={predictInputClick}>발전량 예측 조회 </button><br />
-                        <button className="btn" onClick={valueInputClick}>태양광 발전수익 및<br />모듈비용 예측 </button><br />
-                        <button className="btn" onClick={faqbtnclick}>FAQ </button> <br />
-                        <button className="btn" onClick={askbtnclick}>문의하기</button>
-                    </div>)}
+                    {/* FaBars는 햄버거 요소 JSX 코드임. isOpen이 true면 클래스 이름에 active 추가 */}
+                    <FaBars size={50} color="white" className={`faBars ${isOpen ? 'active' : ''}`} />
+                    {isMenuOpen && 
+                        (<div className="menuboard">
+                            <button className="btn" onClick={productbtnclick}>제품 소개 </button><br />
+                            <button className="btn" onClick={predictInputClick}>발전량 예측 조회 </button><br />
+                            <button className="btn" onClick={valueInputClick}>태양광 발전수익 및<br />모듈비용 예측 </button><br />
+                            <button className="btn" onClick={faqbtnclick}>FAQ </button> <br />
+                            <button className="btn" onClick={askbtnclick}>문의하기</button>
+                        </div>)}
                 </div>
             </section>
 

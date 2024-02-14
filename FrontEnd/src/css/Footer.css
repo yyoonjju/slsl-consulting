@@ -4,14 +4,36 @@
     color: white;
     /* text-align: center; */
     line-height: 150%;
-    font-size: larger;
+    font-size: 20px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height:20vh;
-    position: absolute;
-    line-height: 200%;
+    height:25vh;
+
+  
     font-weight: bold;
-    padding-top:2vh;
+   
+  }
+
+  .footerSection{
+    margin-right: 30px;
+  }
+  .footerSection>div{
+    /* border: solid 1px white; */
+  }
+  #gitBtn{
+    cursor: pointer;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+  }
+  #gitBtn>svg{
+    fill:white; margin-right: 10px;
+  }
+
+  #gitBtn:hover{
+    color: gray;
+    
   }
