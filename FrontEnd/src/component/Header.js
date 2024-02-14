@@ -123,7 +123,7 @@ const Header = () => {
     
 
     return (
-        <article>
+        <article className={`headerarticle ${isOpen ? '' : 'active'}`}>
             {/* 메인페이지 헤더 */}
             <section className={`headermain ${isOpen ? '' : 'active'}`}>
                 <img src="images/slsllogoHeader.png" className={`logo2 ${isOpen ? '' : 'active'}`} onClick={logobtnclick} alt="logo" />
@@ -150,13 +150,14 @@ const Header = () => {
                     <StyledSection>
                         <section className={`headerdetail ${isOpen ? 'active' : ''}`}>
                             <img src="images/slsllogo.png" className={`logo1 ${isOpen ? 'active' : ''}`} onClick={logobtnclick} alt="logo" />
-                                <div id='categoryBox'>
-                                    <div className={`category ${clickedCategory === 'product' ? 'clicked' : ''}`} onClick={productbtnclick}>제품소개 </div><br />
-                                    <div className={`category ${clickedCategory === 'predictInput' ? 'clicked' : ''}`} onClick={predictInputClick}>발전량 예측조회 </div><br />
-                                    <div className={`category ${clickedCategory === 'valueInput' ? 'clicked' : ''}`} onClick={valueInputClick}>발전수익 및 모듈비용 예측 </div><br />
-                                    <div className={`category ${clickedCategory === 'faq' ? 'clicked' : ''}`} onClick={faqbtnclick}>FAQ </div> <br />
-                                    <div className={`category ${clickedCategory === 'ask' ? 'clicked' : ''}`} onClick={askbtnclick}>문의하기</div>
-                                </div>
+                                
+                            <div id='categoryBox'>
+                                <div className={`category ${clickedCategory === 'product' ? 'clicked' : ''}`} onClick={productbtnclick}>제품소개 </div><br />
+                                <div className={`category ${clickedCategory === 'predictInput' ? 'clicked' : ''}`} onClick={predictInputClick}>발전량 예측조회 </div><br />
+                                <div className={`category ${clickedCategory === 'valueInput' ? 'clicked' : ''}`} onClick={valueInputClick}>발전수익 및 모듈비용 예측 </div><br />
+                                <div className={`category ${clickedCategory === 'faq' ? 'clicked' : ''}`} onClick={faqbtnclick}>FAQ </div> <br />
+                                <div className={`category ${clickedCategory === 'ask' ? 'clicked' : ''}`} onClick={askbtnclick}>문의하기</div>
+                            </div>
                                 
                         </section>
                     </StyledSection>
@@ -174,7 +175,7 @@ const StyledHeader = styled.article`
     top: 0;
     height: 100px;
     transition: top 0.3s;
-    z-index: 1;
+    z-index: 3;
     &.hide {
         top: -100px;
     }

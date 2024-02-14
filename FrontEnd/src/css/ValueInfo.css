@@ -1,3 +1,6 @@
+.ValueInfo{
+    border: solid 1px black;
+}
 .howtoInput_head{
     margin-top: 30px;
     background-color:rgba(256,256,256,0.3);
@@ -5,6 +8,7 @@
     border-radius: 15px;
     padding-left:20px;
     padding-bottom:10px;
+    
 }
 
 .howtoInput_title{
@@ -17,7 +21,7 @@
     font-weight: bold;
 }
 .howtoInput_title>div>span{
-    color: #607EAA;
+    color: #0B74E2;
 }
 .howtoInput_ol {
     list-style: none;
@@ -73,11 +77,13 @@
 }
 #arrayTitle>h2{
     width: 220px;
-    background: linear-gradient(to top, #607EAA 50%, transparent 50%);
+    background: linear-gradient(to top, #ffe135 50%, transparent 50%);
 }
+
 #arrayTitle>h2>span{
-    color: #F9F5EB;
+    color: #0B74E2;
 }
+
 #arrayTitle>div{
     font-size: 20px;
     text-align: center;
@@ -107,7 +113,7 @@
     background-size: contain;
 }
 .arrayInfo > ul>li>span{
-    color: #EAE3D2;
+    color: #0B74E2;
     font-weight: bold;
 }
 
@@ -120,9 +126,10 @@
     width: 100%;
     font-weight:600;
     font-size: 18px;
+    cursor: pointer;
 }
 
 #arrayInfoBtn:hover{
-    background-color: #EAE3D2;
+    background-color: #e7dabc;
     font-weight:600;
 }

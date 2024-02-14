@@ -3,7 +3,7 @@ import '../css/ValueInfo.css';
 const ValueInfo=()=>{
     
     return(
-        <article>
+        <article className='ValueInfo'>
             {/* 입력창 입력방법 설명 */}
             <div className='howtoInput_head'>
                 <div className='howtoInput_title'>
@@ -18,7 +18,7 @@ const ValueInfo=()=>{
 
                     <li>
                         <div>
-                           모듈 선택 박스 한국 모듈 제품과 미국모듈제품 중 선택해주세요.
+                           모듈 선택 박스에서 한국 모듈제품과 미국 모듈제품 중 선택해주세요.
                         </div>
                     </li>
 

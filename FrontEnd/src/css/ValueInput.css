@@ -1,52 +1,70 @@
-.ValueInputPages {
+.ValueInput {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-size:cover;
     margin-bottom: 20px;
+    
 }
 
+.ValueInputPagesIn{
+   
+    
+}
 .ValueInputIn {
     display: flex;
     justify-content: center;
     flex-direction: column;
+   
 }
 
 #ValueInputTitle{
-    margin-top:120px;
+    z-index: 1;
     margin-bottom: 10px;
-    color: white;
+    /* color: white; */
+    color:#333;
     font-size: 26px;
+
+  
+  
+
 }
 
-.ValueInput{
+.ValueInputForm{
     display: flex;
     flex-direction: row;
     margin: 0 auto;
-    background-color:rgba(256,256,256,0.3);
+    /* background-color:rgba(256,256,256,0.3); */
     backdrop-filter: blur(20px);
     width: 1000px;
     height: 450px;
+    
     border-radius: 15px;
     padding: 20px;
     justify-content: space-around;
+    
+    border: solid 1px black;
+   
 }
 
 #inputSection{
     display: flex;
     align-items: center;
+    
 }
 
-#inputFormTable>tr>td{
-    /* border: solid 1px black; */
-}
+
 
 #inputFormTable{
     height: 450px;
     width: 100%;
     padding: 10px;
     font-size: 18px;
+    
+}
+#inputFormTable>tr>td{
+    /* border: solid 1px black; */
 }
 
 #inputFormTable>tr>td:nth-child(1){
@@ -103,12 +121,13 @@
     border: none;
     color: white;
     border-radius: 5px;
-    background-color: #607EAA;
+    background-color:  #0B74E2;
     font-size: 20px;
+    cursor: pointer;
 }
 
 #right_inputBtn:hover{
-    background-color: #607EAA;
+    background-color: #0b6acf;
 }
 
 #selectLocal{

@@ -3,6 +3,7 @@ import pageable from "pageable";
 import BtnSlider from "./BtnSlider";
 import SolarInfo from './SolarInfo';
 import '../css/Slider.css';
+import '../css/Main.css';
 
 function Main() {
 
