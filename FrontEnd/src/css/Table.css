@@ -12,9 +12,13 @@
         font-size: 20px;
     }
 
-    .tdTime {
+    .table th:nth-child(1) {
+        width: 100px;
+    }
+
+    .tdDate {
         background-color: rgba(26,51,92,0.2);
-        width: 40px;
+        width: 100px;
         padding: 7px 20px;
         text-align: center;
         font-weight: bold;
