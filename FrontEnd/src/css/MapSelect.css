@@ -111,3 +111,8 @@ td {
     border: none;
     text-align: center;
 }
+
+.rightTitle {
+    font-size: 30px;
+    font-weight: bold;
+}
