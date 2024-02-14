@@ -1,6 +1,11 @@
+.headerarticle{
+  height: 100px;
+}
 /* 메인페이지 */
+
 .headermain{
   display: none;
+  
 }
 
 .headermain.active{
@@ -65,8 +70,6 @@
   text-align: left;
   cursor: pointer;
 }
-
-
 
 /* 상세페이지 */
 .headerdetail{

@@ -1,10 +1,11 @@
-.ValueInputPages {
+.ValueInput {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     background-size:cover;
     margin-bottom: 20px;
+    
 }
 
 .ValueInputPagesIn{
@@ -26,11 +27,11 @@
     font-size: 26px;
 
   
- 
+  
 
 }
 
-.ValueInput{
+.ValueInputForm{
     display: flex;
     flex-direction: row;
     margin: 0 auto;
@@ -43,7 +44,7 @@
     padding: 20px;
     justify-content: space-around;
     
-
+    border: solid 1px black;
    
 }
 

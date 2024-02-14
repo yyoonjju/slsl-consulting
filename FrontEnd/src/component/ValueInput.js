@@ -124,13 +124,13 @@ const ValueInput = () => {
 
     return (
         
-        <article className= "ValueInputPages">
+        <article className= "ValueInput">
 
             <div className='ValueInputPagesIn'>
             
                 <h1 id = "ValueInputTitle">발전수익 계산</h1>
 
-                <div className= "ValueInput">
+                <div className= "ValueInputForm">
                 
                     <section>
                         <MapsvgPath selectedLocation={selectedLocation} onClick={ClickPath}/>

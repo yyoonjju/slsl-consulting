@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../css/MapsvgPath.css';
 
 const MapsvgPath = ({selectedLocation, onClick}) =>{
     const [selectedPath, setSelectedPath] = useState(null);

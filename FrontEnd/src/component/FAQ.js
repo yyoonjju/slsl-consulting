@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FaqList from './FaqList';
+import '../css/FAQ.css';
 
 function FAQ() {
 

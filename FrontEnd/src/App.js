@@ -1,8 +1,5 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
-import './css/Main.css';
-import './css/FAQ.css';
-import './css/MapsvgPath.css';
 
 import Header from './component/Header.js';
 import Footer from './component/Footer.js';
