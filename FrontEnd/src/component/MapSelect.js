@@ -10,7 +10,7 @@ import '../css/MapSelect.css'
 
 function MapSelect() {
     // Data에 관련된 변수 설정
-    const [location, setLocation] = useState('서울');
+    const [location, setLocation] = useState('전국');
     const [data, setData] = useState('');
     // 날짜(DatePicker)에 관련된 변수 설정
     const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
