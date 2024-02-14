@@ -42,6 +42,34 @@ public class SearchController {
         if (location.equals("seoul")) {
             List<Seoul> first = seoulRepository.findByDate(LocalDate.parse(firstDate));
             List<Seoul> second = seoulRepository.findByDate(LocalDate.parse(secondDate));
+
+            if (first.size() == 0) {
+                Seoul blankData = new Seoul();
+                List<Seoul> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(null);
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                first.addAll(blankDataList);
+            }
+            else if (second.size() == 0) {
+                Seoul blankData = new Seoul();
+                List<Seoul> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(null);
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                second.addAll(blankDataList);
+            }
+
             List<Seoul> result = new ArrayList<>();
             result.addAll(first);
             result.addAll(second);
@@ -74,6 +102,85 @@ public class SearchController {
             List<Gwangju> firstGwangju = gwangjuRepository.findByDate(LocalDate.parse(firstDate));
             List<Gwangju> secondGwangju = gwangjuRepository.findByDate(LocalDate.parse(secondDate));
 
+            if (firstKorea.size() == 0) {
+                Korea blankData = new Korea();
+                List<Korea> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(LocalDate.parse(firstDate));
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                firstKorea.addAll(blankDataList);
+            }
+            else if (secondKorea.size() == 0) {
+                Korea blankData = new Korea();
+                List<Korea> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(LocalDate.parse(secondDate));
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                secondKorea.addAll(blankDataList);
+            }
+            else if (firstSeoul.size() == 0) {
+                Seoul blankData = new Seoul();
+                List<Seoul> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(LocalDate.parse(firstDate));
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                firstSeoul.addAll(blankDataList);
+            }
+            else if (secondSeoul.size() == 0) {
+                Seoul blankData = new Seoul();
+                List<Seoul> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(LocalDate.parse(secondDate));
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                secondSeoul.addAll(blankDataList);
+            }
+            else if (firstGwangju.size() == 0) {
+                Gwangju blankData = new Gwangju();
+                List<Gwangju> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(LocalDate.parse(firstDate));
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                firstGwangju.addAll(blankDataList);
+            }
+            else if (secondGwangju.size() == 0) {
+                Gwangju blankData = new Gwangju();
+                List<Gwangju> blankDataList = new ArrayList<>();
+                for (int i = 0; i < 24; i++) {
+                    blankData.setSeq(0);
+                    blankData.setDate(LocalDate.parse(secondDate));
+                    blankData.setLoc_power(0);
+                    blankData.setLoc_total(0);
+                    blankData.setTime(i);
+                    blankDataList.add(blankData);
+                }
+                secondGwangju.addAll(blankDataList);
+            }
+
             List<Kor> result = new ArrayList<>();
             result.addAll(firstKorea);
             result.addAll(secondKorea);
@@ -81,6 +188,8 @@ public class SearchController {
             result.addAll(secondSeoul);
             result.addAll(firstGwangju);
             result.addAll(secondGwangju);
+
+            System.err.println(result);
 
             return result;
         }
