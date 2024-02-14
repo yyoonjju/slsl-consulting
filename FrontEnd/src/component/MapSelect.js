@@ -4,8 +4,6 @@ import Moment from 'moment';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import 'react-tooltip/dist/react-tooltip.css';
-import { Tooltip } from 'react-tooltip';
 import Chart from './Chart.js';
 import Table from './Table.js';
 import '../css/MapSelect.css'
@@ -14,43 +12,14 @@ function MapSelect() {
     // Data에 관련된 변수 설정
     const [location, setLocation] = useState('서울');
     const [data, setData] = useState('');
-    // Tooltip에 관련된 변수 설정 (Tooltip 삭제)
-    // const [toolData, setToolData] = useState('');
     // 날짜(DatePicker)에 관련된 변수 설정
     const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
     const [secondDate, setSecondDate] = useState(Moment(new Date()).add(30,"days").format("YYYY-MM-DD"));
-    // 시간에 관련된 변수 설정 (Tooltip 삭제)
-    // const [dt, setDt] = useState(0);
-    // const [tm, setTm] = useState(0);
-    // const timeList = [];
+    
 
-    // for (var time = 0; time < 24; time++) {
-    //     timeList.push(time);
-    // };
-
-    // 공백 Data 설정
-    const blankData = [];
-
-    for (var seq = 0; seq < 24; seq++) {
-        blankData.push(
-            {
-                "date": "Not Found Date",
-                "time": 0,
-                "loc_power": 0,
-                "loc_total": 0
-            }
-        )
-    };
-
-    // ClickPath로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
+    // handlePathClick으로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
-        // ToolData가 없거나 날짜가 바뀌면 toolData를 날짜에 맞게 다시 가져옴 (Tooltip 삭제)
-        // if (toolData.length === 0 || toolData[0].date !== firstDate || toolData[24].date !== secondDate) {
-        //     ToolResult();
-        // }
-        // console.log(toolData);
         Result();
-        console.log(location);
     },[location,firstDate,secondDate]);
 
     // Server에서 지역에 따른 Data를 가져와서 변수 data에 저장 후
@@ -65,51 +34,10 @@ function MapSelect() {
         setData(res.data);
     };
 
-    // 지역별로 Tooltip을 띄워주기 위해서 ToolData를 따로 가져옴 (Tooltip 삭제)
-    // const ToolResult = async() => {
-    //     const res = await axios.get(`http://10.10.21.64:8080/api/kor`, {
-    //         params: {
-    //             firstDate: firstDate,
-    //             secondDate: secondDate
-    //         }
-    //     });
-    //     setToolData(res.data);
-    // };
-
-    // 지역을 클릭하면 변수 location에 지역명 저장
-    const ClickPath = (e) => {
-        if (e.target.id === "koreaSvg") {
-            console.log("retry");
-        }
-        else {
-            try {
-                // //선택 지역의 id
-                // setLocation(e.target.name);
-                console.log(e.target.name);
-            }
-            catch {
-                console.log("retry");
-            }
-        }
-    };
-
-    // 시간을 클릭하면 변수 dt, tm에 시간 저장 (Tooltip 삭제)
-    // const ClickTime = (e) => {
-    //     // 첫 번째 날짜
-    //     if (e.target.id === "1") {
-    //         setDt(0);
-    //         setTm(e.target.value);
-    //     }
-    //     // 두 번째 날짜
-    //     else {
-    //         setDt(24);
-    //         setTm(e.target.value);
-    //     }
-    // };
-
+    // 지도에서 지역을 클릭하면 해당 지역명이 location에 저장
     const handlePathClick = (pathName) => {
         setLocation(pathName);
-      };
+    };
 
     // Mapsvg 함수
     const MapsvgPath = () => (
@@ -154,15 +82,6 @@ function MapSelect() {
                     className={location === '광주' ? 'clicked' : ''}
                     onClick={() => handlePathClick('광주')}
                     fill={location === '광주'? '#F6CAC9' : '#91A7D0'}
-                    // Tooltip 삭제
-                    // data-tooltip-id="tooltip"
-                    // data-tooltip-content="gwangju"
-                    // ToolData가 존재하면 toolTip 내용 적용
-                    // data-tooltip-html={toolData === null || toolData.length === 0 ? "Not Found Data" : `
-                    //     ${toolData[parseInt(dt)+96].date} ${toolData[parseInt(tm)+96].time}시<br/>
-                    //     누적발전량 : ${toolData[parseInt(tm)+96].loc_total}<br/>
-                    //     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;발전량 : ${toolData[parseInt(tm)+96].loc_power}
-                    // `}
                     d="m 151.37429,399.96884 -1.95,-2.34 -1.82,-0.87 -2.44,-0.09 -2.44,0.96 -2,1.04 -2.01,2.09 -1.48,0.09 -2.09,-0.7 -1.48,-1.39 -0.61,-2.18 -2.18,-0.08 -2.09,5.31 -2.35,-0.09 -1.74,2.09 -1.13,4.79 0.43,4.09 7.23,1.05 1.83,2.26 1.92,3.84 3.74,0 3.4,-2.01 3.83,0 1.48,-1.04 3.14,0.61 3.39,-2.35 1.4,-1.83 0.78,-1.66 0.09,-2.61 0.87,-1.83 0,-1.39 -2.09,-0.96 -2.61,-0.26"
                     
                 />
@@ -228,13 +147,6 @@ function MapSelect() {
                     className={location === '서울' ? 'clicked' : ''}
                     onClick={() => handlePathClick('서울')}
                     fill={location === '서울'? '#F6CAC9' : '#91A7D0'}
-                    // Tooltip 삭제
-                    // data-tooltip-id="tooltip"
-                    // data-tooltip-html={toolData === null || toolData.length === 0 ? "Not Found Data" : `
-                    //     ${toolData[parseInt(dt)+48].date} ${toolData[parseInt(tm)+48].time}시<br/>
-                    //     누적발전량 : ${toolData[parseInt(tm)+48].loc_total}<br/>
-                    //     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;발전량 : ${toolData[parseInt(tm)+48].loc_power}
-                    // `}
                     d="m 133.25429,127.63884 0.58,0.33 0,0 3.8,3.83 -0.1,1.78 0.55,0.52 0.32,3.1 0.57,0.53 0.56,-0.1 2.41,-1.25 2.57,5.7 0.53,0.13 1.81,-0.73 1.21,0.5 2.39,-0.1 4.17,-2.31 3.08,-0.29 0,1.71 0.68,1.22 3.65,-2.08 2.99,-0.26 1.68,-1.58 -0.45,-0.56 0.43,-0.59 0.63,0.16 0.63,-0.46 1.28,-1.72 0,-0.59 -1.18,-0.49 0.4,-2.51 0.99,-0.99 1.76,-0.62 0.45,-0.53 -0.66,-2.41 -0.79,-1.15 -1.15,0.82 -2.47,0.6 -1.18,0.76 -1.18,0.16 -0.37,-0.59 -0.03,-1.19 1.45,-4.16 -1.11,-1.71 -0.07,-1.85 -0.9,-1.16 -0.1,-4.52 -0.92,-1.09 -1.18,-0.2 -2.63,0.33 -2.33,-0.53 -0.92,0.99 -1.26,0.53 -0.56,0.53 0.03,1.19 -1.1,1.06 -0.08,3 -1.1,0.79 -5.15,0.4 -0.84,1.05 -0.16,3.11 -0.63,0.36 -3.62,1.61 -2.42,-1.15 -1.39,-1.72 -1.26,-0.32 -1.02,2.47 -1.16,0.99 z"
                     
                 />
@@ -275,7 +187,7 @@ function MapSelect() {
 
     return (
         <div className="mapSelect">
-            <div className='mapSeletIn'>
+            <div className='mapSelectIn'>
             <h1 className="mapSelectTitle">발전량 예측</h1>
 
             <div className="dashBoard">
@@ -313,46 +225,19 @@ function MapSelect() {
                                     </LocalizationProvider>
                                 </td>
                             </tr>
-
-                            {/* Tooltip 삭제 */}
-                            {/* 시간 */}
-                            {/* <tr> */}
-                                {/* 첫 번째 시간 */}
-                                {/* <th>시작 날 시간</th>
-                                <td>
-                                    <select onChange={ClickTime} value={dt === 0 ? tm : 0} id="1" className="timeContainer">
-                                        {timeList.map((time, index) => (
-                                            <option key={index} value={time} className="tm">{time}</option>
-                                        ))}
-                                    </select>
-                                </td> */}
-
-                                {/* 두 번째 시간 */}
-                                {/* <th>끝나는 날 시간</th>
-                                <td>
-                                    <select onChange={ClickTime} value={dt === 24 ? tm : 0} id="2" className="timeContainer">
-                                        {timeList.map((time, index) => (
-                                            <option key={index} value={time} className="tm">{time}</option>
-                                        ))}
-                                    </select>
-                                </td> */}
-                            {/* </tr> */}
                         </table>
 
                         {/* 지도 */}
                         <MapsvgPath/>
-                        {/* Tooltip 삭제 */}
-                        {/* 툴팁 */}
-                        {/* <Tooltip id={`tooltip`}/> */}
                     </div>
                     
                     {/* 데이터 */}
                     <div className="rightContainer">
                         <div>
-                            <h2>▣ <span className="rightTitle">{location}</span> 일별 발전량, 누적발전량</h2>
+                            <h3>▣ <span className="rightTitle">{location}</span> 일별 발전량, 누적발전량</h3>
                         </div>
 
-                        {/* 캘린더 */}
+                        {/* 차트 */}
                         <div>
                             <Chart data={data}/>
                         </div>
