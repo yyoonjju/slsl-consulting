@@ -26,8 +26,7 @@
   display: block;
 }
 
-<<<<<<< HEAD
-=======
+
 /* 햄버거 버튼 컨테이너 */
 .faBars_container {
   display: flex;
@@ -39,7 +38,7 @@
   display: none;
 }
 
->>>>>>> 8c8930be4a297732896bc056cdd6a53a2c1b058a
+
 .menuicon {
   margin-right: 40px;
   margin-left: auto;
