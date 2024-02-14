@@ -2,6 +2,7 @@
     #Mapsvg > path{
         stroke: white;
         /* fill: #3E588B; */
+        cursor: pointer;
     }
 
     #Mapsvg > path:hover{
@@ -14,9 +15,10 @@
         height: 700px;
     }
 
-    
+
     #Mapsvg > path{
         stroke: white;
+
     }
     #Mapsvg > path:hover{
         outline: none;

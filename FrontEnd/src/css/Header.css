@@ -26,7 +26,6 @@
   display: block;
 }
 
-
 /* 햄버거 버튼 컨테이너 */
 .faBars_container {
   display: flex;
@@ -38,7 +37,6 @@
   display: none;
 }
 
-
 .menuicon {
   margin-right: 40px;
   margin-left: auto;
@@ -47,7 +45,6 @@
 }
 
 .menuboard{
-  
   background-color: rgb(26,51,92);
   color:white;
   width:206px;
@@ -82,6 +79,7 @@
   height: 100px;
   background-color: #7598cd; 
   z-index:2;
+  justify-content: space-between;
 }
 
 .logo1 {
@@ -102,7 +100,9 @@
   flex-direction: row;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  
+  justify-content: flex-end;
+  margin-right: 50px;
 }
 
 .category {
@@ -112,8 +112,30 @@
   margin: 26px 34px 30px 34px;
   padding: 10px;
   cursor: pointer;
+
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 0;position: relative;
 }
 
 .category.clicked {
   color:#1C3879;
+}
+
+.category:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #1C3879;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.category:hover:after {
+  width: 100%;
+  left: 0;
 }
