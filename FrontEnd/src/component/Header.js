@@ -174,7 +174,7 @@ const StyledHeader = styled.article`
     top: 0;
     height: 100px;
     transition: top 0.3s;
-
+    z-index: 1;
     &.hide {
         top: -100px;
     }
@@ -185,4 +185,5 @@ const StyledSection = styled.section`
     justify-content: space-around;
     align-items: center;
     height: 100%;
+    
 `;
