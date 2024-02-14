@@ -16,10 +16,10 @@ function Chart({data}) {
   // Data를 가져오는 속도가 느릴 경우를 대비해서 빈 데이터 생성
   const blankData = [];
   
-  for (var i = 0; i < 24; i++) {
+  for (var i = 0; i < 30; i++) {
     blankData.push(
       {
-        time: i,
+        date: i,
         loc_power: 0,
         loc_total: 0
       }
@@ -37,16 +37,17 @@ function Chart({data}) {
     }
   };
 
-  const SecondTitle = () => {
-    try {
-      return data.slice(24,48).length === 0 ?
-        "Not Found Date" :
-        data[24].date;
-    }
-    catch {
-      console.log("Error: SecondTitle");
-    }
-  }
+  // 데이터 값 시간 -> 일자 변동
+  // const SecondTitle = () => {
+  //   try {
+  //     return data.slice(24,48).length === 0 ?
+  //       "Not Found Date" :
+  //       data[24].date;
+  //   }
+  //   catch {
+  //     console.log("Error: SecondTitle");
+  //   }
+  // };
 
   const ChartData = () => {
     try {
@@ -82,10 +83,11 @@ function Chart({data}) {
           }}
           className="chart"
         >
-          <text x="30%" y="3%" textAnchor="middle" fontSize="17" fontWeight="bold" fill="#666">{FirstTitle()}</text>
-          <text x="70%" y="3%" textAnchor="middle" fontSize="17"  fontWeight="bold"fill="#666">{SecondTitle()}</text>
+          <text x="50%" y="3%" textAnchor="middle" fontSize="17" fontWeight="bold" fill="#666">{FirstTitle()}</text>
+          {/* 데이터 값 시간 -> 일자 변동 */}
+          {/* <text x="70%" y="3%" textAnchor="middle" fontSize="17"  fontWeight="bold"fill="#666">{SecondTitle()}</text> */}
           <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey="time" interval={1}/>
+          <XAxis dataKey="date" interval={1}/>
           <YAxis yAxisId="left" label={{value: "발전량(Mw)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis}/>
           <YAxis yAxisId="right" label={{value: "누적발전량(Mw)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis} orientation="right"/>
           <Tooltip />

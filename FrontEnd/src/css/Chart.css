@@ -22,6 +22,7 @@
     stroke: none;
   }
 
-  .recharts-cartesian-grid-vertical line:nth-child(13) {
+  /* 데이터 값 시간 -> 일자 변동 */
+  /* .recharts-cartesian-grid-vertical line:nth-child(13) {
     stroke: black;
-  }
+  } */
