@@ -3,7 +3,7 @@ import '../css/ValueInfo.css';
 const ValueInfo=()=>{
     
     return(
-        <article>
+        <article className='ValueInfo'>
             {/* 입력창 입력방법 설명 */}
             <div className='howtoInput_head'>
                 <div className='howtoInput_title'>
