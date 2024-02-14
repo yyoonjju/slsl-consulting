@@ -151,9 +151,8 @@ const ValueResult = () => {
     // formData를 이용하여 결과를 표시
     return (
         <article className='ValueResultPages'>
-            <div id = "ValueResultTitle">
-                <h1>발전수익 계산</h1>
-            </div>
+            <div className='ValueResultPagesIn'>
+            <h1 id = "ValueResultTitle">발전수익 계산</h1>
 
             <section className='ValueResult'>
 
@@ -203,6 +202,7 @@ const ValueResult = () => {
                 <button onClick={btnClick} id='btnClickInput'>다시 계산하기</button>
 
             </section>
+            </div>
         </article>
     );
 };

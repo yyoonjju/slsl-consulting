@@ -53,7 +53,7 @@
     display: none;
   }
 
-  p {
+  .fontCover {
     overflow: hidden;
   }
 
@@ -76,7 +76,7 @@
 
   /* 메인 화면 2번째 CSS */
 
-  a, a:active, a:hover, a:checked, a:visited {
+  .fontShow1, .fontShow1:active, .fontShow1:hover, .fontShow1:checked, .fontShow1:visited {
     color: rgb(26, 51, 92);
     font-weight:bold;
   }
@@ -89,7 +89,7 @@
     position: relative;
     top: 30px;
     padding: 15px;
-    border-radius: 20px;
+    border-radius: 15px;
     font-size: 1rem;
     display: none;
   }
@@ -131,7 +131,7 @@
     100% { transform: translateY(15px); opacity: 0;}
   }
 
-  /* 스크롤 시 이름이 추가되는 클래스 CSS */
+  /* 스크롤 시 클래스 이름이 추가되는 CSS */
 
   .scaleChage.load {
     scale: 1;

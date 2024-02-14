@@ -66,7 +66,7 @@ const ValueInfo=()=>{
                         </ul>
 
                         <button id ='arrayInfoBtn'onClick={()=>window.open("/product")}>
-                            더 자세한 제품정보 보러가기
+                            SLSL 제품정보 보러가기
                         </button>
                     </div>
                 </div>

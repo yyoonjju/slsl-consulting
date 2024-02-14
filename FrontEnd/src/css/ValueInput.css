@@ -1,21 +1,23 @@
 .ValueInputPages {
-    height:230vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url('../../public/images/suncell.jpg');
-    background-repeat:no-repeat;
-    background-position: center;    
-    background-size:230%;
+    background-size:cover;
+    margin-bottom: 20px;
+}
+
+.ValueInputIn {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #ValueInputTitle{
-    display: flex;
-    width: 1000px;
+    margin-top:120px;
     margin-bottom: 10px;
-    margin-top:70px;
     color: white;
+    font-size: 26px;
 }
 
 .ValueInput{
@@ -26,7 +28,7 @@
     backdrop-filter: blur(20px);
     width: 1000px;
     height: 450px;
-    border-radius: 25px;
+    border-radius: 15px;
     padding: 20px;
     justify-content: space-around;
 }

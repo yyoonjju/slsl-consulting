@@ -3,7 +3,8 @@ import '../css/Product.css';
 
 const Product= ()=>{
     return(
-    <div>
+    <div className="product">
+        <div className="">
         <h1 className="introduceproduct">제품 소개</h1>
         <div className="productdetail">
             <div className="koreaproduct">
@@ -22,6 +23,7 @@ const Product= ()=>{
                 <p><span className="productDetail">크기</span>(mm) : 2172 * 1303 * 35 </p><br/>
                 <p><span className="productDetail">가격</span> : 39만 7650원</p>
             </div>
+        </div>
         </div>
     </div>
     )

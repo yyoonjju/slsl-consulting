@@ -123,9 +123,9 @@ const ValueInput = () => {
     return (
         <article className= "ValueInputPages">
 
-            <div id = "ValueInputTitle">
-                <h1>발전수익 계산</h1>
-            </div>
+            <div className='ValueInputPagesIn'>
+
+            <h1 id = "ValueInputTitle">발전수익 계산</h1>
 
             <div className= "ValueInput">
             
@@ -238,6 +238,7 @@ const ValueInput = () => {
             </div>
 
             <ValueInfo/>
+            </div>
         </article>
 
     );
