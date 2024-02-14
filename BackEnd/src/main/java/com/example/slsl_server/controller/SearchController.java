@@ -2,7 +2,9 @@ package com.example.slsl_server.controller;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,185 +13,74 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.slsl_server.model.Gwangju;
-import com.example.slsl_server.model.Kor;
-import com.example.slsl_server.model.Korea;
+import com.example.slsl_server.model.DummyPowerData;
 import com.example.slsl_server.model.Pay;
-import com.example.slsl_server.model.Seoul;
-import com.example.slsl_server.repository.GwangjuRepository;
-import com.example.slsl_server.repository.KoreaRepository;
+import com.example.slsl_server.repository.DummyPowerDataRepository;
+import com.example.slsl_server.repository.LandSmpPredictionDataRepository;
 import com.example.slsl_server.repository.PayRepository;
-import com.example.slsl_server.repository.SeoulRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class SearchController {
     @Autowired
-    SeoulRepository seoulRepository;
+    DummyPowerDataRepository dummyPowerDataRepository;
     @Autowired
-    GwangjuRepository gwangjuRepository;
-    @Autowired
-    KoreaRepository koreaRepository;
+    LandSmpPredictionDataRepository landSmpPredictionDataRepository;
     @Autowired
     PayRepository payRepository;
 
     @GetMapping("/api/{location}")
-    public List<?> selectLocation(
+    public List<Map<String,Object>> selectLocation(
         @PathVariable String location,
         @RequestParam("firstDate") String firstDate,
         @RequestParam("secondDate") String secondDate
     ) {
-        if (location.equals("seoul")) {
-            List<Seoul> first = seoulRepository.findByDate(LocalDate.parse(firstDate));
-            List<Seoul> second = seoulRepository.findByDate(LocalDate.parse(secondDate));
-
-            if (first.size() == 0) {
-                Seoul blankData = new Seoul();
-                List<Seoul> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(null);
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
+        System.err.println("zerosPrint");
+        if (location.equals("전국")) {
+            System.err.println("firstPrint");
+            List<Map<String,Object>> data = dummyPowerDataRepository.findGroupByDateWithNativeQuery(LocalDate.parse(firstDate), LocalDate.parse(secondDate));
+            System.err.println("secondPrint");
+            List<Map<String,Object>> result = new ArrayList<>();
+            Long total = Math.round(Double.valueOf(String.valueOf(data.get(0).get("value"))));
+            System.err.println("thirdPrint");
+            System.err.println(total);
+            for (int i = 0; i < data.size(); i++) {
+                Map<String,Object> dataMap = new HashMap<>();
+                dataMap.put("date", data.get(i).get("date"));
+                dataMap.put("value", Math.round(Double.valueOf(String.valueOf(data.get(i).get("value")))));
+                if (i == 0) {
+                    System.err.println("fourthPrint");
+                    dataMap.put("total", total);
                 }
-                first.addAll(blankDataList);
-            }
-            else if (second.size() == 0) {
-                Seoul blankData = new Seoul();
-                List<Seoul> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(null);
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
+                else {
+                    System.err.println("fifthPrint");
+                    dataMap.put("total", Math.round(Double.valueOf(String.valueOf(data.get(i).get("value")))) + total);
+                    total = Math.round(Double.valueOf(String.valueOf(data.get(i).get("value")))) + total;
                 }
-                second.addAll(blankDataList);
+                result.add(dataMap);
             }
-
-            List<Seoul> result = new ArrayList<>();
-            result.addAll(first);
-            result.addAll(second);
-
-            return result;
-        }
-        else if (location.equals("gwangju")) {
-            List<Gwangju> first = gwangjuRepository.findByDate(LocalDate.parse(firstDate));
-            List<Gwangju> second = gwangjuRepository.findByDate(LocalDate.parse(secondDate));
-            List<Gwangju> result = new ArrayList<>();
-            result.addAll(first);
-            result.addAll(second);
-        
-            return result;
-        }
-        else if (location.equals("korea")) {
-            List<Korea> first = koreaRepository.findByDate(LocalDate.parse(firstDate));
-            List<Korea> second = koreaRepository.findByDate(LocalDate.parse(secondDate));
-            List<Korea> result = new ArrayList<>();
-            result.addAll(first);
-            result.addAll(second);
 
             return result;
         }
         else {
-            List<Korea> firstKorea = koreaRepository.findByDate(LocalDate.parse(firstDate));
-            List<Korea> secondKorea = koreaRepository.findByDate(LocalDate.parse(secondDate));
-            List<Seoul> firstSeoul = seoulRepository.findByDate(LocalDate.parse(firstDate));
-            List<Seoul> secondSeoul = seoulRepository.findByDate(LocalDate.parse(secondDate));
-            List<Gwangju> firstGwangju = gwangjuRepository.findByDate(LocalDate.parse(firstDate));
-            List<Gwangju> secondGwangju = gwangjuRepository.findByDate(LocalDate.parse(secondDate));
-
-            if (firstKorea.size() == 0) {
-                Korea blankData = new Korea();
-                List<Korea> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(LocalDate.parse(firstDate));
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
+            List<DummyPowerData> data = dummyPowerDataRepository.findByLocAndDateBetween(location, LocalDate.parse(firstDate), LocalDate.parse(secondDate));
+            List<Map<String,Object>> result = new ArrayList<>();
+            Long total = data.get(0).getValue();
+            for (int i = 0; i < data.size(); i++) {
+                Map<String,Object> dataMap = new HashMap<>();
+                dataMap.put("index", data.get(i).getIndex());
+                dataMap.put("loc", data.get(i).getLoc());
+                dataMap.put("date", data.get(i).getDate());
+                dataMap.put("value", data.get(i).getValue());
+                if (i == 0) {
+                    dataMap.put("total", data.get(i).getValue());
                 }
-                firstKorea.addAll(blankDataList);
-            }
-            else if (secondKorea.size() == 0) {
-                Korea blankData = new Korea();
-                List<Korea> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(LocalDate.parse(secondDate));
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
+                else {
+                    dataMap.put("total", data.get(i).getValue() + total);
+                    total = data.get(i).getValue() + total;
                 }
-                secondKorea.addAll(blankDataList);
+                result.add(dataMap);
             }
-            else if (firstSeoul.size() == 0) {
-                Seoul blankData = new Seoul();
-                List<Seoul> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(LocalDate.parse(firstDate));
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
-                }
-                firstSeoul.addAll(blankDataList);
-            }
-            else if (secondSeoul.size() == 0) {
-                Seoul blankData = new Seoul();
-                List<Seoul> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(LocalDate.parse(secondDate));
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
-                }
-                secondSeoul.addAll(blankDataList);
-            }
-            else if (firstGwangju.size() == 0) {
-                Gwangju blankData = new Gwangju();
-                List<Gwangju> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(LocalDate.parse(firstDate));
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
-                }
-                firstGwangju.addAll(blankDataList);
-            }
-            else if (secondGwangju.size() == 0) {
-                Gwangju blankData = new Gwangju();
-                List<Gwangju> blankDataList = new ArrayList<>();
-                for (int i = 0; i < 24; i++) {
-                    blankData.setSeq(0);
-                    blankData.setDate(LocalDate.parse(secondDate));
-                    blankData.setLoc_power(0);
-                    blankData.setLoc_total(0);
-                    blankData.setTime(i);
-                    blankDataList.add(blankData);
-                }
-                secondGwangju.addAll(blankDataList);
-            }
-
-            List<Kor> result = new ArrayList<>();
-            result.addAll(firstKorea);
-            result.addAll(secondKorea);
-            result.addAll(firstSeoul);
-            result.addAll(secondSeoul);
-            result.addAll(firstGwangju);
-            result.addAll(secondGwangju);
-
-            System.err.println(result);
 
             return result;
         }
