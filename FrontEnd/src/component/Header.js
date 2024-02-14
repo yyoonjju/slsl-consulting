@@ -129,6 +129,7 @@ const Header = () => {
                 <img src="images/slsllogoHeader.png" className={`logo2 ${isOpen ? '' : 'active'}`} onClick={logobtnclick} alt="logo" />
                 
                 <div id="cursor" className="menuicon" onClick={handleMenuToggle} >
+<<<<<<< HEAD
                     {/* FaBars는 햄버거 요소 JSX 코드임. isOpen이 true면 클래스 이름에 active 추가 */}
                     <FaBars size={50} color="white" className={`faBars ${isOpen ? 'active' : ''}`} />
                     {isMenuOpen && 
@@ -139,6 +140,20 @@ const Header = () => {
                             <button className="btn" onClick={faqbtnclick}>FAQ </button> <br />
                             <button className="btn" onClick={askbtnclick}>문의하기</button>
                         </div>)}
+=======
+                <div className="faBars_container">
+                  {/* FaBars는 햄버거 요소 JSX 코드임. isOpen이 true면 클래스 이름에 active 추가 */}
+                  <FaBars size={50} color="white" className={`faBars ${isOpen ? 'active' : ''}`} />
+                  {isMenuOpen && 
+                      (<div className="menuboard">
+                          <button className="btn" onClick={productbtnclick}>제품 소개 </button><br />
+                          <button className="btn" onClick={predictInputClick}>발전량 예측 조회 </button><br />
+                          <button className="btn" onClick={valueInputClick}>태양광 발전수익 및<br />모듈비용 예측 </button><br />
+                          <button className="btn" onClick={faqbtnclick}>FAQ </button> <br />
+                          <button className="btn" onClick={askbtnclick}>문의하기</button>
+                      </div>)}
+                  </div>
+>>>>>>> 8c8930be4a297732896bc056cdd6a53a2c1b058a
                 </div>
             </section>
 
