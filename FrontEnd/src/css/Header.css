@@ -1,6 +1,11 @@
 .headerarticle{
   height: 100px;
 }
+
+.headerarticle.active{
+  height:0px;
+}
+
 /* 메인페이지 */
 
 .headermain{

@@ -123,7 +123,7 @@ const Header = () => {
     
 
     return (
-        <article className='headerarticle'>
+        <article className={`headerarticle ${isOpen ? '' : 'active'}`}>
             {/* 메인페이지 헤더 */}
             <section className={`headermain ${isOpen ? '' : 'active'}`}>
                 <img src="images/slsllogoHeader.png" className={`logo2 ${isOpen ? '' : 'active'}`} onClick={logobtnclick} alt="logo" />
