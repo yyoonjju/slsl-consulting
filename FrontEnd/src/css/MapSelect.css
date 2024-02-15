@@ -49,17 +49,22 @@
         
     .mapSelectTitle{
         color:black;
-        font-size: 26px;
+        font-size: 45px;
         margin-left: 20px;
+        position: absolute;
+        top: 150px;
+        background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
     }
 
     .dashBoard {
-        margin-bottom: 50px;
+        margin-top: 100px;
         display: flex;
-        background-color:rgba(256,256,256,0.3);
-        backdrop-filter: blur(20px);
+        padding-top: 60px;
+        padding-bottom: 60px;
         border-radius: 15px;
         gap: 30px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.144);
+        position: relative;
     }
 
     .calendar {
