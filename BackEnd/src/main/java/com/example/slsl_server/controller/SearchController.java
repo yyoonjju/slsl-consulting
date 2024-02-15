@@ -35,25 +35,18 @@ public class SearchController {
         @RequestParam("firstDate") String firstDate,
         @RequestParam("secondDate") String secondDate
     ) {
-        System.err.println("zerosPrint");
         if (location.equals("전국")) {
-            System.err.println("firstPrint");
             List<Map<String,Object>> data = dummyPowerDataRepository.findGroupByDateWithNativeQuery(LocalDate.parse(firstDate), LocalDate.parse(secondDate));
-            System.err.println("secondPrint");
             List<Map<String,Object>> result = new ArrayList<>();
             Long total = Math.round(Double.valueOf(String.valueOf(data.get(0).get("value"))));
-            System.err.println("thirdPrint");
-            System.err.println(total);
             for (int i = 0; i < data.size(); i++) {
                 Map<String,Object> dataMap = new HashMap<>();
                 dataMap.put("date", data.get(i).get("date"));
                 dataMap.put("value", Math.round(Double.valueOf(String.valueOf(data.get(i).get("value")))));
                 if (i == 0) {
-                    System.err.println("fourthPrint");
                     dataMap.put("total", total);
                 }
                 else {
-                    System.err.println("fifthPrint");
                     dataMap.put("total", Math.round(Double.valueOf(String.valueOf(data.get(i).get("value")))) + total);
                     total = Math.round(Double.valueOf(String.valueOf(data.get(i).get("value")))) + total;
                 }
