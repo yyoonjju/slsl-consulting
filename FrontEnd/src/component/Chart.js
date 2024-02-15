@@ -1,6 +1,4 @@
-import "../css/Chart.css";
 import React, {useEffect, useState} from "react";
-import Moment from 'moment';
 import {
   ComposedChart,
   Line,
@@ -9,9 +7,9 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
-  ResponsiveContainer
+  Legend
 } from "recharts";
+import "../css/Chart.css";
 
 function Chart({data}) {
   const [chartData, setChartData] = useState('');
@@ -28,52 +26,42 @@ function Chart({data}) {
     );
   };
 
+  // 입력 받는 Data가 변할 시 ChartData함수 발동
   useEffect(() => {
     ChartData();
   },[data])
 
-  const Title = () => {
-    try {
-      return data.length === 0 ? "Not Found Data" : "발전량";
-    }
-    catch {
-      console.log("Error: FirstTitle");
-    }
-  };
-
-  // 데이터 값 시간 -> 일자 변동
-  // const SecondTitle = () => {
-  //   try {
-  //     return data.slice(24,48).length === 0 ?
-  //       "Not Found Date" :
-  //       data[24].date;
-  //   }
-  //   catch {
-  //     console.log("Error: SecondTitle");
-  //   }
-  // };
-
+  // 받아온 Data가 없으면 공백 데이터를 출력하고 있으면 해당 데이터를 Chart형태에 맞춰서 출력
   const ChartData = () => {
     try {
-      const dataTemp = data.map((dt) => {
-        return {
-          xAxis: dt.date,
-          "발전량(MW)": dt.value,
-          "누적발전량(MW)": dt.total
-        };
-      });
+      const dataTemp = data.length === 0 ?
+        blankData.map((dt) => {
+          return {
+            xAxis: dt.date,
+            "발전량(MW)": dt.value,
+            "누적발전량(MW)": dt.total
+          };
+        }) :
+        data.map((dt) => {
+          return {
+            xAxis: dt.date,
+            "발전량(MW)": dt.value,
+            "누적발전량(MW)": dt.total
+          };
+        });
       setChartData(dataTemp);
     }
     catch {
       console.log("Error: ChartData");
     }
-  }
+  };
 
+  // Y축 scale 가시성을 위해서 3자리마다 "," 생성
   const formatYAxis = (tickItem) => tickItem.toLocaleString();
 
   return (
-    <div className="chart-container">
-      {/* 첫 번째 날짜에 대한 차트 그래프 생성 */}
+    <article className="chartContainer">
+      {/* 차트 그래프 생성 */}
         <ComposedChart
           width={800}
           height={450}
@@ -81,15 +69,12 @@ function Chart({data}) {
           margin={{
             top: 30,
             left: 5,
-            right: 5
+            right: 15
           }}
           className="chart"
         >
-          {/* <text x="50%" y="3%" textAnchor="middle" fontSize="17" fontWeight="bold" fill="#666">{Title()}</text> */}
-          {/* 데이터 값 시간 -> 일자 변동 */}
-          {/* <text x="70%" y="3%" textAnchor="middle" fontSize="17"  fontWeight="bold"fill="#666">{SecondTitle()}</text> */}
           <CartesianGrid stroke="#f5f5f5" />
-          <XAxis dataKey="xAxis" interval={parseInt(data.length/30)} angle={-45} textAnchor="end"/>
+          <XAxis dataKey="xAxis" interval={parseInt(data.length/30)} angle={-45} textAnchor="end" height={80} fontSize={13}/>
           <YAxis yAxisId="left" label={{value: "발전량(MW)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis}/>
           <YAxis yAxisId="right" label={{value: "누적발전량(MW)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis} orientation="right"/>
           <Tooltip />
@@ -97,7 +82,7 @@ function Chart({data}) {
           <Bar yAxisId="right" dataKey="누적발전량(MW)" barSize={20} fill="#413ea0" />
           <Line yAxisId="left" type="monotone" dataKey="발전량(MW)" stroke="#ff7300" />
         </ComposedChart>
-    </div>
+    </article>
   );
 }
 

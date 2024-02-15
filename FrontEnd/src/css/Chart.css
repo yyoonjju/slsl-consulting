@@ -1,30 +1,22 @@
-  .chart {
-    font-family: sans-serif;
-    text-align: center;
-    margin-bottom: 50px;
-  }
+/* 여기서부터 return */
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  height: 500px;
+}
 
-  .chart-container {
-    display: flex;
-    flex-direction: column;
-    width: 800px;
-    height: 500px;
-  }
+.chartContainer * {
+  cursor: default;
+}
 
-  .chart-container * {
-    cursor: default;
-  }
+.chart {
+  font-family: sans-serif;
+  text-align: center;
+  margin-bottom: 50px;
+}
 
-  .flx {
-    display: flex;
-    width: 1400px;
-  }
-
-  .recharts-cartesian-grid-vertical line {
-    stroke: none;
-  }
-
-  /* 데이터 값 시간 -> 일자 변동 */
-  /* .recharts-cartesian-grid-vertical line:nth-child(13) {
-    stroke: black;
-  } */
+/* 차트의 세로선(x축 선) 비가시화 */
+.recharts-cartesian-grid-vertical line {
+  stroke: none;
+}
