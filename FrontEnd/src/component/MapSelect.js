@@ -186,14 +186,13 @@ function MapSelect() {
     );
 
     return (
-        <div className="mapSelect">
-            <div className='mapSelectIn'>
+        <article className="mapSelect">
+            <section className='mapSelectIn'>
             <h1 className="mapSelectTitle">발전량 예측</h1>
 
-            <div className="dashBoard">
-                {/* 지도와 툴팁 */}
-                <div className="leftBox">
-                    <div className="leftContainer">
+                <section className="dashBoard">
+                    {/* 지도와 툴팁 */}
+                    <section className="leftContainer">
 
                         {/* 캘린더 */}
                         <table className="calendar">
@@ -211,6 +210,7 @@ function MapSelect() {
                                         />
                                     </LocalizationProvider>
                                 </td>
+
                                 <th>끝나는 날 날짜</th>
                                 <td>
                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -229,28 +229,20 @@ function MapSelect() {
 
                         {/* 지도 */}
                         <MapsvgPath/>
-                    </div>
+                    </section>
                     
                     {/* 데이터 */}
-                    <div className="rightContainer">
-                        <div>
-                            <h3>▣ <span className="rightTitle">{location}</span> 일별 발전량, 누적발전량</h3>
-                        </div>
+                    <section className="rightContainer">
+                        <h3><span className="rightTitle">▣ {location}</span> 일별 발전량, 누적발전량</h3>
 
                         {/* 차트 */}
-                        <div>
-                            <Chart data={data}/>
-                        </div>
-
+                        <Chart data={data}/>
                         {/* 테이블 */}
-                        <div>
-                            <Table data={data}/>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
+                        <Table data={data}/>
+                    </section>
+                </section>
+            </section>
+        </article>
     );
 }
 export default MapSelect;

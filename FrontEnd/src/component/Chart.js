@@ -1,4 +1,3 @@
-import "../css/Chart.css";
 import React, {useEffect, useState} from "react";
 import {
   ComposedChart,
@@ -10,6 +9,7 @@ import {
   Tooltip,
   Legend
 } from "recharts";
+import "../css/Chart.css";
 
 function Chart({data}) {
   const [chartData, setChartData] = useState('');
@@ -60,7 +60,7 @@ function Chart({data}) {
   const formatYAxis = (tickItem) => tickItem.toLocaleString();
 
   return (
-    <div className="chart-container">
+    <article className="chartContainer">
       {/* 차트 그래프 생성 */}
         <ComposedChart
           width={800}
@@ -82,7 +82,7 @@ function Chart({data}) {
           <Bar yAxisId="right" dataKey="누적발전량(MW)" barSize={20} fill="#413ea0" />
           <Line yAxisId="left" type="monotone" dataKey="발전량(MW)" stroke="#ff7300" />
         </ComposedChart>
-    </div>
+    </article>
   );
 }
 

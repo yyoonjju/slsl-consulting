@@ -29,6 +29,7 @@
     fill: #F6CAC9;
 }
 
+/* 여기서부터 return */
 .mapSelect {
     display: flex;
     justify-content: center;
@@ -43,27 +44,18 @@
 }
     
 .mapSelectTitle{
-    color:white;
-    margin-top:120px;
-    margin-bottom:10px;
+    color:black;
     font-size: 26px;
+    margin: 10px 20px;
 }
 
 .dashBoard {
     margin-bottom: 50px;
-}
-
-.leftBox {
     display: flex;
-    justify-content: center;
     background-color:rgba(256,256,256,0.3);
     backdrop-filter: blur(20px);
     border-radius: 15px;
-    border:none;
-}
-
-.leftContainer {
-    border-right: 2px solid #607EAA;
+    gap: 30px;
 }
 
 .calendar {
@@ -91,7 +83,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin: 25px 0px;
+    margin: 15px 0px;
 }
 
 .rightTitle {

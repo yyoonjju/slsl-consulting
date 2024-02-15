@@ -1,11 +1,12 @@
-.chart-container {
+/* 여기서부터 return */
+.chartContainer {
   display: flex;
   flex-direction: column;
   width: 800px;
   height: 500px;
 }
 
-.chart-container * {
+.chartContainer * {
   cursor: default;
 }
 

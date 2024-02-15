@@ -41,24 +41,26 @@ function Tb({data}) {
     };
 
     return (
-        <Table striped bordered hover className="table">
-            <div className="tableContainer">
-                <thead>
-                    <tr>
-                        <th>날짜</th>
-                        <th>발전량(Mw)</th>
-                        <th>누적발전량(Mw)</th>
-                    </tr>
-                </thead>
+        <article>
+            <Table striped bordered hover className="table">
+                <section className="tableContainer">
+                    <thead>
+                        <tr>
+                            <th>날짜</th>
+                            <th>발전량(Mw)</th>
+                            <th>누적발전량(Mw)</th>
+                        </tr>
+                    </thead>
 
-                {/* TableData 주입 및 정해진 height에서 벗어나면 scroll을 통해서 전체 데이터 확인 가능 */}
-                <tbody className="scrollableBody">
-                    <div>
-                        {TableData()}
-                    </div>
-                </tbody>
-            </div>
-        </Table>
+                    {/* TableData 주입 및 정해진 height에서 벗어나면 scroll을 통해서 전체 데이터 확인 가능 */}
+                    <tbody className="scrollableBody">
+                        <div>
+                            {TableData()}
+                        </div>
+                    </tbody>
+                </section>
+            </Table>
+        </article>
     );
 }
 export default Tb;
