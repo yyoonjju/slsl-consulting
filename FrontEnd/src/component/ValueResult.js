@@ -156,7 +156,7 @@ const ValueResult = () => {
 
             <section className='ValueResult'>
 
-                <div>
+                <div className='ValueChartBox'>
                     <ValueChart data = {chartData}/>
                 </div>
 
