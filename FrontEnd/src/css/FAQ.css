@@ -4,23 +4,26 @@
         justify-content: center;
         align-items: center;
         margin-bottom:60px;
+        margin-top: 100px;
     }
 
     .qnaIn {
         display: flex;
         justify-content: center;
         flex-direction: column;
+        position: relative;
     }
 
     .qnabox{
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color:rgba(256,256,256,0.3);
         backdrop-filter: blur(20px);
         background-position: center;
         border-radius: 15px;
-        width:1000px;
+        width:1530px;
     }
 
     .QnAPhoto {
@@ -28,20 +31,27 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 600px;
+        width: 100%;
     }
 
     .QnAPhotoBox {
         display: flex;
         align-items: center;
         flex-direction: column;
+        width: 100%;
     }
 
     .faqTitle {
+        position: absolute;
+        top: -170px;
+        width: 200px;
+        z-index: 1;
         margin-top:120px;
         margin-bottom: 10px;
-        color: white;
-        font-size: 26px;
+        padding-left: 15px;
+        color: black;
+        font-size: 45px;
+        background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
     }
 
     .faq {
@@ -49,7 +59,8 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        width: 600px;
+        width: 1300px;
+        margin-top: 50px;
     }
 
     .slslEasy {
@@ -60,19 +71,58 @@
     .faqText {
         display: flex;
         flex-direction: column;
-        width: 600px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .faqText table {
+        border-spacing: 40px;
+    }
+
+    .faqText td {
+        border: 2px solid lightgray;
+        border-radius: 10px;
+        position: relative;
+        height: 150px;
+        width: 1000px;
     }
 
     .text {
         display: flex;
-        flex-direction: column;
-        padding-bottom: 40px;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+        cursor: default;
+        height: 100%;
     }
 
     .questionList {
         display: flex;
+        justify-content: center;
         align-items: center;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: lightgray;
+        z-index: 1;
+        transition: all 0.7s;
     }
+
+    .questionListCover {
+        display: flex;
+        align-items: center;
+        width: 500px;
+    }
+
+    .text:hover .questionList {
+        transform: translateY(-100%);
+      }
+    
+      .text:not(:hover) .questionList {
+        transform: translateY(0%);
+      }
+    
 
     .answerList {
         display: flex;
@@ -80,11 +130,19 @@
     }
 
     .QnAImg {
-        background: url('../../public/images/QnA.png');
+        background: url('../../public/images/Photo5.jpg');
         background-size: cover;
         background-position: center;
-        width: 240px;
+        width: 100%;
         height: 490px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .QnATitle {
+        font-size: 30px;
+        text-align: center;
     }
 
     .faqQ {
@@ -93,8 +151,9 @@
     }
 
     .faqQuestion {
-        padding-top: 10px;
+        padding-top: 5px;
         font-size: 22px;
+        width: fit-content;
     }
 
     .faqAnswer {
