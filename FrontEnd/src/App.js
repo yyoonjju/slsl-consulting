@@ -18,12 +18,12 @@ function App() {
       <Header/>
       <Routes>
         <Route path='/' element={<Main/>}/>
-        <Route path='/FaQ' element={<FaQ/>}/>
-        <Route path='/Product' element={<Product/>}/>
-        <Route path="/MapSelect" element={<MapSelect/>}/>
-        <Route path='/InquiryInput' element={<InquiryInput/>}/>
-        <Route path="/ValueInput" element={<ValueInput/>}/>
-        <Route path='/ValueResult' element={<ValueResult/>}/>
+        <Route path='/faq' element={<FaQ/>}/>
+        <Route path='/product' element={<Product/>}/>
+        <Route path="/mapselect" element={<MapSelect/>}/>
+        <Route path='/inquiryinput' element={<InquiryInput/>}/>
+        <Route path="/valueinput" element={<ValueInput/>}/>
+        <Route path='/valueresult' element={<ValueResult/>}/>
       </Routes>
       <Footer/>
     </div>

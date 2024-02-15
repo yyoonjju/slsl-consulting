@@ -155,7 +155,7 @@ function Main() {
     const solarInfoProps = {
         fontUp1: "태양광 모듈",
         fontUp2: "제품을 소개합니다",
-        Route: "Product",
+        Route: "product",
         Button: "제품 소개",
       };
     
@@ -165,12 +165,12 @@ function Main() {
       if (slideIndex === 1) {
         solarInfoProps.fontUp1 = "날짜와 시간, 지역을 선택하면";
         solarInfoProps.fontUp2 = "발전량을 예측해드립니다";
-        solarInfoProps.Route = "MapSelect";
+        solarInfoProps.Route = "mapselect";
         solarInfoProps.Button = "발전량 조회";
       } else if (slideIndex === 2) {
         solarInfoProps.fontUp1 = "흑자전환 기간과";
         solarInfoProps.fontUp2 = "투자 비용을 예측해드립니다";
-        solarInfoProps.Route = "ValueInput";
+        solarInfoProps.Route = "valueinput";
         solarInfoProps.Button = "예측 조회";
       }
 
@@ -219,7 +219,7 @@ function Main() {
                     <source src="./images/askvideo.mp4" type="video/mp4"/>
                 </video>
                     {/* SolarInfo.js에 아래 코드의 JSX가 있습니다 */}
-                    <SolarInfo fontUp3="CONTRACT US." fontUp2="SLSL과 함께하세요" Route= "InquiryInput" Button="문의하기"/>
+                    <SolarInfo fontUp3="CONTRACT US." fontUp2="SLSL과 함께하세요" Route= "inquiryinput" Button="문의하기"/>
                 </div>
             </section>
         </div>
