@@ -23,10 +23,8 @@
 .ValueResult{
     display: flex;
     flex-direction: column;
-    
     width: 1000px;
     height: 1000px;
-   
    
     justify-content: space-between;
     align-items: center;

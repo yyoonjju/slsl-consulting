@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useNavigate } from 'react-router-dom';
 import ValueInfo from './ValueInfo';
 
-
 const ValueInput = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
@@ -126,9 +125,11 @@ const ValueInput = () => {
         
         <article className= "ValueInput">
 
-            <div className='ValueInputPagesIn'>
+            <section className='ValueInputPagesIn'>
             
-                <h1 id = "ValueInputTitle">발전수익 계산</h1>
+                <div id = "ValueInputTitle">
+                    <span>발전수익 계산</span>
+                </div>
 
                 <div className= "ValueInputForm">
                 
@@ -241,7 +242,7 @@ const ValueInput = () => {
                 </div>
 
                 <ValueInfo/>
-            </div>
+            </section>
         </article>
 
     );

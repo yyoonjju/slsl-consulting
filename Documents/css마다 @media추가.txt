@@ -1,0 +1,110 @@
+FAQ.css
+    	@media (max-width: 1000px) {
+        	.faqTitle{display:none;}        
+        	.qnabox{margin-left:20vw;}
+        	.QnAPhoto{display: none;}
+        	.faqAnswer{font-size:0.85rem;}
+    	}
+
+
+Header.css
+    	@media(max-width:1000px) {
+		.logo1.active{width:50px;
+                      	      margin-left:5vw;}
+  		.category{font-size:1rem;
+            	margin:5px 1vw;}
+	}
+
+
+InquiryInput.css
+	@media(max-width:1000px) {
+        	.InquiryImg{display:none;}
+        	#inquiryForm{width:98vw;
+                     	     height:75vh;}
+        	#inputModel{width:40vw;}
+        	#emailId{width:20vw;}
+        	#emailDomain{width:20vw;}
+        	#selectDomain{display:none;}
+        	#inputNumber1{width:10vw;}
+        	#inputNumber2{width:10vw;}
+        	#inputNumber3{width:10vw;}
+        	#inputAsk{width:80vw;}
+    	}
+
+
+Main.css
+	@media(max-width:1000px) {
+    		.btn-slide.prev{left:10px;}
+    		.btn-slide.next{right:10px;}
+    		.fontUp1.active{font-size:21px;}
+    		.fontUp2.active{font-size:21px;}
+    		.fontUp3.active{font-size:21px;}
+  	}
+
+
+MapSelect.css
+	@media(max-width:1000px) {
+    		.leftContainer{width:95vw;
+        	           	display:flex;
+                		flex-direction: column;
+                	   	border-right:none;}
+    		.rightContainer{display:none;}
+    		.calendar{font-size:15px;
+        	    	  width:95vw;}
+    		.startdate{width:35vw;
+        		   margin-left:0px;}
+    		.enddate{width:35vw;}
+    		.MuiFormControl-root.MuiTextField-root.css-z3c6am-MuiFormControl-root-MuiTextField-root{width:15vw;
+                       margin-right:1vw;}
+    		.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root{width:13vw;}
+  	}
+
+
+Product.css
+	@media(max-width:1000px) {
+    		.productdetail{width:98vw;
+        		       margin-right:5vw;}
+    		.koreaproductimg{width:35vw;}
+    		.koreaproductname{font-size:1.3rem;}
+    		.productDetail{font-size:1.1rem;}
+    		.usaproductimg{width:35vw;}
+    		.usaproductname{font-size:1.3rem;}                 
+  	}
+
+
+ValueInfo.css
+	@media(max-width:1000px) {
+    		.ValueInfo{width:97vw;
+               	  	   margin-left:280px;
+        		   margin-right:150px;}
+    		.howtoInput_head li{font-size:16px;}
+    		.howtoInput_head li::before{font-size:25px;}
+    		.howtoInput_title h2{font-size:18px;}
+    		.howtoInput_title div{font-size:16px;}
+    		.howtoInput_text{font-size:15px;}
+    		.arrayInfoFooter{width:97vw;}
+    		.arrayInfoFooter h2{font-size:20px;}
+		#arrayTitle div{font-size:18px;
+        		        text-align:left;}
+    		#arrayImg{width:20vw;}
+  	}
+
+
+
+ValueInput.css
+	@media(max-width:1000px) {
+    		.ValueInput section{display:none;}
+    		.ValueInput{width:95vw;}
+    		#right_inputBtn{width:35vw;}
+    		.howtoInput_title{font-size: 15px;}
+  	}
+
+
+ValueResult.css
+	@media(max-width:1000px) {
+    		.ValueChartBox{width:98vw;}
+    		.ValueResultTable{width:98vw;}
+    		.ValueResultTable td{font-size:15px;}
+    		.ResultCostTable{width:98vw;}
+    		.ResultCostTable td{font-size:15px;}
+  	}

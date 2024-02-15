@@ -39,13 +39,26 @@
     width: 100px;
 }
 
-/* 정해진 heigth에서 벗어나는 데이터는 scroll로 확인 가능 */
+정해진 heigth에서 벗어나는 데이터는 scroll로 확인 가능
 .scrollableBody {
     display: flex;
     height: 200px;
     overflow-y: scroll;
 }
-/* 스크롤바 비가시화 */
+
+body{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 ::-webkit-scrollbar {
-    display: none;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #413EA0;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: lightgrey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
 }

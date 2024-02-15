@@ -1,0 +1,17 @@
+npm install @emotion/react
+npm install @emotion/styled
+npm install @mui/styled-engine
+npm install recharts
+npm install react-tooltip
+npm install react-icons
+npm install --save @svg-maps/south-korea
+npm install react-datepicker
+npm install react-router-dom
+npm install emailjs-com
+npm install dayjs
+npm install moment --save
+npm install react-bootstrap bootstrap
+npm install rechartjs
+npm install axios
+npm install @mui/x-date-pickers
+npm install pageable --save

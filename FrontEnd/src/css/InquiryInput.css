@@ -45,7 +45,7 @@
     #inquirySection{
         display: flex;
         flex-direction: column;
-        border-radius: 10px;
+       
     }
 
     .red_span{

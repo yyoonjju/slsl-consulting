@@ -5,10 +5,10 @@ const ValueInfo=()=>{
     return(
         <article className='ValueInfo'>
             {/* 입력창 입력방법 설명 */}
-            <div className='howtoInput_head'>
+            <section className='howtoInput_head'>
                 <div className='howtoInput_title'>
                     <h2>태양광 에너지 발전수익 및 모듈 비용을 예측하는 방법</h2>
-                    <div>SLSL로 패널에 따른 <span>태양광 에너지 발전수익</span>과 <span>예상비용</span>을 보려면 아래의 간단한 단계를 따라해보세요.</div>
+                    <div>패널에 따른 <span>태양광 에너지 발전수익</span>과 <span>예상비용</span>을 보려면 아래의 간단한 단계를 따라해보세요.</div>
                 </div>
                 
                 <ol className='howtoInput_ol'>
@@ -32,7 +32,7 @@ const ValueInfo=()=>{
                         </div>
                     </li>
 
-                    <div className='howtoInput_text'>
+                    <div className='howtoInput_text'>                   
                         <li>→ 한국 모듈 제품의 최소 면적 (67.81m²)</li>
                         <li>→ 미국 모듈 제품의 최소 면적 (87.527m²)</li>
                     </div>
@@ -41,10 +41,10 @@ const ValueInfo=()=>{
 
                     <li><div>계산하기 버튼을 누르면 결과를 확인하실 수 있습니다.</div></li>
                 </ol>
-            </div>
+            </section>
 
             {/* 어레이 설명 */}
-            <div className='arrayInfoFooter'>
+            <section className='arrayInfoFooter'>
                 <div id = "arrayTitle">
                     <h2>여기서 <span>'어레이'</span>란?</h2>
                     <div>어레이란 태양전지가 모여 만들어진 하나의 판(모듈)을 여러장 연결한 태양광 설비를 말합니다</div>
@@ -70,7 +70,7 @@ const ValueInfo=()=>{
                         </button>
                     </div>
                 </div>
-            </div>
+            </section>
         </article>
 
     );
