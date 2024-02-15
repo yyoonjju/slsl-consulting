@@ -16,45 +16,36 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-   
 }
 
 #ValueInputTitle{
     z-index: 1;
-    margin-bottom: 10px;
+    margin: 20px 0 10px 0;
     /* color: white; */
     color:#333;
     font-size: 26px;
-
-  
-  
-
 }
 
 .ValueInputForm{
     display: flex;
     flex-direction: row;
     margin: 0 auto;
-    /* background-color:rgba(256,256,256,0.3); */
     backdrop-filter: blur(20px);
     width: 1000px;
     height: 450px;
-    
     border-radius: 15px;
     padding: 20px;
     justify-content: space-around;
     
-    border: solid 1px black;
+    box-shadow: 0 0 5px lightgray;
+    border-radius: 10px;
    
 }
 
 #inputSection{
     display: flex;
     align-items: center;
-    
 }
-
-
 
 #inputFormTable{
     height: 450px;

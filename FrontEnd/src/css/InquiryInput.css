@@ -1,21 +1,44 @@
 
     .InquiryInputPages {
         display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100dvw;
+        background-color: aliceblue;
+    }
+
+
+    .InquiryImg{
+        width: 600px;
+        height: 900px;
+        
+    }
+    .InquiryImg2{
+        width: 600px;
+        height: 900px;
+        opacity: 0.0;
+    }
+
+
+    .inquiryBox {
+        
+        height: 900px;
+        display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin-bottom: 40px;
-
-    }
-
-    .inquiryInput{
-        margin: 0 auto;
+        margin-top: 40px;
+        box-shadow: 0 0 10px lightgray;
+        background-color: white;
     }
 
     .inquiryTitle{
         color:#333;
-        margin-bottom:10px;
         font-size: 26px;
+        margin: 20px 0 10px 0;
+        width: 100%;
     }
 
     .red_span{
@@ -26,25 +49,23 @@
     #inquirySection{
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 5px lightgray;
-        
+        border-radius: 10px;
+       
     }
 
     #inquiryForm{
         display: flex;
         flex-direction: column;
         height: 600px;
-        background-color:rgba(256,256,256,0.3);
-        backdrop-filter: blur(20px);
+        
+        width: 800px;
         border-radius:15px;
         align-items: center;
         justify-content: space-around;
         padding: 20px;
     }
 
-    .inquiryBox {
-        width: 830px;
-    }
+
 
     #inquiryForm>table{
         height: 500px;
@@ -93,7 +114,6 @@
     #inquiryForm>table>tr>td>input:focus{
         outline: none;
         text-align: center;
-
     }
 
     #inquiryForm>table>tr>td>select:focus,
