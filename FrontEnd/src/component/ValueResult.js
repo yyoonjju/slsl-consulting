@@ -177,7 +177,6 @@ const ValueResult = () => {
                         <td>설치 예상 기간 : </td>
                         <td> {firstDate} ~ {secondDate} </td>
                     </tr>
-
                 </table>
 
                 <table className='ResultCostTable'>
@@ -185,7 +184,7 @@ const ValueResult = () => {
                     <tr>
                         <td>설치 가능 개수 : </td>
                         <td> 어레이 <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
-                        <td>초기 투자 비용 :</td>
+                        <td>최소 설치 비용 :</td>
                         <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
                     </tr>
 

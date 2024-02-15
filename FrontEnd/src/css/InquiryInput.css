@@ -1,44 +1,51 @@
 
+    
     .InquiryInputPages {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         width: 100dvw;
-        background-color: aliceblue;
+        margin-top: 100px;
+        margin-bottom: 100px;
     }
-
 
     .InquiryImg{
         width: 600px;
-        height: 900px;
-        
-    }
-    .InquiryImg2{
-        width: 600px;
-        height: 900px;
-        opacity: 0.0;
+        height: 700px;
     }
 
-
-    .inquiryBox {
-        
-        height: 900px;
+    .inquiryBox{
+        height: 700px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-bottom: 40px;
-        margin-top: 40px;
-        box-shadow: 0 0 10px lightgray;
+        box-shadow: 0 0 20px lightgray;
         background-color: white;
+        position: relative;
     }
 
     .inquiryTitle{
         color:#333;
-        font-size: 26px;
-        margin: 20px 0 10px 0;
+        font-size: 45px;
+        position: absolute;
+        top: -50px;
         width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+    
+    }
+    .inquiryTitle>span{
+        width: 40%;
+        background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
+    }
+
+    #inquirySection{
+        display: flex;
+        flex-direction: column;
+       
     }
 
     .red_span{
@@ -46,38 +53,22 @@
         padding-left: 5px;
     }
 
-    #inquirySection{
-        display: flex;
-        flex-direction: column;
-        border-radius: 10px;
-       
-    }
-
+    /* 입력 폼 */
     #inquiryForm{
         display: flex;
         flex-direction: column;
-        height: 600px;
-        
-        width: 800px;
-        border-radius:15px;
+        height: 700px;
         align-items: center;
         justify-content: space-around;
         padding: 20px;
     }
 
-
-
     #inquiryForm>table{
         height: 500px;
-    
-        /* border: solid 2px black; */
     }
 
     #inquiryForm>table>tr>td{
-        /* 테이블 사이즈 보기 위한 border */
-        /* border: solid 2px black;  */
         padding: 0;
-        
     }
 
     #inquiryForm>table>tr>td:nth-child(1){
@@ -99,6 +90,7 @@
         padding: 5px;
         border: 1px solid lightgray;
         border-radius: 5px;
+        font-size: 15px;
     }
 
     #inquiryForm>table>tr>td>input{
@@ -160,8 +152,15 @@
         height: 30px;
     }
 
+    .InputCheckBox{
+        font-size: 18px;
+        font-weight: bold;
+    }
+
     #inputCheck{
         padding-left: 20px;
+        width: 18px;
+        height: 18px;
     }
 
     #inquiry_Btn{
@@ -170,10 +169,10 @@
         border: none;
         color: white;
         border-radius: 5px;
-        background-color: #607EAA;
+        background-color: #0B74E2;
         font-size: 20px;
     }
 
     #inquiry_Btn:hover{
-        background-color: #607EAA;
+        background-color: #0b6acf;
     }

@@ -105,21 +105,21 @@ const InquiryInput = () => {
     <article className="InquiryInputPages">
 
         <section>
-            <div>
-                <img src="images/Photo5.jpg" className="InquiryImg"/>
-            </div>
+            <img src="images/Photo5.jpg" className="InquiryImg"/>
         </section>
 
         <section className='inquiryBox'>
-            <h1 className="inquiryTitle">문의 등록</h1>
+            <div className="inquiryTitle">
+                
+                <span>문의등록&nbsp;</span>
+            </div>
                 
             <div id = "inquirySection">
                 <form id = "inquiryForm"  onSubmit={handleSubmit}>
                     <table>
                         <tr>
                             <td>
-                                모델선택
-                                <span className="red_span">*</span>
+                                모델선택 <span className="red_span">*</span>
                             </td>
                             <td colSpan="3">
                                             {/* 옵션이 길어지면 css  InputModel에 width 늘려주세요*/}
@@ -133,8 +133,7 @@ const InquiryInput = () => {
                         
                         <tr>
                             <td>
-                                성함
-                                <span className="red_span">*</span>
+                                성함<span className="red_span">*</span>
                             </td>
                             <td>
                                 <input  type='text' 
@@ -150,8 +149,7 @@ const InquiryInput = () => {
 
                         <tr>
                             <td>
-                                이메일
-                                <span  className="red_span">*</span>
+                                이메일<span  className="red_span">*</span>
                             </td>
                             <td colSpan="3">
                                 <input  type="text" 
@@ -198,15 +196,13 @@ const InquiryInput = () => {
                                     <option value="korea.com">korea.com</option>
                                     <option value="nate.com">nate.com</option>
                                     <option value="yahoo.com">yahoo.com</option>
-                                    
                                 </select>
                             </td>
                         </tr>
 
                         <tr>
                             <td>
-                                연락처
-                                <span className="red_span">*</span>
+                                연락처<span className="red_span">*</span>
                             </td>
                             <td colSpan="3">
                                 <input type='tel'  pattern="[0-9]*" id = "inputNumber1" maxLength="3" placeholder='010' required onChange={handleChange}/>
@@ -251,29 +247,19 @@ const InquiryInput = () => {
                                 <textarea type='text' id = "inputAsk"  onChange={handleChange} placeholder='문의하실 내용을 입력해주세요.'/>
                             </td>
                         </tr>
-
                     </table>
 
-                    <div >
-                            개인정보 수집 및 이용 동의(필수)
-                            <span className="red_span">&nbsp;*&nbsp;&nbsp;</span>
-                            <input type='checkbox' id = "inputCheck"  onChange={handleChange} checked={InputData.inputCheck}/>
+                    <div className='InputCheckBox'>
+                        개인정보 수집 및 이용 동의(필수)
+                        <span className="red_span">&nbsp;*&nbsp;&nbsp;</span>
+                        <input type='checkbox' id = "inputCheck"  onChange={handleChange} checked={InputData.inputCheck}/>
                     </div>
                     
                     <button id="inquiry_Btn" type='submit'>제출</button>
                 </form>
-
             </div>
         </section>
 
-        <section>
-            <div>
-                <img src="images/Photo5.jpg" className="InquiryImg2"/>
-            </div>
-        </section>
-
-            
-     
     </article>
   );
 };

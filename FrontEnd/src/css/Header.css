@@ -1,7 +1,7 @@
-
-  .headerarticle{
-    height: 100px;
-  }
+.headerarticle{
+  height: 100px;
+  
+}
 
   .headerarticle.active{
     height:0px;

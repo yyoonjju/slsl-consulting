@@ -4,14 +4,14 @@
     align-items: center;
     flex-direction: column;
     background-size:cover;
-    margin-bottom: 20px;
-    
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .ValueInputPagesIn{
-   
-    
+    position: relative;
 }
+
 .ValueInputIn {
     display: flex;
     justify-content: center;
@@ -19,27 +19,32 @@
 }
 
 #ValueInputTitle{
-    z-index: 1;
-    margin: 20px 0 10px 0;
-    /* color: white; */
     color:#333;
-    font-size: 26px;
+    font-size: 45px;
+    position: absolute;
+    top: -50px;
+    width: 1000px;
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+
+}
+#ValueInputTitle>span{
+    width: 40%;
+    background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
 }
 
 .ValueInputForm{
     display: flex;
     flex-direction: row;
-    margin: 0 auto;
-    backdrop-filter: blur(20px);
     width: 1000px;
     height: 450px;
     border-radius: 15px;
     padding: 20px;
     justify-content: space-around;
-    
-    box-shadow: 0 0 5px lightgray;
-    border-radius: 10px;
-   
+    box-shadow: 0 0 20px lightgray;
+    background-color: white;
+    border-radius: 5px;
 }
 
 #inputSection{
@@ -61,7 +66,6 @@
 #inputFormTable>tr>td:nth-child(1){
     padding-right: 20px;
     font-weight: bold;
-  
 }
 
 #inputFormTable>tr>td>select, #inputFormTable>tr>td>select>option, #inputFormTable>tr>td>textarea{
@@ -83,7 +87,7 @@
 }
 
 .react-datepicker-ignore-onclickoutside,.react-datepicker-wrapper, 
-.react-datepicker__input-container,.react-datepicker__input-container>input{
+.react-datepicker__input-container{
     border: solid 1px lightgray;
     width: 150px;
     height: 30px;
@@ -91,6 +95,13 @@
     font-size: 15px;
 }
 
+.react-datepicker__input-container>input{
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+}
 #inputFormTable>tr>td>select:focus, #inputFormTable>tr>td>select>option:focus, 
 #inputFormTable>tr>td>textarea:focus{
     outline: none;
