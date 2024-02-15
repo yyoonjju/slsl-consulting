@@ -1,22 +1,24 @@
-/* 여기서부터 return */
-.chartContainer {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  height: 500px;
-}
 
-.chartContainer * {
-  cursor: default;
-}
+  /* 여기서부터 return */
+  .chartContainer {
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    height: 500px;
+  }
 
-.chart {
-  font-family: sans-serif;
-  text-align: center;
-  margin-bottom: 50px;
-}
+  .chartContainer * {
+    cursor: default;
+  }
 
-/* 차트의 세로선(x축 선) 비가시화 */
-.recharts-cartesian-grid-vertical line {
-  stroke: none;
-}
+  .chart {
+    font-family: sans-serif;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  /* 차트의 세로선(x축 선) 비가시화 */
+  .recharts-cartesian-grid-vertical line {
+    stroke: none;
+  }
+  
