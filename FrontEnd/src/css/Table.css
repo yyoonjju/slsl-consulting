@@ -38,8 +38,11 @@
 .table th:nth-child(1) {
     width: 100px;
 }
+.table th:nth-child(3) {
+    width: 170px;
+}
 
-정해진 heigth에서 벗어나는 데이터는 scroll로 확인 가능
+/* 정해진 heigth에서 벗어나는 데이터는 scroll로 확인 가능 */
 .scrollableBody {
     display: flex;
     height: 200px;
@@ -54,7 +57,7 @@ body{
     width: 10px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #413EA0;
+    background-color: #91A7D0;
     border-radius: 10px;
 }
 ::-webkit-scrollbar-track {
