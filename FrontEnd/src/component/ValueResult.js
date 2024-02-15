@@ -152,55 +152,54 @@ const ValueResult = () => {
     return (
         <article className='ValueResultPages'>
             <div className='ValueResultPagesIn'>
-            <h1 id = "ValueResultTitle">발전수익 계산</h1>
-
-            <section className='ValueResult'>
-
-                <div className='ValueChartBox'>
-                    <ValueChart data = {chartData}/>
+                <div id = "ValueResultTitle">
+                    <span>발전수익 계산결과</span>
                 </div>
 
-               
-                <table className='ValueResultTable'>
-                <h3 className='fontLine'>입력하신값</h3>
-                <br/>
-                    <tr>
-                        <td>설치 예정 지역 :</td>
-                        <td> {LocalLabel}</td>
-                        <td>선택 하신 패널 :</td>
-                        <td> {PanelLabel}</td>
-                    </tr>
+                <section className='ValueResult'>
 
-                    <tr>
-                        <td>설치 장소 면적 :</td>
-                        <td> {inputArea}&nbsp;(m²)</td>
-                        <td>설치 예상 기간 : </td>
-                        <td> {firstDate} ~ {secondDate} </td>
-                    </tr>
-                </table>
+                    <div className='ValueChartBox'>
+                        <ValueChart data = {chartData}/>
+                    </div>
+                
+                    <table className='ValueResultTable'>
+                        <h3 className='fontLine'>입력하신값</h3>
+                        <br/>
+                        <tr>
+                            <td>설치 예정 지역 :</td>
+                            <td> {LocalLabel}</td>
+                            <td>선택 하신 패널 :</td>
+                            <td> {PanelLabel}</td>
+                        </tr>
 
-                <table className='ResultCostTable'>
-                    <h3 className='fontLine'>예상 결과</h3><br/>
-                    <tr>
-                        <td>설치 가능 개수 : </td>
-                        <td> 어레이 <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
-                        <td>최소 설치 비용 :</td>
-                        <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
-                    </tr>
+                        <tr>
+                            <td>설치 장소 면적 :</td>
+                            <td> {inputArea}&nbsp;(m²)</td>
+                            <td>설치 예상 기간 : </td>
+                            <td> {firstDate} ~ {secondDate} </td>
+                        </tr>
+                    </table>
 
-                    <tr>
-                        <td>예상 판매 금액 :</td>
-                        <td>{formatNumber(InitaialCost)}&nbsp;&nbsp;(원)(임시)</td>
-                        <td>흑자 전환 시기 :</td>
-                        <td>{firstDate} (임시)</td>
-                    </tr>
+                    <table className='ResultCostTable'>
+                        <h3 className='fontLine'>예상 결과</h3><br/>
+                        <tr>
+                            <td>설치 가능 개수 : </td>
+                            <td> 어레이 <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
+                            <td>최소 설치 비용 :</td>
+                            <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
+                        </tr>
 
+                        <tr>
+                            <td>예상 판매 금액 :</td>
+                            <td>{formatNumber(InitaialCost)}&nbsp;&nbsp;(원)(임시)</td>
+                            <td>흑자 전환 시기 :</td>
+                            <td>{firstDate} (임시)</td>
+                        </tr>
+                    </table>
+                        
+                    <button onClick={btnClick} id='btnClickInput'>다시 계산하기</button>
 
-                </table>
-                       
-                <button onClick={btnClick} id='btnClickInput'>다시 계산하기</button>
-
-            </section>
+                </section>
             </div>
         </article>
     );

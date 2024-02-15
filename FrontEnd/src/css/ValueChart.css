@@ -1,10 +1,9 @@
 .ValueChart{
-    display: flex;
+
 }
 
 .showChart{
     font-family: sans-serif;
-    text-align: center;
-    margin: 100px auto;
-   
+    margin: 30px auto;
+    padding: 20px 30px 30px 0px;
 }
