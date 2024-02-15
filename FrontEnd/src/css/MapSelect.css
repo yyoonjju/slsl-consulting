@@ -53,6 +53,7 @@
         margin-left: 20px;
         position: absolute;
         top: 150px;
+        width: 400px;
         background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
     }
 
