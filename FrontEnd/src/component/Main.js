@@ -218,7 +218,7 @@ function Main() {
                     <source src="./images/askvideo.mp4" type="video/mp4"/>
                 </video>
                     {/* SolarInfo.js에 아래 코드의 JSX가 있습니다 */}
-                    <SolarInfo fontUp3="CONTRACT US." fontUp2="SLSL과 함께하세요" Route= "inquiryinput" Button="문의하기"/>
+                    <SolarInfo fontUp3="CONTACT US." fontUp2="SLSL과 함께하세요" Route= "inquiryinput" Button="문의하기"/>
                 </div>
             </section>
         </article>

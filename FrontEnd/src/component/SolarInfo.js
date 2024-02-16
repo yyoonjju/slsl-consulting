@@ -6,13 +6,13 @@ import React from 'react';
 const SolarInfo = ({ fontUp1, fontUp2, fontUp3,Route, Button }) => {
   return (
     <div className="explain">
-      <p>
+      <p className='fontCover'>
         <span className="fontUp1">{fontUp1}</span>
       </p>
-      <p>
+      <p className='fontCover'>
         <span className="fontUp3">{fontUp3}</span>
       </p>
-      <p>
+      <p className='fontCover'>
         <span className="fontUp2">{fontUp2}</span>
       </p>
       <a href={`/${Route}`} className="fontShow">{Button}</a>
