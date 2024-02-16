@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import pageable from "pageable";
 import BtnSlider from "./BtnSlider";
 import SolarInfo from './SolarInfo';
+import '../css/SolarInfo.css';
 import '../css/Slider.css';
 import '../css/Main.css';
 
@@ -29,7 +30,7 @@ function Main() {
 
             // 스크롤하면 붙여졌던 클래스 이름을 없애는 코드
     
-            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontUp3, .fontShow1").forEach((e) => {
+            document.querySelectorAll(".scaleChage, .fontUp1, .fontUp2, .fontUp3, .fontShow").forEach((e) => {
                 e.classList.remove("active");
                 e.classList.remove("load");
             });
@@ -42,7 +43,7 @@ function Main() {
                 const fontUp1 = targetSection.querySelector(".fontUp1");
                 const fontUp2 = targetSection.querySelector(".fontUp2");
                 const fontUp3 = targetSection.querySelector(".fontUp3");
-                const fontShow1 = targetSection.querySelector(".fontShow1");
+                const fontShow = targetSection.querySelector(".fontShow");
 
 
                 if (scaleChageElement) {
@@ -61,18 +62,16 @@ function Main() {
                     fontUp2.classList.add("active");
                 }
     
-                if (fontShow1) {
+                if (fontShow) {
 
                     // Main에 들어갔을 시 링크에서 # 뒤에 있는 문장이 page-1일 경우
                     // 무조건 fontShow1 뒤에 있던 클래스 이름 active를 지우는 코드
                     
-                    fontShow1.classList.add("active");
+                    fontShow.classList.add("active");
                     if (hash === "page-1") {
-                        document.querySelector(".fontShow1").classList.remove("active");
+                        document.querySelector(".fontShow").classList.remove("active");
                     }
-                }
-
-                
+                }       
             }
         };
 
@@ -176,7 +175,7 @@ function Main() {
 
 
     return (
-        <div className="container" id="container">
+        <article className="container" id="container">
             <section data-anchor="Page 1" className="pg-page pg-active" id="page-1">
                 <div className="scaleChage">
                     <video muted autoPlay loop className="mainvideo">
@@ -222,7 +221,7 @@ function Main() {
                     <SolarInfo fontUp3="CONTRACT US." fontUp2="SLSL과 함께하세요" Route= "InquiryInput" Button="문의하기"/>
                 </div>
             </section>
-        </div>
+        </article>
     );
 }
 

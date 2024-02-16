@@ -1,5 +1,8 @@
 import React from "react";
 
+// BtnSlider의 JSX 구조는 Main에서 값을 받음
+// Main에서 받은 값을 확인 후 이미지를 내보냄. 결과적으로 Main의 BtnSlider에 나오게 됨
+
 function BtnSlider({direction, moveSlide}) {
     return(
         <div>
