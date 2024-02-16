@@ -60,12 +60,11 @@
     .dashBoard {
         margin-top: 100px;
         display: flex;
-        padding-top: 60px;
-        padding-bottom: 60px;
         border-radius: 15px;
         gap: 30px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.144);
         position: relative;
+        padding: 60px 30px;
     }
 
     .calendar {

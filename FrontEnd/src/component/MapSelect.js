@@ -198,7 +198,7 @@ function MapSelect() {
                         {/* 캘린더 */}
                         <table className="calendar">
                             <tr>
-                                <th>시작 날 날짜</th>
+                                <th>시작 날짜</th>
                                 <td>
                                     {/* 첫 번째 캘린더 */}
                                     <DatePicker
@@ -206,7 +206,6 @@ function MapSelect() {
                                         onChange={(date) => {
                                             setFirstDate(Moment(date).format("YYYY-MM-DD"));
                                             if (Moment(date).format("YYYY-MM-DD") > secondDate) {
-                                                console.log("1");
                                                 setSecondDate('');
                                             }
                                         }}
@@ -221,7 +220,7 @@ function MapSelect() {
 
                                 <td>~</td>
 
-                                <th>끝나는 날 날짜</th>
+                                <th>끝나는 날짜</th>
                                 <td>
                                     {/* 두 번째 캘린더 */}
                                     <DatePicker
