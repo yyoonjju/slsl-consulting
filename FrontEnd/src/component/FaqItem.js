@@ -4,18 +4,19 @@ function FaqItem({question, answer}) {
 
 
     return(
-        <div className='text'>
+        <section className='qna'>
             <div className='questionList'>
                 <div className="questionListCover">
-                    <h1 className='faqQ'>Q</h1>
-                    <strong className='faqQuestion'>{question}</strong>
+                    <h1 className='qnaQ'>Q</h1>
+                    <p className='qnaQuestion'>{question}</p>
                 </div>
             </div>
+
             <div className='answerList'>
-                <img src="./images/AnswerIcon.png"/>
-                <p className='faqAnswer'>{answer}</p>
+                <h1 className='qnaA'>A</h1>
+                <p className='qnaAnswer'>{answer}</p>
             </div>
-        </div>
+        </section>
     )
 }
 

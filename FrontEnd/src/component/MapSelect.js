@@ -198,7 +198,7 @@ function MapSelect() {
                         {/* 캘린더 */}
                         <table className="calendar">
                             <tr>
-                                <th>시작 날짜</th>
+                                <th>시작 일자</th>
                                 <td>
                                     {/* 첫 번째 캘린더 */}
                                     <DatePicker
@@ -212,15 +212,16 @@ function MapSelect() {
                                         selectsStart
                                         startDate={firstDate}
                                         endDate={secondDate}
+                                        minDate={new Date('2020-01-01')}
                                         dateFormat="YYYY-MM-dd"
-                                        placeholderText='시작 날'
+                                        placeholderText='시작 일자'
                                         required
                                     />
                                 </td>
 
                                 <td>~</td>
 
-                                <th>끝나는 날짜</th>
+                                <th>종료 일자</th>
                                 <td>
                                     {/* 두 번째 캘린더 */}
                                     <DatePicker
@@ -232,8 +233,9 @@ function MapSelect() {
                                         startDate={firstDate}
                                         endDate={secondDate}
                                         minDate={firstDate}
+                                        maxDate={new Date('2033-12-31')}
                                         dateFormat="YYYY-MM-dd"
-                                        placeholderText='끝나는 날'
+                                        placeholderText='종료 일자'
                                         required
                                     />
                                 </td>
@@ -246,7 +248,7 @@ function MapSelect() {
                     
                     {/* 데이터 */}
                     <section className="rightContainer">
-                        <h3><span className="rightTitle">▣ {location}</span> 일별 발전량, 누적발전량</h3>
+                        <h3><span className="rightTitle">{location}</span> 일별 발전량, 누적 발전량</h3>
 
                         {/* 차트 */}
                         <Chart data={data}/>
