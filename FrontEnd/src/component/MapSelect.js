@@ -219,6 +219,8 @@ function MapSelect() {
                                     />
                                 </td>
 
+                                <td>~</td>
+
                                 <th>끝나는 날 날짜</th>
                                 <td>
                                     {/* 두 번째 캘린더 */}
