@@ -1,89 +1,102 @@
-.MapSlc {
-    width: 100%;
-    height: 650px;
-    margin: 50px 0px;
-    /* border: 3px solid black; */
-}
 
-#koreaSvg {
-    pointer-events: none;
-    stroke: white;
-}
+    /* MapSelect에서 MapsvgPath 함수 안의 */
+    /* JSX의 클래스 이름 시작 */
 
-#koreaSvg > path {
-    pointer-events: all;
-}
+    .MapSlc {
+        width: 100%;
+        height: 650px;
+        margin: 50px 0px;
+    }
 
-#koreaSvg > path:hover {
-    outline: none;
-    fill: gainsboro;
-}
+    #koreaSvg {
+        pointer-events: none;
+        stroke: white;
+    }
 
-#koreaSvg > path:active {
-    outline: none;
-    fill: #F6CAC9;
-}
+    #koreaSvg > path {
+        pointer-events: all;
+    }
 
-#koreaSvg > path.clicked {
-    outline: none;
-    fill: #F6CAC9;
-}
+    #koreaSvg > path:hover {
+        outline: none;
+        fill: gainsboro;
+    }
 
-/* 여기서부터 return */
-.mapSelect {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+    #koreaSvg > path:active {
+        outline: none;
+        fill: #F6CAC9;
+    }
 
-.mapSelectIn {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-    
-.mapSelectTitle{
-    color:black;
-    font-size: 26px;
-    margin-left: 20px;
-}
+    #koreaSvg > path.clicked {
+        outline: none;
+        fill: #F6CAC9;
+    }
 
-.dashBoard {
-    margin-bottom: 50px;
-    display: flex;
-    background-color:rgba(256,256,256,0.3);
-    backdrop-filter: blur(20px);
-    border-radius: 15px;
-    gap: 30px;
-}
+    /* 여기서부터 return */
 
-.calendar {
-    width: max-content;
-}
+    .mapSelect {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
-.calendar th {
-    padding: 10px 20px;
-}
+    .mapSelectIn {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+        
+    .mapSelectTitle{
+        color:black;
+        font-size: 45px;
+        margin-left: 20px;
+        position: absolute;
+        top: 150px;
+        width: 400px;
+        background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
+    }
 
-/* DatePicker CSS */
-.MuiFormControl-root.MuiTextField-root.css-z3c6am-MuiFormControl-root-MuiTextField-root {
-    width: 168px;
-}
+    .dashBoard {
+        margin-top: 100px;
+        display: flex;
+        border-radius: 15px;
+        gap: 30px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.144);
+        position: relative;
+        padding: 60px 30px;
+    }
 
-.MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-    border: none;
-}
-/* DatePicker CSS */
+    .calendar {
+        width: max-content;
+    }
 
-.rightContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin: 15px 0px;
-}
+    .calendar th {
+        padding: 10px 20px 10px 0px;
+    }
 
-.rightTitle {
-    font-size: 25px;
-}
+    .calendar td:nth-child(3) {
+        padding: 0px 10px;
+    }
+
+    .rightContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 15px 0px;
+    }
+
+    .rightTitle {
+        font-size: 25px;
+    }
+
+    /* DatePicker 라이브러리 CSS 수정 코드 */
+
+    .MuiFormControl-root.MuiTextField-root.css-z3c6am-MuiFormControl-root-MuiTextField-root {
+        width: 168px;
+    }
+
+    .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+        border: none;
+    }

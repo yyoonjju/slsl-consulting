@@ -41,7 +41,7 @@ function Tb({data}) {
     };
 
     return (
-        <article>
+        <div>
             <Table striped bordered hover className="table">
                 <section className="tableContainer">
                     <thead>
@@ -60,7 +60,7 @@ function Tb({data}) {
                     </tbody>
                 </section>
             </Table>
-        </article>
+        </div>
     );
 }
 export default Tb;

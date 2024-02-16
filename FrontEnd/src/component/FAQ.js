@@ -13,18 +13,18 @@ function FAQ() {
     })
 
     return(
-        <div className='QnA'>
+        <article className='QnA'>
             <div className='qnaIn'>
                 <h1 className='faqTitle'>FAQ</h1>
             <div className='qnabox'>
                 <div className='QnAPhoto'>
                     <div className={`QnAPhotoBox ${qnaUP ? 'active' : ''}`}>
-                        <div className='QnATitle'>
-                            <h1>태양광 시작하려니<br/>막막하신가요?</h1>
-                            <p>SLSL에서 시작하면 쉬워져요!</p>
-                        </div>
-                        <div className='imgCover'>
-                            <div className='QnAImg'/>
+                        
+                        <div className='QnAImg'>
+                            <div className='QnATitle'>
+                                <h1>태양광 시작하려니 막막하신가요?</h1>
+                                <p>SLSL에서 시작하면 쉬워져요!</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ function FAQ() {
                 </div>
             </div>
             </div>
-        </div>
+        </article>
     )
 }
 

@@ -31,11 +31,7 @@ const Header = () => {
     // 메인 페이지일 때는 window.location.href 이용
 
     function productbtnclick(e) {
-        if (currentPath === "/") {
-            window.location.href = "/Product"
-        } else {
-            navigate("/Product");
-        }
+        window.location.href = "/product"
     };
 
     // 제품 소개 클릭 시 MapSelect로 이동하는 코드
@@ -43,11 +39,7 @@ const Header = () => {
     // 메인 페이지일 때는 window.location.href 이용
 
     function predictInputClick(e) {
-        if (currentPath === "/") {
-            window.location.href = "/MapSelect"
-        } else {
-            navigate("/MapSelect");
-        }
+        window.location.href = "/mapselect"
     };
 
     // 제품 소개 클릭 시 ValueInput로 이동하는 코드
@@ -55,11 +47,7 @@ const Header = () => {
     // 메인 페이지일 때는 window.location.href 이용
 
     function valueInputClick(e) {
-        if (currentPath === "/") {
-            window.location.href = "/ValueInput"
-        } else {
-            navigate("/ValueInput");
-        }
+        window.location.href = "/valueinput"
     }
 
     // 제품 소개 클릭 시 FAQ로 이동하는 코드
@@ -67,11 +55,9 @@ const Header = () => {
     // 메인 페이지일 때는 window.location.href 이용
 
     function faqbtnclick(e) {
-        if (currentPath === "/") {
-            window.location.href = "/FAQ"
-        } else {
-            navigate("/FAQ");
-        }
+
+        window.location.href = "/faq"
+
     };
 
     // 제품 소개 클릭 시 InquiryInput로 이동하는 코드
@@ -79,31 +65,29 @@ const Header = () => {
     // 메인 페이지일 때는 window.location.href 이용
 
     function askbtnclick(e) {
-        if (currentPath === "/") {
-            window.location.href = "/InquiryInput"
-        } else {
-            navigate("/InquiryInput");
-        }
+
+        window.location.href = "/inquiryinput"
+
     };
     
     useEffect(() => {
 
         // setIsOpen을 true로 바꾸어 클래스 이름을 추가하기 위한 코드
 
-        const visible = currentPath === '/Product' || currentPath === '/MapSelect' || currentPath === '/ValueInput' || currentPath === '/FAQ' || currentPath === '/InquiryInput' || currentPath === '/ValueResult';
+        const visible = currentPath === '/product' || currentPath === '/mapselect' || currentPath === '/valueinput' || currentPath === '/faq' || currentPath === '/inquiryinput' || currentPath === '/valueresult';
         setIsOpen(visible);
 
         // setClickedCategory에 값을 집어 넣어 특정 카테고리 요소에 클래스를 이름을 추가하는 코드
 
-        if (currentPath === '/Product') {
+        if (currentPath === '/product') {
             setClickedCategory('product');
-        } else if (currentPath === '/MapSelect') {
+        } else if (currentPath === '/mapselect') {
             setClickedCategory('predictInput');
-        } else if (currentPath === '/ValueInput' || currentPath === '/ValueResult') {
+        } else if (currentPath === '/valueinput' || currentPath === '/valueresult') {
             setClickedCategory('valueInput');
-        } else if (currentPath === '/FAQ') {
+        } else if (currentPath === '/faq') {
             setClickedCategory('faq');
-        } else if (currentPath === '/InquiryInput') {
+        } else if (currentPath === '/inquiryinput') {
             setClickedCategory('ask');
         }
     }, [window.location.pathname])

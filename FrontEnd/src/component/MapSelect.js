@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import Moment from 'moment';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import Chart from './Chart.js';
 import Table from './Table.js';
 import '../css/MapSelect.css'
@@ -19,7 +18,9 @@ function MapSelect() {
 
     // handlePathClick으로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
-        Result();
+        if (secondDate.length !== 0) {
+            Result();
+        }
     },[location,firstDate,secondDate]);
 
     // Server에서 지역에 따른 Data를 가져와서 변수 data에 저장 후
@@ -197,32 +198,44 @@ function MapSelect() {
                         {/* 캘린더 */}
                         <table className="calendar">
                             <tr>
-                                <th>시작 날 날짜</th>
+                                <th>시작 날짜</th>
                                 <td>
-                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                        {/* 첫 번째 캘린더 */}
-                                        <DatePicker
-                                            selected={firstDate}
-                                            format="YYYY-MM-DD"
-                                            onChange={(date) => {
-                                                setFirstDate(Moment(date.$d).format("YYYY-MM-DD"));
-                                            }}
-                                        />
-                                    </LocalizationProvider>
+                                    {/* 첫 번째 캘린더 */}
+                                    <DatePicker
+                                        selected={firstDate}
+                                        onChange={(date) => {
+                                            setFirstDate(Moment(date).format("YYYY-MM-DD"));
+                                            if (Moment(date).format("YYYY-MM-DD") > secondDate) {
+                                                setSecondDate('');
+                                            }
+                                        }}
+                                        selectsStart
+                                        startDate={firstDate}
+                                        endDate={secondDate}
+                                        dateFormat="YYYY-MM-dd"
+                                        placeholderText='시작 날'
+                                        required
+                                    />
                                 </td>
 
-                                <th>끝나는 날 날짜</th>
+                                <td>~</td>
+
+                                <th>끝나는 날짜</th>
                                 <td>
-                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                        {/* 두 번째 캘린더 */}
-                                        <DatePicker
-                                            selected={secondDate}
-                                            format="YYYY-MM-DD"
-                                            onChange={(date) => {
-                                                setSecondDate(Moment(date.$d).format("YYYY-MM-DD"));
-                                            }}
-                                        />
-                                    </LocalizationProvider>
+                                    {/* 두 번째 캘린더 */}
+                                    <DatePicker
+                                        selected={secondDate}
+                                        onChange={(date) => {
+                                            setSecondDate(Moment(date).format("YYYY-MM-DD"))
+                                        }}
+                                        selectsEnd
+                                        startDate={firstDate}
+                                        endDate={secondDate}
+                                        minDate={firstDate}
+                                        dateFormat="YYYY-MM-dd"
+                                        placeholderText='끝나는 날'
+                                        required
+                                    />
                                 </td>
                             </tr>
                         </table>
