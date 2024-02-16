@@ -2,10 +2,19 @@
     /* MapSelect에서 MapsvgPath 함수 안의 */
     /* JSX의 클래스 이름 시작 */
 
+    .customInput {
+        background: none;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+    }
+
     .MapSlc {
         width: 100%;
         height: 650px;
-        margin: 50px 0px;
+        margin: 35px 0px;
     }
 
     #koreaSvg {
@@ -15,6 +24,7 @@
 
     #koreaSvg > path {
         pointer-events: all;
+        cursor: pointer;
     }
 
     #koreaSvg > path:hover {
@@ -63,8 +73,11 @@
         border-radius: 15px;
         gap: 30px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.144);
-        position: relative;
         padding: 60px 30px;
+    }
+
+    .leftContainer {
+        position: relative;
     }
 
     .calendar {
@@ -76,7 +89,20 @@
     }
 
     .calendar td:nth-child(3) {
-        padding: 0px 10px;
+        padding: 0px 18.5px;
+        font-size: 20px;
+    }
+
+    .selectKorea {
+        position: absolute;
+        top: 80px;
+        right: 0px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 7px 14px;
+        background: none;
+        cursor: pointer;
     }
 
     .rightContainer {

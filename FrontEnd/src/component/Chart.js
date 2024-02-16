@@ -63,7 +63,7 @@ function Chart({data}) {
     <div className="chartContainer">
       {/* 차트 그래프 생성 */}
         <ComposedChart
-          width={800}
+          width={700}
           height={450}
           data={chartData}
           margin={{

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef, forwardRef} from 'react';
 import axios from 'axios';
 import Moment from 'moment';
 import DatePicker from 'react-datepicker';
@@ -18,7 +18,7 @@ function MapSelect() {
 
     // handlePathClick으로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
-        if (secondDate.length !== 0) {
+        if (firstDate <= secondDate) {
             Result();
         }
     },[location,firstDate,secondDate]);
@@ -26,14 +26,26 @@ function MapSelect() {
     // Server에서 지역에 따른 Data를 가져와서 변수 data에 저장 후
     // Chart.js와 Table.js에 뿌려줌
     const Result = async() => {
-        const res = await axios.get(`http://10.10.21.64:8080/api/${location}`, {
-            params: {
-                firstDate: firstDate,
-                secondDate: secondDate
-            }
-        });
-        setData(res.data);
+        try {
+            const res = await axios.get(`http://10.10.21.64:8080/api/${location}`, {
+                params: {
+                    firstDate: firstDate,
+                    secondDate: secondDate
+                }
+            });
+            setData(res.data);
+        }
+        catch {
+            console.log("Error: Result");
+        }
     };
+
+    
+    const CustomInput = forwardRef(({value, onClick}, ref) => (
+        <button className="customInput" onClick={onClick} ref={ref}>
+            {value}
+        </button>
+    ));
 
     // 지도에서 지역을 클릭하면 해당 지역명이 location에 저장
     const handlePathClick = (pathName) => {
@@ -186,6 +198,7 @@ function MapSelect() {
             </svg>
     );
 
+
     return (
         <article className="mapSelect">
             <section className='mapSelectIn'>
@@ -205,14 +218,13 @@ function MapSelect() {
                                         selected={firstDate}
                                         onChange={(date) => {
                                             setFirstDate(Moment(date).format("YYYY-MM-DD"));
-                                            if (Moment(date).format("YYYY-MM-DD") > secondDate) {
-                                                setSecondDate('');
-                                            }
                                         }}
                                         selectsStart
+                                        customInput={<CustomInput/>}
                                         startDate={firstDate}
                                         endDate={secondDate}
                                         minDate={new Date('2020-01-01')}
+                                        maxDate={new Date('2033-12-31')}
                                         dateFormat="YYYY-MM-dd"
                                         placeholderText='시작 일자'
                                         required
@@ -230,6 +242,7 @@ function MapSelect() {
                                             setSecondDate(Moment(date).format("YYYY-MM-DD"))
                                         }}
                                         selectsEnd
+                                        customInput={<CustomInput/>}
                                         startDate={firstDate}
                                         endDate={secondDate}
                                         minDate={firstDate}
@@ -241,6 +254,8 @@ function MapSelect() {
                                 </td>
                             </tr>
                         </table>
+
+                        <button className="selectKorea" onClick={() => setLocation("전국")}>전국</button>
 
                         {/* 지도 */}
                         <MapsvgPath/>

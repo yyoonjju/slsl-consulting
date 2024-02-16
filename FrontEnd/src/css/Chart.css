@@ -3,7 +3,7 @@
   .chartContainer {
     display: flex;
     flex-direction: column;
-    width: 800px;
+    width: 700px;
     height: 500px;
   }
 
