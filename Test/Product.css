@@ -1,0 +1,168 @@
+
+.productIntroduce {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 100px;
+}
+
+.productPhoto {
+  /* background: url('../../public/images/Photo5.jpg');
+  background-size: cover;
+  background-position: center; */
+  width: 100%;
+  height: 490px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.productTitle {
+  font-size: 30px;
+  text-align: center;
+}
+
+.productTitleType {
+  overflow: hidden;
+}
+
+.productTitle1 {
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+  opacity: 0;
+  margin-bottom: 4px;
+}
+
+.productTitle2 {
+  display: block;
+  font-size: 22px;
+  opacity: 0;
+}
+
+.productTitle1.active {
+  animation: show_txt .4s .5s ease-in-out forwards;
+}
+
+.productTitle2.active {
+  animation: show_txt .7s .8s ease-in-out forwards;
+}
+
+@keyframes show_txt {
+  0%{
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.productKind {
+  display: flex;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.productExplain {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.Cover1 {
+  width: 380px;
+  height: 560px;
+  position: absolute;
+  display: block;
+  transition: all .7s;
+  background-color: #5568b1;
+}
+/* #4e5d94; */
+
+
+.productExplain:hover .Cover1 {
+  transform: translateX(-100%);
+}
+
+.productExplain:not(:hover) .Cover1 {
+  transform: translateX(0%);
+}
+
+.coverBox {
+  height: 400px;
+}
+
+.cellName {
+  font-size: 24px;
+  text-align: center;
+  color: white;
+}
+
+.detailmove1, .detailmove2, .detailmove3 {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-left: 280px;
+}
+
+.Cover2 {
+  width: 380px;
+  height: 560px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cellNameIn {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  /* color: white; */
+}
+
+.cellImgBox {
+  display: flex;
+  justify-content: center;
+}
+
+.cellImg {
+  position: relative;
+  width: 220px;
+  height: 280px;
+  margin-bottom: 20px;
+}
+
+.cellExplain {
+  font-size: 18px;
+  /* color: white; */
+}
+
+.DetailBox {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.cellDetail {
+  font-size: 18px;
+  font-weight: 600;
+  /* color: white; */
+}
+
+.cellButton {
+  margin-top: 20px;
+  background-color: #5568b1;
+  padding:10px;
+  color:black;
+  border:none;
+  font-weight: bold;
+  border-radius:10px;
+}
