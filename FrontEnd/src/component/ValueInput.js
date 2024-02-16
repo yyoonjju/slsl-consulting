@@ -176,7 +176,7 @@ const ValueInput = () => {
                                     <td colSpan="3">
                                         <select name = "selectPanel" id = "selectPanel" required onChange={ClickChange}>
                                             <option value=""disabled selected hidden>모듈을 선택하세요.</option>
-                                            <option value="fromKorea">국산 PEAKDVQ XL G11.7(570Wp)</option>
+                                            <option value="fromKorea">국산 Q.PEAK DUO XL G11.7(570Wp)</option>
                                             <option value="fromUSA">미국산 AmeriSolar AS-qm120-HC(580Wp)</option>
                                         </select>
                                     </td>
