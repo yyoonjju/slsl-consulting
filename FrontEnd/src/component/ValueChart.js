@@ -36,7 +36,7 @@ const ValueChart = ({data}) =>{
         >
           <CartesianGrid stroke="lightgray" />
           <XAxis dataKey="date"/>
-          <YAxis yAxisId="left" label={{value: "예상수익(원)", offset: 10, angle: 0, position: "top", fontSize: "10px"}}/>
+          <YAxis yAxisId="left" label={{value: "예상 수익(원)", offset: 10, angle: 0, position: "top", fontSize: "10px"}}/>
           {/* <YAxis yAxisId="right" label={{value: "누적예상수익(원)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} orientation="right"/> */}
           <Tooltip/>
           <Legend />

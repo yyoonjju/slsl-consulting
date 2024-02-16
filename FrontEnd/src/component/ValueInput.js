@@ -72,33 +72,45 @@ const ValueInput = () => {
 
     //입력값 변경 (날짜, 지역은 따로 받음)
     const ClickChange = (e) => {
-        console.log(e.target);
-
+       
         setValueData((prevData) => ({
             ...prevData,
-            [e.target.name] : e.target.value,
+            [e.target.name]: e.target.value,
         }));
     };
-
+    
+    
     // selectPanel 값에 따라 면적의 최소값을 반환하는 함수
     const getMinArea = (value) => {
         const panelInfo = {
             fromKorea: 68,
             fromUSA: 88,
+            fromChina: 79,
         };
 
         return panelInfo[ValueData.selectPanel] || 0;
     };
+
+        // selectPanel 값에 따라 패널의 이름을 반환하는 함수
+        const getAreaName = (value) => {
+            const panelInfo = {
+                fromKorea: "한국 Q.PEAK DUO XL G11.7(570Wp)",
+                fromUSA: "미국 AmeriSolar AS-qm120-HC(580Wp)",
+                fromChina: "중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)",
+            };
+    
+            return panelInfo[ValueData.selectPanel] || 0;
+        };
   
-    // 면적 입력란이 포커스를 잃었을 때 유효성 검사 수행
+    // 면적 입력란이 포커스를 잃었을 때 
+    // 입력된 면적이  소수점, 문자를 입력 못하게 하는 함수
     const handleAreaBlur = (e) => {
 
-        // 면적이 숫자이고, 최소값을 검증
-
         if (e.target.name === 'inputArea') {
-        const minArea = getMinArea(e.target.value);
-            if (!/^\d+$/.test(e.target.value) || parseInt(e.target.value) < minArea) {
-                alert(`면적은 ${minArea}보다 큰 숫자여야 합니다.`);
+        
+            if (!/^\d+$/.test(e.target.value)) {
+                e.target.value = '';
+                alert("면적은 문자, 특수문자,  소수점을 제외한\n숫자만 입력이 가능합니다.");
             }
         }
     };
@@ -111,14 +123,18 @@ const ValueInput = () => {
 
         const MinAreaValue = getMinArea();
         const ThisArea = ValueData.inputArea;
-
+        const ThisPanel = getAreaName();
+        
+        //alert창 백틱 안에서 줄바꿈 이렇게 하는 방법 뿐입니다. (가독성을 위해 탭 쓰면 그대로 적용됩니다.)
+        //바꾸지 마세요!
         if(ThisArea < MinAreaValue){
-            alert(`면적은 ${MinAreaValue}보다 큰 숫자여야 합니다.`);
+            alert(`${ThisPanel} 제품의 면적은
+${MinAreaValue}보다 큰 숫자여야 합니다.`);
             return;
         }
 
         // ValueResult 컴포넌트로 폼 데이터를 전달
-        navigate('/ValueResult',{state:{formData:ValueData}});
+        navigate('/valueresult',{state:{formData:ValueData}});
     };
 
     return (
@@ -176,8 +192,9 @@ const ValueInput = () => {
                                     <td colSpan="3">
                                         <select name = "selectPanel" id = "selectPanel" required onChange={ClickChange}>
                                             <option value=""disabled selected hidden>모듈을 선택하세요.</option>
-                                            <option value="fromKorea">국산 Q.PEAK DUO XL G11.7(570Wp)</option>
-                                            <option value="fromUSA">미국산 AmeriSolar AS-qm120-HC(580Wp)</option>
+                                            <option value="fromKorea">한국 Q.PEAK DUO XL G11.7(570Wp)</option>
+                                            <option value="fromUSA">미국 AmeriSolar AS-qm120-HC(580Wp)</option>
+                                            <option value="fromChina">중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -189,7 +206,7 @@ const ValueInput = () => {
                                                 id = "inputArea"
                                                 name = "inputArea"
                                                 required
-                                                placeholder='단위를 입력하세요'
+                                                placeholder='면적을 입력하세요'
                                                 onChange={ClickChange}
                                                 onBlur={handleAreaBlur}/>
                                     </td>            
@@ -205,7 +222,7 @@ const ValueInput = () => {
                                         startDate={startDate}
                                         endDate={endDate}
                                         dateFormat="yyyyMMdd"
-                                        placeholderText='시작일자'
+                                        placeholderText='시작 일자'
                                         required
                                         name = 'startDate'
                                         />
@@ -222,7 +239,7 @@ const ValueInput = () => {
                                         endDate={endDate}
                                         minDate={startDate}
                                         dateFormat="yyyyMMdd"
-                                        placeholderText='종료일자'
+                                        placeholderText='종료 일자'
                                         required
                                         name = 'endDate'
                                         />

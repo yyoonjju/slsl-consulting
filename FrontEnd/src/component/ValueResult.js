@@ -38,7 +38,7 @@ const ValueResult = () => {
         if (!formData) {
             // formData가 없을 때 처리
             alert("입력페이지에서 수익계산을 위한 값들을 입력해주세요.")
-            nav("/ValueInput");
+            nav("/valueinput");
         }else {
             
             // formData가 존재하고 formData.startDate가 존재하는 경우에만 처리
@@ -122,15 +122,21 @@ const ValueResult = () => {
 
     // 패널 선택 세부명, 그에 따른 필요면적, 가격
     if(selectPanel ==="fromKorea"){
-        PanelLabel = '국산 PEAKDVQ XL G11.7(570Wp)';
+        PanelLabel = '한국 Q.PEAK DUO XL G11.7(570Wp)';
         PanelSize = 67.81;
         PanelCost = 5274840;
     } else if(selectPanel==="fromUSA"){
-        PanelLabel = '미국산 AmeriSolar AS-qm120-HC(580Wp)';
+        PanelLabel = '미국 AmeriSolar AS-qm120-HC(580Wp)';
         PanelSize = 87.527;
         PanelCost = 5964750;
     }
+    else if(selectPanel==="fromChina"){
+        PanelLabel = '중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)';
+        PanelSize = 78.91;
+        PanelCost = 2358900;
+    }
 
+// 계산 결과 
     //설치 할 수 있는 어레이의 개수
     const amount = Math.floor(inputArea/PanelSize);
 
@@ -146,8 +152,9 @@ const ValueResult = () => {
 
     // ValueInput으로 돌아가서 다시 계산하기 
     const btnClick = ()=>{
-        window.location.href="/ValueInput"
+        window.location.href="/valueinput"
     }
+
     // formData를 이용하여 결과를 표시
     return (
         <article className='ValueResultPages'>
@@ -163,19 +170,19 @@ const ValueResult = () => {
                     </div>
                 
                     <table className='ValueResultTable'>
-                        <h3 className='fontLine'>입력하신값</h3>
+                        <h3 className='fontLine'>입력한 값</h3>
                         <br/>
                         <tr>
                             <td>설치 예정 지역 :</td>
                             <td> {LocalLabel}</td>
-                            <td>선택 하신 패널 :</td>
+                            <td>선택한 패널 :</td>
                             <td> {PanelLabel}</td>
                         </tr>
 
                         <tr>
                             <td>설치 장소 면적 :</td>
                             <td> {inputArea}&nbsp;(m²)</td>
-                            <td>설치 예상 기간 : </td>
+                            <td>입력한 기간 : </td>
                             <td> {firstDate} ~ {secondDate} </td>
                         </tr>
                     </table>
@@ -185,12 +192,12 @@ const ValueResult = () => {
                         <tr>
                             <td>설치 가능 개수 : </td>
                             <td> 어레이 <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
-                            <td>최소 설치 비용 :</td>
+                            <td>설치 비용 :</td>
                             <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
                         </tr>
 
                         <tr>
-                            <td>예상 판매 금액 :</td>
+                            <td>예상 수익 :</td>
                             <td>{formatNumber(InitaialCost)}&nbsp;&nbsp;(원)(임시)</td>
                             <td>흑자 전환 시기 :</td>
                             <td>{firstDate} (임시)</td>

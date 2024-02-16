@@ -13,33 +13,35 @@ const ValueInfo=()=>{
                 
                 <ol className='howtoInput_ol'>
                     <li>
-                        <div>지도에서 설치하실 지역을 선택하시거나 지역 선택 박스에서 설치하실 지역을 선택해주세요.</div>
+                        <div>지도에서 설치할 지역을 선택하거나 지역 선택 박스에서 설치하실 지역을 선택해 주세요.</div>
                     </li>
 
                     <li>
                         <div>
-                           모듈 선택 박스에서 한국 모듈제품과 미국 모듈제품 중 선택해주세요.
+                           모듈 선택 박스에서 설치하실 모듈을 선택해주세요.
                         </div>
                     </li>
 
                     <div className='howtoInput_text'>
-                        SLSL은 한국 모듈제품은 12개로 구성된 어레이를 미국 모듈제품은 15개로 구성된 어레이를 기본값으로 제공합니다.
+
+                    한국제품은 12개의 모듈로 구성된 어레이를 미국, 중국 제품은 15개의 모듈로 구성된 어레이를 기본값으로 제공합니다.
                     </div>
 
                     <li>
                         <div>
-                            설치하실 장소의 면적을 입력해주세요.
+                            설치하실 장소의 면적을 소수점을 제외하고 입력해주세요.
                         </div>
                     </li>
 
                     <div className='howtoInput_text'>                   
-                        <li>→ 한국 모듈 제품의 최소 면적 (67.81m²)</li>
-                        <li>→ 미국 모듈 제품의 최소 면적 (87.527m²)</li>
+                        <li>→ 한국 모듈 제품의 최소 면적 (68m²)</li>
+                        <li>→ 미국 모듈 제품의 최소 면적 (88m²)</li>
+                        <li>→ 중국 모듈 제품의 최소 면적 (79m²)</li>
                     </div>
 
-                    <li><div>기간선택 박스에서 완공 후 조회하고자 하는 시작일자와 종료일자를 선택해주세요.</div></li>
+                    <li><div>기간 선택 박스에서 완공 후 조회하고자 하는 시작 일자와 종료 일자를 선택해주세요.</div></li>
 
-                    <li><div>계산하기 버튼을 누르면 결과를 확인하실 수 있습니다.</div></li>
+                    <li><div>계산하기 버튼을 누르면 결과를 확인할 수 있습니다.</div></li>
                 </ol>
             </section>
 
@@ -47,7 +49,7 @@ const ValueInfo=()=>{
             <section className='arrayInfoFooter'>
                 <div id = "arrayTitle">
                     <h2>여기서 <span>'어레이'</span>란?</h2>
-                    <div>어레이란 태양전지가 모여 만들어진 하나의 판(모듈)을 여러장 연결한 태양광 설비를 말합니다.</div>
+                    <div>어레이란 태양전지가 모여 만들어진 하나의 모듈을 여러 장 연결한 태양광 설비를 말합니다.</div>
                 </div>
 
                 <div id='arrayInfobox'>
@@ -62,11 +64,12 @@ const ValueInfo=()=>{
                         <ul>
                             <li>한국 모듈 제품은 <span>12</span>개가 <span>1</span>개의 <span>어레이</span></li>
                             <li>미국 모듈 제품은 <span>15</span>개가 <span>1</span>개의 <span>어레이</span></li>
+                            <li>중국 모듈 제품은 <span>15</span>개가 <span>1</span>개의 <span>어레이</span></li>
                             <li>하나의 세트로 이해해주세요.</li>
                         </ul>
 
                         <button id ='arrayInfoBtn'onClick={()=>window.open("/product")}>
-                            SLSL 제품정보 보러가기
+                            SLSL 제품 정보 보러가기
                         </button>
                     </div>
                 </div>
