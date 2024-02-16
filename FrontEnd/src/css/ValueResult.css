@@ -28,6 +28,7 @@
     width: 40%;
     background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
 }
+
 .ValueResult{
     display: flex;
     flex-direction: column;
@@ -35,17 +36,13 @@
     height: 900px;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .ValueChartBox{
     box-shadow: 0 0 20px lightgray;
     width: 950px;
     border-radius: 5px;
-    
 }
-
-
 
 .ValueResultTable{
     width: 900px;
@@ -64,11 +61,11 @@
 .ValueResultTable>tr>td,.ResultCostTable>tr>td {
     /* border: solid 1px black; */
 }
+
 .ResultCostTable>tr>td:nth-child(1){
     width: 200px;
     text-align:justify;
  }
-
 
 .ResultCostTable>tr>td:nth-child(3){
    width: 180px;

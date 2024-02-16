@@ -1,11 +1,10 @@
 .ValueInfo{
-   
+   /* border: 1px solid blue; */
 }
 
 .howtoInput_head{
-    margin-top: 30px;
+    margin-top: 40px;
     border-radius: 15px;
-    padding-left:20px;
     padding-bottom:10px;
 }
 
@@ -65,9 +64,6 @@
     justify-content: center;
     flex-direction: column;
     margin-top: 30px;
-    border-radius: 15px;
-    padding-bottom:10px;
-    padding-left:20px;
 }
 
 #arrayTitle{
@@ -76,7 +72,7 @@
 
 #arrayTitle>h2{
     width: 220px;
-    background: linear-gradient(to top, #ffe135 50%, transparent 50%);
+    background: linear-gradient(to top, #ffe555be 50%, transparent 50%);
 }
 
 #arrayTitle>h2>span{
@@ -89,14 +85,6 @@
     margin: 15px 0 15px 0; 
 }
 
-.arrayInfo>ul>li {
-    padding: 5px;
-}
-.arrayInfo > ul{
-    list-style: none;
-    font-size: 18px;
-    
-}
 #arrayInfobox{
     display: flex;
     flex-direction: row;
@@ -105,11 +93,26 @@
 
 #arrayImg{
     width: 300px;
-    height: 150px;
+    height: 200px;
     border-radius: 12px;
-    background-image: url("../../public/images/usacell.png") ;
+    background-image: url("../../public/images/ValueInfoImg.png") ;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
+}
+
+.arrayInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.arrayInfo>ul>li {
+    padding: 5px;
+}
+
+.arrayInfo > ul{
+    list-style: none;
+    font-size: 18px;
 }
 
 .arrayInfo > ul>li>span{
