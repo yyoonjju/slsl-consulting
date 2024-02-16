@@ -1,88 +1,176 @@
-.productdetail{
-    height:660px;
-    background-color:rgba(256,256,256,0.3);
-    backdrop-filter: blur(20px);
-    display: flex;
-    width:1200px;
-    margin-bottom:60px;
-}
 
-.product {
-    display:flex;
-    justify-content: center;
+  .productIntroduce {
+    display: flex;
+    justify-content:center;
     align-items: center;
     flex-direction: column;
-}
+  }
 
-/* body{
-    background-image: url('../../public/images/suncell.jpg');
-    background-repeat:no-repeat;
-    background-position: center;  
-    background-size: cover;
-} */
+  .productTop {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
-.introduceproduct{
-color:white;
-margin-top:120px;
-font-weight:bold;
-margin-bottom:10px;
-display:flex;
-flex-direction: column;
-font-size:1.5rem;
-}
+  .productPhoto {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
 
-.koreaproduct{
-color:rgb(26,51,92);
-font-weight:500;
-width:500px;
-height:600px;
-margin-left:30px;
-padding:30px;
-font-size:large;
-border-right:1px solid white;
-}
+  .productTitle {
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+  }
 
-.koreaproductname{
-font-size:1.7rem;
-margin-bottom:30px;
-font-weight: bold;
-text-align:center;
-}
+  .productTitleType {
+    overflow: hidden;
+  }
 
-.usaproduct{
-color:rgb(26,51,92);
-font-weight: 500;
-width:500px;
-height:600px;
-margin-left: 30px;
-padding:30px;
-font-size:large;
-}
+  .productTitle1 {
+    display: block;
+    font-size: 30px;
+    font-weight: 600;
+    opacity: 0;
+    margin-bottom: 4px;
+  }
 
-.koreaproductimg{
-    margin-bottom:30px;
-    width: 480px;
-    height:200px;
-    margin-top:40px;
-}
+  .productTitle2 {
+    display: block;
+    font-size: 22px;
+    opacity: 0;
+  }
 
-.usaproductimg{
-    margin-bottom:30px;
-    width: 480px;
-    height:200px;
-    margin-top:40px;
-}
+  .productTitle1.active {
+    animation: show_txt .4s .5s ease-in-out forwards;
+  }
 
-.usaproductname{
-    font-size:1.7rem;
-    margin-bottom:30px;
+  .productTitle2.active {
+    animation: show_txt .7s .8s ease-in-out forwards;
+  }
+
+  @keyframes show_txt {
+    0%{
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .productKind {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  .productExplain {
+    width: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+
+  .Cover1 {
+    width: 380px;
+    height: 560px;
+    position: absolute;
+    display: block;
+    transition: all .7s;
+    background-color: #5568b1;
+  }
+  /* #4e5d94; */
+
+
+  .productExplain:hover .Cover1 {
+    transform: translateX(-100%);
+  }
+
+  .productExplain:not(:hover) .Cover1 {
+    transform: translateX(0%);
+  }
+
+  .coverBox {
+    height: 400px;
+  }
+
+  .cellName {
+    font-size: 24px;
+    text-align: center;
+    color: white;
+  }
+
+  .detailMoveAll {
+    display: flex;
+    align-items: center;
+  }
+
+  .detailMoveBox {
+    width: 286px;
+    height: 80px;
+  }
+
+  .detailMove1, .detailMove2, .detailMove3 {
+    font-size: 30px;
+  }
+
+  .Cover2 {
+    width: 380px;
+    height: 560px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cellNameIn {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+
+  .cellImgBox {
+    display: flex;
+    justify-content: center;
+  }
+
+  .cellImg {
+    position: relative;
+    width: 220px;
+    height: 280px;
+    margin-bottom: 20px;
+  }
+
+  .cellExplain {
+    font-size: 18px;
+  }
+
+  .DetailBox {
+    display: flex;
+    margin-bottom: 10px;
+  }
+
+  .cellDetail {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .cellButton {
+    margin-top: 20px;
+    background-color: #5568b1;
+    padding:10px;
+    color: white;
+    border:none;
     font-weight: bold;
-    text-align:center;
-}
-
-.productDetail {
-font-size:1.3rem;
-font-weight: bold;}
-
-.koreaproduct > p{margin-left:100px;}
-.usaproduct >p{margin-left:100px;}
+    border-radius:10px;
+  }
