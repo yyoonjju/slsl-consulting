@@ -3,18 +3,11 @@
     padding: 0;
     margin: 0;
   }
-
-  /* 메인 화면 CSS */
-
-  .slideImg {
-    opacity: 0.8;
-  }
-
-  .mainvideo, .sub2video {
-    opacity: 0.8;
-  }
   
   .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: black;
   }
 
@@ -35,63 +28,24 @@
     scale: 0.8;
   }
 
-  video {
+  .scaleChage.load {
+    scale: 1;
+  }
+
+  .scaleChage.active {
+    transition: all 0.8s;
+    scale: 1;
+  }
+
+  /* 첫 번째 section에 있는 mainvideo와
+    마지막 section에 있는 sub2video는
+    동일한 CSS이기에 같이 적습니다 */
+
+  .mainvideo, .sub2video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-  }
-
-  .explain {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  .carousel-indicators button {
-    display: none;
-  }
-
-  .fontCover {
-    overflow: hidden;
-  }
-
-  .fontUp1, .fontUp2 {
-    display: block;
-    font-size: 44px;
-    font-weight: 600;
-    color: white;
-    opacity: 0;
-  }
-
-  .fontUp3 {
-    display: block;
-    font-size: 24px;
-    font-weight: 600;
-    color: white;
-    opacity: 0;
-  }
-  
-
-  /* 메인 화면 2번째 CSS */
-
-  .fontShow1, .fontShow1:active, .fontShow1:hover, .fontShow1:checked, .fontShow1:visited {
-    color: rgb(26, 51, 92);
-    font-weight:bold;
-  }
-
-  .fontShow1 {
-    background: rgb(26,51,92);
-    color:white !important;
-    text-decoration: none;
-    opacity: 0;
-    position: relative;
-    top: 30px;
-    padding: 15px;
-    border-radius: 15px;
-    font-size: 1rem;
-    display: none;
+    object-fit: cover;  
+    opacity: 0.8;
   }
 
   /* 스크롤 하라고 하는 마우스 애니매이션 */
@@ -131,61 +85,21 @@
     100% { transform: translateY(15px); opacity: 0;}
   }
 
-  /* 스크롤 시 클래스 이름이 추가되는 CSS */
-
-  .scaleChage.load {
-    scale: 1;
+  .containerSlider {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
   }
 
-  .scaleChage.active {
-    transition: all 0.8s;
-    scale: 1;
+  .slideImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
   }
 
-  .fontUp1.active {
-    animation: show_txt .4s .5s ease-in-out forwards;
-  }
-
-  .fontUp2.active {
-    animation: show_txt .7s .8s ease-in-out forwards;
-  }
-
-  .fontUp3.active {
-    animation: show_txt .4s .5s ease-in-out forwards;
-  }
-
-  @keyframes show_txt {
-    0%{
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  .fontShow1.active {
-    display:inline-block;
-    animation: fadeIn 1.2s ease-in-out 1.4s forwards; 
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  /* 왼쪽의 점 요소들 (섹션 이동 기능) */
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  /* 라이브러리 수정 CSS */
 
   .pg-vertical .pg-pips {
     left: 20px;
