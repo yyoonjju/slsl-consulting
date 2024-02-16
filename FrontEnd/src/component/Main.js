@@ -152,7 +152,7 @@ function Main() {
     // solarInfoProps임
 
     const solarInfoProps = {
-        fontUp1: "태양광 모듈",
+        fontUp1: "SLSL 태양광 모듈",
         fontUp2: "제품을 소개합니다",
         Route: "Product",
         Button: "제품 소개",
@@ -162,13 +162,13 @@ function Main() {
     // slideIndex가 바뀔 때마다 SolarInfo의 값이 바뀌게 하는 코드
       
       if (slideIndex === 1) {
-        solarInfoProps.fontUp1 = "날짜와 시간, 지역을 선택하면";
+        solarInfoProps.fontUp1 = "날짜와 지역을 선택하면";
         solarInfoProps.fontUp2 = "발전량을 예측해드립니다";
         solarInfoProps.Route = "MapSelect";
         solarInfoProps.Button = "발전량 조회";
       } else if (slideIndex === 2) {
         solarInfoProps.fontUp1 = "흑자전환 기간과";
-        solarInfoProps.fontUp2 = "투자 비용을 예측해드립니다";
+        solarInfoProps.fontUp2 = "설 비용을 예측해드립니다";
         solarInfoProps.Route = "ValueInput";
         solarInfoProps.Button = "예측 조회";
       }
