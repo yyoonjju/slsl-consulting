@@ -115,9 +115,12 @@ const InquiryInput = () => {
             if (!/^\d+$/.test(e.target.value)) {
                 e.target.value = '';
                 alert("숫자만 입력이 가능합니다.");
-            }else if (e.target.value.length < maxLength) {
+                return;
+            }
+            if (e.target.value.length < maxLength) {
                 e.target.value = ''; 
-                alert("입력값이 너무 짧습니다. 최소 " + maxLength + "자 입력해주세요.");
+                alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
+                return;
             }
         }
         else if (e.target.id === 'inputNumber2') {
@@ -125,9 +128,12 @@ const InquiryInput = () => {
             if (!/^\d+$/.test(e.target.value)) {
                 e.target.value = '';
                 alert("숫자만 입력이 가능합니다.");
-            }else if (e.target.value.length < maxLength) {
+                return;
+            }
+            if (e.target.value.length < maxLength) {
                 e.target.value = ''; 
-                alert("입력값이 너무 짧습니다. 최소 " + maxLength + "자 입력해주세요.");
+                alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
+                return;
             }
         }
         else if (e.target.id === 'inputNumber3') {
@@ -135,9 +141,12 @@ const InquiryInput = () => {
             if (!/^\d+$/.test(e.target.value)) {
                 e.target.value = '';
                 alert("숫자만 입력이 가능합니다.");
-            }else if (e.target.value.length < maxLength) {
+                return;
+            }
+            if (e.target.value.length < maxLength) {
                 e.target.value = ''; 
-                alert("입력값이 너무 짧습니다. 최소 " + maxLength + "자 입력해주세요.");
+                alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
+                return;
             }
         }
 
@@ -145,6 +154,7 @@ const InquiryInput = () => {
             if (!(/^[a-zA-Z.]+$/).test(e.target.value)){
                 e.target.value = ''; 
                 alert('이메일 도메인 형식을 확인해주세요.')
+                return;
             }
         }
 
@@ -152,6 +162,7 @@ const InquiryInput = () => {
             if (!(/^[a-zA-Z0-9]+$/).test(e.target.value)){
                 e.target.value = ''; 
                 alert('이메일 아이디에는 알파벳과 숫자만 입력 가능합니다.');
+                return;
             }
         }
 
@@ -159,6 +170,7 @@ const InquiryInput = () => {
             if (!(/^[a-zA-Z가-힣]*$/).test(e.target.value)){
                 e.target.value = ''; 
                 alert('이름에는 특수문자를 입력하실 수 없습니다.');
+                return;
             }
         }
     };
