@@ -15,19 +15,19 @@
     }
 
     .btn-slide img {
-        width: 80px;
-        height: 24px;
+        width: 100px;
+        height: 30px;
         pointer-events: none;
     }
 
     .prev {
-        top: 50%;
+        top: 558px;
         left: 300px;
         transform: translateY(-60%);
     }
 
     .next {
-        top: 50%;
+        top: 558px;
         right: 300px;
         transform: translateY(-60%);
     }

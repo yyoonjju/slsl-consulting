@@ -203,7 +203,7 @@ function MapSelect() {
     return (
         <article className="mapSelect">
             <section className='mapSelectIn'>
-            <h1 className="mapSelectTitle">발전량 예측</h1>
+            <span className="mapSelectTitle">발전량 예측</span>
 
                 <section className="dashBoard">
                     {/* 지도와 툴팁 */}

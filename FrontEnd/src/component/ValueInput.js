@@ -1,5 +1,5 @@
 import '../css/ValueInput.css';
-import React, { useState, forwardRef } from 'react';
+import React, { useEffect, useState, forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import MapsvgPath from './MapsvgPath';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -153,6 +153,32 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
         navigate('/valueresult',{state:{formData:ValueData}});
     };
 
+
+
+
+
+    // 세션 값 확인 후 selectPanel의 value 변경
+
+    useEffect(() => {
+        const selectedCountry = sessionStorage.getItem('Country');
+    
+        const selectPanel = document.getElementById('selectPanel');
+    
+        if (selectedCountry === 'korea') {
+          selectPanel.value = 'fromKorea';
+        } else if (selectedCountry === 'usa') {
+            selectPanel.value = 'fromUSA';
+        } else if (selectedCountry === 'china') {
+            selectPanel.value = 'fromChina';
+        } else {
+          selectPanel.value = 'default';
+        }
+    }, []);
+
+
+
+
+
     return (
         
         <article className= "ValueInput">
@@ -182,23 +208,23 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                                 required
                                             >
                                             <option value=""disabled selected hidden>지역을 선택하세요.</option>
-                                            <option value="서울" selected={selectedLocation === '서울'}>서울특별시</option>
-                                            <option value="대전" selected={selectedLocation === '대전'}>대전광역시</option>
-                                            <option value="대구" selected={selectedLocation === '대구'}>대구광역시</option>
-                                            <option value="부산" selected={selectedLocation === '부산'}>부산광역시</option>
-                                            <option value="광주" selected={selectedLocation === '광주'}>광주광역시</option>
-                                            <option value="인천" selected={selectedLocation === '인천'}>인천광역시</option>
-                                            <option value="울산" selected={selectedLocation === '울산'}>울산광역시</option>
-                                            <option value="세종" selected={selectedLocation=== '세종'}>세종특별자치시</option>
-                                            <option value="경기" selected={selectedLocation === '경기'}>경기도</option>
-                                            <option value="강원" selected={selectedLocation === '강원'}>강원도</option>
-                                            <option value="충북" selected={selectedLocation === '충북'}>충청북도</option>
-                                            <option value="충남" selected={selectedLocation === '충남'}>충청남도</option>
-                                            <option value="경북" selected={selectedLocation === '경북'}>경상북도</option>
-                                            <option value="경남" selected={selectedLocation=== '경남'}>경상남도</option>
-                                            <option value="전북" selected={selectedLocation === '전북'}>전라북도</option>
-                                            <option value="전남" selected={selectedLocation === '전남'}>전라남도</option>
-                                            <option value="제주" selected={selectedLocation === '제주'}>제주특별자치도</option>
+                                            <option value="seoul" selected={selectedLocation === 'seoul'}>서울특별시</option>
+                                            <option value="daejeon" selected={selectedLocation === 'daejeon'}>대전광역시</option>
+                                            <option value="daegu" selected={selectedLocation === 'daegu'}>대구광역시</option>
+                                            <option value="busan" selected={selectedLocation === 'busan'}>부산광역시</option>
+                                            <option value="gwangju" selected={selectedLocation === 'gwangju'}>광주광역시</option>
+                                            <option value="incheon" selected={selectedLocation === 'incheon'}>인천광역시</option>
+                                            <option value="ulsan" selected={selectedLocation === 'ulsan'}>울산광역시</option>
+                                            <option value="sejong" selected={selectedLocation=== 'sejong'}>세종특별자치시</option>
+                                            <option value="gyeonggi" selected={selectedLocation === 'gyeonggi'}>경기도</option>
+                                            <option value="gangwon" selected={selectedLocation === 'gangwon'}>강원도</option>
+                                            <option value="north-chungcheong" selected={selectedLocation === 'north-chungcheong'}>충청북도</option>
+                                            <option value="south-chungcheong" selected={selectedLocation === 'south-chungcheong'}>충청남도</option>
+                                            <option value="north-gyeongsang" selected={selectedLocation === 'north-gyeongsang'}>경상북도</option>
+                                            <option value="south-gyeongsang" selected={selectedLocation=== 'south-gyeongsang'}>경상남도</option>
+                                            <option value="north-jeolla" selected={selectedLocation === 'north-jeolla'}>전라북도</option>
+                                            <option value="south-jeolla" selected={selectedLocation === 'south-jeolla'}>전라남도</option>
+                                            <option value="jeju" selected={selectedLocation === 'jeju'}>제주특별자치도</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -207,7 +233,7 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                     <td>모듈 선택</td>
                                     <td colSpan="3">
                                         <select name = "selectPanel" id = "selectPanel" required onChange={ClickChange}>
-                                            <option value=""disabled selected hidden>모듈을 선택하세요.</option>
+                                            <option value="default" disabled selected hidden>모듈을 선택하세요.</option>
                                             <option value="fromKorea">한국 Q.PEAK DUO XL G11.7(570Wp)</option>
                                             <option value="fromUSA">미국 AmeriSolar AS-qm120-HC(580Wp)</option>
                                             <option value="fromChina">중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)</option>
@@ -243,14 +269,14 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                         endDate={endDate}
                                         minDate={new Date('2020-01-01')}
                                         maxDate={new Date('2033-12-31')}
-                                        dateFormat="yyyyMMdd"
+                                        dateFormat="YYYY-MM-dd"
                                         placeholderText='시작 일자'
                                         required
                                         name = 'startDate'
                                         />
                                     </td>
                                     <td>
-                                        <span>&nbsp;~&nbsp;&nbsp;</span>
+                                        <span>~&nbsp;&nbsp;</span>
                                     </td>
                                     <td>
                                         <DatePicker
@@ -265,7 +291,7 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                         endDate={endDate}
                                         minDate={startDate}
                                         maxDate={new Date('2033-12-31')}
-                                        dateFormat="yyyyMMdd"
+                                        dateFormat="YYYY-MM-dd"
                                         placeholderText='종료 일자'
                                         required
                                         name = 'endDate'
@@ -274,10 +300,12 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                 </tr>
 
                                 <tr>
-                                    <td></td><td></td>
+                                    <td></td>
                                     <td colSpan="2">
                                         <button id="right_inputBtn" type='submit'>계산하기</button>
                                     </td>
+                                    <td></td>    
+                                    
                                 </tr>
                             </table>
                         </form>

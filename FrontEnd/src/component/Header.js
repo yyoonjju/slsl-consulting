@@ -23,7 +23,10 @@ const Header = () => {
     // 로고 클릭 시 메인 페이지로 이동하는 코드
 
     function logobtnclick(e) {
+
         window.location.href = "/"
+        sessionStorage.clear();
+        
     };
 
     // 제품 소개 클릭 시 Product로 이동하는 코드
@@ -31,42 +34,52 @@ const Header = () => {
     // 메인 페이지일 때는 window.location.href 이용
 
     function productbtnclick(e) {
+
         window.location.href = "/product"
+        sessionStorage.clear();
+
     };
 
-    // 제품 소개 클릭 시 MapSelect로 이동하는 코드
+    // 발전량 예측 조회 클릭 시 MapSelect로 이동하는 코드
     // 메인 페이지에서 navigate로 이동 시 "Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node." 라는 버그가 있어
     // 메인 페이지일 때는 window.location.href 이용
 
     function predictInputClick(e) {
+
         window.location.href = "/mapselect"
+        sessionStorage.clear();
+
     };
 
-    // 제품 소개 클릭 시 ValueInput로 이동하는 코드
+    // 발전 수익 및 설치비용 예측 조회 클릭 시 ValueInput로 이동하는 코드
     // 메인 페이지에서 navigate로 이동 시 "Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node." 라는 버그가 있어
     // 메인 페이지일 때는 window.location.href 이용
 
     function valueInputClick(e) {
+
         window.location.href = "/valueinput"
+
     }
 
-    // 제품 소개 클릭 시 FAQ로 이동하는 코드
+    // FAQ 클릭 시 FAQ로 이동하는 코드
     // 메인 페이지에서 navigate로 이동 시 "Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node." 라는 버그가 있어
     // 메인 페이지일 때는 window.location.href 이용
 
     function faqbtnclick(e) {
 
         window.location.href = "/faq"
+        sessionStorage.clear();
 
     };
 
-    // 제품 소개 클릭 시 InquiryInput로 이동하는 코드
+    // 문의하기 클릭 시 InquiryInput로 이동하는 코드
     // 메인 페이지에서 navigate로 이동 시 "Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node." 라는 버그가 있어
     // 메인 페이지일 때는 window.location.href 이용
 
     function askbtnclick(e) {
 
         window.location.href = "/inquiryinput"
+        sessionStorage.clear();
 
     };
     
@@ -115,13 +128,13 @@ const Header = () => {
                 <div id="cursor" className="menuicon" onClick={handleMenuToggle} >
                     <div className='faBars_container'>
                         {/* FaBars는 햄버거 요소 JSX 코드임. isOpen이 true면 클래스 이름에 active 추가 */}
-                        <FaBars size={50} color="white" className={`faBars ${isOpen ? 'active' : ''}`} />
+                        <FaBars size={60} style={{marginBottom:"10px"}} color="white" className={`faBars ${isOpen ? 'active' : ''}`} />
                         {isMenuOpen && 
                             (<div className="menuboard">
-                                <button className="btn" onClick={productbtnclick}>제품 소개 </button><br />
-                                <button className="btn" onClick={predictInputClick}>발전량 예측 조회 </button><br />
-                                <button className="btn" onClick={valueInputClick}>태양광 발전수익 및<br />모듈비용 예측 </button><br />
-                                <button className="btn" onClick={faqbtnclick}>FAQ </button> <br />
+                                <button className="btn" onClick={productbtnclick}>제품 소개 </button><br/>
+                                <button className="btn" onClick={predictInputClick}>발전량 예측 조회 </button><br/>
+                                <button className="btn" onClick={valueInputClick}>발전 수익 및<br/>설치비용 예측 조회</button><br/>
+                                <button className="btn" onClick={faqbtnclick}>FAQ </button> <br/>
                                 <button className="btn" onClick={askbtnclick}>문의하기</button>
                             </div>)}
                     </div>
@@ -136,9 +149,9 @@ const Header = () => {
                             <img src="images/slsllogo.png" className={`logo1 ${isOpen ? 'active' : ''}`} onClick={logobtnclick} alt="logo" />
                                 
                             <div id='categoryBox'>
-                                <div className={`category ${clickedCategory === 'product' ? 'clicked' : ''}`} onClick={productbtnclick}>제품소개 </div><br />
-                                <div className={`category ${clickedCategory === 'predictInput' ? 'clicked' : ''}`} onClick={predictInputClick}>발전량 예측조회 </div><br />
-                                <div className={`category ${clickedCategory === 'valueInput' ? 'clicked' : ''}`} onClick={valueInputClick}>발전수익 및 모듈비용 예측 </div><br />
+                                <div className={`category ${clickedCategory === 'product' ? 'clicked' : ''}`} onClick={productbtnclick}>제품 소개 </div><br/>
+                                <div className={`category ${clickedCategory === 'predictInput' ? 'clicked' : ''}`} onClick={predictInputClick}>발전량 예측 조회 </div><br />
+                                <div className={`category ${clickedCategory === 'valueInput' ? 'clicked' : ''}`} onClick={valueInputClick}>발전 수익 및 설치비용 예측 조회 </div><br />
                                 <div className={`category ${clickedCategory === 'faq' ? 'clicked' : ''}`} onClick={faqbtnclick}>FAQ </div> <br />
                                 <div className={`category ${clickedCategory === 'ask' ? 'clicked' : ''}`} onClick={askbtnclick}>문의하기</div>
                             </div>
