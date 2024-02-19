@@ -1,0 +1,4 @@
+csv_files/*.csv filter=lfs diff=lfs merge=lfs -text
+model_files/*.pkl filter=lfs diff=lfs merge=lfs -text
+model_files/*.h5 filter=lfs diff=lfs merge=lfs -text
+model_files/*.json filter=lfs diff=lfs merge=lfs -text
