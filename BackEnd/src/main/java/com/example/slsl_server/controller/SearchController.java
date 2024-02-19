@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.slsl_server.model.JejuSmpData;
-import com.example.slsl_server.model.Pay;
 import com.example.slsl_server.model.Power;
 import com.example.slsl_server.repository.JejuSmpDataRepository;
 import com.example.slsl_server.repository.LandSmpPredictionDataRepository;
@@ -92,25 +90,4 @@ public class SearchController {
             return result;
         }
     };
-
-    // firstDate, secondDate를 받아서 데이터 가공 후 반환
-    @GetMapping("/pay")
-    public List<Pay> test(
-        @RequestParam("firstDate") String firstDate,
-        @RequestParam("secondDate") String secondDate
-    ) {
-        List<Pay> result = payRepository.findByDateBetween(LocalDate.parse(firstDate), LocalDate.parse(secondDate));
-
-        return result;
-    }
-
-    @GetMapping("/findjeju")
-    public List<JejuSmpData> jejuSmpData(
-        @RequestParam("firstDate") String firstDate,
-        @RequestParam("secondDate") String secondDate
-    ) {
-        List<JejuSmpData> result = jejuSmpDataRepository.findByDsBetween(LocalDate.parse(firstDate), LocalDate.parse(secondDate));
-
-        return result;
-    }
 }

@@ -12,5 +12,5 @@ public class JejuSmpData {
     @Id
     private Long index;
     private LocalDate ds;
-    private double y;
+    private Double y;
 }

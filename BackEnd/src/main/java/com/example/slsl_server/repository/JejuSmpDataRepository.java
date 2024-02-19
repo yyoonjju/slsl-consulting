@@ -8,7 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.example.slsl_server.model.JejuSmpData;
 
+
 @Repository
-public interface JejuSmpDataRepository extends JpaRepository<JejuSmpData, Long> {
-    List<JejuSmpData> findByDsBetween(LocalDate startDate, LocalDate endDate);
-}
+public interface JejuSmpDataRepository extends JpaRepository<JejuSmpData, Integer> {
+   
+    List<JejuSmpData> findByDateBetween(LocalDate startDate, LocalDate endDate);
+
+} 
