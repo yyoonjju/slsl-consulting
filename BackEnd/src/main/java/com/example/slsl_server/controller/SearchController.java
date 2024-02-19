@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.slsl_server.model.Power;
 import com.example.slsl_server.repository.JejuSmpDataRepository;
-import com.example.slsl_server.repository.LandSmpPredictionDataRepository;
 import com.example.slsl_server.repository.PayRepository;
 import com.example.slsl_server.repository.PowerRepository;
 
@@ -25,8 +24,6 @@ import com.example.slsl_server.repository.PowerRepository;
 public class SearchController {
     @Autowired
     PowerRepository powerRepository;
-    @Autowired
-    LandSmpPredictionDataRepository landSmpPredictionDataRepository;
     @Autowired
     PayRepository payRepository;
     @Autowired
@@ -68,14 +65,14 @@ public class SearchController {
         // 정확한 지역을 받을 경우 데이터 가공을 진행할 로직
         // -> 전국 데이터 가공 로직과 거의 동일
         else {
-            List<Power> data = powerRepository.findByLOCAndTMBetween(location, LocalDate.parse(firstDate), LocalDate.parse(secondDate));
+            List<Power> data = powerRepository.findByLocAndTmBetween(location, LocalDate.parse(firstDate), LocalDate.parse(secondDate));
             List<Map<String,Object>> result = new ArrayList<>();
             Double total = Math.round(data.get(0).getValue()/10000000)/100.0;
             for (int i = 0; i < data.size(); i++) {
                 Map<String,Object> dataMap = new HashMap<>();
                 dataMap.put("index", data.get(i).getIndex());
-                dataMap.put("LOC", data.get(i).getLOC());
-                dataMap.put("tm", data.get(i).getTM());
+                dataMap.put("LOC", data.get(i).getLoc());
+                dataMap.put("tm", data.get(i).getTm());
                 dataMap.put("value", Math.round(data.get(i).getValue()/10000)/100.0);
                 if (i == 0) {
                     dataMap.put("total", total);

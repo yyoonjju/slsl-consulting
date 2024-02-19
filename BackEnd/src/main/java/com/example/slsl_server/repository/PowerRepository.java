@@ -2,32 +2,21 @@ package com.example.slsl_server.repository;
 
 import java.time.LocalDate;
 import java.util.List;
-<<<<<<< HEAD
-
-
-import org.springframework.data.jpa.repository.JpaRepository;
-=======
 import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
->>>>>>> ac158264eece096901718a0f48cecef95343d256
 import org.springframework.stereotype.Repository;
 
 import com.example.slsl_server.model.Power;
 
 @Repository
-<<<<<<< HEAD
-public interface PowerRepository extends JpaRepository<Power, Integer>{
-      List<Power> findByLocAndDateBetween(String loc, LocalDate firstDate, LocalDate secondDate);
-}
-=======
 public interface PowerRepository extends JpaRepository<Power, Long> {
     // 입력 받은 지역에서 firstDate와 secondDate 사이의 데이터 검색
-    List<Power> findByLOCAndTMBetween(String loc, LocalDate firstDate, LocalDate secondDate);
+    List<Power> findByLocAndTmBetween(String loc, LocalDate firstDate, LocalDate secondDate);
 
-    // 지역 무관 firstDate와 secondDate 사이의 데이터를 검색 후 날짜를 기준으로 묶어서 전국 평균 발전량을 계산
+    // 지역 무관 firstDate와 secondDate 사이의 데이터를 검색 후 날짜를 기준으로 묶어서 전국 합계 발전량을 계산
     @Query(value =
         "SELECT tm, SUM(value) as value " +
         "FROM power " +
@@ -40,4 +29,3 @@ public interface PowerRepository extends JpaRepository<Power, Long> {
         @Param("secondDate") LocalDate secondDate
     );
 }
->>>>>>> ac158264eece096901718a0f48cecef95343d256

@@ -72,6 +72,7 @@ function Chart({data}) {
             right: 20
           }}
           className="chart"
+          isAbove
         >
           <CartesianGrid stroke="#f5f5f5" />
           <XAxis dataKey="xAxis" interval={parseInt(data.length/30)} angle={-45} textAnchor="end" height={80} fontSize={13}/>
@@ -79,8 +80,8 @@ function Chart({data}) {
           <YAxis yAxisId="right" label={{value: "누적 발전량(GW)", offset: 10, angle: 0, position: "top", fontSize: "10px"}} tickFormatter={formatYAxis} orientation="right"/>
           <Tooltip />
           <Legend />
-          <Line yAxisId="left" type="monotone" dataKey="발전량(MW)" stroke="#ff7300" />
           <Bar yAxisId="right" dataKey="누적 발전량(GW)" barSize={20} fill="#413ea0" />
+          <Line yAxisId="left" type="monotone" dataKey="발전량(MW)" stroke="#ff7300" />
         </ComposedChart>
     </div>
   );
