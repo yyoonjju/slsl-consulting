@@ -45,8 +45,8 @@ public class SearchController {
             List<Map<String,Object>> data = powerRepository.findGroupByDateWithNativeQuery(LocalDate.parse(firstDate), LocalDate.parse(secondDate));
             // 반환할 가공 데이터를 담을 박스 생성
             List<Map<String,Object>> result = new ArrayList<>();
-            // Math, Double, String은 발전량 단위를 W -> MW로 변환하고 소수점 2자리로 고정하는 과정
-            Double total = Math.round(Double.valueOf(String.valueOf(data.get(0).get("value")))/10000)/100.0;
+            // Math, Double, String은 발전량 단위를 W -> GW로 변환하고 소수점 2자리로 고정하는 과정
+            Double total = Math.round(Double.valueOf(String.valueOf(data.get(0).get("value")))/10000000)/100.0;
             // 박스에 가공 데이터를 담는 과정
             for (int i = 0; i < data.size(); i++) {
                 Map<String,Object> dataMap = new HashMap<>();
@@ -57,8 +57,8 @@ public class SearchController {
                     dataMap.put("total", total);
                 }
                 else {
-                    dataMap.put("total", Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000 + total)*100)/100.0);
-                    total = Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000 + total)*100)/100.0;
+                    dataMap.put("total", Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000000 + total)*100)/100.0);
+                    total = Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000000 + total)*100)/100.0;
                 }
                 result.add(dataMap);
             }
@@ -70,7 +70,7 @@ public class SearchController {
         else {
             List<Power> data = powerRepository.findByLOCAndTMBetween(location, LocalDate.parse(firstDate), LocalDate.parse(secondDate));
             List<Map<String,Object>> result = new ArrayList<>();
-            Double total = Math.round(data.get(0).getValue()/10000)/100.0;
+            Double total = Math.round(data.get(0).getValue()/10000000)/100.0;
             for (int i = 0; i < data.size(); i++) {
                 Map<String,Object> dataMap = new HashMap<>();
                 dataMap.put("index", data.get(i).getIndex());
@@ -81,8 +81,8 @@ public class SearchController {
                     dataMap.put("total", total);
                 }
                 else {
-                    dataMap.put("total", Math.round((data.get(i).getValue()/1000000 + total)*100)/100.0);
-                    total = Math.round((data.get(i).getValue()/1000000 + total)*100)/100.0;
+                    dataMap.put("total", Math.round((data.get(i).getValue()/1000000000 + total)*100)/100.0);
+                    total = Math.round((data.get(i).getValue()/1000000000 + total)*100)/100.0;
                 }
                 result.add(dataMap);
             }
