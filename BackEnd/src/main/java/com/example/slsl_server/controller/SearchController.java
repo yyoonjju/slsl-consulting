@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.slsl_server.model.CumulativeCapacity;
+import com.example.slsl_server.model.JejuSmpData;
+import com.example.slsl_server.model.LandSmpData;
 import com.example.slsl_server.model.Power;
+import com.example.slsl_server.repository.CumulativeCapacityRepository;
 import com.example.slsl_server.repository.JejuSmpDataRepository;
+import com.example.slsl_server.repository.LandSmpDataRepository;
 import com.example.slsl_server.repository.PayRepository;
 import com.example.slsl_server.repository.PowerRepository;
 
@@ -27,7 +32,11 @@ public class SearchController {
     @Autowired
     PayRepository payRepository;
     @Autowired
+    LandSmpDataRepository landSmpDataRepository;
+    @Autowired
     JejuSmpDataRepository jejuSmpDataRepository;
+    @Autowired
+    CumulativeCapacityRepository cumulativeCapacityRepository;
 
     // 지역, firstDate, secondDate를 받아서 데이터 가공 후 반환
     @GetMapping("/api/{location}")
@@ -87,4 +96,38 @@ public class SearchController {
             return result;
         }
     };
+
+    @GetMapping("/findcapacity/{selectLocal}")
+    public List<Map<String,Object>> test(
+        @PathVariable String selectLocal,
+        @RequestParam("amount") Integer amount,
+        @RequestParam("panel") Integer wat,
+        @RequestParam("startDate") String startDate,
+        @RequestParam("endDate") String endDate
+    ) {
+        List<Power> a = powerRepository.findByLocAndTmBetween(selectLocal, LocalDate.parse(startDate), LocalDate.parse(endDate));
+        List<CumulativeCapacity> c = cumulativeCapacityRepository.findByLocAndYearBetween(selectLocal, (int)LocalDate.parse(startDate).getYear(), (int)LocalDate.parse(endDate).getYear());
+        List<Long> b = new ArrayList<>();
+        List<Map<String,Object>> result = new ArrayList<>();
+        if (selectLocal.equals("제주")) {
+            List<JejuSmpData> jejuData = jejuSmpDataRepository.findByDsBetween(LocalDate.parse(startDate), LocalDate.parse(endDate));
+            for (int i = 0; i < a.size(); i++) {
+                Map<String,Object> dataMap = new HashMap<>();
+                dataMap.put("date", a.get(i).getTm());
+                dataMap.put("money", a.get(i).getValue()*amount*wat*(jejuData.get(i).getY().longValue())/(long)c.get(0).getCapacity());
+                result.add(dataMap);
+            }
+        }
+        else {
+            List<LandSmpData> landData = landSmpDataRepository.findByDsBetween(LocalDate.parse(startDate), LocalDate.parse(endDate));
+            for (int i = 0; i < a.size(); i++) {
+                Map<String,Object> dataMap = new HashMap<>();
+                dataMap.put("date", a.get(i).getTm());
+                dataMap.put("money", a.get(i).getValue()*amount*wat*(landData.get(i).getY().longValue())/(long)c.get(0).getCapacity());
+                result.add(dataMap);
+            }
+        }
+
+        return result;
+    }
 }
