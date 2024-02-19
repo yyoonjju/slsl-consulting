@@ -19,7 +19,7 @@ function Chart({data}) {
   for (var i = 0; i < 30; i++) {
     blankData.push(
       {
-        date: i,
+        tm: i,
         value: 0,
         total: 0
       }
@@ -37,14 +37,14 @@ function Chart({data}) {
       const dataTemp = data.length === 0 ?
         blankData.map((dt) => {
           return {
-            xAxis: dt.date,
+            xAxis: dt.tm,
             "발전량(MW)": dt.value,
             "누적 발전량(MW)": dt.total
           };
         }) :
         data.map((dt) => {
           return {
-            xAxis: dt.date,
+            xAxis: dt.tm,
             "발전량(MW)": dt.value,
             "누적 발전량(MW)": dt.total
           };
@@ -69,7 +69,7 @@ function Chart({data}) {
           margin={{
             top: 30,
             left: 5,
-            right: 15
+            right: 20
           }}
           className="chart"
         >
