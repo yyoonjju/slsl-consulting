@@ -9,11 +9,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class DummyPowerData {
+public class Power {
     @Id
     private Long index;
     @Column(columnDefinition = "TEXT")
-    private String loc;
-    private LocalDate date;
-    private Long value;
+    private String LOC;
+    private LocalDate TM;
+    private double value;
 }
