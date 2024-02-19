@@ -117,6 +117,11 @@
         font-size: 25px;
     }
 
+    .rightTitleSub {
+        font-size: 15px;
+        color: gray;
+    }
+
     /* DatePicker 라이브러리 CSS 수정 코드 */
 
     .MuiFormControl-root.MuiTextField-root.css-z3c6am-MuiFormControl-root-MuiTextField-root {
