@@ -22,7 +22,7 @@ const ValueInput = () => {
         startDate:date,
     }));
 
-      if (date > endDate) {
+      if (date > endDate && endDate !== null) {
         setEndDate(null);
         alert("종료 일자가 시작 일자보다 앞에 올 수 없습니다.");
       };
@@ -132,13 +132,13 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
 
     // DatePicker의 input박스 수정
     const CustomInputStart = forwardRef(({value, onClick}, ref) => (
-        <button className="customInput" onClick={onClick} ref={ref}>
+        <button type="button" className="customInput" onClick={onClick} ref={ref}>
             {value || "시작 일자"}
         </button>
     ));
 
     const CustomInputEnd = forwardRef(({value, onClick}, ref) => (
-        <button className="customInput" onClick={onClick} ref={ref}>
+        <button type="button" className="customInput" onClick={onClick} ref={ref}>
             {value || "종료 일자"}
         </button>
     ));
