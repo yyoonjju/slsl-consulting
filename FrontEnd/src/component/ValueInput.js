@@ -1,5 +1,5 @@
 import '../css/ValueInput.css';
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import MapsvgPath from './MapsvgPath';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -21,6 +21,11 @@ const ValueInput = () => {
         ...prevData,
         startDate:date,
     }));
+
+      if (date > endDate) {
+        setEndDate(null);
+        alert("종료 일자가 시작 일자보다 앞에 올 수 없습니다.");
+      };
     };
   
     //종료 일자
@@ -125,6 +130,19 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
         }
     };
 
+    // DatePicker의 input박스 수정
+    const CustomInputStart = forwardRef(({value, onClick}, ref) => (
+        <button className="customInput" onClick={onClick} ref={ref}>
+            {value || "시작 일자"}
+        </button>
+    ));
+
+    const CustomInputEnd = forwardRef(({value, onClick}, ref) => (
+        <button className="customInput" onClick={onClick} ref={ref}>
+            {value || "종료 일자"}
+        </button>
+    ));
+
     const navigate =  useNavigate();
     // 폼 제출 핸들러
     const ClickSubmit = (e) =>{
@@ -217,8 +235,14 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                         selected={startDate}
                                         onChange={handleStartDateChange}
                                         selectsStart
+                                        customInput={<CustomInputStart/>}
+                                        showYearDropdown
+                                        showMonthDropdown
+                                        dropdownMode="select"
                                         startDate={startDate}
                                         endDate={endDate}
+                                        minDate={new Date('2020-01-01')}
+                                        maxDate={new Date('2033-12-31')}
                                         dateFormat="yyyyMMdd"
                                         placeholderText='시작 일자'
                                         required
@@ -233,9 +257,14 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                         selected={endDate}
                                         onChange={handleEndDateChange}
                                         selectsEnd
+                                        customInput={<CustomInputEnd/>}
+                                        showYearDropdown
+                                        showMonthDropdown
+                                        dropdownMode="select"
                                         startDate={startDate}
                                         endDate={endDate}
                                         minDate={startDate}
+                                        maxDate={new Date('2033-12-31')}
                                         dateFormat="yyyyMMdd"
                                         placeholderText='종료 일자'
                                         required

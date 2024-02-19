@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef, forwardRef} from 'react';
+import React, {useEffect, useState, forwardRef} from 'react';
 import axios from 'axios';
 import Moment from 'moment';
 import DatePicker from 'react-datepicker';
@@ -13,7 +13,7 @@ function MapSelect() {
     const [data, setData] = useState('');
     // 날짜(DatePicker)에 관련된 변수 설정
     const [firstDate, setFirstDate] = useState(Moment(new Date()).format("YYYY-MM-DD"));
-    const [secondDate, setSecondDate] = useState(Moment(new Date()).add(30,"days").format("YYYY-MM-DD"));
+    const [secondDate, setSecondDate] = useState(Moment(new Date()).add(29,"days").format("YYYY-MM-DD"));
     
 
     // handlePathClick으로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
@@ -40,7 +40,7 @@ function MapSelect() {
         }
     };
 
-    
+    // DatePicker의 input박스 수정
     const CustomInput = forwardRef(({value, onClick}, ref) => (
         <button className="customInput" onClick={onClick} ref={ref}>
             {value}
@@ -221,6 +221,9 @@ function MapSelect() {
                                         }}
                                         selectsStart
                                         customInput={<CustomInput/>}
+                                        showYearDropdown
+                                        showMonthDropdown
+                                        dropdownMode="select"
                                         startDate={firstDate}
                                         endDate={secondDate}
                                         minDate={new Date('2020-01-01')}
@@ -242,6 +245,9 @@ function MapSelect() {
                                             setSecondDate(Moment(date).format("YYYY-MM-DD"))
                                         }}
                                         selectsEnd
+                                        showYearDropdown
+                                        showMonthDropdown
+                                        dropdownMode="select"
                                         customInput={<CustomInput/>}
                                         startDate={firstDate}
                                         endDate={secondDate}

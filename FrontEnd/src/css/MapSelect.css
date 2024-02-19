@@ -126,3 +126,8 @@
     .MuiOutlinedInput-notchedOutline.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
         border: none;
     }
+
+    .react-datepicker__header__dropdown.react-datepicker__header__dropdown--select div {
+        margin: 0;
+        
+    }
