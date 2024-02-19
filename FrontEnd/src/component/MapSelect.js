@@ -203,7 +203,7 @@ function MapSelect() {
     return (
         <article className="mapSelect">
             <section className='mapSelectIn'>
-            <h1 className="mapSelectTitle">발전량 예측</h1>
+            <span className="mapSelectTitle">발전량 예측</span>
 
                 <section className="dashBoard">
                     {/* 지도와 툴팁 */}
@@ -261,7 +261,7 @@ function MapSelect() {
                             </tr>
                         </table>
 
-                        <button className="selectKorea" onClick={() => setLocation("전국")}>전국 보기</button>
+                        <button className="selectKorea" onClick={() => setLocation("전국")}>전국 조회</button>
 
                         {/* 지도 */}
                         <MapsvgPath/>

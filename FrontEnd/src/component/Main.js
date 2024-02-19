@@ -167,10 +167,10 @@ function Main() {
         solarInfoProps.Route = "mapselect";
         solarInfoProps.Button = "발전량 조회";
       } else if (slideIndex === 2) {
-        solarInfoProps.fontUp1 = "흑자전환 기간과";
-        solarInfoProps.fontUp2 = "설치 비용을 예측해드립니다";
+        solarInfoProps.fontUp1 = "흑자전환 날짜와";
+        solarInfoProps.fontUp2 = "설치비용을 예측해드립니다";
         solarInfoProps.Route = "valueinput";
-        solarInfoProps.Button = "예측 조회";
+        solarInfoProps.Button = "설치비용 조회";
       }
 
 
@@ -182,7 +182,7 @@ function Main() {
                         <source src="./images/slslvideo.mp4" type="video/mp4" />
                     </video>
                     {/* SolarInfo.js에 아래 코드의 JSX가 있습니다 */}
-                    <SolarInfo fontUp1="태양광 모듈 선택시," fontUp2="발전수익과 설치비용 예측" />
+                    <SolarInfo fontUp1="태양광 모듈 선택 시" fontUp2="발전 수익과 설치비용 예측" />
                     <div className="scroll-downs">
                         <div className="mousey">
                             <div className="scroller"></div>

@@ -94,13 +94,13 @@ function Product() {
     return(
         <article className='productIntroduce'>
             <section className='productTop'>
-                <img src='./images/Photo5.jpg' className='productPhoto'/>
+                <img src='./images/Product.jpg' className='productPhoto'/>
                 <div className='productTitle'>
                     <p className='productTitleType'>
-                        <h1 className={`productTitle1 ${isActive ? '' : 'active'}`}>태양광 모듈 설치하려 하시나요?</h1>
+                        <h1 className={`productTitle1 ${isActive ? '' : 'active'}`}>태양광 모듈을 설치할 계획이신가요?</h1>
                     </p>
                     <p className='productTitleType'>
-                        <span className={`productTitle2 ${isActive ? '' : 'active'}`}>SLSL 제품을 확인해보세요!</span>
+                        <span className={`productTitle2 ${isActive ? '' : 'active'}`}>SLSL 제품을 확인해 보세요!</span>
                     </p>
                 </div>
             </section>
@@ -109,7 +109,7 @@ function Product() {
                     <div className='Cover1'>
                         {/* coverBox는 cellName를 아래로 밀어내려고 만든 div임 */}
                         <div className='coverBox'/>
-                        <h1 className='cellName'> 한국 HANWHA<br/>Q.PEAK DUO XL G11.7</h1>
+                        <h1 className='cellName'> <span className='cellNameSmall'>한국 HANWHA</span><br/>Q.PEAK DUO XL G11.7</h1>
                         <div className='detailMoveAll'>
                             <div className='detailMoveBox'/>
                             <div className="detailMove1">
@@ -157,7 +157,7 @@ function Product() {
                 <section className='productExplain'>
                     <div className='Cover1'>
                         <div className='coverBox'/>
-                        <h1 className='cellName'>미국 AMERISOLAR<br/>AS-8M120-HC</h1>
+                        <h1 className='cellName'><span className='cellNameSmall'>미국 AMERISOLAR</span><br/>AS-8M120-HC</h1>
                         <div className='detailMoveAll'>
                             <div className='detailMoveBox'/>
                             <div className="detailMove2">
@@ -201,7 +201,7 @@ function Product() {
                 <section className='productExplain'>
                     <div className='Cover1'>
                         <div className='coverBox'/>
-                        <h1 className='cellName'>중국 JINKO<br/>SOLAR PANEL 58W N-TYPE</h1>
+                        <h1 className='cellName'><span className='cellNameSmall'>중국 JINKO</span><br/>SOLAR PANEL 58W N-TYPE</h1>
                         <div className='detailMoveAll'>
                             <div className='detailMoveBox'/>
                             <div className="detailMove3">
