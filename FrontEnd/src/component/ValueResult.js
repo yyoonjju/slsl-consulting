@@ -6,12 +6,18 @@ import axios from 'axios';
 import Moment from 'moment';
 
 const ValueResult = () => {
+    
+    // ValueInput으로 돌아가서 다시 계산하기 
+    const btnClick = ()=>{
+        window.location.href="/valueinput"
+    }
+
     const location = useLocation();
     const nav = useNavigate();
     const formData = location.state && location.state.formData;
     const [chartData, setChartData] = useState(null);
     console.log(formData);
-
+    
     //지역
     const selectLocal = formData && formData.selectLocal;
 
@@ -27,11 +33,15 @@ const ValueResult = () => {
     //종료일
     const [secondDate, setSecondDate] = useState(null);
 
-    let LocalLabel; //지역선택 세부명칭
-    let PanelLabel; //패널선택 세부명칭
+    //제주의 smp
+    const [jejuData, setJejuData] = useState(null);
+
+    let LocalLabel; // 지역선택 세부명칭
+    let PanelLabel; // 패널선택 세부명칭
     let totalMw;    // 설비용량
     let PanelSize;  // 패널 사이즈
     let PanelCost;  // 패널 개당 가격
+    let PanelMw; // 패널의 와트 피크
 
      // url(/result 만을 입력해서 접속 못하게) null 값으로 접속 못하게 처리 
     useEffect(()=>{
@@ -64,6 +74,24 @@ const ValueResult = () => {
             }
         };
         fetchData();
+
+        const fetchData2 = async () => {
+            try {
+                const res = await axios.get(`http://10.10.21.72:8080/findjeju`, {
+                    params: {
+                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
+                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
+                    }
+                });
+                setJejuData(res.data);
+                
+                // res.data에서 필요한 데이터 추출하여 상태 업데이트
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData2();
+        
     },[formData, nav]);
 
     //지역선택 세부명, 설비 용량
@@ -125,22 +153,26 @@ const ValueResult = () => {
         PanelLabel = '한국 Q.PEAK DUO XL G11.7(570Wp)';
         PanelSize = 67.81;
         PanelCost = 5274840;
+        PanelMw = 570;
+        
     } else if(selectPanel==="fromUSA"){
         PanelLabel = '미국 AmeriSolar AS-qm120-HC(580Wp)';
         PanelSize = 87.527;
         PanelCost = 5964750;
+        PanelMw = 580;
     }
     else if(selectPanel==="fromChina"){
         PanelLabel = '중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)';
         PanelSize = 78.91;
         PanelCost = 2358900;
+        PanelMw = 580;
     }
 
 // 계산 결과 
     //설치 할 수 있는 어레이의 개수
     const amount = Math.floor(inputArea/PanelSize);
 
-     //초기 투자 비용 계산식
+    //초기 투자 비용 계산식
     const InitaialCost = Math.floor(inputArea/PanelSize)*PanelCost;
 
     // 숫자 포맷팅 (초기 투자비용 출력시 원 단위(,) 출력)
@@ -149,11 +181,7 @@ const ValueResult = () => {
     };
 
     console.log(chartData);
-
-    // ValueInput으로 돌아가서 다시 계산하기 
-    const btnClick = ()=>{
-        window.location.href="/valueinput"
-    }
+    console.log(jejuData);
 
     // formData를 이용하여 결과를 표시
     return (
