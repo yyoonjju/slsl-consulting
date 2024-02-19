@@ -18,11 +18,8 @@ function MapSelect() {
 
     // handlePathClick으로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
-        console.log("1");
         if (firstDate <= secondDate && secondDate !== null) {
-            console.log("2");
             Result();
-            console.log("3");
         }
     },[location,firstDate,secondDate]);
 
