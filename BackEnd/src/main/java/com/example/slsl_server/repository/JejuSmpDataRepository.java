@@ -12,6 +12,6 @@ import com.example.slsl_server.model.JejuSmpData;
 @Repository
 public interface JejuSmpDataRepository extends JpaRepository<JejuSmpData, Integer> {
    
-    List<JejuSmpData> findByDateBetween(LocalDate startDate, LocalDate endDate);
+    List<JejuSmpData> findByDsBetween(LocalDate startDate, LocalDate endDate);
 
 } 

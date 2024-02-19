@@ -18,7 +18,7 @@ function MapSelect() {
 
     // handlePathClick으로 인한 지역, 캘린더 조작으로 날짜가 바뀔 시 화면 랜더링 실행
     useEffect(() => {
-        if (firstDate <= secondDate) {
+        if (firstDate <= secondDate && secondDate !== null) {
             Result();
         }
     },[location,firstDate,secondDate]);
@@ -37,13 +37,14 @@ function MapSelect() {
         }
         catch {
             console.log("Error: Result");
+            
         }
     };
 
     // DatePicker의 input박스 수정
     const CustomInput = forwardRef(({value, onClick}, ref) => (
         <button className="customInput" onClick={onClick} ref={ref}>
-            {value}
+            {value || "종료 일자"}
         </button>
     ));
 
@@ -218,6 +219,7 @@ function MapSelect() {
                                         selected={firstDate}
                                         onChange={(date) => {
                                             setFirstDate(Moment(date).format("YYYY-MM-DD"));
+                                            setSecondDate(null);
                                         }}
                                         selectsStart
                                         customInput={<CustomInput/>}
@@ -225,11 +227,10 @@ function MapSelect() {
                                         showMonthDropdown
                                         dropdownMode="select"
                                         startDate={firstDate}
-                                        endDate={secondDate}
+                                        endDate={secondDate !== null ? secondDate : firstDate}
                                         minDate={new Date('2020-01-01')}
                                         maxDate={new Date('2033-12-31')}
                                         dateFormat="YYYY-MM-dd"
-                                        placeholderText='시작 일자'
                                         required
                                     />
                                 </td>
@@ -250,18 +251,17 @@ function MapSelect() {
                                         dropdownMode="select"
                                         customInput={<CustomInput/>}
                                         startDate={firstDate}
-                                        endDate={secondDate}
+                                        endDate={secondDate !== null ? secondDate : firstDate}
                                         minDate={firstDate}
                                         maxDate={new Date('2033-12-31')}
                                         dateFormat="YYYY-MM-dd"
-                                        placeholderText='종료 일자'
                                         required
                                     />
                                 </td>
                             </tr>
                         </table>
 
-                        <button className="selectKorea" onClick={() => setLocation("전국")}>전국</button>
+                        <button className="selectKorea" onClick={() => setLocation("전국")}>전국 보기</button>
 
                         {/* 지도 */}
                         <MapsvgPath/>
@@ -269,7 +269,12 @@ function MapSelect() {
                     
                     {/* 데이터 */}
                     <section className="rightContainer">
-                        <h3><span className="rightTitle">{location}</span> 일별 발전량, 누적 발전량</h3>
+                        <h3>
+                            <span className="rightTitle">
+                                {location}
+                                <span className="rightTitleSub">{location === "전국" ? "(합계)" : ""}</span>
+                            </span> 발전량, 누적 발전량
+                        </h3>
 
                         {/* 차트 */}
                         <Chart data={data}/>
