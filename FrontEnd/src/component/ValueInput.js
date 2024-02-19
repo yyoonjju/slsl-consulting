@@ -96,26 +96,36 @@ const ValueInput = () => {
         return panelInfo[ValueData.selectPanel] || 0;
     };
 
-        // selectPanel 값에 따라 패널의 이름을 반환하는 함수
-        const getAreaName = (value) => {
-            const panelInfo = {
-                fromKorea: "한국 Q.PEAK DUO XL G11.7(570Wp)",
-                fromUSA: "미국 AmeriSolar AS-qm120-HC(580Wp)",
-                fromChina: "중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)",
-            };
-    
-            return panelInfo[ValueData.selectPanel] || 0;
+    // selectPanel 값에 따라 패널의 이름을 반환하는 함수
+    const getAreaName = (value) => {
+        const panelInfo = {
+            fromKorea: "한국 Q.PEAK DUO XL G11.7(570Wp)",
+            fromUSA: "미국 AmeriSolar AS-qm120-HC(580Wp)",
+            fromChina: "중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)",
         };
-  
-    // 면적 입력란이 포커스를 잃었을 때 
-    // 입력된 면적이  소수점, 문자를 입력 못하게 하는 함수
+
+        return panelInfo[ValueData.selectPanel] || 0;
+    };
+    
     const handleAreaBlur = (e) => {
+
+        const MinAreaValue = getMinArea();
+        const ThisArea = ValueData.inputArea;
+        const ThisPanel = getAreaName();
 
         if (e.target.name === 'inputArea') {
         
+            //입력된 면적이  소수점, 문자를 입력 못하게
             if (!/^\d+$/.test(e.target.value)) {
                 e.target.value = '';
                 alert("면적은 문자, 특수문자,  소수점을 제외한\n숫자만 입력이 가능합니다.");
+                return;
+            }
+            // 면적에 입력된 숫자가 선택된 모듈보다 작은 크기의 면적일때
+            if(ThisArea < MinAreaValue){
+                alert(`${ThisPanel} 제품의 면적은
+${MinAreaValue}보다 큰 숫자여야 합니다.`);
+                return;
             }
         }
     };
@@ -138,18 +148,6 @@ const ValueInput = () => {
     const ClickSubmit = (e) =>{
         e.preventDefault();
         console.log('submit ValueData', ValueData);
-
-        const MinAreaValue = getMinArea();
-        const ThisArea = ValueData.inputArea;
-        const ThisPanel = getAreaName();
-        
-        //alert창 백틱 안에서 줄바꿈 이렇게 하는 방법 뿐입니다. (가독성을 위해 탭 쓰면 그대로 적용됩니다.)
-        //바꾸지 마세요!
-        if(ThisArea < MinAreaValue){
-            alert(`${ThisPanel} 제품의 면적은
-${MinAreaValue}보다 큰 숫자여야 합니다.`);
-            return;
-        }
 
         // ValueResult 컴포넌트로 폼 데이터를 전달
         navigate('/valueresult',{state:{formData:ValueData}});
@@ -227,7 +225,7 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                                 placeholder='면적을 입력하세요'
                                                 onChange={ClickChange}
                                                 onBlur={handleAreaBlur}/>
-                                    </td>            
+                                    </td>
                                 </tr>
 
                                 <tr id = "inputDate_Box">
