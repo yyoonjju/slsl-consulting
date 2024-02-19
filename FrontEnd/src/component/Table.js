@@ -9,7 +9,7 @@ function Tb({data}) {
     for (var i = 0; i < 30; i++) {
         blankData.push(
             {
-                "date": i,
+                "tm": i,
                 "value": 0,
                 "total": 0
             }
@@ -22,14 +22,14 @@ function Tb({data}) {
             return data.length === 0 ?
                 blankData.map((row, index) => (
                     <tr key={index}>
-                        <td className="tdDate">{row.date}</td>
+                        <td className="tdDate">{row.tm}</td>
                         <td className="tdData1">{row.value}</td>
                         <td className="tdData2">{row.total}</td>
                     </tr>
                 )) :
                 data.map((row, index) => (
                     <tr key={index}>
-                        <td className="tdDate">{row.date}</td>
+                        <td className="tdDate">{row.tm}</td>
                         <td className="tdData1">{row.value}</td>
                         <td className="tdData2">{row.total}</td>
                     </tr>
