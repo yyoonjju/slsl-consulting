@@ -69,6 +69,7 @@
 
     .dashBoard {
         margin-top: 100px;
+        margin-bottom: 100px;
         display: flex;
         border-radius: 15px;
         gap: 30px;
@@ -96,7 +97,7 @@
     .selectKorea {
         position: absolute;
         top: 80px;
-        right: 0px;
+        right: 25px;
         font-size: 16px;
         font-weight: bold;
         border-radius: 8px;
