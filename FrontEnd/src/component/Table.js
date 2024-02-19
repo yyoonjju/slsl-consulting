@@ -48,7 +48,7 @@ function Tb({data}) {
                         <tr>
                             <th>날짜</th>
                             <th>발전량(MW)</th>
-                            <th>누적 발전량(MW)</th>
+                            <th>누적 발전량(GW)</th>
                         </tr>
                     </thead>
 

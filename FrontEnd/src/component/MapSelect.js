@@ -261,7 +261,7 @@ function MapSelect() {
                             </tr>
                         </table>
 
-                        <button className="selectKorea" onClick={() => setLocation("전국")}>전국 보기</button>
+                        <button className="selectKorea" onClick={() => setLocation("전국")}>전국 조회</button>
 
                         {/* 지도 */}
                         <MapsvgPath/>
