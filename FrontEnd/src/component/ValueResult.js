@@ -16,7 +16,6 @@ const ValueResult = () => {
     const nav = useNavigate();
     const formData = location.state && location.state.formData;
     const [chartData, setChartData] = useState(null);
-    console.log(formData);
     
     //지역
     const selectLocal = formData && formData.selectLocal;
@@ -36,13 +35,22 @@ const ValueResult = () => {
     //제주의 smp
     const [jejuData, setJejuData] = useState(null);
 
+    //육지의 smp
+    const [landData, setlandData] = useState(null);
+
+    //입력 기간의 예측 발전량
+    const [powerData, setpowerData] = useState(null);
+
+    //지역별 연도별 설비용량
+    const [capacityData, setCapacityData] = useState(null);
+
     let LocalLabel; // 지역선택 세부명칭
     let PanelLabel; // 패널선택 세부명칭
     let totalMw;    // 설비용량
     let PanelSize;  // 패널 사이즈
     let PanelCost;  // 패널 개당 가격
     let PanelMw; // 패널의 와트 피크
-
+    
      // url(/result 만을 입력해서 접속 못하게) null 값으로 접속 못하게 처리 
     useEffect(()=>{
         if (!formData) {
@@ -59,6 +67,7 @@ const ValueResult = () => {
             }
         }
 
+        //차트 데이터 
         const fetchData = async() => {
             try {
                 const res = await axios.get(`http://10.10.21.64:8080/pay`, {
@@ -75,6 +84,7 @@ const ValueResult = () => {
         };
         fetchData();
 
+        //제주 smp
         const fetchData2 = async () => {
             try {
                 const res = await axios.get(`http://10.10.21.72:8080/findjeju`, {
@@ -91,59 +101,115 @@ const ValueResult = () => {
             }
         };
         fetchData2();
+
+        //육지 smp
+        const fetchData3 = async () => {
+            try {
+                const res = await axios.get(`http://10.10.21.72:8080/findland`, {
+                    params: {
+                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
+                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
+                    }
+                });
+                setlandData(res.data);
+                
+                // res.data에서 필요한 데이터 추출하여 상태 업데이트
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData3();
+
+        //발전량
+        const fetchData4 = async () => {
+            try {
+                const res = await axios.get(`http://10.10.21.72:8080/findpower/${selectLocal}`, {
+                    params: {
+                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
+                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
+                    }
+                });
+                setpowerData(res.data);
+                
+                // res.data에서 필요한 데이터 추출하여 상태 업데이트
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData4();
+   
+        //설비용량
+        const fetchData5 = async () => {
+            try {
+                const res = await axios.get(`http://10.10.21.72:8080/findcapacity/${selectLocal}`, {
+                    params: {
+                        startYear: Moment(formData.startDate).format('yyyy'),
+                        endYear: Moment(formData.endDate).format('yyyy')
+                    }
+                });
+                setCapacityData(res.data);
+                
+                // res.data에서 필요한 데이터 추출하여 상태 업데이트
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+         };
+        fetchData5();
         
     },[formData, nav]);
 
+    console.log( Moment(formData.startDate).format("yyyy"));
+    
     //지역선택 세부명, 설비 용량
-    if(selectLocal === "seoul"){
+    if(selectLocal === "서울"){
         LocalLabel = '서울특별시';
         totalMw = 13.23;
-    }else if(selectLocal === "daejeon"){
+    }else if(selectLocal === "대전"){
         LocalLabel = '대전광역시';
         totalMw = 11.57;
-    }else if(selectLocal === "daegu"){
+    }else if(selectLocal === "대구"){
         LocalLabel = '대구광역시';
         totalMw = 39.61;
-    }else if(selectLocal === "busan"){
+    }else if(selectLocal === "부산"){
         LocalLabel = '부산광역시';
         totalMw = 50.27;
-    }else if(selectLocal === "gwangju"){
+    }else if(selectLocal === "광주"){
         LocalLabel = '광주광역시';
         totalMw = 38.32;
-    }else if(selectLocal === "incheon"){
+    }else if(selectLocal === "인천"){
         LocalLabel = '인천광역시';
         totalMw = 25.63;
-    }else if(selectLocal === "ulsan"){
+    }else if(selectLocal === "울산"){
         LocalLabel = '울산광역시';
         totalMw = 13.25;
-    }else if(selectLocal === "sejong"){
+    }else if(selectLocal === "세종"){
         LocalLabel = '세종특별자치시';
         totalMw = 12.67;
-    }else if(selectLocal === "gyeonggi"){
+    }else if(selectLocal === "경기"){
         LocalLabel = '경기도';
         totalMw = 115.44;
-    }else if(selectLocal === "gangwon"){
+    }else if(selectLocal === "강원"){
         LocalLabel = '강원도';
         totalMw = 176.16;
-    }else if(selectLocal === "north-chungcheong"){
+    }else if(selectLocal === "충북"){
         LocalLabel = '충청북도';
         totalMw = 101.51;
-    }else if(selectLocal === "south-chungcheong"){
+    }else if(selectLocal === "충남"){
         LocalLabel = '충청남도';
         totalMw = 300.69;
-    }else if(selectLocal === "north-gyeongsang"){
+    }else if(selectLocal === "경북"){
         LocalLabel = '경상북도';
         totalMw = 270.59;
-    }else if(selectLocal === "south-gyeongsang"){
+    }else if(selectLocal === "경남"){
         LocalLabel = '경상남도';
         totalMw = 178.00;
-    }else if(selectLocal === "north-jeolla"){
+    }else if(selectLocal === "전북"){
         LocalLabel = '전라북도';
         totalMw = 149.27;
-    }else if(selectLocal === "south-jeolla"){
+    }else if(selectLocal === "전남"){
         LocalLabel = '전라남도';
         totalMw = 650.54;
-    }else if(selectLocal === "jeju"){
+    }else if(selectLocal === "제주"){
         LocalLabel = '제주특별자치도';
         totalMw = 132.46;
     }
@@ -180,8 +246,33 @@ const ValueResult = () => {
         return new Intl.NumberFormat('ko-KR').format(number);
     };
 
+    console.log(formData);
+    console.log(selectLocal);
     console.log(chartData);
-    console.log(jejuData);
+    console.log(jejuData); //제주 smp
+    console.log(landData); // 육지 smp
+    console.log(powerData); //예측 발전량
+    console.log(capacityData); //지역별 설비용량
+
+    
+
+    function ResultCost(){
+        const length = jejuData.length;
+        let result;
+
+        if(selectLocal === "제주"){
+            for(let i=0; i<length; i++){
+                result = powerData[i].value *  PanelMw ;
+            }
+            return result;
+        }
+        else{
+            for(let i=0; i<length; i++){
+                result = powerData[i].value *  PanelMw ;
+            }
+            return result;
+        }
+    };
 
     // formData를 이용하여 결과를 표시
     return (
@@ -226,7 +317,7 @@ const ValueResult = () => {
 
                         <tr>
                             <td>예상 수익 :</td>
-                            <td>{formatNumber(InitaialCost)}&nbsp;&nbsp;(원)(임시)</td>
+                            <td>{ResultCost}&nbsp;&nbsp;(원)(임시)</td>
                             <td>흑자 전환 시기 :</td>
                             <td>{firstDate} (임시)</td>
                         </tr>
