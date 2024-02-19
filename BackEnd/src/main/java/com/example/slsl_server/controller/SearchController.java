@@ -13,9 +13,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.slsl_server.model.CumulativeCapacity;
+import com.example.slsl_server.model.JejuSmpData;
+import com.example.slsl_server.model.LandSmpData;
 import com.example.slsl_server.model.Power;
+import com.example.slsl_server.repository.CumulativeCapacityRepository;
 import com.example.slsl_server.repository.JejuSmpDataRepository;
-import com.example.slsl_server.repository.LandSmpPredictionDataRepository;
+import com.example.slsl_server.repository.LandSmpDataRepository;
 import com.example.slsl_server.repository.PayRepository;
 import com.example.slsl_server.repository.PowerRepository;
 
@@ -26,11 +30,13 @@ public class SearchController {
     @Autowired
     PowerRepository powerRepository;
     @Autowired
-    LandSmpPredictionDataRepository landSmpPredictionDataRepository;
-    @Autowired
     PayRepository payRepository;
     @Autowired
+    LandSmpDataRepository landSmpDataRepository;
+    @Autowired
     JejuSmpDataRepository jejuSmpDataRepository;
+    @Autowired
+    CumulativeCapacityRepository cumulativeCapacityRepository;
 
     // 지역, firstDate, secondDate를 받아서 데이터 가공 후 반환
     @GetMapping("/api/{location}")
@@ -45,8 +51,8 @@ public class SearchController {
             List<Map<String,Object>> data = powerRepository.findGroupByDateWithNativeQuery(LocalDate.parse(firstDate), LocalDate.parse(secondDate));
             // 반환할 가공 데이터를 담을 박스 생성
             List<Map<String,Object>> result = new ArrayList<>();
-            // Math, Double, String은 발전량 단위를 W -> MW로 변환하고 소수점 2자리로 고정하는 과정
-            Double total = Math.round(Double.valueOf(String.valueOf(data.get(0).get("value")))/10000)/100.0;
+            // Math, Double, String은 발전량 단위를 W -> GW로 변환하고 소수점 2자리로 고정하는 과정
+            Double total = Math.round(Double.valueOf(String.valueOf(data.get(0).get("value")))/10000000)/100.0;
             // 박스에 가공 데이터를 담는 과정
             for (int i = 0; i < data.size(); i++) {
                 Map<String,Object> dataMap = new HashMap<>();
@@ -57,8 +63,8 @@ public class SearchController {
                     dataMap.put("total", total);
                 }
                 else {
-                    dataMap.put("total", Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000 + total)*100)/100.0);
-                    total = Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000 + total)*100)/100.0;
+                    dataMap.put("total", Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000000 + total)*100)/100.0);
+                    total = Math.round((Double.valueOf(String.valueOf(data.get(i).get("value")))/1000000000 + total)*100)/100.0;
                 }
                 result.add(dataMap);
             }
@@ -68,21 +74,21 @@ public class SearchController {
         // 정확한 지역을 받을 경우 데이터 가공을 진행할 로직
         // -> 전국 데이터 가공 로직과 거의 동일
         else {
-            List<Power> data = powerRepository.findByLOCAndTMBetween(location, LocalDate.parse(firstDate), LocalDate.parse(secondDate));
+            List<Power> data = powerRepository.findByLocAndTmBetween(location, LocalDate.parse(firstDate), LocalDate.parse(secondDate));
             List<Map<String,Object>> result = new ArrayList<>();
-            Double total = Math.round(data.get(0).getValue()/10000)/100.0;
+            Double total = Math.round(data.get(0).getValue()/10000000)/100.0;
             for (int i = 0; i < data.size(); i++) {
                 Map<String,Object> dataMap = new HashMap<>();
                 dataMap.put("index", data.get(i).getIndex());
-                dataMap.put("LOC", data.get(i).getLOC());
-                dataMap.put("tm", data.get(i).getTM());
+                dataMap.put("LOC", data.get(i).getLoc());
+                dataMap.put("tm", data.get(i).getTm());
                 dataMap.put("value", Math.round(data.get(i).getValue()/10000)/100.0);
                 if (i == 0) {
                     dataMap.put("total", total);
                 }
                 else {
-                    dataMap.put("total", Math.round((data.get(i).getValue()/1000000 + total)*100)/100.0);
-                    total = Math.round((data.get(i).getValue()/1000000 + total)*100)/100.0;
+                    dataMap.put("total", Math.round((data.get(i).getValue()/1000000000 + total)*100)/100.0);
+                    total = Math.round((data.get(i).getValue()/1000000000 + total)*100)/100.0;
                 }
                 result.add(dataMap);
             }
@@ -90,4 +96,38 @@ public class SearchController {
             return result;
         }
     };
+
+    @GetMapping("/findcapacity/{selectLocal}")
+    public List<Map<String,Object>> test(
+        @PathVariable String selectLocal,
+        @RequestParam("amount") Integer amount,
+        @RequestParam("panel") Integer wat,
+        @RequestParam("startDate") String startDate,
+        @RequestParam("endDate") String endDate
+    ) {
+        List<Power> a = powerRepository.findByLocAndTmBetween(selectLocal, LocalDate.parse(startDate), LocalDate.parse(endDate));
+        List<CumulativeCapacity> c = cumulativeCapacityRepository.findByLocAndYearBetween(selectLocal, (int)LocalDate.parse(startDate).getYear(), (int)LocalDate.parse(endDate).getYear());
+        List<Long> b = new ArrayList<>();
+        List<Map<String,Object>> result = new ArrayList<>();
+        if (selectLocal.equals("제주")) {
+            List<JejuSmpData> jejuData = jejuSmpDataRepository.findByDsBetween(LocalDate.parse(startDate), LocalDate.parse(endDate));
+            for (int i = 0; i < a.size(); i++) {
+                Map<String,Object> dataMap = new HashMap<>();
+                dataMap.put("date", a.get(i).getTm());
+                dataMap.put("money", a.get(i).getValue()*amount*wat*(jejuData.get(i).getY().longValue())/(long)c.get(0).getCapacity());
+                result.add(dataMap);
+            }
+        }
+        else {
+            List<LandSmpData> landData = landSmpDataRepository.findByDsBetween(LocalDate.parse(startDate), LocalDate.parse(endDate));
+            for (int i = 0; i < a.size(); i++) {
+                Map<String,Object> dataMap = new HashMap<>();
+                dataMap.put("date", a.get(i).getTm());
+                dataMap.put("money", a.get(i).getValue()*amount*wat*(landData.get(i).getY().longValue())/(long)c.get(0).getCapacity());
+                result.add(dataMap);
+            }
+        }
+
+        return result;
+    }
 }

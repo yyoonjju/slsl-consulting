@@ -43,6 +43,10 @@ const ValueResult = () => {
 
     //지역별 연도별 설비용량
     const [capacityData, setCapacityData] = useState(null);
+    //설치 할 수 있는 어레이의 개수
+
+    const [wat, setWat] = useState(null);
+    const [amount, setAmount] = useState(null);
 
     let LocalLabel; // 지역선택 세부명칭
     let PanelLabel; // 패널선택 세부명칭
@@ -50,6 +54,10 @@ const ValueResult = () => {
     let PanelSize;  // 패널 사이즈
     let PanelCost;  // 패널 개당 가격
     let PanelMw; // 패널의 와트 피크
+
+    
+
+    
     
      // url(/result 만을 입력해서 접속 못하게) null 값으로 접속 못하게 처리 
     useEffect(()=>{
@@ -58,7 +66,7 @@ const ValueResult = () => {
             alert("입력페이지에서 수익계산을 위한 값들을 입력해주세요.")
             nav("/valueinput");
         }else {
-            
+        
             // formData가 존재하고 formData.startDate가 존재하는 경우에만 처리
             if (formData.startDate) {
                 // formData.startDate와 formData.endDate를 Moment를 사용하여 변환하여 저장
@@ -67,96 +75,53 @@ const ValueResult = () => {
             }
         }
 
-        //차트 데이터 
-        const fetchData = async() => {
-            try {
-                const res = await axios.get(`http://10.10.21.64:8080/pay`, {
-                    params: {
-                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
-                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
-                    }
-                });
-                setChartData(res.data);
-            }
-            catch (error) {
-                console.error('Error fetching chart data:', error);
-            }
-        };
-        fetchData();
+        if(selectPanel ==="fromKorea"){
+            PanelLabel = '한국 Q.PEAK DUO XL G11.7(570Wp)';
+            PanelSize = 67.81;
+            PanelCost = 5274840;
+            PanelMw = 570;
+            setWat(PanelMw);
+            setAmount(Math.floor(inputArea/PanelSize));
+            
+        } else if(selectPanel==="fromUSA"){
+            PanelLabel = '미국 AmeriSolar AS-qm120-HC(580Wp)';
+            PanelSize = 87.527;
+            PanelCost = 5964750;
+            PanelMw = 580;
+            setWat(PanelMw);
+            setAmount(Math.floor(inputArea/PanelSize));
+        }
+        else if(selectPanel==="fromChina"){
+            PanelLabel = '중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)';
+            PanelSize = 78.91;
+            PanelCost = 2358900;
+            PanelMw = 580;
+            setWat(PanelMw);
+            setAmount(Math.floor(inputArea/PanelSize));
+        }
 
-        //제주 smp
-        const fetchData2 = async () => {
-            try {
-                const res = await axios.get(`http://10.10.21.72:8080/findjeju`, {
-                    params: {
-                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
-                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
-                    }
-                });
-                setJejuData(res.data);
-                
-                // res.data에서 필요한 데이터 추출하여 상태 업데이트
-            } catch (error) {
-                console.error('Error fetching data:', error);
+        if( wat !== null && amount !== null) {
+            const Test = async () => {
+                try {
+                    console.log(amount);
+                    console.log(wat);
+                    const res = await axios.get(`http://10.10.21.64:8080/findcapacity/${selectLocal}`, {
+                        params: {
+                            amount: amount,
+                            panel: wat,
+                            startDate: Moment(formData.startDate).format("YYYY-MM-DD"),
+                            endDate: Moment(formData.endDate).format("YYYY-MM-DD")
+                        }
+                    });
+                    setChartData(res.data);
+                }
+                catch {
+                    console.log("1");
+                }
             }
-        };
-        fetchData2();
-
-        //육지 smp
-        const fetchData3 = async () => {
-            try {
-                const res = await axios.get(`http://10.10.21.72:8080/findland`, {
-                    params: {
-                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
-                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
-                    }
-                });
-                setlandData(res.data);
-                
-                // res.data에서 필요한 데이터 추출하여 상태 업데이트
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData3();
-
-        //발전량
-        const fetchData4 = async () => {
-            try {
-                const res = await axios.get(`http://10.10.21.72:8080/findpower/${selectLocal}`, {
-                    params: {
-                        firstDate: Moment(formData.startDate).format("YYYY-MM-DD"),
-                        secondDate: Moment(formData.endDate).format("YYYY-MM-DD")
-                    }
-                });
-                setpowerData(res.data);
-                
-                // res.data에서 필요한 데이터 추출하여 상태 업데이트
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData4();
-   
-        //설비용량
-        const fetchData5 = async () => {
-            try {
-                const res = await axios.get(`http://10.10.21.72:8080/findcapacity/${selectLocal}`, {
-                    params: {
-                        startYear: Moment(formData.startDate).format('yyyy'),
-                        endYear: Moment(formData.endDate).format('yyyy')
-                    }
-                });
-                setCapacityData(res.data);
-                
-                // res.data에서 필요한 데이터 추출하여 상태 업데이트
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-         };
-        fetchData5();
-        
-    },[formData, nav]);
+            Test();
+        }
+    },[formData, nav, wat, amount]);
 
     console.log( Moment(formData.startDate).format("yyyy"));
     
@@ -235,8 +200,7 @@ const ValueResult = () => {
     }
 
 // 계산 결과 
-    //설치 할 수 있는 어레이의 개수
-    const amount = Math.floor(inputArea/PanelSize);
+    
 
     //초기 투자 비용 계산식
     const InitaialCost = Math.floor(inputArea/PanelSize)*PanelCost;
