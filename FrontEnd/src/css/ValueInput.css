@@ -1,148 +1,151 @@
-.ValueInput {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-    background-size:cover;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
 
-.ValueInputPagesIn{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    .ValueInput {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-size:cover;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
 
-.ValueInputIn {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
+    .ValueInputPagesIn {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-#ValueInputTitle{
-    color:#333;
-    font-size: 40px;
-    position: absolute;
-    top: -50px;
-    width: 1040px;
-    display: flex;
-    justify-content: flex-start;
-    text-align: left;
+    .ValueInputIn {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
 
-}
-#ValueInputTitle>span{
-    width: 40%;
-    background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
-}
+    #ValueInputTitle {
+        color:#333;
+        font-size: 40px;
+        position: absolute;
+        top: -40px;
+        width: 1040px;
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+    }
 
-.ValueInputForm{
-    display: flex;
-    flex-direction: row;
-    width: 1000px;
-    height: 450px;
-    border-radius: 15px;
-    padding: 20px;
-    justify-content: space-around;
-    box-shadow: 0 0 20px lightgray;
-    background-color: white;
-    border-radius: 5px;
-}
+    #ValueInputTitle>span {
+        width: 40%;
+        background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
+        margin-left: 20px;
+    }
 
-#inputSection{
-    display: flex;
-    align-items: center;
-}
+    .ValueInputForm {
+        display: flex;
+        flex-direction: row;
+        width: 1000px;
+        height: 450px;
+        border-radius: 15px;
+        padding: 20px;
+        justify-content: space-around;
+        box-shadow: 0 0 20px lightgray;
+        background-color: white;
+        border-radius: 15px;
+    }
 
-#inputFormTable{
-    height: 450px;
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    
-}
-#inputFormTable>tr>td{
-    /* border: solid 1px black; */
-}
+    #inputSection {
+        display: flex;
+        align-items: center;
+    }
 
-#inputFormTable>tr>td:nth-child(1){
-    padding-right: 20px;
-    font-weight: bold;
-}
+    #inputFormTable {
+        height: 450px;
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        
+    }
 
-#inputFormTable>tr>td>select, #inputFormTable>tr>td>select>option, #inputFormTable>tr>td>textarea{
-    border: solid 1px lightgray;
-    padding: 0px 5px 0 5px;
-    margin: 0;
-    font-size: 15px;
-    height: 40px;
-}
+    #inputFormTable>tr>td:nth-child(1) {
+        padding-right: 20px;
+        font-weight: bold;
+    }
 
-#inputFormTable>tr>td>input{
-    border: solid 1px lightgray;
-    padding: 0px 5px 0 5px;
-    margin: 0;
-    text-align: center;
-    width: 150px;
-    height: 30px;
-    font-size: 15px;
-}
+    #inputFormTable>tr>td>select, #inputFormTable>tr>td>select>option, #inputFormTable>tr>td>textarea {
+        border: solid 1px lightgray;
+        padding: 0px 5px 0 5px;
+        margin: 0;
+        font-size: 15px;
+        height: 40px;
+    }
 
-.react-datepicker-ignore-onclickoutside,.react-datepicker-wrapper, 
-.react-datepicker__input-container{
-    border: solid 1px lightgray;
-    width: 150px;
-    height: 30px;
-    text-align: center;
-    font-size: 15px;
-}
+    #inputFormTable>tr>td>input {
+        border: solid 1px lightgray;
+        padding: 0px 5px 0 5px;
+        margin: 0;
+        text-align: center;
+        width: 150px;
+        height: 30px;
+        font-size: 15px;
+    }
 
-.react-datepicker__input-container>input{
-    width: 150px;
-    height: 30px;
-    text-align: center;
-    font-size: 15px;
-    border: none;
-}
-#inputFormTable>tr>td>select:focus, #inputFormTable>tr>td>select>option:focus, 
-#inputFormTable>tr>td>textarea:focus{
-    outline: none;
-}
+    .react-datepicker-ignore-onclickoutside,.react-datepicker-wrapper, 
+    .react-datepicker__input-container {
+        border: solid 1px lightgray;
+        width: 150px;
+        height: 30px;
+        text-align: center;
+        font-size: 15px;
+    }
 
-#inputFormTable>tr>td>input:focus{
-    outline: none;
-}
+    .react-datepicker__input-container>input {
+        width: 150px;
+        height: 30px;
+        text-align: center;
+        font-size: 15px;
+        border: none;
+    }
 
-.react-datepicker-ignore-onclickoutside:focus,.react-datepicker-wrapper:focus, 
-.react-datepicker__input-container:focus,.react-datepicker__input-container>input:foucs{
-    outline: none;
-}
+    #inputFormTable>tr>td>select:focus, #inputFormTable>tr>td>select>option:focus, 
+    #inputFormTable>tr>td>textarea:focus {
+        outline: none;
+    }
 
-/* 입력버튼 */
-#right_inputBtn{
-    width: 250px;
-    height: 40px;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    background-color:  #0B74E2;
-    font-size: 20px;
-    cursor: pointer;
-}
+    #inputFormTable>tr>td>input:focus {
+        outline: none;
+    }
 
-#right_inputBtn:hover{
-    background-color: #0b6acf;
-}
+    .react-datepicker-ignore-onclickoutside:focus,.react-datepicker-wrapper:focus, 
+    .react-datepicker__input-container:focus,.react-datepicker__input-container>input:foucs {
+        outline: none;
+    }
 
-#selectLocal{
-    width: 160px;
-}
+    #inputDate_Box>td:nth-child(2) {
+        width: 190px;
+    }
 
-#selectPanel{
-    width: 400px;
-}
+    /* 입력버튼 */
+    #right_inputBtn {
+        width: 240px;
+        height: 40px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        background-color:  #0B74E2;
+        font-size: 20px;
+        cursor: pointer;
+    }
 
-/* #selectPanel, #selectLocal, #inputArea,  */
+    #right_inputBtn:hover {
+        background-color: #0b6acf;
+    }
+
+    #selectLocal {
+        width: 170px;
+    }
+
+    #selectPanel {
+        width: 400px;
+    }
+
+    /* #selectPanel, #selectLocal, #inputArea,  */
