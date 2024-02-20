@@ -68,7 +68,7 @@ const ValueInfo=()=>{
                             <li>하나의 세트로 이해해주세요.</li>
                         </ul>
 
-                        <button id ='arrayInfoBtn'onClick={()=>window.open("/product")}>
+                        <button id ='arrayInfoBtn'onClick={()=>window.location.href="/product"}>
                             SLSL 제품 정보 보러가기
                         </button>
                     </div>
