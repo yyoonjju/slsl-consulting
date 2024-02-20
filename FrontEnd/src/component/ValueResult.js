@@ -7,7 +7,7 @@ import Moment from 'moment';
 
 const ValueResult = () => {
     
-    // ValueInput으로 돌아가서 다시 계산하기 
+    // ValueInput으로 돌아가서 다시 계산하기
     const btnClick = ()=>{
         window.location.href="/valueinput"
     }
@@ -43,30 +43,40 @@ const ValueResult = () => {
 
     //지역별 연도별 설비용량
     const [capacityData, setCapacityData] = useState(null);
-    //설치 할 수 있는 어레이의 개수
 
+    //패널선택 세부명칭
+    const [panelLabel, setPanelLabel] = useState(null);
+
+    //패널의 출력
     const [wat, setWat] = useState(null);
+
+    //설치 할 수 있는 어레이의 개수
     const [amount, setAmount] = useState(null);
 
+    //흑자 전환 시기
+    const [changeCost, setChangeCost] = useState(null);
+
+    //흑자 전환 시기의 예상 수익
+    const [sum, setSum] = useState(null);
+
+    //초기 투자 비용
+    const [InitaialCost, setInitaialCost] = useState(null);
+    
+
     let LocalLabel; // 지역선택 세부명칭
-    let PanelLabel; // 패널선택 세부명칭
+    let PanelLabel; //패널선택 세부명칭
     let totalMw;    // 설비용량
     let PanelSize;  // 패널 사이즈
     let PanelCost;  // 패널 개당 가격
     let PanelMw; // 패널의 와트 피크
-
     
-
-    
-    
-     // url(/result 만을 입력해서 접속 못하게) null 값으로 접속 못하게 처리 
+    // url(/result 만을 입력해서 접속 못하게) null 값으로 접속 못하게 처리
     useEffect(()=>{
         if (!formData) {
             // formData가 없을 때 처리
             alert("입력페이지에서 수익계산을 위한 값들을 입력해주세요.")
             nav("/valueinput");
         }else {
-        
             // formData가 존재하고 formData.startDate가 존재하는 경우에만 처리
             if (formData.startDate) {
                 // formData.startDate와 formData.endDate를 Moment를 사용하여 변환하여 저장
@@ -75,20 +85,32 @@ const ValueResult = () => {
             }
         }
 
+        //패널 선택 세부명, 그에 따른 필요면적, 가격 및 Wat, Amount 설정
         if(selectPanel ==="fromKorea"){
             PanelLabel = '한국 Q.PEAK DUO XL G11.7(570Wp)';
             PanelSize = 67.81;
             PanelCost = 5274840;
             PanelMw = 570;
-            setWat(PanelMw);
+
+            //패널라벨 세부명칭 설정
+            setPanelLabel(PanelLabel);
+            //초기 투자 비용 계산식
+            setInitaialCost(Math.floor(inputArea/PanelSize)*PanelCost);
+            //패널의 출력 계산식
+            setWat(PanelMw*0.217);
+            //패널의 개수 계산식
             setAmount(Math.floor(inputArea/PanelSize));
+            
             
         } else if(selectPanel==="fromUSA"){
             PanelLabel = '미국 AmeriSolar AS-qm120-HC(580Wp)';
             PanelSize = 87.527;
             PanelCost = 5964750;
             PanelMw = 580;
-            setWat(PanelMw);
+
+            setPanelLabel(PanelLabel);
+            setInitaialCost(Math.floor(inputArea/PanelSize)*PanelCost);
+            setWat(PanelMw*0.2138);
             setAmount(Math.floor(inputArea/PanelSize));
         }
         else if(selectPanel==="fromChina"){
@@ -96,16 +118,18 @@ const ValueResult = () => {
             PanelSize = 78.91;
             PanelCost = 2358900;
             PanelMw = 580;
-            setWat(PanelMw);
+
+            setPanelLabel(PanelLabel);
+            setInitaialCost(Math.floor(inputArea/PanelSize)*PanelCost);
+            setWat(PanelMw*0.2245);
             setAmount(Math.floor(inputArea/PanelSize));
         }
 
+        //Wat와 Amount가 설정되면 데이터 호출 실행
         if( wat !== null && amount !== null) {
-            const Test = async () => {
+            const ResultCost = async () => {
                 try {
-                    console.log(amount);
-                    console.log(wat);
-                    const res = await axios.get(`http://10.10.21.64:8080/findcapacity/${selectLocal}`, {
+                    const res = await axios.post(`http://10.10.21.64:8080/findcapacity/${selectLocal}`, null, {
                         params: {
                             amount: amount,
                             panel: wat,
@@ -114,16 +138,32 @@ const ValueResult = () => {
                         }
                     });
                     setChartData(res.data);
+
+                    //예상 수익이 null값일 때 실행
+                    if (sum === null) {
+                        //Sum에 예상 수익을 설정하기 위한 변수 설정
+                        let resultCost = 0;
+                        //흑자 값들 중 첫 번째를 뽑아서 흑자 전환 시기로 설정하기 위한 공백 리스트 생성
+                        let changeDate = new Array();
+
+                        //예상 수익과 흑자 전환 시점부터의 날짜 삽입
+                        for (let i = 0; i < res.data.length; i++) {
+                            resultCost = resultCost + res.data[i].money;
+                            if (resultCost > InitaialCost) {
+                                changeDate.push(i);
+                            };
+                        };
+                        setSum(resultCost);
+                        setChangeCost(res.data[changeDate[0]].date);
+                    };
                 }
                 catch {
-                    console.log("1");
+                    console.log("Error: ValueResult-Result");
                 }
             }
-            Test();
+            ResultCost();
         }
-    },[formData, nav, wat, amount]);
-
-    console.log( Moment(formData.startDate).format("yyyy"));
+    },[formData, nav, wat, amount, sum]);
     
     //지역선택 세부명, 설비 용량
     if(selectLocal === "서울"){
@@ -179,63 +219,9 @@ const ValueResult = () => {
         totalMw = 132.46;
     }
 
-    // 패널 선택 세부명, 그에 따른 필요면적, 가격
-    if(selectPanel ==="fromKorea"){
-        PanelLabel = '한국 Q.PEAK DUO XL G11.7(570Wp)';
-        PanelSize = 67.81;
-        PanelCost = 5274840;
-        PanelMw = 570;
-        
-    } else if(selectPanel==="fromUSA"){
-        PanelLabel = '미국 AmeriSolar AS-qm120-HC(580Wp)';
-        PanelSize = 87.527;
-        PanelCost = 5964750;
-        PanelMw = 580;
-    }
-    else if(selectPanel==="fromChina"){
-        PanelLabel = '중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)';
-        PanelSize = 78.91;
-        PanelCost = 2358900;
-        PanelMw = 580;
-    }
-
-// 계산 결과 
-    
-
-    //초기 투자 비용 계산식
-    const InitaialCost = Math.floor(inputArea/PanelSize)*PanelCost;
-
     // 숫자 포맷팅 (초기 투자비용 출력시 원 단위(,) 출력)
     const formatNumber = (number) => {
         return new Intl.NumberFormat('ko-KR').format(number);
-    };
-
-    console.log(formData);
-    console.log(selectLocal);
-    console.log(chartData);
-    console.log(jejuData); //제주 smp
-    console.log(landData); // 육지 smp
-    console.log(powerData); //예측 발전량
-    console.log(capacityData); //지역별 설비용량
-
-    
-
-    function ResultCost(){
-        const length = jejuData.length;
-        let result;
-
-        if(selectLocal === "제주"){
-            for(let i=0; i<length; i++){
-                result = powerData[i].value *  PanelMw ;
-            }
-            return result;
-        }
-        else{
-            for(let i=0; i<length; i++){
-                result = powerData[i].value *  PanelMw ;
-            }
-            return result;
-        }
     };
 
     // formData를 이용하여 결과를 표시
@@ -259,7 +245,7 @@ const ValueResult = () => {
                             <td>설치 예정 지역 :</td>
                             <td> {LocalLabel}</td>
                             <td>선택한 패널 :</td>
-                            <td> {PanelLabel}</td>
+                            <td> {panelLabel}</td>
                         </tr>
 
                         <tr>
@@ -281,9 +267,12 @@ const ValueResult = () => {
 
                         <tr>
                             <td>예상 수익 :</td>
-                            <td>{ResultCost}&nbsp;&nbsp;(원)(임시)</td>
+                            <td><span className='fontColor'>{formatNumber(sum)}</span>&nbsp;&nbsp;(원)</td>
+                        </tr>
+
+                        <tr>
                             <td>흑자 전환 시기 :</td>
-                            <td>{firstDate} (임시)</td>
+                            <td>{changeCost || "흑자 전환 불가"}</td>
                         </tr>
                     </table>
                         
