@@ -1,8 +1,13 @@
 
+    #Mapsvg {
+        pointer-events: none;
+    }
+
     #Mapsvg > path{
         stroke: white;
         /* fill: #3E588B; */
         cursor: pointer;
+        pointer-events: all;
     }
 
     #Mapsvg > path:hover{

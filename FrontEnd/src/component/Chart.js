@@ -68,7 +68,7 @@ function Chart({data}) {
           data={chartData}
           margin={{
             top: 30,
-            left: 5,
+            left: 10,
             right: 20
           }}
           className="chart"

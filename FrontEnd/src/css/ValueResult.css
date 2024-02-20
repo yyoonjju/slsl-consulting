@@ -21,6 +21,7 @@
         display: flex;
         justify-content: flex-start;
         text-align: left;
+        margin-left: 20px;
     }
 
     #ValueResultTitle>span{
@@ -40,7 +41,7 @@
     .ValueChartBox{
         box-shadow: 0 0 20px lightgray;
         width: 950px;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .ValueResultTable{
@@ -55,9 +56,9 @@
         font-weight: bold;
     }
 
-    .ValueResultTable>tr>td,.ResultCostTable>tr>td {
-        /* border: solid 1px black; */
-    }
+    /* .ValueResultTable>tr>td,.ResultCostTable>tr>td {
+        border: solid 1px black;
+    } */
 
     .ResultCostTable>tr>td:nth-child(1){
         width: 200px;
