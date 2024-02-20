@@ -1,5 +1,5 @@
 import '../css/ValueInput.css';
-import React, { useState, forwardRef } from 'react';
+import React, { useEffect, useState, forwardRef } from 'react';
 import DatePicker from 'react-datepicker';
 import MapsvgPath from './MapsvgPath';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -153,6 +153,32 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
         navigate('/valueresult',{state:{formData:ValueData}});
     };
 
+
+
+
+
+    // 세션 값 확인 후 selectPanel의 value 변경
+
+    useEffect(() => {
+        const selectedCountry = sessionStorage.getItem('Country');
+    
+        const selectPanel = document.getElementById('selectPanel');
+    
+        if (selectedCountry === 'korea') {
+          selectPanel.value = 'fromKorea';
+        } else if (selectedCountry === 'usa') {
+            selectPanel.value = 'fromUSA';
+        } else if (selectedCountry === 'china') {
+            selectPanel.value = 'fromChina';
+        } else {
+          selectPanel.value = 'default';
+        }
+    }, []);
+
+
+
+
+
     return (
         
         <article className= "ValueInput">
@@ -207,10 +233,10 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                     <td>모듈 선택</td>
                                     <td colSpan="3">
                                         <select name = "selectPanel" id = "selectPanel" required onChange={ClickChange}>
-                                            <option value=""disabled selected hidden>모듈을 선택하세요.</option>
-                                            <option value="fromKorea">한국 Q.PEAK DUO XL G11.7(570Wp)</option>
-                                            <option value="fromUSA">미국 AmeriSolar AS-qm120-HC(580Wp)</option>
-                                            <option value="fromChina">중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)</option>
+                                            <option value="default" disabled selected hidden>모듈을 선택하세요.</option>
+                                            <option value="fromKorea">한국 HANWHA Q.PEAK DUO XL G11.7 (570Wp)</option>
+                                            <option value="fromUSA">미국 AMERISOLAR AS-8M120-HC (580Wp)</option>
+                                            <option value="fromChina">중국 JINKO SOLAR PANEL 58W N-TYPE (580Wp)</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -243,14 +269,14 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                         endDate={endDate}
                                         minDate={new Date('2020-01-01')}
                                         maxDate={new Date('2033-12-31')}
-                                        dateFormat="yyyyMMdd"
+                                        dateFormat="YYYY-MM-dd"
                                         placeholderText='시작 일자'
                                         required
                                         name = 'startDate'
                                         />
                                     </td>
                                     <td>
-                                        <span>&nbsp;~&nbsp;&nbsp;</span>
+                                        <span>~&nbsp;&nbsp;</span>
                                     </td>
                                     <td>
                                         <DatePicker
@@ -265,7 +291,7 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                         endDate={endDate}
                                         minDate={startDate}
                                         maxDate={new Date('2033-12-31')}
-                                        dateFormat="yyyyMMdd"
+                                        dateFormat="YYYY-MM-dd"
                                         placeholderText='종료 일자'
                                         required
                                         name = 'endDate'
@@ -274,10 +300,12 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                 </tr>
 
                                 <tr>
-                                    <td></td><td></td>
+                                    <td></td>
                                     <td colSpan="2">
                                         <button id="right_inputBtn" type='submit'>계산하기</button>
                                     </td>
+                                    <td></td>    
+                                    
                                 </tr>
                             </table>
                         </form>

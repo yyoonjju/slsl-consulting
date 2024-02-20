@@ -1,106 +1,105 @@
-.ValueResultPages { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-size:cover;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}
 
-.ValueResultPagesIn {
-    position: relative;
-}
+    .ValueResultPages { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-size:cover;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
 
-#ValueResultTitle{
-    color:#333;
-    font-size: 40px;
-    position: absolute;
-    top: -50px;
-    width: 1000px;
-    display: flex;
-    justify-content: flex-start;
-    text-align: left;
-    
-}
+    .ValueResultPagesIn {
+        position: relative;
+    }
 
-#ValueResultTitle>span{
-    width: 40%;
-    background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
-}
+    #ValueResultTitle{
+        font-size: 40px;
+        position: absolute;
+        top: -40px;
+        width: 1000px;
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+    }
 
-.ValueResult{
-    display: flex;
-    flex-direction: column;
-    width: 950px;
-    height: 900px;
-    justify-content: space-between;
-    align-items: center;
-}
+    #ValueResultTitle>span{
+        width: 40%;
+        background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
+    }
 
-.ValueChartBox{
-    box-shadow: 0 0 20px lightgray;
-    width: 950px;
-    border-radius: 5px;
-}
+    .ValueResult{
+        display: flex;
+        flex-direction: column;
+        width: 950px;
+        height: 900px;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.ValueResultTable{
-    width: 900px;
-    font-size: 18px;
-    font-weight: bold;
-    /* border:solid 1px gray; */
-}
+    .ValueChartBox{
+        box-shadow: 0 0 20px lightgray;
+        width: 950px;
+        border-radius: 5px;
+    }
 
-.ResultCostTable{
-    width: 900px;
-    font-size: 18px;
-    font-weight: bold;
-    /* border:solid 1px gray; */
-}
+    .ValueResultTable{
+        width: 900px;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-.ValueResultTable>tr>td,.ResultCostTable>tr>td {
-    /* border: solid 1px black; */
-}
+    .ResultCostTable{
+        width: 900px;
+        font-size: 18px;
+        font-weight: bold;
+    }
 
-.ResultCostTable>tr>td:nth-child(1){
-    width: 200px;
+    .ValueResultTable>tr>td,.ResultCostTable>tr>td {
+        /* border: solid 1px black; */
+    }
+
+    .ResultCostTable>tr>td:nth-child(1){
+        width: 200px;
+        text-align:justify;
+    }
+
+    .ResultCostTable>tr>td:nth-child(3){
+    width: 180px;
     text-align:justify;
- }
+    }
 
-.ResultCostTable>tr>td:nth-child(3){
-   width: 180px;
-   text-align:justify;
-}
+    .ValueResultTable>tr>td:nth-child(2){
+        padding-right: 10px;
+    }
 
-.ValueResultTable>tr>td:nth-child(2){
-    padding-right: 10px;
-}
+    .ResultCostTable>tr>td:nth-child(2){
+        padding-right: 5px;
+    }
 
-.ResultCostTable>tr>td:nth-child(2){
-    padding-right: 5px;
-}
+    .fontLine {
+        width:150px;
+        font-size:23px;
+        background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
+    }
 
-.fontLine {
-    width:150px;
-    /* background: linear-gradient(to top, #bfdeffe1 50%, transparent 50%); */
-}
+    .fontColor{
+        color: #0B74E2;
+    }
 
-.fontColor{
-    color: blue;
-}
+    #btnClickInput{
+        width: 250px;
+        height: 40px;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        background-color: #0B74E2;
+        font-size: 20px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
 
-#btnClickInput{
-    width: 250px;
-    height: 40px;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    background-color: #0B74E2;
-    font-size: 20px;
-    margin-top: 20px;
-    cursor: pointer;
-}
-
-#btnClickInput:hover{
-    background-color: #0b6acf;
-}
+    #btnClickInput:hover{
+        background-color: #0b6acf;
+    }
+    

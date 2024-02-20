@@ -1,6 +1,4 @@
-package com.example.demo.model;
-
-import java.time.LocalDate;
+package com.example.slsl_server.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,11 +7,11 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Power {
+public class CumulativeCapacity {
     @Id
     private Long index;
     @Column(columnDefinition = "TEXT")
     private String loc;
-    private LocalDate tm;
-    private Long value;
+    private int year;
+    private double capacity;
 }

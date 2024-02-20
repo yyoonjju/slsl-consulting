@@ -39,16 +39,16 @@ const InquiryInput = () => {
             return;
         }
 
-        //이메일 아이디에 특수문자 포함했을때
-        if(!isEmailValid){
-            alert('이메일에는 특수문자를 사용할 수 없습니다.')
-            return;
-        }
-        //이메일 도메인 특수문자 포함했을때 (.은 입력가능)
-        if(!isDomainValid){
-            alert('이메일 도메인 형식을 확인해주세요.')
-            return;
-        }
+        // //이메일 아이디에 특수문자 포함했을때
+        // if(!isEmailValid){
+        //     alert('이메일에는 특수문자를 사용할 수 없습니다.')
+        //     return;
+        // }
+        // //이메일 도메인 특수문자 포함했을때 (.은 입력가능)
+        // if(!isDomainValid){
+        //     alert('이메일 도메인 형식을 확인해주세요.')
+        //     return;
+        // }
     
         // 개인정보 수집 이용동의 안했을때 알림 
         if(!InputData.inputCheck){
@@ -110,61 +110,61 @@ const InquiryInput = () => {
 
         const maxLength = e.target.maxLength;
         
-        if (e.target.id === 'inputNumber1') {
+        // if (e.target.id === 'inputNumber1') {
         
-            if (!/^\d+$/.test(e.target.value)) {
-                e.target.value = '';
-                alert("숫자만 입력이 가능합니다.");
-                return;
-            }
-            if (e.target.value.length < maxLength) {
-                e.target.value = ''; 
-                alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
-                return;
-            }
-        }
-        else if (e.target.id === 'inputNumber2') {
+        //     if (!/^\d+$/.test(e.target.value)) {
+        //         e.target.value = '';
+        //         alert("숫자만 입력이 가능합니다.");
+        //         return;
+        //     }
+        //     if (e.target.value.length < maxLength) {
+        //         e.target.value = ''; 
+        //         alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
+        //         return;
+        //     }
+        // }
+        // else if (e.target.id === 'inputNumber2') {
         
-            if (!/^\d+$/.test(e.target.value)) {
-                e.target.value = '';
-                alert("숫자만 입력이 가능합니다.");
-                return;
-            }
-            if (e.target.value.length < maxLength) {
-                e.target.value = ''; 
-                alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
-                return;
-            }
-        }
-        else if (e.target.id === 'inputNumber3') {
+        //     if (!/^\d+$/.test(e.target.value)) {
+        //         e.target.value = '';
+        //         alert("숫자만 입력이 가능합니다.");
+        //         return;
+        //     }
+        //     if (e.target.value.length < maxLength) {
+        //         e.target.value = ''; 
+        //         alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
+        //         return;
+        //     }
+        // }
+        // else if (e.target.id === 'inputNumber3') {
         
-            if (!/^\d+$/.test(e.target.value)) {
-                e.target.value = '';
-                alert("숫자만 입력이 가능합니다.");
-                return;
-            }
-            if (e.target.value.length < maxLength) {
-                e.target.value = ''; 
-                alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
-                return;
-            }
-        }
+        //     if (!/^\d+$/.test(e.target.value)) {
+        //         e.target.value = '';
+        //         alert("숫자만 입력이 가능합니다.");
+        //         return;
+        //     }
+        //     if (e.target.value.length < maxLength) {
+        //         e.target.value = ''; 
+        //         alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
+        //         return;
+        //     }
+        // }
 
-        if(e.target.id === 'emailDomain'){
-            if (!(/^[a-zA-Z.]+$/).test(e.target.value)){
-                e.target.value = ''; 
-                alert('이메일 도메인 형식을 확인해주세요.')
-                return;
-            }
-        }
+        // if(e.target.id === 'emailDomain'){
+        //     if (!(/^[a-zA-Z.]+$/).test(e.target.value)){
+        //         e.target.value = ''; 
+        //         alert('이메일 도메인 형식을 확인해주세요.')
+        //         return;
+        //     }
+        // }
 
-        if(e.target.id === 'emailId'){
-            if (!(/^[a-zA-Z0-9]+$/).test(e.target.value)){
-                e.target.value = ''; 
-                alert('이메일 아이디에는 알파벳과 숫자만 입력 가능합니다.');
-                return;
-            }
-        }
+        // if(e.target.id === 'emailId'){
+        //     if (!(/^[a-zA-Z0-9]+$/).test(e.target.value)){
+        //         e.target.value = ''; 
+        //         alert('이메일 아이디에는 알파벳과 숫자만 입력 가능합니다.');
+        //         return;
+        //     }
+        // }
 
         if(e.target.id === 'inputName'){
             if (!(/^[a-zA-Z가-힣]*$/).test(e.target.value)){
@@ -194,14 +194,14 @@ const InquiryInput = () => {
                     <table>
                         <tr>
                             <td>
-                                모델 선택 <span className="red_span">*</span>
+                                모듈 선택 <span className="red_span">*</span>
                             </td>
                             <td colSpan="3">
                                 <select id= "inputModel" required onChange={handleChange}>
                                     <option value=""disabled selected hidden>모듈을 선택하세요</option>
-                                    <option value="fromKorea">한국 Q.PEAK DUO XL G11.7(570Wp)</option>
-                                    <option value="fromUSA">미국 AmeriSolar AS-qm120-HC(580Wp)</option>
-                                    <option value="fromChina">중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)</option>
+                                    <option value="fromKorea">한국 HANWHA Q.PEAK DUO XL G11.7 (570Wp)</option>
+                                    <option value="fromUSA">미국 AMERISOLAR AS-8M120-HC (580Wp)</option>
+                                    <option value="fromChina">중국 JINKO SOLAR PANEL 58W N-TYPE (580Wp)</option>
                                 </select>
                             </td>
                         </tr>
@@ -266,7 +266,7 @@ const InquiryInput = () => {
                                             handlecustomEmailDomain(e);
                                         }}
                                 >
-                                    <option value=""disabled selected hidden>-선택-</option>
+                                    <option value=""disabled selected hidden>도메인 선택</option>
                                     <option value="userinput">직접입력</option>
                                     <option value="naver.com">naver.com</option>
                                     <option value="gmail.com">gmail.com</option>
@@ -318,7 +318,7 @@ const InquiryInput = () => {
                         </tr>
 
                         <tr>
-                            <td>발전소 설치 주소<span className="red_span">*</span></td>
+                            <td>발전소 설치 지역<span className="red_span">*</span></td>
                             <td>
                                 <select name = "LocalAddress" id = "localAddress" required  onChange={handleChange}>
                                         <option value=""disabled selected hidden>지역을 선택하세요</option>
@@ -348,13 +348,13 @@ const InquiryInput = () => {
                         </tr>
                         <tr>
                             <td colSpan="4">
-                                <textarea type='text' id = "inputAsk" onChange={handleChange} placeholder='문의할 내용을 입력해주세요.'/>
+                                <textarea type='text' id = "inputAsk" onChange={handleChange} placeholder='문의할 내용을 입력하세요'/>
                             </td>
                         </tr>
                     </table>
 
                     <div className='InputCheckBox'>
-                        개인정보 수집 및 이용 동의(필수)
+                        개인정보 수집 및 이용 동의 (필수)
                         <span className="red_span">&nbsp;*&nbsp;&nbsp;</span>
                         <input type='checkbox' id = "inputCheck" onChange={handleChange} checked={InputData.inputCheck}/>
                     </div>

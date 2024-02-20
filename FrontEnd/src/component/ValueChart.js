@@ -25,7 +25,7 @@ const ValueChart = ({data}) =>{
         <ComposedChart
           width={700}
           height={400}
-          data={data === null ? blankData : data.slice(0,24)}
+          data={data === null ? blankData : data}
           margin={{
             top: 20,
             right: 20,

@@ -12,8 +12,12 @@
     padding: 10px;
 }
 
+.howtoInput_title>h2{
+    font-size: 28px;
+}
+
 .howtoInput_title>div{
-    font-size: 21px;
+    font-size: 20px;
     margin-top: 20px;
     font-weight: bold;
 }
@@ -72,11 +76,11 @@
 
 #arrayTitle>h2{
     width: 220px;
-    background: linear-gradient(to top, #ffe555be 50%, transparent 50%);
+    background: linear-gradient(to top, #EAE3D2 50%, transparent 50%);
 }
 
 #arrayTitle>h2>span{
-    color: blue;
+    color: #0B74E2;
 }
 
 #arrayTitle>div{
@@ -116,23 +120,22 @@
 }
 
 .arrayInfo > ul>li>span{
-    color: blue;
+    color: #0B74E2;
     font-weight: bold;
 }
 
 #arrayInfoBtn{
     margin-top: 10px;
-    border: none;
-    background-color: #EAE3D2;
-    border-radius: 20px;
-    padding: 5px;
     width: 100%;
-    font-weight:600;
+    height: 40px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color:  #0B74E2;
     font-size: 18px;
     cursor: pointer;
 }
 
 #arrayInfoBtn:hover{
-    background-color: #e7dabc;
-    font-weight:600;
+    background-color: #0b6acf;
 }
