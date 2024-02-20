@@ -16,5 +16,5 @@ public class Power {
     @Column(columnDefinition="TEXT")
     private String loc;
     private LocalDate tm;
-    private Long value;
+    private double value;
 }
