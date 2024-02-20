@@ -229,7 +229,7 @@ const ValueResult = () => {
         <article className='ValueResultPages'>
             <div className='ValueResultPagesIn'>
                 <div id = "ValueResultTitle">
-                    <span>발전수익 계산 결과</span>
+                    <span>발전 수익 계산 결과</span>
                 </div>
 
                 <section className='ValueResult'>
@@ -251,7 +251,7 @@ const ValueResult = () => {
                         <tr>
                             <td>설치 장소 면적 :</td>
                             <td> {inputArea}&nbsp;(m²)</td>
-                            <td>선택한한 기간 : </td>
+                            <td>선택한 기간 : </td>
                             <td> {firstDate} ~ {secondDate} </td>
                         </tr>
                     </table>
