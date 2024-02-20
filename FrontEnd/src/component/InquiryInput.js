@@ -199,9 +199,9 @@ const InquiryInput = () => {
                             <td colSpan="3">
                                 <select id= "inputModel" required onChange={handleChange}>
                                     <option value=""disabled selected hidden>모듈을 선택하세요</option>
-                                    <option value="fromKorea">한국 Q.PEAK DUO XL G11.7(570Wp)</option>
-                                    <option value="fromUSA">미국 AmeriSolar AS-qm120-HC(580Wp)</option>
-                                    <option value="fromChina">중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)</option>
+                                    <option value="fromKorea">한국 HANWHA Q.PEAK DUO XL G11.7 (570Wp)</option>
+                                    <option value="fromUSA">미국 AMERISOLAR AS-8M120-HC (580Wp)</option>
+                                    <option value="fromChina">중국 JINKO SOLAR PANEL 58W N-TYPE (580Wp)</option>
                                 </select>
                             </td>
                         </tr>
@@ -348,7 +348,7 @@ const InquiryInput = () => {
                         </tr>
                         <tr>
                             <td colSpan="4">
-                                <textarea type='text' id = "inputAsk" onChange={handleChange} placeholder='문의할 내용을 입력해주세요.'/>
+                                <textarea type='text' id = "inputAsk" onChange={handleChange} placeholder='문의할 내용을 입력하세요'/>
                             </td>
                         </tr>
                     </table>
