@@ -56,9 +56,9 @@
         font-weight: bold;
     }
 
-    .ValueResultTable>tr>td,.ResultCostTable>tr>td {
-        /* border: solid 1px black; */
-    }
+    /* .ValueResultTable>tr>td,.ResultCostTable>tr>td {
+        border: solid 1px black;
+    } */
 
     .ResultCostTable>tr>td:nth-child(1){
         width: 200px;

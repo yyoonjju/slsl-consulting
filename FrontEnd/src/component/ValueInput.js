@@ -9,6 +9,7 @@ import ValueInfo from './ValueInfo';
 const ValueInput = () => {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+    const navigate =  useNavigate();
 
     // select 박스에서 옵션 누른 위치
     const[selectedLocation, setSelectedLocation] = useState('');
@@ -50,9 +51,6 @@ const ValueInput = () => {
 
     // 지도에서 지역 눌렀을때
     const ClickPath = (locationId)=>{
-
-        // setInputLocation(locationId);
-        console.log(locationId);
         
         // 지도에서 누른 위치 
         setSelectedLocation(locationId);
@@ -107,6 +105,7 @@ const ValueInput = () => {
         return panelInfo[ValueData.selectPanel] || 0;
     };
     
+    // 면적 입력시 커서 이동되었을때 값 검증
     const handleAreaBlur = (e) => {
 
         const MinAreaValue = getMinArea();
@@ -143,19 +142,25 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
         </button>
     ));
 
-    const navigate =  useNavigate();
     // 폼 제출 핸들러
+    // 모듈의 입력 면적 제어
     const ClickSubmit = (e) =>{
         e.preventDefault();
-        console.log('submit ValueData', ValueData);
 
-        // ValueResult 컴포넌트로 폼 데이터를 전달
-        navigate('/valueresult',{state:{formData:ValueData}});
+        const MinAreaValue = getMinArea();
+        const ThisArea = ValueData.inputArea;
+        const ThisPanel = getAreaName();
+
+        if(ThisArea < MinAreaValue){
+            alert(`${ThisPanel} 제품의 면적은
+${MinAreaValue}보다 큰 숫자여야 합니다.`);
+            return;
+        }
+        else{
+            // ValueResult 컴포넌트로 폼 데이터를 전달
+            navigate('/valueresult',{state:{formData:ValueData}});
+        }
     };
-
-
-
-
 
     // 세션 값 확인 후 selectPanel의 value 변경
 
@@ -166,18 +171,20 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
     
         if (selectedCountry === 'korea') {
           selectPanel.value = 'fromKorea';
+          ValueData.selectPanel = "fromKorea";
+
         } else if (selectedCountry === 'usa') {
             selectPanel.value = 'fromUSA';
+            ValueData.selectPanel = 'fromUSA';
+
         } else if (selectedCountry === 'china') {
             selectPanel.value = 'fromChina';
+            ValueData.selectPanel = 'fromChina';
+
         } else {
           selectPanel.value = 'default';
         }
     }, []);
-
-
-
-
 
     return (
         
@@ -249,6 +256,7 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                                 name = "inputArea"
                                                 required
                                                 placeholder='면적을 입력하세요'
+                                                title="면적은 숫자만 입력이 가능합니다."
                                                 onChange={ClickChange}
                                                 onBlur={handleAreaBlur}/>
                                     </td>
@@ -304,8 +312,7 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
                                     <td colSpan="2">
                                         <button id="right_inputBtn" type='submit'>계산하기</button>
                                     </td>
-                                    <td></td>    
-                                    
+                                    <td></td>
                                 </tr>
                             </table>
                         </form>

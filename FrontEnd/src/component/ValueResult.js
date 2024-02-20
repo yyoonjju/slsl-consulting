@@ -268,8 +268,8 @@ const ValueResult = () => {
                         <tr>
                             <td>예상 수익 :</td>
                             <td><span className='fontColor'>{formatNumber(sum)}</span>&nbsp;&nbsp;(원)</td>
-                            <td>흑자 전환 시기 :</td>
-                            <td>{changeCost || "흑자 전환 불가"}</td>
+                            <td>흑자 전환 날짜 :</td>
+                            <td><span className='fontColor'>{changeCost || "흑자 전환 불가"}</span></td>
                         </tr>
                     </table>
                         

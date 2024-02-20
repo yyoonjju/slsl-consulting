@@ -55,6 +55,19 @@ const InquiryInput = () => {
             alert('개인정보 수집 및 이용동의 후 제출해주세요');
             return;
         }
+
+        if(InputData.inputNumber1.length<3){
+            alert("첫번째 연락처 3자리 입력해주세요");
+            return;
+        }
+        if(InputData.inputNumber2.length<4){
+            alert("두번째 연락처 4자리 입력해주세요");
+            return;
+        }
+        if(InputData.inputNumber3.length<4){
+            alert("세번째 연락처 4자리 입력해주세요");
+            return;
+        }
     
         // 저장된 상태 출력 (실제로 서버에 전송하거나 다른 로직으로 대체)
         console.log('Form Data:',InputData);
@@ -286,7 +299,7 @@ const InquiryInput = () => {
                                 <input type='tel'  
                                     pattern="[0-9]*" 
                                     id = "inputNumber1" 
-                                    maxLength="3" 
+                                    maxLength="3"
                                     placeholder='010' 
                                     required 
                                     onChange={handleChange}
@@ -297,7 +310,7 @@ const InquiryInput = () => {
                                 <input type='tel'  
                                     pattern="[0-9]+" 
                                     id = "inputNumber2" 
-                                    maxLength="4" 
+                                    maxLength="4"
                                     placeholder='1234' 
                                     required 
                                     onChange={handleChange}
