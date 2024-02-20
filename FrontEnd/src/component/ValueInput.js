@@ -99,9 +99,9 @@ const ValueInput = () => {
     // selectPanel 값에 따라 패널의 이름을 반환하는 함수
     const getAreaName = (value) => {
         const panelInfo = {
-            fromKorea: "한국 Q.PEAK DUO XL G11.7(570Wp)",
-            fromUSA: "미국 AmeriSolar AS-qm120-HC(580Wp)",
-            fromChina: "중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)",
+            fromKorea: "한국 HANWHA Q.PEAK DUO XL G11.7 (570Wp)",
+            fromUSA: "미국 AMERISOLAR AS-8M120-HC (580Wp)",
+            fromChina: "중국 JINKO SOLAR PANEL 58W N-TYPE (580Wp)",
         };
 
         return panelInfo[ValueData.selectPanel] || 0;

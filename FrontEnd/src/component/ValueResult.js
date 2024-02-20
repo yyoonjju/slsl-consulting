@@ -87,7 +87,7 @@ const ValueResult = () => {
 
         //패널 선택 세부명, 그에 따른 필요면적, 가격 및 Wat, Amount 설정
         if(selectPanel ==="fromKorea"){
-            PanelLabel = '한국 Q.PEAK DUO XL G11.7(570Wp)';
+            PanelLabel = '한국 HANWHA Q.PEAK DUO XL G11.7 (570Wp)';
             PanelSize = 67.81;
             PanelCost = 5274840;
             PanelMw = 570;
@@ -103,7 +103,7 @@ const ValueResult = () => {
             
             
         } else if(selectPanel==="fromUSA"){
-            PanelLabel = '미국 AmeriSolar AS-qm120-HC(580Wp)';
+            PanelLabel = '미국 AMERISOLAR AS-8M120-HC (580Wp)';
             PanelSize = 87.527;
             PanelCost = 5964750;
             PanelMw = 580;
@@ -114,7 +114,7 @@ const ValueResult = () => {
             setAmount(Math.floor(inputArea/PanelSize));
         }
         else if(selectPanel==="fromChina"){
-            PanelLabel = '중국 SOLAR PANEL JINKO 58W N-TYPE(580Wp)';
+            PanelLabel = '중국 JINKO SOLAR PANEL 58W N-TYPE (580Wp)';
             PanelSize = 78.91;
             PanelCost = 2358900;
             PanelMw = 580;
@@ -229,7 +229,7 @@ const ValueResult = () => {
         <article className='ValueResultPages'>
             <div className='ValueResultPagesIn'>
                 <div id = "ValueResultTitle">
-                    <span>발전수익 계산결과</span>
+                    <span>발전수익 계산 결과</span>
                 </div>
 
                 <section className='ValueResult'>
@@ -244,14 +244,14 @@ const ValueResult = () => {
                         <tr>
                             <td>설치 예정 지역 :</td>
                             <td> {LocalLabel}</td>
-                            <td>선택한 패널 :</td>
+                            <td>선택한 모듈 :</td>
                             <td> {panelLabel}</td>
                         </tr>
 
                         <tr>
                             <td>설치 장소 면적 :</td>
                             <td> {inputArea}&nbsp;(m²)</td>
-                            <td>입력한 기간 : </td>
+                            <td>선택한한 기간 : </td>
                             <td> {firstDate} ~ {secondDate} </td>
                         </tr>
                     </table>
@@ -261,7 +261,7 @@ const ValueResult = () => {
                         <tr>
                             <td>설치 가능 개수 : </td>
                             <td> 어레이 <span className='fontColor'>{amount}&nbsp;</span>&nbsp;(개)</td>
-                            <td>설치 비용 :</td>
+                            <td>설치비용 :</td>
                             <td><span className='fontColor'>{formatNumber(InitaialCost)}&nbsp;</span>&nbsp;(원)</td>
                         </tr>
 
