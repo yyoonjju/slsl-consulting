@@ -162,8 +162,6 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
         }
     };
 
-
-
     // 세션 값 확인 후 selectPanel의 value 변경
 
     useEffect(() => {
@@ -173,10 +171,16 @@ ${MinAreaValue}보다 큰 숫자여야 합니다.`);
     
         if (selectedCountry === 'korea') {
           selectPanel.value = 'fromKorea';
+          ValueData.selectPanel = "fromKorea";
+
         } else if (selectedCountry === 'usa') {
             selectPanel.value = 'fromUSA';
+            ValueData.selectPanel = 'fromUSA';
+
         } else if (selectedCountry === 'china') {
             selectPanel.value = 'fromChina';
+            ValueData.selectPanel = 'fromChina';
+
         } else {
           selectPanel.value = 'default';
         }
