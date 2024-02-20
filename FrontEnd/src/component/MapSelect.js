@@ -27,13 +27,14 @@ function MapSelect() {
     // Chart.js와 Table.js에 뿌려줌
     const Result = async() => {
         try {
-            const res = await axios.get(`http://10.10.21.64:8080/api/${location}`, {
+            const res = await axios.post(`http://10.10.21.64:8080/api/${location}`, null, {
                 params: {
                     firstDate: firstDate,
                     secondDate: secondDate
                 }
             });
             setData(res.data);
+            console.log(res.data);
         }
         catch {
             console.log("Error: Result");
