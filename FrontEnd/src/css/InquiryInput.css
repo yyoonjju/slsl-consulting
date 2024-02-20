@@ -8,11 +8,13 @@
         width: 100dvw;
         margin-top: 100px;
         margin-bottom: 100px;
+        border-radius: 15px;
     }
 
     .InquiryImg{
         width: 600px;
         height: 700px;
+        box-shadow: 0 0 20px lightgray;
     }
 
     .inquiryBox{
@@ -27,16 +29,15 @@
     }
 
     .inquiryTitle{
-        color:#333;
         font-size: 45px;
         position: absolute;
-        top: -50px;
+        top: -45px;
         width: 100%;
         display: flex;
         justify-content: flex-end;
         text-align: right;
-    
     }
+
     .inquiryTitle>span{
         width: 40%;
         background: linear-gradient(to top, rgb(209, 234, 255) 40%, transparent 40%);
@@ -59,7 +60,7 @@
         flex-direction: column;
         height: 700px;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-evenly;
         padding: 20px;
     }
 
@@ -90,7 +91,7 @@
         padding: 5px;
         border: 1px solid lightgray;
         border-radius: 5px;
-        font-size: 15px;
+        font-size: 17px;
     }
 
     #inquiryForm>table>tr>td>input{
@@ -115,7 +116,6 @@
 
     #inquiryForm>table>tr>td>input::placeholder{
         text-align: center;
-        font-style: italic;
     }
     #inputModel{
         width: 400px;
@@ -146,6 +146,7 @@
         width: 750px;
         height: 100%;
         resize: none;
+        font-size: 20px;
     }
 
     #localAddress{
