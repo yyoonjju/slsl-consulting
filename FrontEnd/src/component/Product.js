@@ -97,7 +97,7 @@ function Product() {
                 <img src='./images/Product.jpg' className='productPhoto'/>
                 <div className='productTitle'>
                     <p className='productTitleType'>
-                        <h1 className={`productTitle1 ${isActive ? '' : 'active'}`}>태양광 모듈을 설치할 계획이신가요?</h1>
+                        <h1 className={`productTitle1 ${isActive ? '' : 'active'}`}>태양광 모듈을 설치할 계획인가요?</h1>
                     </p>
                     <p className='productTitleType'>
                         <span className={`productTitle2 ${isActive ? '' : 'active'}`}>SLSL 제품을 확인해 보세요!</span>
