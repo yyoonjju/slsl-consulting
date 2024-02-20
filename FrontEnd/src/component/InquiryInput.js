@@ -118,7 +118,7 @@ const InquiryInput = () => {
         //         return;
         //     }
         //     if (e.target.value.length < maxLength) {
-        //         e.target.value = ''; 
+        //         e.target.value =''; 
         //         alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
         //         return;
         //     }
@@ -131,7 +131,7 @@ const InquiryInput = () => {
         //         return;
         //     }
         //     if (e.target.value.length < maxLength) {
-        //         e.target.value = ''; 
+        //         e.target.value =''; 
         //         alert("입력값이 너무 짧습니다. " + maxLength + "자 입력해주세요.");
         //         return;
         //     }
@@ -139,7 +139,7 @@ const InquiryInput = () => {
         // else if (e.target.id === 'inputNumber3') {
         
         //     if (!/^\d+$/.test(e.target.value)) {
-        //         e.target.value = '';
+        //         e.target.value ='';
         //         alert("숫자만 입력이 가능합니다.");
         //         return;
         //     }
@@ -290,18 +290,18 @@ const InquiryInput = () => {
                                     placeholder='010' 
                                     required 
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    title="숫자만 입력해주세요"
                                 />
 
                                 <span>&nbsp;-&nbsp;&nbsp;</span>
                                 <input type='tel'  
-                                    pattern="[0-9]*" 
+                                    pattern="[0-9]+" 
                                     id = "inputNumber2" 
                                     maxLength="4" 
                                     placeholder='1234' 
                                     required 
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    title="숫자만 입력해주세요"
                                 />
 
                                 <span>&nbsp;-&nbsp;&nbsp;</span>
@@ -312,7 +312,7 @@ const InquiryInput = () => {
                                     placeholder='5678' 
                                     required 
                                     onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    title="숫자만 입력해주세요"
                                 />
                             </td>
                         </tr>
